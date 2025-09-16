@@ -9,5 +9,5 @@ jobs:
         with:
           node-version: 20
           cache: npm
-      - run: npm ci || npm i
+      - run: npm ci
       - run: npm run build

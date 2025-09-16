@@ -358,10 +358,10 @@ const ClassicGame = () => {
                         )}
 
                         {/* Guess Rows */}
-                        <div className="space-y-4"> {/* Increased vertical space to 5px */}
+                        <div className="space-y-4">
                             {guesses.map((guess, rowIndex) => (
                                 <div key={`${guess.name}-${rowIndex}`} className="grid grid-cols-[repeat(9,5rem)] gap-1"> {/* Increased horizontal gap, removed mx-auto */}
-                                    {/* Brawler portrait (doesn't flip) */}
+
                                     <BrawlerCard name={guess.name}/>
 
                                     {/* Attribute cards (each flips individually with staggered timing) */}
@@ -379,7 +379,7 @@ const ClassicGame = () => {
                                 </div>
                             ))}
                         </div>
-                    </div> {/* END NEW WRAPPER */}
+                    </div>
 
                     {/* Game Instructions */}
                     {guesses.length === 0 && (

@@ -406,7 +406,7 @@ const ClassicGame = () => {
                   guessCount: guesses.length,
                   attributes,
                   guesses,
-                  url: shareUrl, // optional since buildShareText can build it too, but explicit is fine
+                  url: shareUrl,
                 });
         if (navigator.share) {
             try { await navigator.share({ text }); return; } catch {}
@@ -414,7 +414,8 @@ const ClassicGame = () => {
         const ok = await copyToClipboard(text);
     };
 
-    const ENABLE_DAILY_LOCK = false;
+    // Testing Toggle
+    const ENABLE_DAILY_LOCK = true;
 
     // ---- Restore today's state (if lock is ON) or start fresh (if OFF) ----
     useEffect(() => {
@@ -677,17 +678,6 @@ const ClassicGame = () => {
                         )}
                     </div>
 
-                    {/* Victory */}
-                    {/*{isWon && (*/}
-                    {/*    <div className="mb-8 p-6 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-2xl shadow-xl">*/}
-                    {/*        <div className="text-center">*/}
-                    {/*            <h2 className="text-2xl font-bold text-white mb-2">🎉 Congratulations!</h2>*/}
-                    {/*            <p className="text-emerald-100 text-lg">*/}
-                    {/*                You guessed <span className="font-bold">{targetCard.card}</span> in {guesses.length} tries!*/}
-                    {/*            </p>*/}
-                    {/*        </div>*/}
-                    {/*    </div>*/}
-                    {/*)}*/}
                     {isWon && (
                         <WinPanelCompact
                             cardName={targetCard.card}

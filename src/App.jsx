@@ -1,5 +1,5 @@
 // import React from 'react';
-// import ClassicGame from './components/clashroyale/Classicgame.jsx';
+// import ClassicGame from './components/clashroyale/ClassicGame.jsx';
 // import './App.css';
 //
 // function App() {

@@ -18,6 +18,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 
 const ClassicGame = lazy(() => import('./components/clashroyale/ClassicGame.jsx'));
+const QuoteGame   = lazy(() => import('./components/clashroyale/QuoteGame.jsx'));
 
 export default function App() {
     return (
@@ -25,6 +26,7 @@ export default function App() {
             <Suspense fallback={<div />}>
                 <Routes>
                     <Route path="/" element={<ClassicGame />} />
+                    <Route path="/clashroyale/quote" element={<QuoteGame />} />
                     <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
             </Suspense>

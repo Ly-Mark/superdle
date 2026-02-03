@@ -42,10 +42,12 @@ const MiniDistribution = ({ guessDist }) => {
 
 const GridPreview = ({ guesses, attributes, maxRows = 8, latestOnTop = true }) => {
     // ClassicGame stores newest at the front; latestOnTop=true uses order as-is.
+    if (!attributes || attributes.length === 0) return null;
     const ordered = latestOnTop ? guesses : [...guesses].reverse();
     const rows = ordered.slice(0, maxRows);
     const extra = Math.max(0, ordered.length - rows.length);
     const matrix = useMemo(() => rows.map(g => attributes.map(a => toEmoji(g.comparison?.[a.key]))), [rows, attributes]);
+
     if (matrix.length === 0) return null;
     return (
         <div className="text-center">
@@ -140,13 +142,20 @@ export default function WinPanelCompact({
                         </div>
                     </div>
 
-                    {/* grid preview (centered, non-full width) */}
+                {/* grid preview (only when attributes exist) */}
+                {attributes && attributes.length > 0 && (
                     <div className="mt-3 flex justify-center">
-                    <div
-                        className="inline-block rounded-xl bg-white/10 backdrop-blur-md border border-white/20 px-4 py-3">
-                        <GridPreview guesses={guesses} attributes={attributes} maxRows={8} latestOnTop/>
+                        <div className="inline-block rounded-xl bg-white/10 backdrop-blur-md border border-white/20 px-4 py-3">
+                            <GridPreview
+                                guesses={guesses}
+                                attributes={attributes}
+                                maxRows={8}
+                                latestOnTop
+                            />
+                        </div>
                     </div>
-                </div>
+                )}
+
 
                 {/* centered actions */}
                 <div className="mt-3 flex justify-center gap-2">
@@ -195,7 +204,7 @@ export default function WinPanelCompact({
                         <span className="text-2xl">💬</span>
                         <div className="text-blue-100 text-sm">
                             <div className="font-semibold text-white">Next mode</div>
-                            <div className="opacity-80">Quote — guess with in-game quotes</div>
+                            <div className="opacity-80">Description - Guess based on a description</div>
                         </div>
                     </div>
                     <a href={nextModeHref}

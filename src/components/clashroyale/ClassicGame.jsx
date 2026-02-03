@@ -3,12 +3,17 @@ import cardsData from '../../data/cards.json';
 import { getDailyCard, compareAttributes, getAttributeColor } from '../../utils/clashroyale/gamelogic.js';
 
 
-import WinModal from '../../components/clashroyale/WinModal.jsx';
+// import WinModal from '../../components/clashroyale/WinModal.jsx';
 import WinPanelCompact from '../../components/clashroyale/WinPanelCompact.jsx';
 import { loadStats, markAttempt, updateStatsOnWin } from '../../utils/clashroyale/stats.js';
 
 import { getDayIndex, buildShareText, copyToClipboard } from "../../utils/clashroyale/shareText.js";
-import { buildUrl } from "../../utils/shareBase.js";
+
+import { PUBLIC_BASE, buildUrl } from '../../utils/shareBase.js';
+
+
+const shareUrlRoot   = buildUrl('/');                    // → "https://clash.ac/"
+const shareUrlCR     = buildUrl('/clashroyale/classic'); // → "https://clash.ac/clashroyale/classic"
 
 
 /* -------------------------------------------------------
@@ -381,7 +386,7 @@ const makeSolvedRow = (card) => ({
    Main game
 ------------------------------------------------------- */
 const ClassicGame = () => {
-    const [targetCard] = useState(() => getDailyCard(cardsData));
+    const [targetCard] = useState(() => getDailyCard(cardsData, "classic"));
     const [guesses, setGuesses] = useState([]);
     const [inputValue, setInputValue] = useState('');
     const [showSuggestions, setShowSuggestions] = useState(false);
@@ -393,9 +398,16 @@ const ClassicGame = () => {
     const [revealedHints, setRevealedHints] = useState({ hint1: false, hint2: false, hint3: false });
 
     const [stats, setStats] = useState(() => loadStats());
-    const [showWinModal, setShowWinModal] = useState(false);
+    // const [showWinModal, setShowWinModal] = useState(false);
+
+
     const dayKey = useMemo(() => getLocalDayKey(), []);
     const dayIndex = useMemo(() => getDayIndex(), []);
+
+    // With query params:
+    const shareUrlWithQ  = buildUrl('/clashroyale/classic', { d: dayIndex, m: 'classic' });
+// → "https://clash.ac/clashroyale/classic?d=256&m=classic"
+
 
     const CLASH_ROYALE_CLASSIC_ROUTE = '/';
     const shareUrl = useMemo(() => buildUrl(CLASH_ROYALE_CLASSIC_ROUTE), []);
@@ -501,7 +513,7 @@ const ClassicGame = () => {
         // Update local stats for today (idempotent per dayKey)
         const updated = updateStatsOnWin(guesses.length, dayKey);
         setStats(updated);
-        setShowWinModal(true);
+        // setShowWinModal(true);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isWon]);
 
@@ -686,14 +698,13 @@ const ClassicGame = () => {
                             guesses={guesses}
                             attributes={attributes}
                             stats={stats}
-                            onOpenStats={() => setShowWinModal(true)} // keeps your modal for deeper stats if you like
+                            // onOpenStats={() => setShowWinModal(true)} // keeps your modal for deeper stats if you like
                             // shareUrl="https://your-domain.com"
                             // nextModeHref="/clashroyale/quote"
-                            shareUrl={shareUrl}
+                            shareUrl={shareUrlCR}
                             onShare={handleShare}
                         />
                     )}
-
 
                     {/* Guess Grid */}
                     <div className="flex flex-col items-center">
@@ -752,22 +763,20 @@ const ClassicGame = () => {
                 {showLegend && <InlineLegend onClose={() => setShowLegend(false)} />}
 
             </div>
-            <WinModal
-                isOpen={showWinModal}
-                onClose={() => setShowWinModal(false)}
-                dayIndex={dayIndex}
-                dayKey={dayKey}
-                guesses={guesses}
-                attributes={attributes}
-                stats={stats}
-                // shareUrl="https://your-domain.com" // set this when ready
-                shareUrl={shareUrl}
-                onShare={handleShare}
-            />
+            {/*<WinModal*/}
+            {/*    isOpen={showWinModal}*/}
+            {/*    onClose={() => setShowWinModal(false)}*/}
+            {/*    dayIndex={dayIndex}*/}
+            {/*    dayKey={dayKey}*/}
+            {/*    guesses={guesses}*/}
+            {/*    attributes={attributes}*/}
+            {/*    stats={stats}*/}
+            {/*    // shareUrl="https://your-domain.com" // set this when ready*/}
+            {/*    shareUrl={shareUrlCR}*/}
+            {/*    onShare={handleShare}*/}
+            {/*/>*/}
 
         </div>
-
-
     );
 };
 

@@ -1,10 +1,14 @@
 // gamelogic.js - Clash Royale version
 
-export const getDailyCard = (cards) => {
-    const today = new Date().toDateString();
-    const seed = today.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+export const getDailyCard = (cards, modeSalt = "classic") => {
+    const today = new Date().toDateString() + modeSalt;
+    const seed = today
+        .split("")
+        .reduce((acc, char) => acc + char.charCodeAt(0), 0);
+
     return cards[seed % cards.length];
 };
+
 
 const normalizeMulti = (val) =>
     String(val)

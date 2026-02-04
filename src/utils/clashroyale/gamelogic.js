@@ -9,6 +9,9 @@ export const getDailyCard = (cards, modeSalt = "classic") => {
     return cards[seed % cards.length];
 };
 
+export function getRushCard(cards, roundIndex) {
+    return getDailyCard(cards, `rush-${roundIndex}`);
+}
 
 const normalizeMulti = (val) =>
     String(val)

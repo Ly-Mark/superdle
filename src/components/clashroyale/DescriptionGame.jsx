@@ -3,6 +3,7 @@ import React, { useMemo, useState, useEffect } from "react";
 import WinPanelCompact from "../../components/clashroyale/WinPanelCompact.jsx";
 import { buildShareText, copyToClipboard } from "../../utils/clashroyale/shareText.js";
 import { buildUrl } from "../../utils/shareBase.js";
+import GameModeNav from "./GameModeNav";
 
 import { useDailyModeGame } from "./useDailyModeGame.js";
 
@@ -128,7 +129,7 @@ const GuessTile = ({ name, isCorrect, game = "clashroyale" }) => {
 
 const HINT_UNLOCK_AT = 5; // guesses needed before hint button enabled
 
-export default function QuoteGame() {
+export default function DescriptionGame() {
     const {
         targetCard,
         guesses,
@@ -268,6 +269,7 @@ export default function QuoteGame() {
               CLASHDLE
             </span>
                     </h1>
+                    <GameModeNav />
 
                     {/* Prompt panel styled similarly to Classic hints panel */}
                     <div className="max-w-xl mx-auto bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6">

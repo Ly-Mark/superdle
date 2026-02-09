@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import cardsData from "../../data/cards.json";
+import GameModeNav from "./GameModeNav";
 
 /* -------------------------------------------------------
    Shared slugify (copied from ClassicGame)
@@ -269,7 +270,7 @@ export default function MemoryGame() {
               CLASHDLE
             </span>
                     </h1>
-                    <div className="text-blue-200/90 font-semibold">Memory Mode</div>
+                    <GameModeNav />
                 </div>
 
                 {/* ONE centered top panel (instructions + input + stats) */}
@@ -342,9 +343,9 @@ export default function MemoryGame() {
                             <button
                                 type="button"
                                 onClick={onReset}
-                                className="mt-4 px-5 py-3 rounded-2xl font-bold text-white bg-white/10 hover:bg-white/15 border border-white/20 shadow-xl"
+                                className="mt-4 w-full px-4 py-3 rounded-2xl bg-emerald-500/30 hover:bg-emerald-500/40 border border-emerald-200/30 text-emerald-50 font-black shadow-lg"
                             >
-                                Reset
+                                New Game
                             </button>
 
                             {timeLeft === 0 && (

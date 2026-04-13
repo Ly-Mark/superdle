@@ -1,5 +1,6 @@
 import React, { useMemo, useState, useEffect } from "react";
-// import WinModal from "../../components/clashroyale/WinModal.jsx";
+import ClashroyaleBackground from "../../components/clashroyale/CRBackground.jsx";
+import CardThumb from "../../components/clashroyale/CardThumb.jsx";
 import WinPanelCompact from "../../components/clashroyale/WinPanelCompact.jsx";
 import { buildShareText, copyToClipboard } from "../../utils/clashroyale/shareText.js";
 import { buildUrl } from "../../utils/shareBase.js";
@@ -7,40 +8,7 @@ import GameModeNav from "./GameModeNav";
 
 import { useDailyModeGame } from "./useDailyModeGame.js";
 
-/* ------------ same slugify + SuggestionItem from Classic (copy/paste) ------------ */
-const slugify = (name) =>
-    String(name)
-        .toLowerCase()
-        .replace(/p\.?\s*e\.?\s*k\.?\s*k\.?\s*a/gi, "pekka")
-        .replace(/&/g, "and")
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/[^a-z0-9]+/g, "-")
-        .replace(/^-+|-+$/g, "");
-
-const getThumbSources = (game, slug) => [
-    `/games/${game}/cards/${slug}.webp`,
-    `/games/${game}/cards/${slug}.png`,
-    `/games/${game}/cards/${slug}.jpg`,
-];
-
 const SuggestionItem = ({ name, onClick, isFirst, game = "clashroyale" }) => {
-    const slug = useMemo(() => slugify(name), [name]);
-    const sources = useMemo(() => getThumbSources(game, slug), [game, slug]);
-    const [idx, setIdx] = useState(0);
-    const [failed, setFailed] = useState(false);
-
-    const handleError = () => {
-        setIdx((i) => {
-            const next = i + 1;
-            if (next >= sources.length) {
-                setFailed(true);
-                return i;
-            }
-            return next;
-        });
-    };
-
     return (
         <div
             onClick={onClick}
@@ -51,23 +19,7 @@ const SuggestionItem = ({ name, onClick, isFirst, game = "clashroyale" }) => {
             aria-selected={false}
         >
             <div className="flex items-center gap-3 min-w-0">
-                <div className="relative w-10 h-10 rounded-md overflow-hidden ring-1 ring-white/40 bg-gray-200 shrink-0">
-                    {!failed ? (
-                        <img
-                            src={sources[idx]}
-                            alt={name}
-                            className="absolute inset-0 w-full h-full object-cover"
-                            style={{ transform: "scale(1.35)", transformOrigin: "center" }}
-                            loading="lazy"
-                            decoding="async"
-                            onError={handleError}
-                        />
-                    ) : (
-                        <div className="absolute inset-0 flex items-center justify-center text-[10px] font-semibold text-gray-600">
-                            {name.slice(0, 2).toUpperCase()}
-                        </div>
-                    )}
-                </div>
+                <CardThumb name={name} game={game} />
                 <span className="font-semibold text-gray-800 truncate">{name}</span>
             </div>
 
@@ -76,46 +28,20 @@ const SuggestionItem = ({ name, onClick, isFirst, game = "clashroyale" }) => {
     );
 };
 
+
 const GuessTile = ({ name, isCorrect, game = "clashroyale" }) => {
-    const slug = useMemo(() => slugify(name), [name]);
-    const sources = useMemo(() => getThumbSources(game, slug), [game, slug]);
-    const [idx, setIdx] = useState(0);
-    const [failed, setFailed] = useState(false);
-
-    const handleError = () => {
-        setIdx((i) => {
-            const next = i + 1;
-            if (next >= sources.length) {
-                setFailed(true);
-                return i;
-            }
-            return next;
-        });
-    };
-
     return (
         <div
             className={`w-full rounded-xl border-2 shadow-lg overflow-hidden
         ${isCorrect ? "bg-emerald-500/85 border-emerald-200/60" : "bg-red-500/75 border-white/30"}`}
         >
             <div className="flex flex-col items-center justify-center py-2">
-                <div className="relative w-16 h-16 rounded-md overflow-hidden ring-2 ring-white/30 bg-black/20">
-                    {!failed ? (
-                        <img
-                            src={sources[idx]}
-                            alt={name}
-                            className="absolute inset-0 w-full h-full object-cover"
-                            style={{ transform: "scale(1.35)", transformOrigin: "center" }}
-                            loading="lazy"
-                            decoding="async"
-                            onError={handleError}
-                        />
-                    ) : (
-                        <div className="absolute inset-0 flex items-center justify-center text-[11px] font-bold text-white">
-                            {name.slice(0, 2).toUpperCase()}
-                        </div>
-                    )}
-                </div>
+                <CardThumb
+                    name={name}
+                    game={game}
+                    className="relative w-16 h-16 rounded-md overflow-hidden ring-2 ring-white/30 bg-black/20"
+                    fallbackClassName="absolute inset-0 flex items-center justify-center text-[11px] font-bold text-white"
+                />
 
                 <div className="mt-2 text-white font-extrabold text-lg drop-shadow">
                     {name}
@@ -124,6 +50,7 @@ const GuessTile = ({ name, isCorrect, game = "clashroyale" }) => {
         </div>
     );
 };
+
 
 /* ------------ Description mode UI ------------ */
 
@@ -146,13 +73,13 @@ export default function DescriptionGame() {
         dayIndex,
         handleGuess,
     } = useDailyModeGame({
-        storagePrefix: "clashle:description",
+        storagePrefix: "clashdle:description",
         enableDailyLock: true,
         modeSalt: "description",
     });
 
     // single elixir hint (persisted in same day storage via guesses/isWon already,
-    const hintStorageKey = useMemo(() => `clashle:description:hint:${dayKey}`, [dayKey]);
+    const hintStorageKey = useMemo(() => `clashdle:description:hint:${dayKey}`, [dayKey]);
     const [hintRevealed, setHintRevealed] = useState(false);
     const [hintJustUnlocked, setHintJustUnlocked] = useState(false);
     const canRevealHint = !isWon && !hintRevealed && guesses.length >= HINT_UNLOCK_AT;
@@ -186,14 +113,7 @@ export default function DescriptionGame() {
         }
     }, [canRevealHint]);
 
-    const shareUrl = useMemo(() => buildUrl("/clashroyale/quote"), []);
-    const attributes = useMemo(
-        () => [
-            // Description mode doesn’t use the Classic grid, but WinModal/ShareText want attributes sometimes.
-            // Provide empty list to stay safe.
-        ],
-        []
-    );
+    const shareUrl = useMemo(() => buildUrl("/clashroyale/description"), []);
 
     const handleShare = async () => {
         const text = buildShareText({
@@ -216,52 +136,8 @@ export default function DescriptionGame() {
     const prompt = targetCard.description || targetCard.hint1 || "No description available.";
 
     return (
-        <div className="min-h-screen relative bg-gradient-to-br from-[#0b1f3a] via-[#0b3a82] to-[#0c59b6]">
-            <style>{`
-  .diamond-img {
-    background-image: url('/bg/clashroyale/diamonds-1280.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    opacity: 0.28;
-    mix-blend-mode: overlay;
-  }
-
-  @supports (background-image: image-set(url('/bg/clashroyale/diamonds-640.png') 1x)) {
-    .diamond-img {
-      background-image: image-set(
-        url('/bg/clashroyale/diamonds-640.png') 1x,
-        url('/bg/clashroyale/diamonds-1280.png') 2x,
-        url('/bg/clashroyale/diamonds-1920.png') 3x
-      );
-    }
-  }
-
-  @media (min-width: 1536px) {
-    .diamond-img { opacity: 0.24; }
-  }
-`}</style>
-            {/* Diamond IMAGE overlay */}
-            <div
-                aria-hidden="true"
-                className="absolute inset-0 pointer-events-none z-10 diamond-img"
-            />
-
-            {/* Background blobs */}
-            <div className="absolute inset-0 overflow-hidden z-0">
-                <div
-                    className="absolute -top-40 -right-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply blur-xl opacity-20 motion-safe:animate-[pulse_12s_ease-in-out_infinite]"
-                />
-                <div
-                    className="absolute -bottom-40 -left-40 w-80 h-80 bg-sky-400 rounded-full mix-blend-multiply blur-xl opacity-20 motion-safe:animate-[pulse_14s_ease-in-out_infinite_2s]"
-                />
-                <div
-                    className="absolute top-40 left-1/2 w-80 h-80 bg-cyan-400 rounded-full mix-blend-multiply blur-xl opacity-20 motion-safe:animate-[pulse_16s_ease-in-out_infinite_4s]"
-                />
-            </div>
-
-
-            <div className="relative z-20 container mx-auto px-4 py-8">
+        <ClashroyaleBackground>
+            <div className="container mx-auto px-4 py-8">
                 {/* Header */}
                 <div className="text-center mb-8">
                     <h1 className="text-5xl font-black text-white mb-4 tracking-tight">
@@ -270,7 +146,6 @@ export default function DescriptionGame() {
             </span>
                     </h1>
                     <GameModeNav />
-
                     {/* Prompt panel styled similarly to Classic hints panel */}
                     <div className="max-w-xl mx-auto bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6">
                         <p className="text-blue-200 text-2xl md:text-3xl font-semibold mb-4">
@@ -393,26 +268,13 @@ export default function DescriptionGame() {
                             guesses={guesses}
                             attributes={[]} // no classic attributes in this mode
                             stats={stats}
-                            // onOpenStats={() => setShowWinModal(true)}
-                            shareUrl={buildUrl("/clashroyale/quote")}
+                            shareUrl={shareUrl}
                             nextModeHref="/"
                             onShare={handleShare}
                         />
                     )}
                 </div>
-
-                {/*<WinModal*/}
-                {/*    isOpen={showWinModal}*/}
-                {/*    onClose={() => setShowWinModal(false)}*/}
-                {/*    dayIndex={dayIndex}*/}
-                {/*    dayKey={dayKey}*/}
-                {/*    guesses={guesses}*/}
-                {/*    attributes={[]} // no attribute grid*/}
-                {/*    stats={stats}*/}
-                {/*    shareUrl={buildUrl("/clashroyale/quote")}*/}
-                {/*    onShare={handleShare}*/}
-                {/*/>*/}
             </div>
-        </div>
-    );
+        </ClashroyaleBackground>
+);
 }

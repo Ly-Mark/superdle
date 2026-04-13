@@ -1,68 +1,8 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import cardsData from "../../data/cards.json";
 import GameModeNav from "./GameModeNav";
-
-/* -------------------------------------------------------
-   Shared slugify (copied from ClassicGame)
-------------------------------------------------------- */
-const slugify = (name) =>
-    String(name)
-        .toLowerCase()
-        .replace(/p\.?\s*e\.?\s*k\.?\s*k\.?\s*a/gi, "pekka")
-        .replace(/&/g, "and")
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/[^a-z0-9]+/g, "-")
-        .replace(/^-+|-+$/g, "");
-
-/* -------------------------------------------------------
-   Card image (try webp/png/jpg)
-------------------------------------------------------- */
-const CardThumb = ({ name, game = "clashroyale" }) => {
-    const slug = useMemo(() => slugify(name), [name]);
-    const sources = useMemo(
-        () => [
-            `/games/${game}/cards/${slug}.webp`,
-            `/games/${game}/cards/${slug}.png`,
-            `/games/${game}/cards/${slug}.jpg`,
-        ],
-        [game, slug]
-    );
-
-    const [idx, setIdx] = useState(0);
-    const [failedAll, setFailedAll] = useState(false);
-
-    const handleError = () => {
-        setIdx((prev) => {
-            const next = prev + 1;
-            if (next >= sources.length) {
-                setFailedAll(true);
-                return prev;
-            }
-            return next;
-        });
-    };
-
-    return (
-        <div className="relative w-6 h-6 rounded-md overflow-hidden ring-1 ring-white/20 bg-white/5 shrink-0">
-            {!failedAll ? (
-                <img
-                    src={sources[idx]}
-                    alt={name}
-                    loading="lazy"
-                    decoding="async"
-                    className="absolute inset-0 w-full h-full object-cover"
-                    style={{ transform: "scale(1.15)", transformOrigin: "center" }}
-                    onError={handleError}
-                />
-            ) : (
-                <div className="absolute inset-0 flex items-center justify-center text-[10px] font-bold text-white/70">
-                    {name.slice(0, 2).toUpperCase()}
-                </div>
-            )}
-        </div>
-    );
-};
+import CRBackground from "../../components/clashroyale/CRBackground.jsx";
+import CardThumb from "../../components/clashroyale/CardThumb.jsx";
 
 /* -------------------------------------------------------
    Helpers
@@ -70,7 +10,7 @@ const CardThumb = ({ name, game = "clashroyale" }) => {
 const normalize = (s) => (s ?? "").toLowerCase().trim();
 const RARITY_ORDER = ["Common", "Rare", "Epic", "Legendary", "Champion"];
 
-const DEFAULT_DURATION = 900; // seconds
+const DEFAULT_DURATION = 2 * 60; // seconds
 
 function formatTime(sec) {
     const m = Math.floor(sec / 60);
@@ -96,6 +36,39 @@ function pluralVariants(key) {
     return Array.from(variants);
 }
 
+const MIN_FUZZY_LEN = 6;          // avoid fuzzing short generic inputs
+const MAX_EDIT_DISTANCE = 2;      // 1–2 is “typos”, 3+ gets too loose
+
+// small, fast Levenshtein (edit distance)
+function levenshtein(a, b) {
+    if (a === b) return 0;
+    const al = a.length, bl = b.length;
+    if (al === 0) return bl;
+    if (bl === 0) return al;
+
+    // ensure b is the shorter for less memory
+    if (bl > al) return levenshtein(b, a);
+
+    let prev = Array(bl + 1);
+    for (let j = 0; j <= bl; j++) prev[j] = j;
+
+    for (let i = 1; i <= al; i++) {
+        let cur = [i];
+        const ca = a.charCodeAt(i - 1);
+        for (let j = 1; j <= bl; j++) {
+            const cost = ca === b.charCodeAt(j - 1) ? 0 : 1;
+            cur[j] = Math.min(
+                prev[j] + 1,      // delete
+                cur[j - 1] + 1,   // insert
+                prev[j - 1] + cost // substitute
+            );
+        }
+        prev = cur;
+    }
+    return prev[bl];
+}
+
+
 export default function MemoryGame() {
     const cards = useMemo(() => cardsData, []);
 
@@ -113,6 +86,11 @@ export default function MemoryGame() {
         const m = new Map();
         for (const c of cards) m.set(normalize(c.card), c);
         return m;
+    }, [cards]);
+
+    const normalizedNames = useMemo(() => {
+        // array of normalized names for fuzzy scanning
+        return cards.map((c) => normalize(c.card));
     }, [cards]);
 
     const grouped = useMemo(() => {
@@ -139,6 +117,7 @@ export default function MemoryGame() {
 
     const totalCount = cards.length;
     const foundCount = foundSet.size;
+    const isGameOver = timeLeft === 0;
 
     // Timer ticking
     useEffect(() => {
@@ -170,13 +149,41 @@ export default function MemoryGame() {
         const key = normalize(raw);
         if (!key) return null;
 
-        // Try exact + plural variants
+        // 1) exact + plural variants (keep current behavior)
         const keysToTry = pluralVariants(key);
         for (const k of keysToTry) {
             const hit = cardMap.get(k);
             if (hit) return hit;
         }
-        return null;
+
+        // 2) conservative fuzzy fallback (typos only)
+        // Guardrails:
+        // - avoid fuzzing very short inputs (e.g., "hog", "goblin")
+        // - require exactly ONE close match
+        if (key.length < MIN_FUZZY_LEN) return null;
+
+        let best = null;
+        let bestDist = Infinity;
+        let tie = false;
+
+        for (const candidate of normalizedNames) {
+            // quick length gate: if lengths differ too much, skip
+            const lenDiff = Math.abs(candidate.length - key.length);
+            if (lenDiff > MAX_EDIT_DISTANCE) continue;
+
+            const d = levenshtein(key, candidate);
+            if (d < bestDist) {
+                bestDist = d;
+                best = candidate;
+                tie = false;
+            } else if (d === bestDist) {
+                // two equally good matches => ambiguous => no award
+                tie = true;
+            }
+        }
+
+        if (!best || tie || bestDist > MAX_EDIT_DISTANCE) return null;
+        return cardMap.get(best) || null;
     };
 
     const submitGuess = (raw) => {
@@ -224,45 +231,8 @@ export default function MemoryGame() {
     };
 
     return (
-        <div className="min-h-screen relative bg-gradient-to-br from-[#0b1f3a] via-[#0b3a82] to-[#0c59b6]">
-            <style>{`
-  .perspective-1000 { perspective: 1000px; }
-  .transform-style-3d { transform-style: preserve-3d; }
-  .backface-hidden { backface-visibility: hidden; }
-  .rotate-y-180 { transform: rotateY(180deg); }
-
-  /* Diamond IMAGE overlay styles */
-  .diamond-img {
-    background-image: url('/bg/clashroyale/diamonds-1280.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    opacity: 0.28;
-    mix-blend-mode: overlay;
-  }
-
-  @supports (background-image: image-set(url('/bg/clashroyale/diamonds-640.png') 1x)) {
-    .diamond-img {
-      background-image: image-set(
-        url('/bg/clashroyale/diamonds-640.png') 1x,
-        url('/bg/clashroyale/diamonds-1280.png') 2x,
-        url('/bg/clashroyale/diamonds-1920.png') 3x
-      );
-    }
-  }
-
-  @media (min-width: 1536px) {
-    .diamond-img { opacity: 0.24; }
-  }
-`}</style>
-            {/* Diamond IMAGE overlay (above blobs, below content) */}
-            <div
-                aria-hidden="true"
-                className="absolute inset-0 pointer-events-none z-10 diamond-img"
-            />
-
-
-            <div className="relative z-20 container mx-auto px-4 py-8">
+        <CRBackground>
+            <div className="container mx-auto px-4 py-8">
                 {/* Title */}
                 <div className="text-center mb-6">
                     <h1 className="text-5xl font-black text-white mb-2 tracking-tight">
@@ -348,11 +318,15 @@ export default function MemoryGame() {
                                 New Game
                             </button>
 
-                            {timeLeft === 0 && (
+                            {isGameOver && (
                                 <div className="mt-3 text-sm text-blue-100/90">
                                     Final score: <span className="font-bold tabular-nums">{foundCount}</span>
+                                    <span className="text-blue-100/60"> / {totalCount}</span>
+                                    <div className="text-xs text-blue-100/70 mt-1">
+                                    </div>
                                 </div>
                             )}
+
                         </div>
                     </div>
                 </div>
@@ -381,6 +355,7 @@ export default function MemoryGame() {
                                 <div className="columns-2 2xl:columns-3 gap-2">
                                     {list.map((c) => {
                                         const isFound = foundSet.has(normalize(c.card));
+                                        const isMissed = isGameOver && !isFound;
 
                                         return (
                                             <div
@@ -388,22 +363,28 @@ export default function MemoryGame() {
                                                 className={`break-inside-avoid rounded-lg border px-2 py-1 flex items-start gap-2 leading-tight ${
                                                     isFound
                                                         ? "bg-emerald-500/10 border-emerald-500/30"
-                                                        : "bg-black/15 border-white/10"
+                                                        : isMissed
+                                                            ? "bg-red-500/15 border-red-300/30"
+                                                            : "bg-black/15 border-white/10"
                                                 }`}
                                             >
-                                                {/* Checkbox/thumb */}
-                                                {isFound ? (
-                                                    <CardThumb name={c.card} />
+                                                {/* Thumb / placeholder */}
+                                                {isFound || isMissed ? (
+                                                    <CardThumb
+                                                        name={c.card}
+                                                        className="relative w-6 h-6 rounded-md overflow-hidden ring-1 ring-white/20 bg-white/5 shrink-0"
+                                                        fallbackClassName="absolute inset-0 flex items-center justify-center text-[10px] font-bold text-white/70"
+                                                    />
                                                 ) : (
                                                     <div className="w-6 h-6 rounded-md bg-white/5 ring-1 ring-white/10 shrink-0 flex items-center justify-center">
                                                         <span className="text-[10px] text-white/25">•</span>
                                                     </div>
                                                 )}
 
-                                                {/* Full name (no truncate) */}
+                                                {/* Name / placeholder */}
                                                 <div className="text-sm font-semibold text-white/95 whitespace-normal break-words">
-                                                    {isFound ? (
-                                                        c.card
+                                                    {isFound || isMissed ? (
+                                                        <span className={isMissed ? "text-red-100" : ""}>{c.card}</span>
                                                     ) : (
                                                         <div className="mt-1 h-2 rounded bg-white/15 w-full max-w-[180px]" />
                                                     )}
@@ -425,6 +406,6 @@ export default function MemoryGame() {
                     </div>
                 )}
             </div>
-        </div>
+        </CRBackground>
     );
 }

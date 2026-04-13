@@ -3,6 +3,8 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import cardsData from "../../data/cards.json";
 import { compareAttributes, getAttributeColor } from "../../utils/clashroyale/gamelogic.js";
 import GameModeNav from "./GameModeNav";
+import CRBackground from "../../components/clashroyale/CRBackground.jsx";
+import CardThumb from "../../components/clashroyale/CardThumb.jsx";
 
 /* -------------------------------------------------------
    Seeded shuffle helpers (stable per run)
@@ -40,19 +42,6 @@ const seededShuffle = (arr, seedStr) => {
     }
     return a;
 };
-
-/* -------------------------------------------------------
-   Shared slugify for image filenames
-------------------------------------------------------- */
-const slugify = (name) =>
-    String(name)
-        .toLowerCase()
-        .replace(/p\.?\s*e\.?\s*k\.?\s*k\.?\s*a/gi, "pekka")
-        .replace(/&/g, "and")
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/[^a-z0-9]+/g, "-")
-        .replace(/^-+|-+$/g, "");
 
 /* -------------------------------------------------------
    Attribute tile (Rush: NO flip)
@@ -102,31 +91,6 @@ const CardPortrait = ({
                           sizeClass = "w-20 h-20",
                           variant = "full", // "full" | "icon"
                       }) => {
-    const slug = useMemo(() => slugify(name), [name]);
-
-    const sources = useMemo(
-        () => [
-            `/games/${game}/cards/${slug}.webp`,
-            `/games/${game}/cards/${slug}.png`,
-            `/games/${game}/cards/${slug}.jpg`,
-        ],
-        [game, slug]
-    );
-
-    const [idx, setIdx] = useState(0);
-    const [failedAll, setFailedAll] = useState(false);
-
-    const handleError = () => {
-        setIdx((prev) => {
-            const next = prev + 1;
-            if (next >= sources.length) {
-                setFailedAll(true);
-                return prev;
-            }
-            return next;
-        });
-    };
-
     const baseFrame =
         variant === "icon"
             ? `relative ${sizeClass} rounded-xl overflow-hidden ring-1 ring-white/20 bg-white/5`
@@ -134,23 +98,17 @@ const CardPortrait = ({
 
     return (
         <div className={baseFrame}>
-            {!failedAll ? (
-                <img
-                    src={sources[idx]}
-                    alt={name}
-                    loading="lazy"
-                    decoding="async"
-                    className="absolute inset-0 w-full h-full object-cover"
-                    style={{ transform: `scale(${zoom})`, transformOrigin: "center", objectPosition: focus }}
-                    onError={handleError}
-                />
-            ) : (
-                <div className="absolute inset-0 flex items-center justify-center px-1">
-          <span className="text-[11px] font-bold text-gray-100 text-center leading-tight">
-            {name}
-          </span>
-                </div>
-            )}
+            <CardThumb
+                name={name}
+                game={game}
+                // CardThumb renders its own wrapper div; we want it to fill THIS wrapper.
+                // So we make CardThumb wrapper match the parent and position absolute image.
+                className="absolute inset-0"
+                imgClassName="absolute inset-0 w-full h-full object-cover"
+                fallbackClassName="absolute inset-0 flex items-center justify-center px-1"
+                scale={zoom}
+                alt={name}
+            />
 
             {/* Only add gloss/shadow for full portraits */}
             {variant !== "icon" && (
@@ -180,35 +138,9 @@ const CardPortrait = ({
 };
 
 /* -------------------------------------------------------
-   Suggestions (simple)
-------------------------------------------------------- */
-/* -------------------------------------------------------
    Suggestion item with thumbnail + text (fallback safe)
 ------------------------------------------------------- */
-const getThumbSources = (game, slug) => ([
-    `/games/${game}/cards/${slug}.webp`,
-    `/games/${game}/cards/${slug}.png`,
-    `/games/${game}/cards/${slug}.jpg`,
-]);
-
 const SuggestionItem = ({ name, onClick, isFirst, game = "clashroyale" }) => {
-    const slug = useMemo(() => slugify(name), [name]);
-    const sources = useMemo(() => getThumbSources(game, slug), [game, slug]);
-
-    const [idx, setIdx] = useState(0);
-    const [failed, setFailed] = useState(false);
-
-    const handleError = () => {
-        setIdx((i) => {
-            const next = i + 1;
-            if (next >= sources.length) {
-                setFailed(true);
-                return i;
-            }
-            return next;
-        });
-    };
-
     return (
         <div
             onClick={onClick}
@@ -219,23 +151,7 @@ const SuggestionItem = ({ name, onClick, isFirst, game = "clashroyale" }) => {
             aria-selected={false}
         >
             <div className="flex items-center gap-3 min-w-0">
-                <div className="relative w-10 h-10 rounded-md overflow-hidden ring-1 ring-white/40 bg-gray-200 shrink-0">
-                    {!failed ? (
-                        <img
-                            src={sources[idx]}
-                            alt={name}
-                            className="absolute inset-0 w-full h-full object-cover"
-                            style={{ transform: "scale(1.35)", transformOrigin: "center" }}
-                            loading="lazy"
-                            decoding="async"
-                            onError={handleError}
-                        />
-                    ) : (
-                        <div className="absolute inset-0 flex items-center justify-center text-[10px] font-semibold text-gray-600">
-                            {name.slice(0, 2).toUpperCase()}
-                        </div>
-                    )}
-                </div>
+                <CardThumb name={name} game={game} />
                 <span className="font-semibold text-gray-800 truncate">{name}</span>
             </div>
 
@@ -243,6 +159,7 @@ const SuggestionItem = ({ name, onClick, isFirst, game = "clashroyale" }) => {
         </div>
     );
 };
+
 
 /* -------------------------------------------------------
    Full-screen reward burst (emoji confetti)
@@ -288,7 +205,7 @@ const TimeBonusPop = ({ pop }) => {
 /* -------------------------------------------------------
    Rush constants
 ------------------------------------------------------- */
-const RUSH_SECONDS = 4 * 60;
+const RUSH_SECONDS = 1 * 60;
 const TIME_BONUS_MAX = 30;  // seconds
 const TIME_BONUS_MIN = 8;   // seconds
 const TIME_BONUS_STEP = 4; // seconds
@@ -397,6 +314,13 @@ const RushGame = () => {
     }, [timeLeft]);
 
     const isTimeUp = timeLeft <= 0;
+
+    useEffect(() => {
+        if (!isTimeUp) return;
+        // only set once
+        setFinalTarget((prev) => prev ?? targetCard);
+    }, [isTimeUp, targetCard]);
+
     const [score, setScore] = useState(0);
     const [streak, setStreak] = useState(0);
 
@@ -412,8 +336,8 @@ const RushGame = () => {
     const [statusMsg, setStatusMsg] = useState("");
     const [timePop, setTimePop] = useState(null); // { id, seconds }
 
-
     const [correctHistory, setCorrectHistory] = useState([]);
+    const [finalTarget, setFinalTarget] = useState(null);
 
     // Countdown
     useEffect(() => {
@@ -452,7 +376,6 @@ const RushGame = () => {
             setRoundStartElapsed(0);
         }
     };
-
 
     const advanceRound = () => {
         setGuesses([]);
@@ -554,6 +477,7 @@ const RushGame = () => {
     };
 
     const resetStateForReplay = () => {
+        setFinalTarget(null);
         setRoundIndex(0);
         setGuesses([]);
         setInputValue("");
@@ -595,57 +519,27 @@ const RushGame = () => {
 
 
     return (
-        <div className="min-h-screen relative bg-gradient-to-br from-[#0b1f3a] via-[#0b3a82] to-[#0c59b6]">
-            <EmojiBurst burstId={burstId} />
+          <CRBackground>
+                <EmojiBurst burstId={burstId} />
 
-            <style>{`
-        .diamond-img {
-          background-image: url('/bg/clashroyale/diamonds-1280.png');
-          background-repeat: no-repeat;
-          background-position: center;
-          background-size: cover;
-          opacity: 0.28;
-          mix-blend-mode: overlay;
-        }
-        @supports (background-image: image-set(url('/bg/clashroyale/diamonds-640.png') 1x)) {
-          .diamond-img {
-            background-image: image-set(
-              url('/bg/clashroyale/diamonds-640.png') 1x,
-              url('/bg/clashroyale/diamonds-1280.png') 2x,
-              url('/bg/clashroyale/diamonds-1920.png') 3x
-            );
-          }
-        }
-        @media (min-width: 1536px) { .diamond-img { opacity: 0.24; } }
+               <style>{`
+      @keyframes emojiPop {
+        0%   { transform: translateY(20px) scale(0.6); opacity: 0; }
+        20%  { opacity: 1; }
+        60%  { transform: translateY(-20px) scale(1.05); opacity: 1; }
+        100% { transform: translateY(-50px) scale(0.9); opacity: 0; }
+      }
+      .animate-emoji-pop { animation: emojiPop 900ms ease-out forwards; }
 
-        @keyframes emojiPop {
-          0%   { transform: translateY(20px) scale(0.6); opacity: 0; }
-          20%  { opacity: 1; }
-          60%  { transform: translateY(-20px) scale(1.05); opacity: 1; }
-          100% { transform: translateY(-50px) scale(0.9); opacity: 0; }
-        }
-        .animate-emoji-pop { animation: emojiPop 900ms ease-out forwards; }
-        
-        @keyframes timePop {
-          0%   { transform: translateY(8px) scale(0.95); opacity: 0; }
-          15%  { opacity: 1; }
-          60%  { transform: translateY(-14px) scale(1.05); opacity: 1; }
-          100% { transform: translateY(-26px) scale(1.0); opacity: 0; }
-        }
-        .time-pop { animation: timePop 900ms ease-out forwards; }
-
-      `}</style>
-
-            <div aria-hidden="true" className="absolute inset-0 pointer-events-none z-10 diamond-img" />
-
-            {/* Background blobs */}
-            <div className="absolute inset-0 overflow-hidden z-0">
-                <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply blur-xl opacity-20 motion-safe:animate-[pulse_12s_ease-in-out_infinite]" />
-                <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-sky-400 rounded-full mix-blend-multiply blur-xl opacity-20 motion-safe:animate-[pulse_14s_ease-in-out_infinite_2s]" />
-                <div className="absolute top-40 left-1/2 w-80 h-80 bg-cyan-400 rounded-full mix-blend-multiply blur-xl opacity-20 motion-safe:animate-[pulse_16s_ease-in-out_infinite_4s]" />
-            </div>
-
-            <div className="relative z-20 container mx-auto px-4 py-8">
+      @keyframes timePop {
+        0%   { transform: translateY(8px) scale(0.95); opacity: 0; }
+        15%  { opacity: 1; }
+        60%  { transform: translateY(-14px) scale(1.05); opacity: 1; }
+        100% { transform: translateY(-26px) scale(1.0); opacity: 0; }
+      }
+      .time-pop { animation: timePop 900ms ease-out forwards; }
+    `}</style>
+              <div className="container mx-auto px-4 py-8">
                 {/* Header */}
                 <div className="text-center mb-8">
                     <h1 className="text-5xl font-black text-white mb-4 tracking-tight">
@@ -703,7 +597,7 @@ const RushGame = () => {
                 <div className="max-w-6xl mx-auto px-4">
 
                     {/* End of run summary (wide, uncluttered) */}
-                    {isTimeUp && (
+                    {isTimeUp && finalTarget && (
                         <div className="max-w-6xl mx-auto mb-6">
                             <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-5">
                                 <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-5">
@@ -993,8 +887,8 @@ const RushGame = () => {
                         </div>
                     )}
                 </div>
-            </div>
-        </div>
+          </div>
+</CRBackground>
     );
 };
 

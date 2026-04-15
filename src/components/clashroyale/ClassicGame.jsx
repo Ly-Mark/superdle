@@ -11,6 +11,7 @@ import { getDayIndex, buildShareText, copyToClipboard } from "../../utils/clashr
 
 import { PUBLIC_BASE, buildUrl } from '../../utils/shareBase.js';
 
+import GameModeNav from "./GameModeNav";
 
 const shareUrlRoot   = buildUrl('/');                    // → "https://clash.ac/"
 const shareUrlCR     = buildUrl('/clashroyale/classic'); // → "https://clash.ac/clashroyale/classic"
@@ -629,6 +630,7 @@ const ClassicGame = () => {
               CLASHDLE
             </span>
                     </h1>
+                    <GameModeNav />
 
                     {/* Hints */}
                     <HintsPanel

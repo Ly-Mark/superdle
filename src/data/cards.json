@@ -13,7 +13,7 @@
     "hint1": "They can fly, and will crush you!",
     "hint2": "Three fast, moderate-damage single-target ranged air troops.",
     "hint3": "A bit vulnerable to splash damage, but it'll do the trick.",
-    "description": "Three fast, unarmored flying attackers that can shred if left unchecked."
+    "description": "A small flying group shows up and starts causing problems."
   },
   {
     "card": "Archers",
@@ -29,7 +29,7 @@
     "hint1": "They'll help you take down ground and air units, but you're on your own with hair coloring advice.",
     "hint2": "Two low-damage yet medium-ranged single-target troops with knowledge in hair coloring.",
     "hint3": "They are inexpensive support troops or a quick defense against small pushes.",
-    "description": "A pair of lightly armored ranged attackers that can target both air and ground."
+    "description": "Two ranged helpers who try their best from a safe distance."
   },
   {
     "card": "Knight",
@@ -45,7 +45,7 @@
     "hint1": "The Barbarian's handsome, cultured cousin.",
     "hint2": "A moderate-damage single-target melee troop.",
     "hint3": "This jack-of-most-trades card can act as a great mini-tank.",
-    "description": "A tough, reliable melee fighter with solid health and single-target damage."
+    "description": "A dude who walks forward and soaks up trouble."
   },
   {
     "card": "Spear Goblins",
@@ -61,7 +61,7 @@
     "hint1": "Who the heck taught these guys to throw spears?!",
     "hint2": "Three very fast, low-damage single-target ranged troops.",
     "hint3": "They are excellent against small single-target ground pushes.",
-    "description": "Three very fast ranged attackers that can poke both air and ground."
+    "description": "A pack of quick pests that poke at things from range."
   },
   {
     "card": "Goblins",
@@ -77,7 +77,7 @@
     "hint1": "Small, fast, green and mean!",
     "hint2": "Four very fast, moderate damage, single-target melee troops.",
     "hint3": "Just watch out for any gold that you might have.",
-    "description": "Four fast, unarmored melee attackers that deliver big value for low cost."
+    "description": "Fast little attackers that appear, stab, and disappear"
   },
   {
     "card": "Bomber",
@@ -93,7 +93,7 @@
     "hint1": "Small, lightly protected skeleton who throws bombs.",
     "hint2": "While fragile and only targeting ground, he is decent against medium to large swarms.",
     "hint3": "He is a very fragile unit that provides a great ranged splash attack.",
-    "description": "A fragile ground-only splash attacker that can wipe clustered swarms."
+    "description": "A fragile troublemaker who throws something that goes boom."
   },
   {
     "card": "Skeletons",
@@ -109,7 +109,7 @@
     "hint1": "Surround your enemies with this pile of bones!",
     "hint2": "Three fast, low-damage single-target melee troops.",
     "hint3": "They can distract enemies when timed right or just exist to cycle your deck.",
-    "description": "Three tiny melee distractions—great for cycling and stalling at the right moment."
+    "description": "Tiny distractions meant to annoy, delay, and get in the way."
   },
   {
     "card": "Barbarians",
@@ -125,7 +125,7 @@
     "hint1": "A horde of melee attackers with mean mustaches and even meaner tempers.",
     "hint2": "Despite only targeting ground, they are a mighty collective force.",
     "hint3": "They are a mighty collective force and can swiftly deal with a great variety of threats.",
-    "description": "A durable group of ground melee fighters that overwhelm targets with numbers."
+    "description": "A loud group that runs in and starts swinging"
   },
   {
     "card": "Electro Spirit",
@@ -141,7 +141,7 @@
     "hint1": "Locked in an eternal battle with Knight for the best mustache.",
     "hint2": "His attack will chain onto up to nine units within four tiles of each other.",
     "hint3": "Shows his killer mustache to the table.",
-    "description": "Leaps into enemies, chaining damage and brief stuns across multiple targets."
+    "description": "A tiny spark that jumps in and causes a quick mess."
   },
   {
     "card": "Skeleton Dragons",
@@ -157,7 +157,7 @@
     "hint1": "They also play a mean rib cage xylophone duet.",
     "hint2": "Skeletal cousins of the Baby Dragon move.",
     "hint3": "However, their bones seem to be a bit brittle, as they have much less health.",
-    "description": "A flying duo that deals splash damage from above, but goes down fairly easily."
+    "description": "A flying pair that makes clustered areas uncomfortable."
   },
   {
     "card": "Fire Spirit",
@@ -173,7 +173,7 @@
     "hint1": "It'd be adorable if it wasn't on fire.",
     "hint2": "One very fast, near-melee splash troop that packs a flaming hot punch.",
     "hint3": "Good incinerating tool against tightly-packed swarms and glass cannons.",
-    "description": "A tiny kamikaze unit that jumps in for splash damage—excellent versus swarms."
+    "description": "A small fiery thing that rushes in and vanishes fast."
   },
   {
     "card": "Bats",
@@ -189,7 +189,7 @@
     "hint1": "Think of them as sweet, purple... balls of DESTRUCTION!",
     "hint2": "Five single-target melee units that offer good defensive and offensive value.",
     "hint3": "Their strong bites can easily deal with solo mini-tanks.",
-    "description": "A speedy swarm of tiny flying melee units that can melt single targets if ignored."
+    "description": "A fast swarm that overwhelms lonely targets."
   },
   {
     "card": "Royal Recruits",
@@ -198,14 +198,14 @@
     "type": "Troops",
     "targets": "Ground",
     "healthValue": 796,
-    "healthCategory": "Medium",
+    "healthCategory": "Medium / Medium",
     "arena": "Royal Arena",
     "moveSpeed": "Medium",
     "year": 2018,
     "hint1": "They dream of ponies and one day wearing metal buckets.",
     "hint2": "Six fairly tough melee ground troops spread out in a horizontal formation across the arena.",
     "hint3": "With the addition of a shield to absorb otherwise devastating strikes, they can distract and repel most enemies.",
-    "description": "Deploys a wide line of shielded fighters that soak hits and control space."
+    "description": "A spread-out squad that tries to hold the line"
   },
   {
     "card": "Royal Giant",
@@ -221,7 +221,7 @@
     "hint1": "Destroying enemy buildings with his massive cannon is his job; making a raggedy blond beard look good is his passion.",
     "hint2": "An infamous, hulking beast of a man.",
     "hint3": "His powerful cannonballs plough through any building he decides to shoot.",
-    "description": "A ranged win-condition that ignores troops and targets buildings with heavy shots."
+    "description": "A big guy who prefers to target important structures."
   },
   {
     "card": "Ice Spirit",
@@ -237,7 +237,7 @@
     "hint1": "Stay frosty.",
     "hint2": "He's got enough health to survive one attack from most units while he deploys, allowing him to get the jump on them.",
     "hint3": "Has excellent defensive and offensive capabilities due to his freeze.",
-    "description": "A tiny jumper that briefly freezes a group, creating huge tempo swings for 1 elixir."
+    "description": "A tiny blue thing that buys you a brief moment."
   },
   {
     "card": "Berserker",
@@ -253,7 +253,7 @@
     "hint1": "It's surprising how often she needs her axes sharpened.",
     "hint2": "She won't hesitate to tear you apart.",
     "hint3": "She attacks very fast and is resistant to spells.",
-    "description": "A fast-hitting melee fighter with spell resistance that shreds up close."
+    "description": "A quick fighter who never seems to slow down"
   },
   {
     "card": "Skeleton Barrel",
@@ -269,7 +269,7 @@
     "hint1": "It's a Skeleton party in the sky.",
     "hint2": "Packed with bones that drifts through the air looking for towers.",
     "hint3": "It's a bit on the fragile side, but it soars quickly through the arena.",
-    "description": "A drifting airborne threat that targets buildings and drops a swarm when it pops."
+    "description": "A floating surprise that turns into extra problems."
   },
   {
     "card": "Goblin Gang",
@@ -285,7 +285,7 @@
     "hint1": "It's like a Goblin Value Pack!",
     "hint2": "Together, they can clear a multitude of units.",
     "hint3": "Three have knives for powerful ground melee combat deployed in front, and three have spears for ranged attacks.",
-    "description": "A mixed swarm of stabbers and spear throwers that gives lots of bodies for the cost."
+    "description": "A mixed group of pests that covers multiple situations."
   },
   {
     "card": "Elite Barbarians",
@@ -301,7 +301,7 @@
     "hint1": "Spawns a pair of leveled up Barbarians.",
     "hint2": "Brain? How about some brawn instead!",
     "hint3": "Together, they can wreck tanks, evaporate glass cannons.",
-    "description": "Deploys two hard-hitting melee sprinters that punish anything left unsupported."
+    "description": "Two fast bruisers who arrive earlier than you wanted."
   },
   {
     "card": "Minion Horde",
@@ -317,7 +317,7 @@
     "hint1": "Three's a crowd, six is a horde!",
     "hint2": "But keep caution using them, otherwise you may lose everything...",
     "hint3": "This card has ridiculously high damage per second.",
-    "description": "Six fast, unarmored flying attackers with absurd damage if not answered immediately."
+    "description": "A lot of flying trouble all at once."
   },
   {
     "card": "Firecracker",
@@ -333,7 +333,7 @@
     "hint1": "This is what happens when Archers get bored!",
     "hint2": "This former Archer has turned rebellious.",
     "hint3": "She'll push herself back with every attack, making it harder for enemy troops to reach her.",
-    "description": "Fires an explosive shot that splashes behind the target and recoils backward each attack."
+    "description": "A chaotic ranged attacker who never stands still."
   },
   {
     "card": "Rascals",
@@ -349,7 +349,7 @@
     "hint1": "Slingshots full of Double Trouble Gum!",
     "hint2": "A value pack of a trio of trouble, with one boy and two girls.",
     "hint3": "With big health and big damage combined, this card is a complete wombo combo of a push by themselves.",
-    "description": "Spawns a tough frontliner plus two ranged backliners that pepper targets from behind."
+    "description": "A small crew: one up front, others behind."
   },
   {
     "card": "Arrows",
@@ -365,7 +365,7 @@
     "hint1": "A medium-sized shaft, red fletchings.",
     "hint2": "Its moderate damage and large radius makes clearing swarms.",
     "hint3": "Lackluster against higher health units like the Knight.",
-    "description": "Covers a large area with damage to clear swarms; reduced damage to Crown Towers."
+    "description": "A simple answer to ‘too many small things.'"
   },
   {
     "card": "Zap",
@@ -381,7 +381,7 @@
     "hint1": "Briefly stunning them and dealing damage inside a small radius.",
     "hint2": "Forces enemies to re-target, resets attacks or brings that slight extra damage to finish things off.",
     "hint3": "What's not to like in this bottle of voltage?",
-    "description": "Instant small-area damage with a brief stun/reset effect; reduced damage to Crown Towers."
+    "description": "A quick burst that interrupts whatever was happening."
   },
   {
     "card": "Snowball",
@@ -397,7 +397,7 @@
     "hint1": "Once it began rolling down Frozen Peak, there was no stopping it.",
     "hint2": "It will make them slow down for 3 seconds and chill out.",
     "hint3": "Squishier troops tend to go splat while all but the heaviest of troops get knocked back.",
-    "description": "Knocks enemies back and slows them in a wide hit—great for disrupting pushes."
+    "description": "A big shove that also slows things down."
   },
   {
     "card": "Royal Delivery",
@@ -413,7 +413,7 @@
     "hint1": "No need to sign for this package!",
     "hint2": "You know what they say, 3 seconds or it's free!",
     "hint3": "It will be delivered with a 2 second delay, dropping from the sky.",
-    "description": "After a short delay, drops a damaging package and leaves behind a reinforced fighter."
+    "description": "A delayed surprise that hits an area and leaves help."
   },
   {
     "card": "Cannon",
@@ -429,7 +429,7 @@
     "hint1": "Shoots cannonballs with deadly effect.",
     "hint2": "One of the shortest lifetimes out of all the buildings.",
     "hint3": "For 3 Elixir, you get a building which has moderate hitpoints and damage.",
-    "description": "A cheap defensive building that targets ground units with steady single-target fire."
+    "description": "A basic defensive tool that focuses on ground threats."
   },
   {
     "card": "Mortar",
@@ -445,7 +445,7 @@
     "hint1": "Shoots big boulders that deal area damage.",
     "hint2": "It's quite hard to stop these explosive shells from hitting a tower.",
     "hint3": "Any enemy troop that gets too close will be ignored.",
-    "description": "A long-range defensive building that lobs explosive shells, but struggles up close."
+    "description": "A long-range annoyance that doesn’t like close company."
   },
   {
     "card": "Tesla",
@@ -461,7 +461,7 @@
     "hint1": "The power of Electrickery is best kept grounded.",
     "hint2": "Hides underground, preventing any and all damage sources.",
     "hint3": "It can zap enemies, although it won't stun like most electric-based cards do.",
-    "description": "A defensive building that hides underground between attacks and zaps air and ground."
+    "description": "A defensive surprise that appears when it’s needed."
   },
   {
     "card": "Mini PEKKA",
@@ -477,7 +477,7 @@
     "hint1": "The Arena is a certified butterfly-free zone.",
     "hint2": "The classic glass cannon — a mighty punch packed within a moderate health.",
     "hint3": "Deliver him some pancakes, and you'll see his sweet and cute side!",
-    "description": "A hard-hitting melee bruiser that trades some health for huge single-target damage."
+    "description": "A small fighter with big damage energy."
   },
   {
     "card": "Musketeer",
@@ -493,7 +493,7 @@
     "hint1": "Don't be fooled by her delicately coiffed hair.",
     "hint2": "A consistent 4 Elixir single-target shot attacking both air and ground.",
     "hint3": "She is a reliable support or defense unit with a trusty boomstick.",
-    "description": "A consistent mid-range shooter that provides reliable air-and-ground coverage."
+    "description": "A steady shooter who handles problems one at a time."
   },
   {
     "card": "Giant",
@@ -509,7 +509,7 @@
     "hint1": "A real one-man wrecking crew!",
     "hint2": "He ignores all enemy troops and slowly makes his way towards buildings.",
     "hint3": "The \"original\" tank.",
-    "description": "A slow, tanky unit that ignores troops and goes straight for buildings."
+    "description": "A slow tank that ignores distractions."
   },
   {
     "card": "Valkyrie",
@@ -525,7 +525,7 @@
     "hint1": "She can take them all out with a few spins.",
     "hint2": "You can't run, don't even hide!",
     "hint3": "This tough mini-tank swings her axe 360º to take out swarms.",
-    "description": "A tough melee fighter that spins for 360° splash damage, perfect against swarms."
+    "description": "A tough brawler who clears space around herself."
   },
   {
     "card": "Mega Minion",
@@ -541,7 +541,7 @@
     "hint1": "Flying, armored and powerful. What could be its weakness?! Cupcakes.",
     "hint2": "He is spell resistant, so not even a lone Fireball can take him out!",
     "hint3": "A flying armored gargoyle with below-average health and high damage.",
-    "description": "A flying armored attacker with strong single-target damage and solid spell resilience."
+    "description": "A durable flying attacker with a serious hit."
   },
   {
     "card": "Battle Ram",
@@ -557,7 +557,7 @@
     "hint1": "Two troops holding a big log charge at the nearest building.",
     "hint2": "A fast but fragile 4 Elixir surprise to smash into buildings.",
     "hint3": "Once it gets charging, it must be taken out before it rams into a tower.",
-    "description": "Charges at buildings to deliver a heavy hit, then splits into two melee fighters."
+    "description": "A fast push tool that wants to reach something important."
   },
   {
     "card": "Wizard",
@@ -573,7 +573,7 @@
     "hint1": "The most awesome man to ever set foot in the Arena.",
     "hint2": "Excels against groups of enemies, but not so much against tanks.",
     "hint3": "Burns foes on the ground and in the air with heavy-hitting fireballs.",
-    "description": "A splash-damage ranged attacker that deletes groups, but isn’t built to tank."
+    "description": "A flashy ranged attacker who likes groups."
   },
   {
     "card": "Flying Machine",
@@ -589,7 +589,7 @@
     "hint1": "The Master Builder has sent his first contraption to the Arena!",
     "hint2": "A 4 Elixir flying card with moderately-low hitpoints.",
     "hint3": "Its long range and moderate damage allow it to attack from afar, often out-ranging its target.",
-    "description": "A fragile long-range flying attacker that chips safely from afar."
+    "description": "A fragile flyer that pokes from farther than expected."
   },
   {
     "card": "Hog Rider",
@@ -605,7 +605,7 @@
     "hint1": "Fast melee troop that targets buildings and can jump over the river.",
     "hint2": "Zoom past troops with his moderate-high health and blazing fast speed.",
     "hint3": "Also, his hog will jump over the river!",
-    "description": "A very fast building-targeting melee unit that can jump the river to pressure towers."
+    "description": "A fast guy who heads straight for the objective"
   },
   {
     "card": "Royal Hogs",
@@ -621,7 +621,7 @@
     "hint1": "The King’s personal pets are loose! They love to chomp on apples and towers alike.",
     "hint2": "Their speed and numbers make them difficult to stop.",
     "hint3": "For 5 Elixir, four moderate health, low damage troops that rush the enemy tower.",
-    "description": "A fast pack of building-targeting units that split well and force awkward defenses."
+    "description": "Multiple fast attackers that split your attention."
   },
   {
     "card": "Three Musketeers",
@@ -637,7 +637,7 @@
     "hint1": "Disrespecting them would not be just a mistake, it would be a cardinal sin!",
     "hint2": "They can stop almost anything with their powerful muskets.",
     "hint3": "Three independent, very powerful markswomen with high burst damage.",
-    "description": "A costly trio of powerful ranged attackers that can shred if protected properly."
+    "description": "A pricey commitment that demands you protect it."
   },
   {
     "card": "Battle Healer",
@@ -653,7 +653,7 @@
     "hint1": "With each attack, she unleashes a powerful healing aura that restores Hitpoints to herself and friendly Troops.",
     "hint2": "Even though she has wings, she cannot attack air units.",
     "hint3": "Whenever she is deployed or hits something, she heals herself and all troops around herself.",
-    "description": "A durable melee support that heals herself and nearby allies as she fights."
+    "description": "A fighter who keeps herself (and nearby friends) going."
   },
   {
     "card": "Ice Golem",
@@ -669,7 +669,7 @@
     "hint1": "He's tough, targets buildings and explodes when destroyed, slowing nearby enemies.",
     "hint2": "A cheap yet versatile mini-tank.",
     "hint3": "Deals slowing death damage that can destroy low-health enemy units.",
-    "description": "A cheap mini-tank that targets buildings and explodes on death to slow enemies."
+    "description": "A cheap tank that leaves a parting inconvenience."
   },
   {
     "card": "Dart Goblin",
@@ -685,13 +685,13 @@
     "hint1": "Runs fast, shoots far and chews gum.",
     "hint2": "A 3 Elixir card with a fast fire rate, long range, and high speed.",
     "hint3": "He resembles a Goblin, but wears a voodoo mask with red eyes.",
-    "description": "A hyper-fast long-range chip unit with rapid fire that pressures from distance."
+    "description": "A speedy ranged pest with constant pressure."
   },
   {
     "card": "Furnace",
     "rarity": "Rare",
     "cost": 4,
-    "type": "Building",
+    "type": "Troop",
     "targets": "None",
     "healthValue": 1056,
     "healthCategory": "High",
@@ -701,7 +701,7 @@
     "hint1": "It also makes great brick-oven pancakes.",
     "hint2": "This 4 Elixir metallic oven has magically grown feet and arms.",
     "hint3": "But the oven is not for show, as he will spawn waves of a Fire Spirit at the front every 5 seconds.",
-    "description": "A spawner building that periodically sends small flaming jumpers toward the enemy."
+    "description": "A walking building that keeps producing trouble."
   },
   {
     "card": "Zappies",
@@ -717,7 +717,7 @@
     "hint1": "Spawns a pack of miniature Zap machines.",
     "hint2": "If it moves, then it won’t for much longer.",
     "hint3": "This 4 Elixir trio of menaces will stun a target until it is destroyed.",
-    "description": "A trio of small ranged units that repeatedly stun-lock targets with chained shocks."
+    "description": "Three small stunners that are annoying together."
   },
   {
     "card": "Goblin Demolisher",
@@ -733,7 +733,7 @@
     "hint1": "Boom goes dynamite!",
     "hint2": "For 4 Elixir, this Goblin is packed with explosions and dynamite.",
     "hint3": "Once he falls to his demise, he goes out with a BANG.",
-    "description": "A ground troop that deals splash damage and goes out with a deadly explosion."
+    "description": "A short fuse on legs."
   },
   {
     "card": "Heal Spirit",
@@ -749,7 +749,7 @@
     "hint1": "A mischievous Spirit that leaps at enemies.",
     "hint2": "This little guy runs, jumps, and splashes just like his Spirit siblings.",
     "hint3": "It is lemon in color and is shaped more closely to a rectangle.",
-    "description": "Leaps in to deal a small hit and leave behind a burst of healing for nearby allies."
+    "description": "A tiny helper that leaves a useful effect behind."
   },
   {
     "card": "Suspicious Bush",
@@ -765,7 +765,7 @@
     "hint1": "This invisible bush skulks towards the nearest building.",
     "hint2": "It's still a deceptive tacti- I mean, a completely ordinary bush!!",
     "hint3": "For 2 Elixir, this totally normal bush crawls towards the nearest building.",
-    "description": "A sneaky building-targeting decoy that surprises enemies with a sudden ambush."
+    "description": "A moving ‘nothing to see here’ that isn’t nothing."
   },
   {
     "card": "Elixir Golem",
@@ -781,7 +781,7 @@
     "hint1": "Splits into two when destroyed.",
     "hint2": "Provides formidable tanking and damaging ability for the very low price of 3 Elixir.",
     "hint3": "A hefty mound of Elixir.",
-    "description": "A cheap building-targeting tank that splits multiple times—feeding elixir when destroyed."
+    "description": "A strange purple mass that refuses to stay in one piece."
   },
   {
     "card": "Fireball",
@@ -797,7 +797,7 @@
     "hint1": "Incinerates a small area, dealing high damage.",
     "hint2": "It's a bird! It's a plane! It's a… meteor?",
     "hint3": "It can even knock back some ground troops!",
-    "description": "A high-damage projectile that blasts a small area and knocks back ground troops."
+    "description": "A direct answer to a crowded spot."
   },
   {
     "card": "Rocket",
@@ -813,7 +813,7 @@
     "hint1": "Deals high damage to a small area. Looks really awesome doing it.",
     "hint2": "The ridiculously high damage comes with a ridiculously small area of effect and a long delay.",
     "hint3": "It is large with a nose cone, an iron hull, fins, and a skull printed on.",
-    "description": "A slow but devastating strike that obliterates a small area after a short delay."
+    "description": "One expensive solution to one specific area."
   },
   {
     "card": "Earthquake",
@@ -829,7 +829,7 @@
     "hint1": "Deals Damage per second to Troops and Crown Towers.",
     "hint2": "It is a murky brown liquid encased in a small oblong vial.",
     "hint3": "Rocking the ground for 3 Elixir.",
-    "description": "Shakes the ground to deal damage over time, especially effective against buildings."
+    "description": "A ground-based mess that punishes certain strategies."
   },
   {
     "card": "Goblin Cage",
@@ -845,7 +845,7 @@
     "hint1": "Brawler always skips leg day.",
     "hint2": "That cage won't hold for long though.",
     "hint3": "Larger and bulkier, has a unibrow.",
-    "description": "A defensive structure that releases a powerful melee fighter when destroyed."
+    "description": "A defensive box that turns into a new problem."
   },
   {
     "card": "Goblin Hut",
@@ -861,7 +861,7 @@
     "hint1": "Don't look inside... you don't want to see how they're made.",
     "hint2": "For 4 Elixir, the building will take a nap when there is no action.",
     "hint3": "A wooden hut with a thatched roof.",
-    "description": "A spawner building that periodically sends ranged attackers into battle."
+    "description": "A small factory that keeps adding annoying units."
   },
   {
     "card": "Tombstone",
@@ -877,7 +877,7 @@
     "hint1": "Building that periodically spawns Skeletons to fight the enemy.",
     "hint2": "A cheap spawner with moderate hitpoints at the cost of only 3 Elixir.",
     "hint3": "When destroyed, 4 more spooky scary Skeletons pop up.",
-    "description": "A cheap defensive building that spawns melee distractions, with more appearing on destruction."
+    "description": "A lonely structure with unsettling activity around it."
   },
   {
     "card": "Bomb Tower",
@@ -893,7 +893,7 @@
     "hint1": "Deals area damage to anything dumb enough to stand near it.",
     "hint2": "This building is one of the most effective against ground units in the game.",
     "hint3": "The building is made of wood, surrounded by steel rams, tied with ropes on the sides.",
-    "description": "A defensive building that deals heavy splash damage to nearby ground units."
+    "description": "A building that makes ground crowds regret grouping."
   },
   {
     "card": "Inferno Tower",
@@ -909,7 +909,7 @@
     "hint1": "Burns through even the biggest and toughest enemies!",
     "hint2": "For 5 Elixir, this incinerator will roast even massive tanks.",
     "hint3": "A tall, narrow building made of iron, straddling on top of a lava pool, with a glowing orange lens on top.",
-    "description": "A defensive structure that ramps its damage higher the longer it stays locked on."
+    "description": "A building that gets more dangerous the longer it’s ignored."
   },
   {
     "card": "Barbarian Hut",
@@ -925,7 +925,7 @@
     "hint1": "Building that periodically spawns Troops to fight the enemy.",
     "hint2": "This crude but high-hitpoint barrack spawns a trio of Troops every 15 seconds.",
     "hint3": "A wooden hut with a team-colored roof and a sword hoisted above the entrance.",
-    "description": "A high-cost spawner that periodically releases durable melee fighters."
+    "description": "A hut that keeps releasing more visitors."
   },
   {
     "card": "Elixir Collector",
@@ -941,7 +941,7 @@
     "hint1": "You gotta spend Elixir to make Elixir!",
     "hint2": "For 6 Elixir, this passive building has moderate health along with the ability to produce bonus Elixir.",
     "hint3": "A wooden building reinforced with team-colored seals on top and bases on the bottom, with a vertical glass vat in between two wooden slabs.",
-    "description": "A passive building that generates additional elixir over time."
+    "description": "A building that tempts your opponent into doing something."
   },
   {
     "card": "Guards",
@@ -950,14 +950,14 @@
     "type": "Troops",
     "targets": "Ground",
     "healthValue": 119,
-    "healthCategory": "Low",
+    "healthCategory": "Low / Medium",
     "arena": "PEKKA's Playhouse",
     "moveSpeed": "Fast",
     "year": 2016,
     "hint1": "Three ruthless bone brothers with shields.",
     "hint2": "Surround enemies with this armored pile of bones.",
     "hint3": "They appear to be Skeletons, but are somewhat taller, wear black helmets with team-colored feathers.",
-    "description": "Three shielded melee fighters that soak an initial hit before falling apart."
+    "description": "A small group that’s tougher than it first looks."
   },
   {
     "card": "Baby Dragon",
@@ -973,7 +973,7 @@
     "hint1": "Burps fireballs from the sky that deal area damage.",
     "hint2": "A 4 Elixir troop with moderately high hitpoints and fast movement speed that deals low splash damage.",
     "hint3": "A small, spring green dragon with short, stubby, team-colored wings, ears, spikes, tongue, hands and feet, brown eyes, and yellow sclerae.",
-    "description": "A flying splash attacker with solid health that clears clustered units from above."
+    "description": "A flying splash attacker with steady value."
   },
   {
     "card": "Skeleton Army",
@@ -989,7 +989,7 @@
     "hint1": "Meet Larry and his friends Harry, Terry, Gerry, Mary, etc.",
     "hint2": "This massive swarm can overwhelm single-target enemy units in the blink of an eye!",
     "hint3": "Spawns 15 Skeletons in a scatter formation.",
-    "description": "A massive swarm of fragile melee fighters that overwhelms single-target units instantly."
+    "description": "A sudden crowd that punishes slow answers."
   },
   {
     "card": "Witch",
@@ -1005,7 +1005,7 @@
     "hint1": "Summons Skeletons, shoots destructo beams, has glowing pink eyes that unfortunately don't shoot lasers.",
     "hint2": "While her health is only decent and splash damage is mediocre for 5 Elixir.",
     "hint3": "A woman with glowing pink eyes, no legs, wears a violet cloak.",
-    "description": "A ranged splash attacker that periodically summons melee distractions to overwhelm enemies."
+    "description": "A ranged unit that keeps bringing extra company."
   },
   {
     "card": "PEKKA",
@@ -1021,7 +1021,7 @@
     "hint1": "Swings from the hip, but packs a huge punch.",
     "hint2": "A very tender robot from the inside, unless you decide to be mean to her or her butterflies!",
     "hint3": "She wears heavy dark steel blue armor.",
-    "description": "A slow, heavily armored melee juggernaut that obliterates targets one hit at a time."
+    "description": "A slow wall of steel with one-job focus"
   },
   {
     "card": "Dark Prince",
@@ -1030,14 +1030,14 @@
     "type": "Troops",
     "targets": "Ground",
     "healthValue": 1744,
-    "healthCategory": "High",
+    "healthCategory": "High / Medium",
     "arena": "Royal Arena",
     "moveSpeed": "Medium / Very Fast",
     "year": 2016,
     "hint1": "It sounds like he has a bucket on his head.",
     "hint2": "For 4 Elixir, the lesser known Prince has moderately high hitpoints.",
     "hint3": "A man who has blue eyes, black eyebrows, and is mostly covered in dark steel armor.",
-    "description": "A shielded melee attacker that deals splash damage and charges for extra impact."
+    "description": "A charging threat that’s hard to stop cleanly."
   },
   {
     "card": "Prince",
@@ -1053,7 +1053,7 @@
     "hint1": "Don't let the little pony fool you.",
     "hint2": "Very high damage and good hitpoints for 5 Elixir.",
     "hint3": "A man in heavy, golden armor, who wields a striped team-colored lance.",
-    "description": "A charging melee attacker that deals devastating damage once he builds momentum."
+    "description": "A heavy hitter that becomes scary when it gets momentum."
   },
   {
     "card": "Balloon",
@@ -1069,14 +1069,14 @@
     "hint1": "As pretty as they are, you won't want a parade of THESE.",
     "hint2": "Watch out, an air raid is coming!",
     "hint3": "Held together by patches and ropes, and is piloted by a Wall Breaker.",
-    "description": "A flying building-targeting threat that drops massive bombs and explodes on defeat."
+    "description": "A slow flying threat that you must respect."
   },
   {
     "card": "Giant Skeleton",
     "rarity": "Epic",
     "cost": 6,
     "type": "Troops",
-    "targets": "Buildings",
+    "targets": "Ground",
     "healthValue": 5256,
     "healthCategory": "High",
     "arena": "Frozen Peak",
@@ -1085,7 +1085,7 @@
     "hint1": "The bigger the skeleton, the bigger the bomb.",
     "hint2": "This oversized skeleton costs 6 Elixir and gets distracted by everything.",
     "hint3": "A colossal Skeleton that wears a team-colored ushanka, has an underbite.",
-    "description": "A huge distraction unit that drops a devastating bomb when taken down."
+    "description": "A big tank that leaves a final ‘goodbye.’"
   },
   {
     "card": "Rune Giant",
@@ -1101,7 +1101,7 @@
     "hint1": "Need your weapons sharpened? You've come to the right place.",
     "hint2": "Don't mess with this bulky and big woman!",
     "hint3": "A large humanoid creature with long orange hair which covers her eyes and a large red nose.",
-    "description": "A bulky support unit that empowers nearby allies with bonus damage."
+    "description": "A supportive tank that makes nearby allies feel stronger."
   },
   {
     "card": "Goblin Giant",
@@ -1117,7 +1117,7 @@
     "hint1": "This jolly green Goblin Giant stomps towards enemy buildings.",
     "hint2": "Not all Goblins are weak!",
     "hint3": "A colossal, aquamarine-skinned Goblin wearing a brown aviator hat.",
-    "description": "A tanky building-targeting unit that carries ranged attackers into battle."
+    "description": "A big attacker who arrives with backup."
   },
   {
     "card": "Hunter",
@@ -1133,7 +1133,7 @@
     "hint1": "What he lacks in accuracy, he makes up for with his impressively bushy eyebrows.",
     "hint2": "For 4 Elixir, this mustachioed man with a double-barreled gun has moderate health and can shoot a wave of bullets.",
     "hint3": "A man wearing a brown cloth, gloves, belt, pants and boots, a team-colored shirt and coonskin cap.",
-    "description": "A close-range shotgun attacker that deals extreme damage up close but falls off at range."
+    "description": "A ranged fighter whose best work happens up close."
   },
   {
     "card": "Golem",
@@ -1149,7 +1149,7 @@
     "hint1": "Slow but durable, only attacks buildings.",
     "hint2": "A massive beast of a rock.",
     "hint3": "A menacing rock brute with team-colored eyes and crystals on its back.",
-    "description": "A massive building-targeting tank that splits into smaller threats when destroyed."
+    "description": "A massive commitment that doesn’t end when it ‘ends."
   },
   {
     "card": "Electro Dragon",
@@ -1165,7 +1165,7 @@
     "hint1": "Suffers from middle child syndrome to boot.",
     "hint2": "This dragon attacks slowly and does low damage per hit for 5 Elixir.",
     "hint3": "A small blue dragon with blue eyes, gray spots on its back.",
-    "description": "A flying unit that chains electrical attacks across multiple enemies."
+    "description": "A flying attacker that spreads pressure across targets."
   },
   {
     "card": "Wall Breakers",
@@ -1181,7 +1181,7 @@
     "hint1": "A daring duo of dangerous dive bombers.",
     "hint2": "Those guys have broke the Arena's walls and inserted their way into the King's deck!",
     "hint3": "They resemble Skeletons donning team-colored bandannas.",
-    "description": "A lightning-fast duo that rushes buildings and detonates on impact."
+    "description": "A fast gamble that aims for high impact."
   },
   {
     "card": "Electro Giant",
@@ -1197,7 +1197,7 @@
     "hint1": "Don't tell him that his finger guns aren't real!",
     "hint2": "This shocking version of the Giant has a Zap Pack, which zaps back anything nearby that attacks him.",
     "hint3": "He generally resembles the Giant, but is bare-chested, has spiky eyebrows and beard.",
-    "description": "A massive tank that punishes nearby attackers with shocking retaliation damage."
+    "description": "A huge threat that punishes you for hitting it wrong."
   },
   {
     "card": "Bowler",
@@ -1213,7 +1213,7 @@
     "hint1": "This big blue dude digs the simple things in life - Dark Elixir drinks and throwing rocks.",
     "hint2": "This huge menacing but also relaxed ogre with high hitpoints throws boulders.",
     "hint3": "An indigo-skinned humanoid creature with blue eyes.",
-    "description": "A slow, high-health attacker that rolls boulders through multiple ground targets."
+    "description": "A slow tanky unit that controls space in a straight line."
   },
   {
     "card": "Executioner",
@@ -1229,7 +1229,7 @@
     "hint1": "It's a miracle he doesn't lose an arm.",
     "hint2": "For 5 Elixir, he provides insane value with moderately high hitpoints and a sharp piercing axe that damages everything.",
     "hint3": "A shirtless man who has blue eyes, a large red nose, and a five-o'clock shadow.",
-    "description": "Throws a spinning axe that damages enemies both going out and coming back."
+    "description": "A durable ranged unit that hits more than once."
   },
   {
     "card": "Cannon Cart",
@@ -1245,7 +1245,7 @@
     "hint1": "Bet they won't see that coming!",
     "hint2": "It's slick and quick too, being able to sneakily lock onto a Princess Tower in the blink of an eye.",
     "hint3": "A Cannon with a wooden base atop a wooden cart.",
-    "description": "A mobile siege weapon that turns into a stationary defense when damaged."
+    "description": "A mobile threat that changes behavior when pressured."
   },
   {
     "card": "Goblin Barrel",
@@ -1261,7 +1261,7 @@
     "hint1": "It's going to be a thrilling ride, boys!",
     "hint2": "3 Goblins for 3 Elixir that fly in a barrel.",
     "hint3": "A wooden barrel with a Goblin logo on it.",
-    "description": "A surprise spell that launches a payload of melee attackers anywhere in the Arena."
+    "description": "An object that lands where you don’t want it."
   },
   {
     "card": "Lightning",
@@ -1277,7 +1277,7 @@
     "hint1": "Bolts of lightning damage and stun up to three enemy troops or buildings.",
     "hint2": "It's great when taking out support units in a huge push.",
     "hint3": "A deep blue liquid encased in a large vial.",
-    "description": "Strikes the strongest enemies in an area with heavy damage and brief stuns."
+    "description": "A sharp answer from above."
   },
   {
     "card": "Freeze",
@@ -1293,7 +1293,7 @@
     "hint1": "Everybody chill.",
     "hint2": "This 4 Elixir spell incapacitates and slightly damages troops and buildings for 4 seconds.",
     "hint3": "A cyan liquid bottled inside a transparent jar.",
-    "description": "Temporarily immobilizes enemy troops and buildings while dealing light damage."
+    "description": "A spell that creates a short, unfair moment."
   },
   {
     "card": "Barbarian Barrel",
@@ -1309,7 +1309,7 @@
     "hint1": "It rolls over and damages anything in its path.",
     "hint2": "An angry Barbarian in a barrel rolls a moderate distance.",
     "hint3": "A spiked barrel with a Barbarian inside it.",
-    "description": "Rolls forward dealing damage, then breaks open to release a melee fighter."
+    "description": "A rolling clear that leaves something behind."
   },
   {
     "card": "Poison",
@@ -1325,7 +1325,7 @@
     "hint1": "Covers the area in a deadly toxin.",
     "hint2": "A 4 Elixir area-denial spell that maintains a powerful presence.",
     "hint3": "A deep red liquid in a thin oblong vial.",
-    "description": "Creates a lingering damage zone that punishes troops and buildings over time."
+    "description": "A lingering area that makes standing still a bad plan."
   },
   {
     "card": "Goblin Curse",
@@ -1341,7 +1341,7 @@
     "hint1": "And thrice were their afflictions... nixed, vexed, and hexed!",
     "hint2": "For 2 Elixir, this spell deals very low damage in its duration.",
     "hint3": "A lime colored liquid encased in a large vial, which is secured by a thin rope, with a large, rectangular wood,en cap that has three golden hair and two green eyes on the front.",
-    "description": "Applies a weakening field that damages enemies and transforms defeated troops."
+    "description": "A spell that changes how losses feel."
   },
   {
     "card": "Rage",
@@ -1357,7 +1357,7 @@
     "hint1": "Increases troop movement and attack speed.",
     "hint2": "Pump up your troops with a 2 Elixir boost!",
     "hint3": "A deep purple potion packed in a large bottle.",
-    "description": "Boosts movement and attack speed of friendly units caught in its area."
+    "description": "A simple ‘go faster’ moment."
   },
   {
     "card": "Clone",
@@ -1373,7 +1373,7 @@
     "hint1": "Troops are fragile, but pack the same punch as the original!",
     "hint2": "For only 3 Elixir, it doubles the damage and can overwhelm opponents.",
     "hint3": "A translucent, teal colored liquid encased in a small oblong vial.",
-    "description": "Duplicates nearby friendly troops with fragile copies that still deal full damage."
+    "description": "“A risky trick that can snowball or flop."
   },
   {
     "card": "Tornado",
@@ -1389,7 +1389,7 @@
     "hint1": "Drags enemy troops to its center while dealing damage over time, just like a magnet.",
     "hint2": "This windy spell pulls any troops in its large effective radius.",
     "hint3": "A very large radius and low damage that is dealt every second for 1.05 seconds.",
-    "description": "Pulls enemies toward its center while dealing damage over time."
+    "description": "spell that ruins positioning."
   },
   {
     "card": "Mirror",
@@ -1405,7 +1405,7 @@
     "hint1": "Does not appear in your starting hand.",
     "hint2": "It can be used to double up attacks for a high reward.",
     "hint3": "It does not have a defined Elixir cost.",
-    "description": "Replays the last card used for an increased elixir cost."
+    "description": "A flexible card that depends on what you just did."
   },
   {
     "card": "Void",
@@ -1421,7 +1421,7 @@
     "hint1": "You shall not pass! Unless there are lot of you...",
     "hint2": "For 3 Elixir, this black magic spell encroaches a black hole in the arena.",
     "hint3": "A deep orange-amber liquid in a large vial.",
-    "description": "Creates a damaging field that grows stronger as fewer enemies remain inside."
+    "description": "A dark zone that’s stronger in the right situation."
   },
   {
     "card": "X-Bow",
@@ -1437,7 +1437,7 @@
     "hint1": "Nice tower you got there. Would be a shame if this whittled it down from this side of the Arena...",
     "hint2": "It can quickly whittle down small swarms and moderate-health troops.",
     "hint3": "A crossbow with wooden, stone, and metallic features along with a shining steel bolt for ammunition mounted on top of a base with a metal rim.",
-    "description": "A long-range siege building that locks onto targets and shreds them over time."
+    "description": "A device that locks in and refuses to blink."
   },
   {
     "card": "Goblin Drill",
@@ -1453,7 +1453,7 @@
     "hint1": "Building capable of burrowing underground and appearing anywhere in the Arena.",
     "hint2": "These Goblins have abandoned locomotion with wooden barrels; now they've got a whole machine!",
     "hint3": "A wooden hull, a circular hatch, a team-colored stripe, and a metal drill on its top.",
-    "description": "Burrows underground to emerge at a chosen location, spawning attackers over time."
+    "description": "A structure that shows up uninvited."
   },
   {
     "card": "Mega Knight",
@@ -1469,7 +1469,7 @@
     "hint1": "He lands with the force of 1,000 mustaches, then jumps from one foe to the next.",
     "hint2": "This super soldier will land with a BOOM.",
     "hint3": "A man with blue eyes, wears a helmet with a team-colored feather on top, maces, and huge armor.",
-    "description": "A heavy melee unit that slams down with area damage and leaps between nearby enemies."
+    "description": "A heavy entrance followed by heavy presence."
   },
   {
     "card": "Ram Rider",
@@ -1485,7 +1485,7 @@
     "hint1": "Together they charge through the Arena; snaring enemies, knocking down towers... and chewing grass?!",
     "hint2": "It snares and damages any nearby troops, slowing their travelling speed significantly.",
     "hint3": "A dark-skinned woman who has light brown eyes and white spots on her face, wears a sandal dress.",
-    "description": "A fast charging unit that snares enemies while pressuring buildings."
+    "description": "A fast duo that disrupts movement and plans."
   },
   {
     "card": "Electro Wizard",
@@ -1501,7 +1501,7 @@
     "hint1": "He lands with a \"POW!\", stuns nearby enemies and shoots lightning with both hands!",
     "hint2": "For just 4 Elixir, he lands with a free zap and continues to zap two opponents at once.",
     "hint3": "A man with blue eyes, long ears, black spiky hair, eyebrows and moustache.",
-    "description": "Drops in with a stun and continuously zaps multiple enemies at once."
+    "description": "A flashy arrival that interrupts fights."
   },
   {
     "card": "Inferno Dragon",
@@ -1517,7 +1517,7 @@
     "hint1": "Shoots a focused beam of fire that increases in damage over time. Wears a helmet because flying can be dangerous.",
     "hint2": "For 4 Elixir, this dragon has moderately high health and high damage.",
     "hint3": "A Dragon with a helmet, a yellow hose and a fuel tank on its back.",
-    "description": "A flying attacker that locks on and ramps its damage higher over time."
+    "description": "A flyer that becomes scarier the longer it’s ignored."
   },
   {
     "card": "Sparky",
@@ -1533,7 +1533,7 @@
     "hint1": "Overkill isn't in her vocabulary.",
     "hint2": "A powerful machine with moderately high hitpoints that nukes a small area on the ground every 4 seconds.",
     "hint3": "A front-facing golden tesla coil with an attached steel ram.",
-    "description": "A slow-charging cannon that unleashes devastating area damage in a single blast."
+    "description": "Slow buildup, huge payoff."
   },
   {
     "card": "Miner",
@@ -1549,7 +1549,7 @@
     "hint1": "It's not magic, it's a shovel.",
     "hint2": "This underground mini-tank is always a surprise to the opponent!",
     "hint3": "A man wearing a dark gray helmet with a partially melted candle on top.",
-    "description": "A sneaky mini-tank that can tunnel to any location in the Arena."
+    "description": "A sneaky unit that shows up where you don’t want it."
   },
   {
     "card": "Princess",
@@ -1565,7 +1565,7 @@
     "hint1": "If you're feeling warm feelings towards her, it's probably because you're on fire.",
     "hint2": "For 3 Elixir, she sets anything on fire with her moderate hitpoints, area damage, and very long range!",
     "hint3": "A woman with brown eyes, dark brown hair and eyebrows, wearing a crown.",
-    "description": "A long-range attacker that peppers enemies with splash damage from afar."
+    "description": "A long-range nuisance that forces awkward answers."
   },
   {
     "card": "Phoenix",
@@ -1581,7 +1581,7 @@
     "hint1": "This mystical creature will be reborn as an egg when destroyed.",
     "hint2": "He packs moderately low health, with decent damage, and to compensate, he will lay an Egg when he dies.",
     "hint3": "It is a light red bird with teal eyes, yellow sclerae, a maroon beak.",
-    "description": "A flying fighter that leaves behind an egg and can return if it hatches."
+    "description": "A flying threat that refuses to be a one-time deal."
   },
   {
     "card": "Royal Ghost",
@@ -1597,7 +1597,7 @@
     "hint1": "He drifts invisibly through the Arena until he's startled by an enemy.",
     "hint2": "A vengeful spirit is haunting the Arena!",
     "hint3": "An undead King who wears a crown, dark gauntlets and chain mail.",
-    "description": "An invisible melee attacker that fades in and out between strikes."
+    "description": "A roaming threat that appears and disappears."
   },
   {
     "card": "Ice Wizard",
@@ -1613,7 +1613,7 @@
     "hint1": "He has a handlebar mustache that's too hot for TV.",
     "hint2": "For 3 Elixir, it may not seem like much, but he can stop enemies in their tracks.",
     "hint3": "A man with cyan spiky hair, fuzzy eyebrows, glowing eyes.",
-    "description": "A ranged support unit that slows enemy movement and attack speed."
+    "description": "A control unit that makes everything feel slower."
   },
   {
     "card": "Magic Archer",
@@ -1629,7 +1629,7 @@
     "hint1": "Not quite a Wizard, nor an Archer.",
     "hint2": "He can safely pierce buildings from afar, as well as multiple targets within the arrow's linear path.",
     "hint3": "A man with white hair, glowing turquoise eyes, bushy black eyebrows.",
-    "description": "Fires piercing arrows that damage everything in a straight line."
+    "description": "A ranged unit that punishes bad lines."
   },
   {
     "card": "Bandit",
@@ -1645,7 +1645,7 @@
     "hint1": "The mask keeps her identity safe.",
     "hint2": "When she dashes, nothing can touch her.",
     "hint3": "She has green eyes and white hair, wears a mask, and a dark olive cloak.",
-    "description": "A swift melee attacker that becomes untouchable while dashing to her target."
+    "description": "A quick figure that never stays still."
   },
   {
     "card": "Lava Hound",
@@ -1661,7 +1661,7 @@
     "hint1": "A majestic flying beast that attacks buildings.",
     "hint2": "This tank is slow and expensive at 7 Elixir, and must be well-supported.",
     "hint3": "A flying, burning rock beast with an underbite.",
-    "description": "A massive flying tank that targets buildings and bursts into smaller threats when defeated."
+    "description": "A giant flying commitment that brings extra baggage."
   },
   {
     "card": "Night Witch",
@@ -1677,7 +1677,7 @@
     "hint1": "Summons Bats to do her bidding!",
     "hint2": "She can quickly swarm units and towers with her Bats.",
     "hint3": "She has glowing blue eyes and wears a black cloak.",
-    "description": "A melee attacker that continuously summons flying support units."
+    "description": "A support threat that keeps adding pressure over time."
   },
   {
     "card": "Lumberjack",
@@ -1693,7 +1693,7 @@
     "hint1": "He chops trees by day and hunts The Log by night.",
     "hint2": "He shreds tanks, towers, and even small swarms with his extremely fast attack speed and high damage.",
     "hint3": "He wields an axe and carries a Rage Spell on his shoulder.",
-    "description": "A fast, hard-hitting melee unit that drops a speed boost when defeated."
+    "description": "A fast hitter that leaves a messy aftermath"
   },
   {
     "card": "Spirit Empress",
@@ -1709,7 +1709,7 @@
     "hint1": "Rider of Dragons.",
     "hint2": "Comes into the arena depending on your need.",
     "hint3": "A scimitar with a light blue glow and a blue handle.",
-    "description": "A versatile champion that can fight on the ground or mount a powerful flying ally."
+    "description": "A flexible threat with two moods."
   },
   {
     "card": "Goblin Machine",
@@ -1725,7 +1725,7 @@
     "hint1": "Who let a baby drive this thing?",
     "hint2": "For 5 Elixir, a massive mech made of wood and metal is deployed into the arena.",
     "hint3": "A wood and metal mech with green zig zag lines, and spikes on the edges.",
-    "description": "A heavily armored unit that combines melee combat with long-range rocket fire."
+    "description": "A bulky contraption built by goblins."
   },
   {
     "card": "Mother Witch",
@@ -1741,7 +1741,7 @@
     "hint1": "She also bakes great cookies.",
     "hint2": "For 4 Elixir, this witch cackles wildly as she curses her foes.",
     "hint3": "A woman with glowing blue eyes and wears a purple cloak with a pink lining.",
-    "description": "Curses enemies so defeated troops transform into friendly attackers."
+    "description": "A witch who benefits from chaos."
   },
   {
     "card": "Fisherman",
@@ -1757,7 +1757,7 @@
     "hint1": "He's also mastered the ancient art of 'Fish Slapping'.",
     "hint2": "He pulls troops towards him with his hook so he can slow them and kill them with a slap.",
     "hint3": "A man with a large nose, blonde eyebrows and beard.",
-    "description": "Uses a hook to pull enemies or reposition himself for favorable trades."
+    "description": "A disruptor that changes where fights happen."
   },
   {
     "card": "The Log",
@@ -1773,7 +1773,7 @@
     "hint1": "Now, it seeks revenge by crushing anything in its path!",
     "hint2": "It rolls. It crushes. It knocks back.",
     "hint3": "It appears as a long, spiked piece of wood.",
-    "description": "Rolls across the Arena, crushing and knocking back ground troops in its path."
+    "description": "A simple rolling answer that never stops being useful."
   },
   {
     "card": "Graveyard",
@@ -1789,7 +1789,7 @@
     "hint1": "Surprise! It's a party. A Skeleton party, anywhere in the Arena. Yay!",
     "hint2": "This portable 5 Elixir ritual starts a Skeleton party anywhere in the Arena!",
     "hint3": "After 2.2 seconds, it spawns a single Skeleton.",
-    "description": "Creates a haunted area that continuously spawns melee attackers."
+    "description": "A spell that turns any moment into a problem."
   },
     {
       "card": "Golden Knight",
@@ -1805,7 +1805,7 @@
       "hint1": "A warrior with luxurious hair and outstanding flexibility.",
       "hint2": "For 1 Elixir, you can use his dashingly Dashing Dash, instantly dashing through a foe through another for up to 10 times",
       "hint3": "a man who has blue eyes, golden hair and eyebrows",
-      "description": "A nimble champion that can dash rapidly between multiple enemies."
+      "description": "A flashy fighter with sudden bursts of movement."
     },
     {
       "card": "Skeleton King",
@@ -1821,7 +1821,7 @@
       "hint1": "The King of the undead himself.",
       "hint2": "For 2 Elixir, you can use his Soul Summoning. It will release all of the souls he kept for battle in form of Skeletons around a royal Graveyard aura around him",
       "hint3": "a massive Skeleton wearing a menacingly large dark chestplate and gauntlets",
-      "description": "A durable champion that stores fallen souls to summon a massive swarm."
+      "description": "A tanky leader who benefits from nearby destruction."
     },
     {
       "card": "Boss Bandit",
@@ -1837,7 +1837,7 @@
       "hint1": "The boss of the Forest Gang finally shows her face...kind of.",
       "hint2": "For 1 Elixir, you can use her Getaway Grenade, she turns invisible while teleporting back 6 tiles",
       "hint3": "a woman with teal eyes, has light red hair and eyebrows",
-      "description": "A powerful dashing champion that can escape danger with a tactical retreat."
+      "description": "A fast boss who doesn’t like being pinned down."
     },
     {
       "card": "Archer Queen",
@@ -1853,7 +1853,7 @@
       "hint1": "She is fast, deadly and hard to catch.",
       "hint2": "For 1 Elixir, you can use her Cloaking Cape ability, mitigating the glass part of her by turning herself invisible",
       "hint3": "She appears as an Archer, except she wears a crown",
-      "description": "A deadly ranged champion that can turn invisible to unleash rapid fire."
+      "description": "A high-threat ranged unit that demands an answer."
     },
     {
       "card": "Mighty Miner",
@@ -1869,7 +1869,7 @@
       "hint1": "This makes him not only the mightiest, but also the sneakiest Miner in the Arena.",
       "hint2": "For 1 Elixir, you can use his Explosive Escape, which makes him drill underground and cross over to his other side",
       "hint3": "a hunk with tangerine-colored hair, eyebrows and a mustache",
-      "description": "A scaling damage champion that can drill underground to switch lanes."
+      "description": "A steady bruiser who can suddenly change the situation."
     },
     {
       "card": "Goblinstein",
@@ -1885,7 +1885,7 @@
       "hint1": "It’s ALIVE! Monster lumbers towards enemy buildings while Doctor waits to spring the trap",
       "hint2": "For 2 Elixir you can use his Lightning Link, which is quite shocking for him and the Monster!",
       "hint3": "The Monster is a large, green Goblin with a square head",
-      "description": "A hulking monster tethered to a controller that can electrify enemies on command."
+      "description": "A two-part menace that escalates fights quickly"
     },
     {
       "card": "Little Prince",
@@ -1901,7 +1901,7 @@
       "hint1": "Who let their nephew into the Arena?!",
       "hint2": "For 3 Elixir, you can use his Royal Rescue to meet his guardian: Guardienne.",
       "hint3": "She has cyan eyes, blonde eyebrows, and a scar on her left eye, wields a greatsword, is dressed in a gray-colored armor.",
-      "description": "A ranged champion that ramps up attack speed and can call in a powerful guardian."
+      "description": "A fragile-looking unit that becomes dangerous if ignored."
     },
     {
       "card": "Vines",
@@ -1917,7 +1917,7 @@
       "hint1": "If the troop is in the air, they'll ground them. Don't worry, they'll grow on you!",
       "hint2": "A spell that restrains the strongest enemies in an area.",
       "hint3": "More damage is dealt when fewer targets are affected.",
-      "description": "Entangles the strongest enemies in an area, stunning and damaging them over time."
+      "description": "A control spell that makes big threats behave."
     },
     {
       "card": "Monk",
@@ -1933,6 +1933,6 @@
       "hint1": "Has spent many isolated years perfecting a new style of combat.",
       "hint2": "For 1 Elixir, you can use his Pensive Protection, an ability that makes him meditate for a while and chill out.",
       "hint3": "Similar to the Hog Rider, except that he is tan, and his mohawk, beard and eyebrows are white.",
-      "description": "A defensive champion that reflects attacks and pushes enemies back with heavy blows."
+      "description": "A calm brawler that shuts down the wrong attacks."
     }
   ]

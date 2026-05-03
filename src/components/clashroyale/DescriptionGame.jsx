@@ -208,7 +208,7 @@ export default function DescriptionGame() {
                 {/* Search (same behavior as Classic) */}
                 <div className="max-w-6xl mx-auto px-4">
                     <div className="relative mb-8 flex justify-center">
-                        <div className="relative w-96">
+                        <div className="relative w-full max-w-sm sm:max-w-md">
                             <input
                                 type="text"
                                 value={inputValue}
@@ -228,21 +228,21 @@ export default function DescriptionGame() {
                                 disabled={isWon}
                                 className="w-full px-6 py-4 text-lg font-semibold text-gray-800 bg-white/95 backdrop-blur-sm border-2 border-blue-300 rounded-2xl shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-400/50 focus:border-blue-400 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                             />
-                        </div>
 
-                        {showSuggestions && inputValue.length > 0 && filteredCards.length > 0 && !isWon && (
-                            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-96 mt-2 bg-white/95 backdrop-blur-sm border border-blue-200 rounded-xl shadow-2xl z-50 max-h-60 overflow-y-auto">
-                                {filteredCards.slice(0, 8).map((card, index) => (
-                                    <SuggestionItem
-                                        key={card.card}
-                                        name={card.card}
-                                        isFirst={index === 0}
-                                        onClick={() => handleGuess(card)}
-                                        game="clashroyale"
-                                    />
-                                ))}
-                            </div>
-                        )}
+                            {showSuggestions && inputValue.length > 0 && filteredCards.length > 0 && !isWon && (
+                                <div className="absolute top-full left-0 right-0 mt-2 bg-white/95 backdrop-blur-sm border border-blue-200 rounded-xl shadow-2xl z-50 max-h-60 overflow-y-auto">
+                                    {filteredCards.slice(0, 8).map((card, index) => (
+                                        <SuggestionItem
+                                            key={card.card}
+                                            name={card.card}
+                                            isFirst={index === 0}
+                                            onClick={() => handleGuess(card)}
+                                            game="clashroyale"
+                                        />
+                                    ))}
+                                </div>
+                            )}
+                        </div>
                     </div>
 
                     {/* Guess History (tiles) */}

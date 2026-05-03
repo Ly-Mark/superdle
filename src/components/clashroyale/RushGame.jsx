@@ -824,16 +824,18 @@ const RushGame = () => {
                     {/* Guess Grid */}
                     <div className="flex flex-col items-center">
                         {(hasStarted || correctHistory.length > 0) && (
-                            <div className="mb-4">
-                                <div className="grid grid-cols-[repeat(9,5rem)] gap-1">
-                                    <div className="text-center text-base font-bold text-white pb-2">
-                                        <span className="inline-block border-b-4 border-white pb-2 w-20">Card</span>
-                                    </div>
-                                    {ATTRIBUTES.map((attr) => (
-                                        <div key={attr.key} className="text-center text-base font-bold text-white pb-2">
-                                            <span className="inline-block border-b-4 border-white pb-2 w-20">{attr.label}</span>
+                            <div className="mb-4 overflow-x-auto overflow-y-hidden -mx-4 px-4 sm:mx-0 sm:px-0 w-full">
+                                <div className="mx-auto" style={{ width: 'fit-content' }}>
+                                    <div className="grid grid-cols-[repeat(9,5rem)] gap-1">
+                                        <div className="text-center text-base font-bold text-white pb-2">
+                                            <span className="inline-block border-b-4 border-white pb-2 w-20">Card</span>
                                         </div>
-                                    ))}
+                                        {ATTRIBUTES.map((attr) => (
+                                            <div key={attr.key} className="text-center text-base font-bold text-white pb-2">
+                                                <span className="inline-block border-b-4 border-white pb-2 w-20">{attr.label}</span>
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
                         )}
@@ -854,27 +856,29 @@ const RushGame = () => {
                             </div>
                         )}
 
-                        <div className="space-y-4">
-                            {guesses.map((guess, rowIndex) => (
-                                <div key={`${guess.card}-${rowIndex}`} className="grid grid-cols-[repeat(9,5rem)] gap-1">
-                                    <CardPortrait name={guess.card} zoom={1.3} focus="center 60%" />
-                                    {ATTRIBUTES.map((attr) => (
-                                        <AttributeCard
-                                            key={`${attr.key}-${rowIndex}`}
-                                            attribute={attr.key}
-                                            value={guess[attr.key]}
-                                            status={guess.comparison ? guess.comparison[attr.key] : ""}
-                                        />
-                                    ))}
-                                </div>
-                            ))}
+                        <div className="overflow-x-auto overflow-y-hidden -mx-4 px-4 sm:mx-0 sm:px-0 w-full">
+                            <div className="mx-auto space-y-4" style={{ width: 'fit-content' }}>
+                                {guesses.map((guess, rowIndex) => (
+                                    <div key={`${guess.card}-${rowIndex}`} className="grid grid-cols-[repeat(9,5rem)] gap-1">
+                                        <CardPortrait name={guess.card} zoom={1.3} focus="center 60%" />
+                                        {ATTRIBUTES.map((attr) => (
+                                            <AttributeCard
+                                                key={`${attr.key}-${rowIndex}`}
+                                                attribute={attr.key}
+                                                value={guess[attr.key]}
+                                                status={guess.comparison ? guess.comparison[attr.key] : ""}
+                                            />
+                                        ))}
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
 
 
                     {/* Instructions */}
                     {guesses.length === 0 && correctHistory.length === 0 && (
-                        <div className="w-96 mx-auto bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6 mt-8">
+                        <div className="w-full max-w-sm sm:max-w-md mx-auto bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6 mt-8">
                             <h2 className="text-xl font-bold text-white mb-4 flex items-center justify-center underline decoration-2 underline-offset-4">
                                 How to Play (Rush)
                             </h2>

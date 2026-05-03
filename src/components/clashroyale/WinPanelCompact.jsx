@@ -3,8 +3,8 @@ import useNextMidnightCountdown from '../../hooks/useNextMidnightCountdown.js';
 import { buildShareText, copyToClipboard } from '../../utils/clashroyale/shareText.js';
 
 // map statuses -> emojis
-const TILE = { correct: '🟩', partial: '🟨', incorrect: '🟥', higher: '🔺', lower: '🔻' };
-const toEmoji = (s) => TILE[s] || TILE.incorrect;
+const TILE = { correct: '🟩', close: '🟨', wrong: '🟥', higher: '🔺', lower: '🔻' };
+const toEmoji = (s) => TILE[s] || TILE.wrong;
 
 // thresholds for distribution colors
 const GREEN_MAX = 4;
@@ -42,13 +42,20 @@ const MiniDistribution = ({ guessDist }) => {
 
 const GridPreview = ({ guesses, attributes, maxRows = 8, latestOnTop = true }) => {
     // ClassicGame stores newest at the front; latestOnTop=true uses order as-is.
-    if (!attributes || attributes.length === 0) return null;
-    const ordered = latestOnTop ? guesses : [...guesses].reverse();
-    const rows = ordered.slice(0, maxRows);
-    const extra = Math.max(0, ordered.length - rows.length);
-    const matrix = useMemo(() => rows.map(g => attributes.map(a => toEmoji(g.comparison?.[a.key]))), [rows, attributes]);
+    // Hooks must run unconditionally — compute first, branch later.
+    const matrix = useMemo(() => {
+        if (!attributes || attributes.length === 0) return [];
+        const ordered = latestOnTop ? guesses : [...guesses].reverse();
+        const rows = ordered.slice(0, maxRows);
+        return rows.map(g => attributes.map(a => toEmoji(g.comparison?.[a.key])));
+    }, [guesses, attributes, maxRows, latestOnTop]);
 
+    if (!attributes || attributes.length === 0) return null;
     if (matrix.length === 0) return null;
+
+    const ordered = latestOnTop ? guesses : [...guesses].reverse();
+    const extra = Math.max(0, ordered.length - matrix.length);
+
     return (
         <div className="text-center">
             <div className="inline-grid gap-1" style={{ gridTemplateColumns: `repeat(${attributes.length}, 1rem)` }}>

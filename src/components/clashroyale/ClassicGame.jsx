@@ -20,7 +20,7 @@ const shareUrlCR     = buildUrl('/clashroyale/classic'); // → "https://clash.a
 /* -------------------------------------------------------
    Daily-state helpers (persist win until next day)
 ------------------------------------------------------- */
-const STORAGE_PREFIX = 'clashle:classic';
+const STORAGE_PREFIX = 'clashdle:classic';
 const getLocalDayKey = (d = new Date()) => {
     const y = d.getFullYear();
     const m = String(d.getMonth() + 1).padStart(2, '0');
@@ -410,8 +410,9 @@ const ClassicGame = () => {
 // → "https://clash.ac/clashroyale/classic?d=256&m=classic"
 
 
-    const CLASH_ROYALE_CLASSIC_ROUTE = '/';
-    const shareUrl = useMemo(() => buildUrl(CLASH_ROYALE_CLASSIC_ROUTE), []);
+    //const CLASH_ROYALE_CLASSIC_ROUTE = '/';
+    //const shareUrl = useMemo(() => buildUrl(CLASH_ROYALE_CLASSIC_ROUTE), []);
+    const shareUrl = shareUrlCR;
 
     const handleShare = async () => {
         const text = buildShareText({

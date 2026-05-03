@@ -3,19 +3,19 @@ import { buildUrl } from '../shareBase.js';
 // Map your comparison statuses to emojis
 const TILE = {
     correct: '🟩',
-    partial: '🟨',
-    incorrect: '🟥',
-    higher: '🔺',
-    lower: '🔻',
+    close:   '🟨',
+    wrong:   '🟥',
+    higher:  '🔺',
+    lower:   '🔻',
 };
 
 const statusToEmoji = (attrKey, status) => {
-    if (!status) return TILE.incorrect;
+    if (!status) return TILE.wrong;
     if (status === 'correct') return TILE.correct;
-    if (status === 'partial') return TILE.partial;
-    if (status === 'higher')  return TILE.higher;  // for year/cost/arena
+    if (status === 'close')   return TILE.close;
+    if (status === 'higher')  return TILE.higher; // for year/cost/arena
     if (status === 'lower')   return TILE.lower;
-    return TILE.incorrect;
+    return TILE.wrong;
 };
 
 // --- Daily index ---
@@ -39,7 +39,7 @@ export function buildShareText({
                                    attributes,
                                    guesses,
                                    url,             // optional; if omitted we’ll fill it with the canonical route
-                                   route = '/clash-royale/classic', // default route for this game
+                                   route = '/clashroyale/classic', // default route for this game
                                    query,           // optional object of query params to attach (e.g., { seed })
                                } = {}) {
     const idx = dayIndex ?? getDayIndex();

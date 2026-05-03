@@ -1,5 +1,5 @@
 // Lightweight local stats for daily mode
-const STATS_KEY = 'clashle:stats:v1';
+const STATS_KEY = 'clashdle:stats:v1';
 
 const safeParse = (raw, fallback) => {
     try { return raw ? JSON.parse(raw) : fallback; } catch { return fallback; }

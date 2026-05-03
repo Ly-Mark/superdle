@@ -876,21 +876,6 @@ const RushGame = () => {
                         </div>
                     </div>
 
-                        {showSuggestions && filteredCards.length > 0 && !isTimeUp && (
-                            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-96 mt-2 bg-white/95 backdrop-blur-sm border border-blue-200 rounded-xl shadow-2xl z-50 max-h-60 overflow-y-auto">
-                                {filteredCards.slice(0, 8).map((card, index) => (
-                                    <SuggestionItem
-                                        key={card.card}
-                                        name={card.card}
-                                        isFirst={index === 0}
-                                        onClick={() => handleGuess(card)}
-                                        game="clashroyale"
-                                    />
-                                ))}
-                            </div>
-                        )}
-                    </div>
-
                     {/* Correct strip */}
                     {correctHistory.length > 0 && (
                         <div className="max-w-3xl mx-auto mb-6">

@@ -64,14 +64,14 @@ const AttributeCard = ({ attribute, value, status, isFlipping, delay = 0 }) => {
     const opacityClass = isVisible ? 'opacity-100' : 'opacity-0';
 
     return (
-        <div className={`relative w-20 h-20 perspective-1000 transition-opacity duration-500 ${opacityClass}`}>
+        <div className={`relative w-[3.25rem] h-[3.25rem] sm:w-20 sm:h-20 perspective-1000 transition-opacity duration-500 ${opacityClass}`}>
             <div className={`relative w-full h-full transform-style-3d transition-transform duration-700 ${flipClass} ${showBack ? 'rotate-y-180' : ''}`}>
                 {/* Front */}
                 <div className="absolute inset-0 w-full h-full bg-gray-300 border-2 border-gray-400 rounded-lg flex items-center justify-center backface-hidden">
-                    <span className="text-lg text-gray-600 font-semibold">?</span>
+                    <span className="text-base sm:text-lg text-gray-600 font-semibold">?</span>
                 </div>
                 {/* Back */}
-                <div className={`absolute inset-0 w-full h-full ${cardColor} rounded-lg flex items-center justify-center backface-hidden rotate-y-180 text-white font-bold text-sm px-1 text-center shadow-lg border-2 overflow-hidden`}>
+                <div className={`absolute inset-0 w-full h-full ${cardColor} rounded-lg flex items-center justify-center backface-hidden rotate-y-180 text-white font-bold text-[10px] leading-tight sm:text-sm px-1 text-center shadow-lg border-2 overflow-hidden`}>
                     {(attribute === 'year' || attribute === 'cost' || attribute === 'arena') && (status === 'higher' || status === 'lower') ? (
                         <div className="relative flex items-center justify-center w-full h-full">
                             <div className={`absolute inset-0 flex items-center justify-center ${status === 'lower' ? 'pt-2' : ''}`}>
@@ -94,7 +94,13 @@ const AttributeCard = ({ attribute, value, status, isFlipping, delay = 0 }) => {
 const DEFAULT_GAME = 'clashroyale';
 const DEFAULT_ZOOM = 1.40; // crop baked-in borders a bit
 
-const CardPortrait = ({ name, game = DEFAULT_GAME, zoom = DEFAULT_ZOOM, focus = 'center' }) => {
+const CardPortrait = ({
+                          name,
+                          game = DEFAULT_GAME,
+                          zoom = DEFAULT_ZOOM,
+                          focus = 'center',
+                          sizeClass = 'w-[3.25rem] h-[3.25rem] sm:w-20 sm:h-20',
+                      }) => {
     const slug = useMemo(() => slugify(name), [name]);
 
     const sources = useMemo(
@@ -119,12 +125,12 @@ const CardPortrait = ({ name, game = DEFAULT_GAME, zoom = DEFAULT_ZOOM, focus = 
 
     return (
         <div
-            className="
-        relative w-20 h-20 rounded-xl overflow-hidden
+            className={`
+        relative ${sizeClass} rounded-xl overflow-hidden
         shadow-[0_8px_18px_rgba(0,0,0,0.35)]
         ring-1 ring-white/20
         bg-white/5
-      "
+      `}
         >
             {/* IMAGE (zoom-cropped) or TEXT FALLBACK */}
             {!failedAll ? (
@@ -139,7 +145,7 @@ const CardPortrait = ({ name, game = DEFAULT_GAME, zoom = DEFAULT_ZOOM, focus = 
                 />
             ) : (
                 <div className="absolute inset-0 flex items-center justify-center px-1">
-          <span className="text-[11px] font-bold text-gray-100 text-center leading-tight">
+          <span className="text-[9px] sm:text-[11px] font-bold text-gray-100 text-center leading-tight">
             {name}
           </span>
                 </div>
@@ -715,13 +721,13 @@ const ClassicGame = () => {
                             <div className="flex flex-col items-center mx-auto" style={{ width: 'fit-content' }}>
                                 {guesses.length > 0 && (
                                     <div className="mb-4">
-                                        <div className="grid grid-cols-[repeat(9,5rem)] gap-1">
+                                        <div className="grid grid-cols-[repeat(9,3.25rem)] sm:grid-cols-[repeat(9,5rem)] gap-1">
                                             <div className="text-center text-base font-bold text-white pb-2">
-                                                <span className="inline-block border-b-4 border-white pb-2 w-20">Card</span>
+                                                <span className="inline-block border-b-2 sm:border-b-4 border-white pb-1 sm:pb-2 w-[3.25rem] sm:w-20 text-[10px] leading-tight sm:text-base">Card</span>
                                             </div>
                                             {attributes.map(attr => (
                                                 <div key={attr.key} className="text-center text-base font-bold text-white pb-2">
-                                                    <span className="inline-block border-b-4 border-white pb-2 w-20">{attr.label}</span>
+                                                    <span className="inline-block border-b-2 sm:border-b-4 border-white pb-1 sm:pb-2 w-[3.25rem] sm:w-20 text-[10px] leading-tight sm:text-base">{attr.label}</span>
                                                 </div>
                                             ))}
                                         </div>

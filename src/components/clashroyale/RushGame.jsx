@@ -50,9 +50,9 @@ const AttributeCard = ({ attribute, value, status }) => {
     const cardColor = getAttributeColor(status);
 
     return (
-        <div className="relative w-20 h-20">
+        <div className="relative w-[3.25rem] h-[3.25rem] sm:w-20 sm:h-20">
             <div
-                className={`w-full h-full ${cardColor} rounded-lg flex items-center justify-center text-white font-bold text-sm px-1 text-center shadow-lg border-2 overflow-hidden`}
+                className={`w-full h-full ${cardColor} rounded-lg flex items-center justify-center text-white font-bold text-[10px] leading-tight sm:text-sm px-1 text-center shadow-lg border-2 overflow-hidden`}
             >
                 {(attribute === "year" || attribute === "cost" || attribute === "arena") &&
                 (status === "higher" || status === "lower") ? (
@@ -81,6 +81,88 @@ const AttributeCard = ({ attribute, value, status }) => {
 };
 
 /* -------------------------------------------------------
+   Emoji row (mobile-only) — tappable to expand full values
+------------------------------------------------------- */
+const TILE_EMOJI = { correct: '🟩', close: '🟨', wrong: '🟥', higher: '🔺', lower: '🔻' };
+const toEmoji = (s) => TILE_EMOJI[s] || TILE_EMOJI.wrong;
+
+// Tile size for emoji squares — also used by the mobile header.
+// 8 attrs + 1 name pill + 8 gaps × 2px = ~248px in a 360px viewport. Plenty of margin.
+const MOBILE_TILE = 'w-6 h-6';        // 24px — comfortable tap target row, fits everything
+const MOBILE_NAME = 'w-16 h-6';       // 64px name pill on the left
+const MOBILE_GAP  = 'gap-[2px]';
+
+const EmojiRow = ({ guess, attributes, expanded, onToggle }) => (
+    <div className="w-full">
+        <button
+            type="button"
+            onClick={onToggle}
+            className={`flex items-center ${MOBILE_GAP} w-full justify-center px-1 py-0.5 rounded
+                        ${expanded ? 'bg-white/10' : 'hover:bg-white/5'} transition-colors`}
+            aria-expanded={expanded}
+            aria-label={`${guess.card}, tap to ${expanded ? 'collapse' : 'expand'} details`}
+        >
+            <div className={`${MOBILE_NAME} rounded bg-white/10 border border-white/20 flex items-center justify-center px-1`}>
+                <span className="text-[10px] font-semibold text-white/90 truncate leading-none">
+                    {guess.card}
+                </span>
+            </div>
+            {attributes.map((attr) => (
+                <div
+                    key={attr.key}
+                    className={`${MOBILE_TILE} flex items-center justify-center text-[14px] leading-none select-none`}
+                >
+                    {toEmoji(guess.comparison?.[attr.key])}
+                </div>
+            ))}
+        </button>
+
+        {/* Expanded panel: full attribute values in a 2-column list */}
+        {expanded && (
+            <div className="mt-1 mb-2 mx-2 rounded-lg bg-white/5 border border-white/15 p-2">
+                <div className="grid grid-cols-2 gap-x-3 gap-y-1">
+                    {attributes.map((attr) => {
+                        const status = guess.comparison?.[attr.key];
+                        const colorClass =
+                            status === 'correct' ? 'text-emerald-300' :
+                                status === 'close'   ? 'text-amber-300'   :
+                                    status === 'higher' || status === 'lower' ? 'text-rose-300' :
+                                        'text-rose-300';
+                        const arrow = status === 'higher' ? ' ▲' : status === 'lower' ? ' ▼' : '';
+                        return (
+                            <div key={attr.key} className="flex justify-between text-[11px] leading-tight">
+                                <span className="text-blue-100/70 mr-1">{attr.label}</span>
+                                <span className={`${colorClass} font-semibold text-right truncate`}>
+                                    {guess[attr.key]}{arrow}
+                                </span>
+                            </div>
+                        );
+                    })}
+                </div>
+            </div>
+        )}
+    </div>
+);
+
+// Mobile header — abbreviated labels in same widths as emoji squares.
+const HEADER_ABBREV = { rarity: 'R', cost: 'C', type: 'T', targets: 'Tg', healthCategory: 'H', arena: 'A', moveSpeed: 'Sp', year: 'Y' };
+
+const MobileHeader = ({ attributes }) => (
+    <div className={`flex items-center ${MOBILE_GAP} justify-center px-1 mb-1`}>
+        <div className={`${MOBILE_NAME} flex items-center justify-center`}>
+            <span className="text-[10px] font-bold text-white/80 uppercase tracking-wide">Card</span>
+        </div>
+        {attributes.map((attr) => (
+            <div key={attr.key} className={`${MOBILE_TILE} flex items-center justify-center`}>
+                <span className="text-[10px] font-bold text-white/80 uppercase">
+                    {HEADER_ABBREV[attr.key] || attr.label[0]}
+                </span>
+            </div>
+        ))}
+    </div>
+);
+
+/* -------------------------------------------------------
    Card portrait (supports icon mode)
 ------------------------------------------------------- */
 const CardPortrait = ({
@@ -88,7 +170,7 @@ const CardPortrait = ({
                           game = "clashroyale",
                           zoom = 1.4,
                           focus = "center",
-                          sizeClass = "w-20 h-20",
+                          sizeClass = "w-[3.25rem] h-[3.25rem] sm:w-20 sm:h-20",
                           variant = "full", // "full" | "icon"
                       }) => {
     const baseFrame =
@@ -301,6 +383,7 @@ const RushGame = () => {
     }, [roundIndex, runOrder]);
 
     const [guesses, setGuesses] = useState([]);
+    const [expandedRowId, setExpandedRowId] = useState(null);
     const [inputValue, setInputValue] = useState("");
     const [showSuggestions, setShowSuggestions] = useState(false);
 
@@ -539,18 +622,18 @@ const RushGame = () => {
       }
       .time-pop { animation: timePop 900ms ease-out forwards; }
     `}</style>
-              <div className="container mx-auto px-4 py-8">
-                {/* Header */}
-                <div className="text-center mb-8">
-                    <h1 className="text-5xl font-black text-white mb-4 tracking-tight">
+              <div className="container mx-auto px-4 py-4 sm:py-8">
+                  {/* Header */}
+                  <div className="text-center mb-4 sm:mb-8">
+                      <h1 className="text-3xl sm:text-5xl font-black text-white mb-2 sm:mb-4 tracking-tight">
             <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-indigo-500 bg-clip-text text-transparent">
               CLASHDLE
             </span>
                     </h1>
                     <GameModeNav />
 
-                    <div className="max-w-xl mx-auto bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6">
-                        <p className="text-blue-200 text-2xl font-medium mb-3">Rush Mode</p>
+                    <div className="max-w-xl mx-auto bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-4 sm:p-6">
+                        <p className="text-blue-200 text-xl sm:text-2xl font-medium mb-2 sm:mb-3">Rush Mode</p>
 
                         <div className="flex items-center justify-center gap-4 text-blue-100">
                             <div className="relative px-4 py-2 rounded-xl bg-white/10 border border-white/20">
@@ -586,9 +669,8 @@ const RushGame = () => {
 
 
 
-                        <div className="mt-4 text-sm text-blue-200/90">
+                        <div className="mt-3 sm:mt-4 text-xs sm:text-sm text-blue-200/90">
                             Correct guess clears the board, adds time and starts a new target.
-
                         </div>
                     </div>
                 </div>
@@ -751,8 +833,8 @@ const RushGame = () => {
                     )}
 
                     {/* Search */}
-                    <div className="relative mb-4 flex justify-center">
-                        <div className="relative w-96">
+                    <div className="relative mb-4 flex justify-center px-4">
+                        <div className="relative w-full max-w-sm sm:max-w-md">
                             <input
                                 type="text"
                                 value={inputValue}
@@ -777,7 +859,22 @@ const RushGame = () => {
                                     <span className="text-white text-sm font-bold">🔍</span>
                                 </div>
                             </div>
+
+                            {showSuggestions && filteredCards.length > 0 && !isTimeUp && (
+                                <div className="absolute top-full left-0 right-0 mt-2 bg-white/95 backdrop-blur-sm border border-blue-200 rounded-xl shadow-2xl z-50 max-h-60 overflow-y-auto">
+                                    {filteredCards.slice(0, 8).map((card, index) => (
+                                        <SuggestionItem
+                                            key={card.card}
+                                            name={card.card}
+                                            isFirst={index === 0}
+                                            onClick={() => handleGuess(card)}
+                                            game="clashroyale"
+                                        />
+                                    ))}
+                                </div>
+                            )}
                         </div>
+                    </div>
 
                         {showSuggestions && filteredCards.length > 0 && !isTimeUp && (
                             <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-96 mt-2 bg-white/95 backdrop-blur-sm border border-blue-200 rounded-xl shadow-2xl z-50 max-h-60 overflow-y-auto">
@@ -824,15 +921,15 @@ const RushGame = () => {
                     {/* Guess Grid */}
                     <div className="flex flex-col items-center">
                         {(hasStarted || correctHistory.length > 0) && (
-                            <div className="mb-4 overflow-x-auto overflow-y-hidden -mx-4 px-4 sm:mx-0 sm:px-0 w-full">
+                            <div className="hidden sm:block mb-4 overflow-x-auto overflow-y-hidden w-full">
                                 <div className="mx-auto" style={{ width: 'fit-content' }}>
                                     <div className="grid grid-cols-[repeat(9,5rem)] gap-1">
                                         <div className="text-center text-base font-bold text-white pb-2">
-                                            <span className="inline-block border-b-4 border-white pb-2 w-20">Card</span>
+                                            <span className="inline-block border-b-2 sm:border-b-4 border-white pb-1 sm:pb-2 w-[3.25rem] sm:w-20 text-[10px] leading-tight sm:text-base">Card</span>
                                         </div>
                                         {ATTRIBUTES.map((attr) => (
                                             <div key={attr.key} className="text-center text-base font-bold text-white pb-2">
-                                                <span className="inline-block border-b-4 border-white pb-2 w-20">{attr.label}</span>
+                                                <span className="inline-block border-b-2 sm:border-b-4 border-white pb-1 sm:pb-2 w-[3.25rem] sm:w-20 text-[10px] leading-tight sm:text-base">{attr.label}</span>
                                             </div>
                                         ))}
                                     </div>
@@ -856,7 +953,32 @@ const RushGame = () => {
                             </div>
                         )}
 
-                        <div className="overflow-x-auto overflow-y-hidden -mx-4 px-4 sm:mx-0 sm:px-0 w-full">
+                        {/* Mobile: latest as full row, older as emoji rows. No scroll. */}
+                        {/* Mobile: header + all emoji rows, tap to expand. */}
+                        <div className="sm:hidden w-full flex flex-col items-center px-2">
+                            {(hasStarted || correctHistory.length > 0) && guesses.length > 0 && (
+                                <MobileHeader attributes={ATTRIBUTES} />
+                            )}
+                            {guesses.length > 0 && (
+                                <div className="w-full max-w-sm mx-auto space-y-0.5">
+                                    {guesses.map((guess, idx) => {
+                                        const rowId = `${guess.card}-${idx}`;
+                                        return (
+                                            <EmojiRow
+                                                key={rowId}
+                                                guess={guess}
+                                                attributes={ATTRIBUTES}
+                                                expanded={expandedRowId === rowId}
+                                                onToggle={() => setExpandedRowId(expandedRowId === rowId ? null : rowId)}
+                                            />
+                                        );
+                                    })}
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Desktop: full text for every row, with scroll fallback if needed */}
+                        <div className="hidden sm:block overflow-x-auto overflow-y-hidden w-full">
                             <div className="mx-auto space-y-4" style={{ width: 'fit-content' }}>
                                 {guesses.map((guess, rowIndex) => (
                                     <div key={`${guess.card}-${rowIndex}`} className="grid grid-cols-[repeat(9,5rem)] gap-1">

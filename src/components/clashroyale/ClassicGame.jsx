@@ -404,7 +404,7 @@ const ClassicGame = () => {
     const [guessQueue, setGuessQueue] = useState([]);
     const [revealedHints, setRevealedHints] = useState({ hint1: false, hint2: false, hint3: false });
 
-    const [stats, setStats] = useState(() => loadStats());
+    const [stats, setStats] = useState(() => loadStats('classic'));
     // const [showWinModal, setShowWinModal] = useState(false);
 
 
@@ -519,7 +519,7 @@ const ClassicGame = () => {
     useEffect(() => {
         if (!isWon) return;
         // Update local stats for today (idempotent per dayKey)
-        const updated = updateStatsOnWin(guesses.length, dayKey);
+        const updated = updateStatsOnWin('classic', guesses.length, dayKey);
         setStats(updated);
         // setShowWinModal(true);
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -558,7 +558,7 @@ const ClassicGame = () => {
 
     const handleGuess = (card) => {
         if (ENABLE_DAILY_LOCK && isWon) return; // only block when lock is ON
-        if (guesses.length === 0) setStats(markAttempt(dayKey)); // mark "played" on first guess of the day
+        if (guesses.length === 0) setStats(markAttempt('classic', dayKey)); // mark "played" on first guess of the day
 
         const name = card.card.trim().toLowerCase();
         const alreadyGuessed = guesses.some(g => g.card.trim().toLowerCase() === name);

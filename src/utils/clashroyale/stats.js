@@ -1,5 +1,7 @@
-// Lightweight local stats for daily mode
-const STATS_KEY = 'clashdle:stats:v1';
+// Lightweight local stats for daily mode, namespaced per mode.
+// Valid mode strings: 'classic', 'description'. (Rush has its own session
+// stats; Memory opts out by design.)
+const statsKey = (mode) => `clashdle:stats:${mode}:v1`;
 
 const safeParse = (raw, fallback) => {
     try { return raw ? JSON.parse(raw) : fallback; } catch { return fallback; }
@@ -15,20 +17,20 @@ const defaultStats = () => ({
     lastWinDayKey: null
 });
 
-export function loadStats() {
-    return safeParse(localStorage.getItem(STATS_KEY), defaultStats());
+export function loadStats(mode) {
+    return safeParse(localStorage.getItem(statsKey(mode)), defaultStats());
 }
 
-export function saveStats(stats) {
-    try { localStorage.setItem(STATS_KEY, JSON.stringify(stats)); } catch {}
+export function saveStats(mode, stats) {
+    try { localStorage.setItem(statsKey(mode), JSON.stringify(stats)); } catch {}
 }
 
-export function markAttempt(dayKey) {
-    const s = loadStats();
+export function markAttempt(mode, dayKey) {
+    const s = loadStats(mode);
     if (!s.attemptedDays[dayKey]) {
         s.attemptedDays[dayKey] = true;
         s.played += 1;
-        saveStats(s);
+        saveStats(mode, s);
     }
     return s;
 }
@@ -43,8 +45,8 @@ const getYesterdayKey = (dayKey) => {
     return `${yy}-${mm}-${dd}`;
 };
 
-export function updateStatsOnWin(guessesCount, dayKey) {
-    const s = loadStats();
+export function updateStatsOnWin(mode, guessesCount, dayKey) {
+    const s = loadStats(mode);
     if (s.lastWinDayKey === dayKey) return s; // idempotent per day
 
     s.wins += 1;
@@ -60,6 +62,6 @@ export function updateStatsOnWin(guessesCount, dayKey) {
     const k = String(guessesCount);
     s.guessDist[k] = (s.guessDist[k] || 0) + 1;
 
-    saveStats(s);
+    saveStats(mode, s);
     return s;
 }

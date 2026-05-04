@@ -93,12 +93,12 @@ const MOBILE_NAME = 'w-16 h-7 [@media(min-width:390px)]:w-20 [@media(min-width:3
 const MOBILE_GAP  = 'gap-[3px] [@media(min-width:390px)]:gap-1';
 
 const EmojiRow = ({ guess, attributes, expanded, onToggle }) => (
-    <div className="w-full">
+    <div className={`w-full transition-all ${expanded ? 'border-l-2 border-blue-300/50 pl-1' : 'border-l-2 border-transparent pl-1'}`}>
         <button
             type="button"
             onClick={onToggle}
-            className={`flex items-center ${MOBILE_GAP} w-full justify-center px-1 py-0.5 rounded
-                        ${expanded ? 'bg-white/10' : 'hover:bg-white/5'} transition-colors`}
+            className={`flex items-center ${MOBILE_GAP} w-full justify-center px-1 py-1.5 rounded
+                        ${expanded ? 'bg-white/10' : 'hover:bg-white/5 active:bg-white/10'} transition-colors`}
             aria-expanded={expanded}
             aria-label={`${guess.card}, tap to ${expanded ? 'collapse' : 'expand'} details`}
         >
@@ -115,6 +115,9 @@ const EmojiRow = ({ guess, attributes, expanded, onToggle }) => (
                     {toEmoji(guess.comparison?.[attr.key])}
                 </div>
             ))}
+            <span className="ml-1 text-white/50 text-[10px] leading-none w-3 text-center">
+                {expanded ? '▾' : '▸'}
+            </span>
         </button>
 
         {/* Expanded panel: full attribute values in a 2-column list */}
@@ -145,15 +148,21 @@ const EmojiRow = ({ guess, attributes, expanded, onToggle }) => (
 );
 
 // Mobile header — abbreviated labels in same widths as emoji squares.
-const HEADER_ABBREV = { rarity: 'R', cost: 'C', type: 'T', targets: 'Tg', healthCategory: 'H', arena: 'A', moveSpeed: 'Sp', year: 'Y' };
+// const HEADER_ABBREV = { rarity: 'R', cost: 'C', type: 'T', targets: 'Tg', healthCategory: 'H', arena: 'A', moveSpeed: 'Sp', year: 'Y' };
 
-const MobileHeader = ({ attributes: _attributes }) => (
-    <div className="flex items-center justify-center px-1 mb-2">
-        <span className="text-[10px] text-blue-100/60 italic">
-            Tap a guess to see attribute details
-        </span>
-    </div>
-);
+const MobileHeader = ({ guessesCount }) => {
+    // 0 guesses: no header (caller already gates on guessesCount > 0, but be defensive).
+    // 1 guess: latest is auto-expanded showing all attributes — no hint needed.
+    // 2+ guesses: hint is meaningful — older rows are scannable, tap to drill in.
+    if (guessesCount < 2) return null;
+    return (
+        <div className="flex items-center justify-center px-1 mb-2">
+            <span className="text-[10px] text-blue-100/60">
+                Tap older guesses to expand
+            </span>
+        </div>
+    );
+};
 
 /* -------------------------------------------------------
    Card portrait (supports icon mode)
@@ -377,6 +386,13 @@ const RushGame = () => {
 
     const [guesses, setGuesses] = useState([]);
     const [expandedRowId, setExpandedRowId] = useState(null);
+
+    // When a new guess comes in (or the board resets after a correct answer),
+    // clear manual expansion so the new latest auto-expands.
+    useEffect(() => {
+        setExpandedRowId(null);
+    }, [guesses.length]);
+
     const [inputValue, setInputValue] = useState("");
     const [showSuggestions, setShowSuggestions] = useState(false);
 
@@ -931,28 +947,34 @@ const RushGame = () => {
                             </div>
                         )}
 
-                        {/* Mobile: latest as full row, older as emoji rows. No scroll. */}
-                        {/* Mobile: header + all emoji rows, tap to expand. */}
+                        {/* Mobile: header + all emoji rows. Latest auto-expanded. */}
                         <div className="sm:hidden w-full flex flex-col items-center px-2">
-                            {(hasStarted || correctHistory.length > 0) && guesses.length > 0 && (
-                                <MobileHeader attributes={ATTRIBUTES} />
-                            )}
-                            {guesses.length > 0 && (
-                                <div className="w-full max-w-sm mx-auto space-y-0.5">
-                                    {guesses.map((guess, idx) => {
-                                        const rowId = `${guess.card}-${idx}`;
-                                        return (
-                                            <EmojiRow
-                                                key={rowId}
-                                                guess={guess}
-                                                attributes={ATTRIBUTES}
-                                                expanded={expandedRowId === rowId}
-                                                onToggle={() => setExpandedRowId(expandedRowId === rowId ? null : rowId)}
-                                            />
-                                        );
-                                    })}
-                                </div>
-                            )}
+                            {guesses.length > 0 && <MobileHeader guessesCount={guesses.length} />}
+                            {guesses.length > 0 && (() => {
+                                // Latest guess is at index 0 (newest-first ordering).
+                                const latestRowId = `${guesses[0].card}-0`;
+                                // null = use default (latest auto-expanded).
+                                // '' (empty string) = user explicitly collapsed everything.
+                                // any other string = user explicitly expanded that row.
+                                const effectiveExpanded = expandedRowId ?? latestRowId;
+                                return (
+                                    <div className="w-full max-w-sm mx-auto space-y-0.5">
+                                        {guesses.map((guess, idx) => {
+                                            const rowId = `${guess.card}-${idx}`;
+                                            const isExpanded = effectiveExpanded === rowId;
+                                            return (
+                                                <EmojiRow
+                                                    key={rowId}
+                                                    guess={guess}
+                                                    attributes={ATTRIBUTES}
+                                                    expanded={isExpanded}
+                                                    onToggle={() => setExpandedRowId(isExpanded ? '' : rowId)}
+                                                />
+                                            );
+                                        })}
+                                    </div>
+                                );
+                            })()}
                         </div>
 
                         {/* Desktop: full text for every row, with scroll fallback if needed */}

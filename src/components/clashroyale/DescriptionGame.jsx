@@ -140,10 +140,12 @@ export default function DescriptionGame() {
             <div className="container mx-auto px-4 py-8">
                 {/* Header */}
                 <div className="text-center mb-8">
-                    <h1 className="text-5xl font-black text-white mb-4 tracking-tight">
-            <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-indigo-500 bg-clip-text text-transparent">
-              CLASHDLE
-            </span>
+                    <h1 className="mb-4">
+                        <img
+                            src="/wordmark.png"
+                            alt="Clashdle"
+                            className="mx-auto min-h-36 sm:h-28 md:h-28 w-auto"
+                        />
                     </h1>
                     <GameModeNav />
                     {/* Prompt panel styled similarly to Classic hints panel */}
@@ -268,8 +270,8 @@ export default function DescriptionGame() {
                             guesses={guesses}
                             attributes={[]} // no classic attributes in this mode
                             stats={stats}
+                            currentMode="description"
                             shareUrl={shareUrl}
-                            nextModeHref="/"
                             onShare={handleShare}
                         />
                     )}

@@ -50,9 +50,9 @@ const AttributeCard = ({ attribute, value, status }) => {
     const cardColor = getAttributeColor(status);
 
     return (
-        <div className="relative w-[3.25rem] h-[3.25rem] sm:w-20 sm:h-20">
+        <div className="relative w-[3.25rem] h-[3.25rem] md:w-[4.5rem] md:h-[4.5rem] lg:w-20 lg:h-20">
             <div
-                className={`w-full h-full ${cardColor} rounded-lg flex items-center justify-center text-white font-bold text-[10px] leading-tight sm:text-sm px-1 text-center shadow-lg border-2 overflow-hidden`}
+                className={`w-full h-full ${cardColor} rounded-lg flex items-center justify-center text-white font-bold text-[10px] leading-tight sm:text-xs md:text-xs lg:text-sm px-1 text-center shadow-lg border-2 overflow-hidden`}
             >
                 {(attribute === "year" || attribute === "cost" || attribute === "arena") &&
                 (status === "higher" || status === "lower") ? (
@@ -164,7 +164,7 @@ const CardPortrait = ({
                           game = "clashroyale",
                           zoom = 1.4,
                           focus = "center",
-                          sizeClass = "w-[3.25rem] h-[3.25rem] sm:w-20 sm:h-20",
+                          sizeClass = 'w-[3.25rem] h-[3.25rem] md:w-[4.5rem] md:h-[4.5rem] lg:w-20 lg:h-20',
                           variant = "full", // "full" | "icon"
                       }) => {
     const baseFrame =
@@ -909,13 +909,13 @@ const RushGame = () => {
                         {(hasStarted || correctHistory.length > 0) && (
                             <div className="hidden sm:block mb-4 overflow-x-auto overflow-y-hidden w-full">
                                 <div className="mx-auto" style={{ width: 'fit-content' }}>
-                                    <div className="grid grid-cols-[repeat(9,5rem)] gap-1">
+                                    <div className="grid grid-cols-[repeat(9,3.25rem)] md:grid-cols-[repeat(9,4.5rem)] lg:grid-cols-[repeat(9,5rem)] gap-1">
                                         <div className="text-center text-base font-bold text-white pb-2">
-                                            <span className="inline-block border-b-2 sm:border-b-4 border-white pb-1 sm:pb-2 w-[3.25rem] sm:w-20 text-[10px] leading-tight sm:text-base">Card</span>
+                                            <span className="inline-block border-b-2 sm:border-b-4 border-white pb-1 sm:pb-2 w-[3.25rem] md:w-[4.5rem] lg:w-20 text-[10px] leading-tight md:text-sm lg:text-base">Card</span>
                                         </div>
                                         {ATTRIBUTES.map((attr) => (
                                             <div key={attr.key} className="text-center text-base font-bold text-white pb-2">
-                                                <span className="inline-block border-b-2 sm:border-b-4 border-white pb-1 sm:pb-2 w-[3.25rem] sm:w-20 text-[10px] leading-tight sm:text-base">{attr.label}</span>
+                                                <span className="inline-block border-b-2 sm:border-b-4 border-white pb-1 sm:pb-2 w-[3.25rem] md:w-[4.5rem] lg:w-20 text-[10px] leading-tight md:text-sm lg:text-base">{attr.label}</span>
                                             </div>
                                         ))}
                                     </div>
@@ -979,7 +979,7 @@ const RushGame = () => {
                         <div className="hidden sm:block overflow-x-auto overflow-y-hidden w-full">
                             <div className="mx-auto space-y-4" style={{ width: 'fit-content' }}>
                                 {guesses.map((guess, rowIndex) => (
-                                    <div key={`${guess.card}-${rowIndex}`} className="grid grid-cols-[repeat(9,5rem)] gap-1">
+                                    <div key={`${guess.card}-${rowIndex}`} className="grid grid-cols-[repeat(9,3.25rem)] md:grid-cols-[repeat(9,4.5rem)] lg:grid-cols-[repeat(9,5rem)] gap-1">
                                         <CardPortrait name={guess.card} zoom={1.3} focus="center 60%" />
                                         {ATTRIBUTES.map((attr) => (
                                             <AttributeCard

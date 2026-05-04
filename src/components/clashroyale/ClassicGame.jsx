@@ -64,7 +64,7 @@ const AttributeCard = ({ attribute, value, status, isFlipping, delay = 0 }) => {
     const opacityClass = isVisible ? 'opacity-100' : 'opacity-0';
 
     return (
-        <div className={`relative w-[3.25rem] h-[3.25rem] sm:w-20 sm:h-20 perspective-1000 transition-opacity duration-500 ${opacityClass}`}>
+        <div className={`relative w-[3.25rem] h-[3.25rem] md:w-[4.5rem] md:h-[4.5rem] lg:w-20 lg:h-20 perspective-1000 transition-opacity duration-500 ${opacityClass}`}>
             <div className={`relative w-full h-full transform-style-3d transition-transform duration-700 ${flipClass} ${showBack ? 'rotate-y-180' : ''}`}>
                 {/* Front */}
                 <div className="absolute inset-0 w-full h-full bg-gray-300 border-2 border-gray-400 rounded-lg flex items-center justify-center backface-hidden">
@@ -99,7 +99,7 @@ const CardPortrait = ({
                           game = DEFAULT_GAME,
                           zoom = DEFAULT_ZOOM,
                           focus = 'center',
-                          sizeClass = 'w-[3.25rem] h-[3.25rem] sm:w-20 sm:h-20',
+                          sizeClass = 'w-[3.25rem] h-[3.25rem] md:w-[4.5rem] md:h-[4.5rem] lg:w-20 lg:h-20',
                       }) => {
     const slug = useMemo(() => slugify(name), [name]);
 
@@ -721,13 +721,13 @@ const ClassicGame = () => {
                             <div className="flex flex-col items-center mx-auto" style={{ width: 'fit-content' }}>
                                 {guesses.length > 0 && (
                                     <div className="mb-4">
-                                        <div className="grid grid-cols-[repeat(9,3.25rem)] sm:grid-cols-[repeat(9,5rem)] gap-1">
+                                        <div className="grid grid-cols-[repeat(9,3.25rem)] md:grid-cols-[repeat(9,4.5rem)] lg:grid-cols-[repeat(9,5rem)] gap-1">
                                             <div className="text-center text-base font-bold text-white pb-2">
-                                                <span className="inline-block border-b-2 sm:border-b-4 border-white pb-1 sm:pb-2 w-[3.25rem] sm:w-20 text-[10px] leading-tight sm:text-base">Card</span>
+                                                <span className="inline-block border-b-2 sm:border-b-4 border-white pb-1 sm:pb-2 w-[3.25rem] md:w-[4.5rem] lg:w-20 text-[10px] leading-tight md:text-sm lg:text-base">Card</span>
                                             </div>
                                             {attributes.map(attr => (
                                                 <div key={attr.key} className="text-center text-base font-bold text-white pb-2">
-                                                    <span className="inline-block border-b-2 sm:border-b-4 border-white pb-1 sm:pb-2 w-[3.25rem] sm:w-20 text-[10px] leading-tight sm:text-base">{attr.label}</span>
+                                                    <span className="inline-block border-b-2 sm:border-b-4 border-white pb-1 sm:pb-2 w-[3.25rem] md:w-[4.5rem] lg:w-20 text-[10px] leading-tight md:text-sm lg:text-base">{attr.label}</span>
                                                 </div>
                                             ))}
                                         </div>
@@ -736,7 +736,7 @@ const ClassicGame = () => {
 
                                 <div className="space-y-1.5 sm:space-y-4">
                                     {guesses.map((guess, rowIndex) => (
-                                        <div key={`${guess.card}-${rowIndex}`} className="grid grid-cols-[repeat(9,3.25rem)] sm:grid-cols-[repeat(9,5rem)] gap-1">
+                                        <div key={`${guess.card}-${rowIndex}`} className="grid grid-cols-[repeat(9,3.25rem)] md:grid-cols-[repeat(9,4.5rem)] lg:grid-cols-[repeat(9,5rem)] gap-1">
                                             <CardPortrait name={guess.card} zoom={1.30} focus="center 60%" />
                                             {attributes.map((attr, attrIndex) => (
                                                 <AttributeCard

@@ -281,7 +281,7 @@ const TimeBonusPop = ({ pop }) => {
 /* -------------------------------------------------------
    Rush constants
 ------------------------------------------------------- */
-const RUSH_SECONDS = 1 * 60;
+const RUSH_SECONDS = 1 * 90;
 const TIME_BONUS_MAX = 30;  // seconds
 const TIME_BONUS_MIN = 8;   // seconds
 const TIME_BONUS_STEP = 4; // seconds

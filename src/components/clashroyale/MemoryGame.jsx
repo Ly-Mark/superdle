@@ -235,10 +235,12 @@ export default function MemoryGame() {
             <div className="container mx-auto px-4 py-8">
                 {/* Title */}
                 <div className="text-center mb-6">
-                    <h1 className="text-5xl font-black text-white mb-2 tracking-tight">
-            <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-indigo-500 bg-clip-text text-transparent">
-              CLASHDLE
-            </span>
+                    <h1 className="mb-2">
+                        <img
+                            src="/wordmark.png"
+                            alt="Clashdle"
+                            className="mx-auto min-h-36 sm:h-28 md:h-28 w-auto"
+                        />
                     </h1>
                     <GameModeNav />
                 </div>

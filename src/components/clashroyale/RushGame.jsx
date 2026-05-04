@@ -626,11 +626,13 @@ const RushGame = () => {
               <div className="container mx-auto px-4 py-4 sm:py-8">
                   {/* Header */}
                   <div className="text-center mb-4 sm:mb-8">
-                      <h1 className="text-3xl sm:text-5xl font-black text-white mb-2 sm:mb-4 tracking-tight">
-            <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-indigo-500 bg-clip-text text-transparent">
-              CLASHDLE
-            </span>
-                    </h1>
+                      <h1 className="mb-2 sm:mb-4">
+                          <img
+                              src="/wordmark.png"
+                              alt="Clashdle"
+                              className="mx-auto min-h-36 sm:h-28 md:h-28 w-auto"
+                          />
+                      </h1>
                     <GameModeNav />
 
                     <div className="max-w-xl mx-auto bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-4 sm:p-6">

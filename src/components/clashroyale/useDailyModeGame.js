@@ -12,9 +12,10 @@ const getLocalDayKey = (d = new Date()) => {
 };
 
 export function useDailyModeGame({
-                                     storagePrefix,        // e.g. "clashle:classic" or "clashle:description"
+                                     storagePrefix,        // e.g. "clashdle:classic" or "clashdle:description"
                                      enableDailyLock = true,
                                      modeSalt = "classic",
+                                     statsMode = modeSalt, // localStorage key suffix for per-mode stats
                                  }) {
     const [targetCard] = useState(() => getDailyCard(cardsData, modeSalt));
     const [guesses, setGuesses] = useState([]);
@@ -24,7 +25,7 @@ export function useDailyModeGame({
     const [hydrated, setHydrated] = useState(false);
 
 
-    const [stats, setStats] = useState(() => loadStats());
+    const [stats, setStats] = useState(() => loadStats(statsMode));
     // const [showWinModal, setShowWinModal] = useState(false);
 
     const dayKey = useMemo(() => getLocalDayKey(), []);
@@ -102,7 +103,7 @@ export function useDailyModeGame({
         if (enableDailyLock && isWon) return;
 
         if (guesses.length === 0) {
-            setStats(markAttempt(dayKey));
+            setStats(markAttempt(statsMode, dayKey));
         }
 
         const name = String(cardObj.card).trim().toLowerCase();
@@ -119,7 +120,7 @@ export function useDailyModeGame({
 
     useEffect(() => {
         if (!isWon) return;
-        const updated = updateStatsOnWin(guesses.length, dayKey);
+        const updated = updateStatsOnWin(statsMode, guesses.length, dayKey);
         setStats(updated);
         // setShowWinModal(true);
         // eslint-disable-next-line react-hooks/exhaustive-deps

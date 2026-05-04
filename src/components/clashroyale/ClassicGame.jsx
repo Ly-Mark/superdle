@@ -714,9 +714,7 @@ const ClassicGame = () => {
                             guesses={guesses}
                             attributes={attributes}
                             stats={stats}
-                            // onOpenStats={() => setShowWinModal(true)} // keeps your modal for deeper stats if you like
-                            // shareUrl="https://your-domain.com"
-                            // nextModeHref="/clashroyale/quote"
+                            currentMode="classic"
                             shareUrl={shareUrlCR}
                             onShare={handleShare}
                         />

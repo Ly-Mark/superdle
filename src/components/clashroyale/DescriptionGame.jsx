@@ -270,8 +270,8 @@ export default function DescriptionGame() {
                             guesses={guesses}
                             attributes={[]} // no classic attributes in this mode
                             stats={stats}
+                            currentMode="description"
                             shareUrl={shareUrl}
-                            nextModeHref="/"
                             onShare={handleShare}
                         />
                     )}

@@ -1,6 +1,24 @@
 import React, { useMemo, useState } from 'react';
 import useNextMidnightCountdown from '../../hooks/useNextMidnightCountdown.js';
 import { buildShareText, copyToClipboard } from '../../utils/clashroyale/shareText.js';
+import { loadStats } from '../../utils/clashroyale/stats.js';
+
+// Suggest what to play next after a daily-mode win.
+// If the *other* daily mode is still un-attempted today, push them there to
+// keep the daily streak loop alive. Otherwise nudge to an endless mode.
+function getNextModeSuggestion(currentMode, dayKey) {
+    const otherDaily = currentMode === 'classic' ? 'description' : 'classic';
+    const otherStats = loadStats(otherDaily);
+    const otherDone = !!(otherStats && otherStats.attemptedDays && otherStats.attemptedDays[dayKey]);
+
+    if (!otherDone) {
+        return otherDaily === 'description'
+            ? { label: "Today's Description puzzle", desc: 'Guess by description', href: '/clashroyale/description' }
+            : { label: "Today's Classic puzzle", desc: 'Guess by attributes', href: '/clashroyale/classic' };
+    }
+    // Both dailies done — point to Rush.
+    return { label: 'Try Rush', desc: 'Race the clock', href: '/clashroyale/rush' };
+}
 
 // map statuses -> emojis
 const TILE = { correct: '🟩', close: '🟨', wrong: '🟥', higher: '🔻', lower: '🔺' };
@@ -92,8 +110,12 @@ export default function WinPanelCompact({
                                             stats,
                                             onOpenStats,                // optional
                                             shareUrl = '',
-                                            nextModeHref = '/clashroyale/quote',
+                                            currentMode,                 // 'classic' | 'description'
                                         }) {
+    const nextMode = useMemo(
+        () => getNextModeSuggestion(currentMode, dayKey),
+        [currentMode, dayKey]
+    );
     const { h, m, s } = useNextMidnightCountdown();
     const [copied, setCopied] = useState(false);
     const tz = getLocalIanaTz();
@@ -208,13 +230,13 @@ export default function WinPanelCompact({
                 <div
                     className="mt-4 flex items-center justify-between rounded-xl bg-white/5 border border-white/10 p-3 max-w-[640px] mx-auto">
                     <div className="flex items-center gap-2">
-                        <span className="text-2xl">💬</span>
+                        <span className="text-2xl">🎯</span>
                         <div className="text-blue-100 text-sm">
-                            <div className="font-semibold text-white">Next mode</div>
-                            <div className="opacity-80">Description - Guess based on a description</div>
+                            <div className="font-semibold text-white">{nextMode.label}</div>
+                            <div className="opacity-80">{nextMode.desc}</div>
                         </div>
                     </div>
-                    <a href={nextModeHref}
+                    <a href={nextMode.href}
                        className="px-3 py-2 rounded-lg bg-indigo-500 hover:bg-indigo-600 text-white font-bold">
                         Play
                     </a>

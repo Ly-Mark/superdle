@@ -662,6 +662,20 @@ const RushGame = () => {
                                 <div className="text-xs uppercase tracking-wide text-blue-200/80">Round</div>
                                 <div className="text-3xl font-black text-white">{roundIndex + 1}</div>
                             </div>
+
+                            {hasStarted && !isTimeUp && (
+                                <button
+                                    onClick={() => {
+                                        if (window.confirm('Restart the run? Your current score will be lost.')) {
+                                            handleNewRun();
+                                        }
+                                    }}
+                                    className="px-3 py-2 rounded-xl bg-white/5 hover:bg-white/15 border border-white/15 text-blue-100 text-xs font-semibold self-stretch flex items-center"
+                                    title="Restart this run"
+                                >
+                                    ↻ Restart
+                                </button>
+                            )}
                         </div>
 
                         {lastCorrect && !isTimeUp && (
@@ -790,6 +804,17 @@ const RushGame = () => {
                                     {/* LEFT: headline + key stats + CTA */}
                                     <div className="rounded-2xl bg-white/10 border border-white/15 p-4">
                                         <div className="text-white text-2xl font-black">Results</div>
+
+                                        {finalTarget && (
+                                            <div className="mt-3 rounded-xl bg-white/10 border border-white/15 p-3 flex items-center gap-3">
+                                                <CardPortrait name={finalTarget.card} variant="icon" sizeClass="w-12 h-12" zoom={1.05} />
+                                                <div className="min-w-0">
+                                                    <div className="text-blue-100/80 text-xs font-semibold uppercase tracking-wide">The card was</div>
+                                                    <div className="text-white font-black text-lg truncate">{finalTarget.card}</div>
+                                                </div>
+                                            </div>
+                                        )}
+
                                         <div className="mt-4 space-y-3">
                                             <div className="flex items-center justify-between bg-white/10 border border-white/10 rounded-xl px-3 py-2">
                                                 <span className="text-blue-100/80 text-sm font-semibold">Score</span>

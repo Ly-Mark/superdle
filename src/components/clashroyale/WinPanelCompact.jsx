@@ -3,7 +3,7 @@ import useNextMidnightCountdown from '../../hooks/useNextMidnightCountdown.js';
 import { buildShareText, copyToClipboard } from '../../utils/clashroyale/shareText.js';
 
 // map statuses -> emojis
-const TILE = { correct: '🟩', close: '🟨', wrong: '🟥', higher: '🔺', lower: '🔻' };
+const TILE = { correct: '🟩', close: '🟨', wrong: '🟥', higher: '🔻', lower: '🔺' };
 const toEmoji = (s) => TILE[s] || TILE.wrong;
 
 // thresholds for distribution colors

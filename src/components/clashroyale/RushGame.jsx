@@ -83,7 +83,9 @@ const AttributeCard = ({ attribute, value, status }) => {
 /* -------------------------------------------------------
    Emoji row (mobile-only) — tappable to expand full values
 ------------------------------------------------------- */
-const TILE_EMOJI = { correct: '🟩', close: '🟨', wrong: '🟥', higher: '🔺', lower: '🔻' };
+// Note: 'higher' = player's guess > target → render ▼ (target is lower, guess lower).
+// 'lower' = player's guess < target → render ▲. The status names describe the guess; the arrows describe the target.
+const TILE_EMOJI = { correct: '🟩', close: '🟨', wrong: '🟥', higher: '🔻', lower: '🔺' };
 const toEmoji = (s) => TILE_EMOJI[s] || TILE_EMOJI.wrong;
 
 // Tile size for emoji squares — also used by the mobile header.
@@ -92,74 +94,64 @@ const MOBILE_TILE = 'w-7 h-7 [@media(min-width:390px)]:w-8 [@media(min-width:390
 const MOBILE_NAME = 'w-16 h-7 [@media(min-width:390px)]:w-20 [@media(min-width:390px)]:h-8 [@media(min-width:430px)]:w-24 [@media(min-width:430px)]:h-9';
 const MOBILE_GAP  = 'gap-[3px] [@media(min-width:390px)]:gap-1';
 
-const EmojiRow = ({ guess, attributes, expanded, onToggle }) => (
-    <div className={`w-full transition-all ${expanded ? 'border-l-2 border-blue-300/50 pl-1' : 'border-l-2 border-transparent pl-1'}`}>
-        <button
-            type="button"
-            onClick={onToggle}
-            className={`flex items-center ${MOBILE_GAP} w-full justify-center px-1 py-1.5 rounded
-                        ${expanded ? 'bg-white/10' : 'hover:bg-white/5 active:bg-white/10'} transition-colors`}
-            aria-expanded={expanded}
-            aria-label={`${guess.card}, tap to ${expanded ? 'collapse' : 'expand'} details`}
-        >
-            <div className={`${MOBILE_NAME} rounded bg-white/10 border border-white/20 flex items-center justify-center px-1`}>
-                <span className="text-[10px] font-semibold text-white/90 truncate leading-none">
-                    {guess.card}
-                </span>
-            </div>
-            {attributes.map((attr) => (
-                <div
-                    key={attr.key}
-                    className={`${MOBILE_TILE} flex items-center justify-center text-[14px] leading-none select-none`}
-                >
-                    {toEmoji(guess.comparison?.[attr.key])}
-                </div>
-            ))}
-            <span className="ml-1 text-white/50 text-[10px] leading-none w-3 text-center">
-                {expanded ? '▾' : '▸'}
+const EmojiRow = ({ guess, attributes, selected, onSelect }) => (
+    <button
+        type="button"
+        onClick={onSelect}
+        className={`flex items-center ${MOBILE_GAP} w-full justify-center px-1 py-1.5 rounded
+                    border-l-2 transition-colors
+                    ${selected
+            ? 'bg-white/10 border-blue-300/70'
+            : 'border-transparent hover:bg-white/5 active:bg-white/10'}`}
+        aria-pressed={selected}
+        aria-label={`${guess.card}, ${selected ? 'currently selected' : 'tap to view details'}`}
+    >
+        <div className={`${MOBILE_NAME} rounded bg-white/10 border border-white/20 flex items-center justify-center px-1`}>
+            <span className="text-[10px] font-semibold text-white/90 truncate leading-none">
+                {guess.card}
             </span>
-        </button>
-
-        {/* Expanded panel: full attribute values in a 2-column list */}
-        {expanded && (
-            <div className="mt-1 mb-2 mx-2 rounded-lg bg-white/5 border border-white/15 p-2">
-                <div className="grid grid-cols-2 gap-x-3 gap-y-1">
-                    {attributes.map((attr) => {
-                        const status = guess.comparison?.[attr.key];
-                        const colorClass =
-                            status === 'correct' ? 'text-emerald-300' :
-                                status === 'close'   ? 'text-amber-300'   :
-                                    status === 'higher' || status === 'lower' ? 'text-rose-300' :
-                                        'text-rose-300';
-                        const arrow = status === 'higher' ? ' ▲' : status === 'lower' ? ' ▼' : '';
-                        return (
-                            <div key={attr.key} className="flex justify-between text-[11px] leading-tight">
-                                <span className="text-blue-100/70 mr-1">{attr.label}</span>
-                                <span className={`${colorClass} font-semibold text-right truncate`}>
-                                    {guess[attr.key]}{arrow}
-                                </span>
-                            </div>
-                        );
-                    })}
-                </div>
+        </div>
+        {attributes.map((attr) => (
+            <div
+                key={attr.key}
+                className={`${MOBILE_TILE} flex items-center justify-center text-[14px] leading-none select-none`}
+            >
+                {toEmoji(guess.comparison?.[attr.key])}
             </div>
-        )}
-    </div>
+        ))}
+    </button>
 );
 
-// Mobile header — abbreviated labels in same widths as emoji squares.
-// const HEADER_ABBREV = { rarity: 'R', cost: 'C', type: 'T', targets: 'Tg', healthCategory: 'H', arena: 'A', moveSpeed: 'Sp', year: 'Y' };
-
-const MobileHeader = ({ guessesCount }) => {
-    // 0 guesses: no header (caller already gates on guessesCount > 0, but be defensive).
-    // 1 guess: latest is auto-expanded showing all attributes — no hint needed.
-    // 2+ guesses: hint is meaningful — older rows are scannable, tap to drill in.
-    if (guessesCount < 2) return null;
+const DetailPanel = ({ guess, attributes }) => {
+    if (!guess) return null;
     return (
-        <div className="flex items-center justify-center px-1 mb-2">
-            <span className="text-[10px] text-blue-100/60">
-                Tap older guesses to expand
-            </span>
+        <div className="w-full max-w-sm mx-auto mb-2 rounded-lg bg-white/10 border border-white/20 p-2">
+            <div className="flex items-center justify-between mb-1.5 pb-1 border-b border-white/15">
+                <span className="text-[11px] font-bold text-white tracking-wide truncate">
+                    {guess.card}
+                </span>
+                <span className="text-[9px] text-blue-100/50 uppercase tracking-wider ml-2">
+                    Details
+                </span>
+            </div>
+            <div className="grid grid-cols-2 gap-x-3 gap-y-0.5">
+                {attributes.map((attr) => {
+                    const status = guess.comparison?.[attr.key];
+                    const colorClass =
+                        status === 'correct' ? 'text-emerald-300' :
+                            status === 'close'   ? 'text-amber-300'   :
+                                'text-rose-300';
+                    const arrow = status === 'higher' ? ' ▼' : status === 'lower' ? ' ▲' : '';
+                    return (
+                        <div key={attr.key} className="flex justify-between text-[10px] leading-none py-0.5">
+                            <span className="text-blue-100/70 mr-1 shrink-0">{attr.label}</span>
+                            <span className={`${colorClass} font-semibold text-right truncate`}>
+                                {guess[attr.key]}{arrow}
+                            </span>
+                        </div>
+                    );
+                })}
+            </div>
         </div>
     );
 };
@@ -947,32 +939,38 @@ const RushGame = () => {
                             </div>
                         )}
 
-                        {/* Mobile: header + all emoji rows. Latest auto-expanded. */}
+                        {/* Mobile: pinned detail panel above the emoji row list. */}
                         <div className="sm:hidden w-full flex flex-col items-center px-2">
-                            {guesses.length > 0 && <MobileHeader guessesCount={guesses.length} />}
                             {guesses.length > 0 && (() => {
                                 // Latest guess is at index 0 (newest-first ordering).
                                 const latestRowId = `${guesses[0].card}-0`;
-                                // null = use default (latest auto-expanded).
-                                // '' (empty string) = user explicitly collapsed everything.
-                                // any other string = user explicitly expanded that row.
-                                const effectiveExpanded = expandedRowId ?? latestRowId;
+                                // null = use default (latest is the selected one).
+                                // any other string = user has selected a different row.
+                                const effectiveSelected = expandedRowId ?? latestRowId;
+                                // Find which guess corresponds to the selected rowId, for the panel.
+                                const selectedGuess =
+                                    guesses.find((g, idx) => `${g.card}-${idx}` === effectiveSelected) ??
+                                    guesses[0];
+
                                 return (
-                                    <div className="w-full max-w-sm mx-auto space-y-0.5">
-                                        {guesses.map((guess, idx) => {
-                                            const rowId = `${guess.card}-${idx}`;
-                                            const isExpanded = effectiveExpanded === rowId;
-                                            return (
-                                                <EmojiRow
-                                                    key={rowId}
-                                                    guess={guess}
-                                                    attributes={ATTRIBUTES}
-                                                    expanded={isExpanded}
-                                                    onToggle={() => setExpandedRowId(isExpanded ? '' : rowId)}
-                                                />
-                                            );
-                                        })}
-                                    </div>
+                                    <>
+                                        <DetailPanel guess={selectedGuess} attributes={ATTRIBUTES} />
+                                        <div className="w-full max-w-sm mx-auto space-y-0.5">
+                                            {guesses.map((guess, idx) => {
+                                                const rowId = `${guess.card}-${idx}`;
+                                                const isSelected = effectiveSelected === rowId;
+                                                return (
+                                                    <EmojiRow
+                                                        key={rowId}
+                                                        guess={guess}
+                                                        attributes={ATTRIBUTES}
+                                                        selected={isSelected}
+                                                        onSelect={() => setExpandedRowId(rowId)}
+                                                    />
+                                                );
+                                            })}
+                                        </div>
+                                    </>
                                 );
                             })()}
                         </div>

@@ -272,7 +272,7 @@ export default function MemoryGame() {
                                     autoComplete="off"
                                     spellCheck={false}
                                     disabled={timeLeft === 0}
-                                    className="w-full px-5 py-4 text-lg font-semibold text-gray-800 bg-white/95 backdrop-blur-sm border-2 border-blue-300 rounded-2xl shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-400/50 focus:border-blue-400 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+                                    className="min-w-0 flex-1 px-5 py-4 text-lg font-semibold text-gray-800 bg-white/95 backdrop-blur-sm border-2 border-blue-300 rounded-2xl shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-400/50 focus:border-blue-400 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
                                 />
                                 <button
                                     type="submit"

@@ -64,14 +64,14 @@ const AttributeCard = ({ attribute, value, status, isFlipping, delay = 0 }) => {
     const opacityClass = isVisible ? 'opacity-100' : 'opacity-0';
 
     return (
-        <div className={`relative w-20 h-20 perspective-1000 transition-opacity duration-500 ${opacityClass}`}>
+        <div className={`relative w-[3.25rem] h-[3.25rem] md:w-[4.5rem] md:h-[4.5rem] lg:w-20 lg:h-20 perspective-1000 transition-opacity duration-500 ${opacityClass}`}>
             <div className={`relative w-full h-full transform-style-3d transition-transform duration-700 ${flipClass} ${showBack ? 'rotate-y-180' : ''}`}>
                 {/* Front */}
                 <div className="absolute inset-0 w-full h-full bg-gray-300 border-2 border-gray-400 rounded-lg flex items-center justify-center backface-hidden">
-                    <span className="text-lg text-gray-600 font-semibold">?</span>
+                    <span className="text-base sm:text-lg text-gray-600 font-semibold">?</span>
                 </div>
                 {/* Back */}
-                <div className={`absolute inset-0 w-full h-full ${cardColor} rounded-lg flex items-center justify-center backface-hidden rotate-y-180 text-white font-bold text-sm px-1 text-center shadow-lg border-2 overflow-hidden`}>
+                <div className={`absolute inset-0 w-full h-full ${cardColor} rounded-lg flex items-center justify-center backface-hidden rotate-y-180 text-white font-bold text-[10px] leading-tight sm:text-sm px-1 text-center shadow-lg border-2 overflow-hidden`}>
                     {(attribute === 'year' || attribute === 'cost' || attribute === 'arena') && (status === 'higher' || status === 'lower') ? (
                         <div className="relative flex items-center justify-center w-full h-full">
                             <div className={`absolute inset-0 flex items-center justify-center ${status === 'lower' ? 'pt-2' : ''}`}>
@@ -94,7 +94,13 @@ const AttributeCard = ({ attribute, value, status, isFlipping, delay = 0 }) => {
 const DEFAULT_GAME = 'clashroyale';
 const DEFAULT_ZOOM = 1.40; // crop baked-in borders a bit
 
-const CardPortrait = ({ name, game = DEFAULT_GAME, zoom = DEFAULT_ZOOM, focus = 'center' }) => {
+const CardPortrait = ({
+                          name,
+                          game = DEFAULT_GAME,
+                          zoom = DEFAULT_ZOOM,
+                          focus = 'center',
+                          sizeClass = 'w-[3.25rem] h-[3.25rem] md:w-[4.5rem] md:h-[4.5rem] lg:w-20 lg:h-20',
+                      }) => {
     const slug = useMemo(() => slugify(name), [name]);
 
     const sources = useMemo(
@@ -119,12 +125,12 @@ const CardPortrait = ({ name, game = DEFAULT_GAME, zoom = DEFAULT_ZOOM, focus = 
 
     return (
         <div
-            className="
-        relative w-20 h-20 rounded-xl overflow-hidden
+            className={`
+        relative ${sizeClass} rounded-xl overflow-hidden
         shadow-[0_8px_18px_rgba(0,0,0,0.35)]
         ring-1 ring-white/20
         bg-white/5
-      "
+      `}
         >
             {/* IMAGE (zoom-cropped) or TEXT FALLBACK */}
             {!failedAll ? (
@@ -139,7 +145,7 @@ const CardPortrait = ({ name, game = DEFAULT_GAME, zoom = DEFAULT_ZOOM, focus = 
                 />
             ) : (
                 <div className="absolute inset-0 flex items-center justify-center px-1">
-          <span className="text-[11px] font-bold text-gray-100 text-center leading-tight">
+          <span className="text-[9px] sm:text-[11px] font-bold text-gray-100 text-center leading-tight">
             {name}
           </span>
                 </div>
@@ -241,12 +247,12 @@ const SuggestionItem = ({ name, onClick, isFirst, game = 'clashroyale' }) => {
    Legend
 ------------------------------------------------------- */
 const InlineLegend = ({ onClose }) => (
-    <div className="w-96 mx-auto bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6 mt-8">
+    <div className="w-full max-w-sm sm:max-w-md mx-auto bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6 mt-8">
         <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-bold text-white underline underline-offset-4">Color Indicators</h3>
             <button onClick={onClose} className="bg-red-500 hover:bg-red-600 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs transition-colors">✕</button>
         </div>
-        <div className="flex justify-center space-x-3 mb-3">
+        <div className="flex flex-wrap justify-center gap-3 mb-3">
             <div className="text-center">
                 <div className="w-10 h-10 bg-emerald-500 rounded-lg mb-1 border-2 border-emerald-600"></div>
                 <span className="text-white text-xs font-medium">Correct</span>
@@ -297,12 +303,12 @@ const HintCircleButton = ({ name, icon, threshold, guessesCount, revealed, canRe
             type="button"
             onClick={() => canReveal && onReveal()}
             disabled={!canReveal}
-            className={`flex flex-col items-center justify-center w-28 h-28 rounded-full shadow-lg transition-all duration-300
+            className={`flex flex-col items-center justify-center w-20 h-20 sm:w-28 sm:h-28 rounded-full shadow-lg transition-all duration-300
                   ${bgColor} ${borderColor} border-2 ${hoverClass} ${cursorClass} relative text-center p-2`}
             aria-disabled={!canReveal}
             aria-label={name}
         >
-            <div className="text-4xl mb-1">{icon}</div>
+            <div className="text-2xl sm:text-4xl mb-1">{icon}</div>
             <p className={`font-semibold text-xs ${textColor} leading-tight mb-1`}>{name}</p>
             <p className={`text-xs ${textColor} leading-tight`}>
                 {isUnlocked ? (revealed ? 'Revealed' : (isWon ? '—' : 'Click to Reveal')) : `In ${threshold - guessesCount} tries`}
@@ -329,7 +335,7 @@ const HintsPanel = ({
 
             {/* Circles row */}
             {guessesCount >= 2 && (
-                <div className="flex flex-wrap justify-center items-start gap-4">
+                <div className="flex flex-wrap justify-center items-start gap-3 sm:gap-4">
                     {HINT_DEFS.map(h => {
                         const revealed  = !!revealedHints[h.key];
                         const canReveal = !isWon && !revealed && guessesCount >= h.threshold;
@@ -654,7 +660,7 @@ const ClassicGame = () => {
                 <div className="max-w-6xl mx-auto px-4">
                     {/* Search */}
                     <div className="relative mb-8 flex justify-center">
-                        <div className="relative w-96">
+                        <div className="relative w-full max-w-sm sm:max-w-md">
                             <input
                                 type="text"
                                 value={inputValue}
@@ -676,21 +682,21 @@ const ClassicGame = () => {
                                     <span className="text-white text-sm font-bold">🔍</span>
                                 </div>
                             </div>
-                        </div>
 
-                        {showSuggestions && inputValue.length > 0 && filteredCards.length > 0 && !isWon && (
-                            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-96 mt-2 bg-white/95 backdrop-blur-sm border border-blue-200 rounded-xl shadow-2xl z-50 max-h-60 overflow-y-auto">
-                                {filteredCards.slice(0, 8).map((card, index) => (
-                                    <SuggestionItem
-                                        key={card.card}
-                                        name={card.card}
-                                        isFirst={index === 0}
-                                        onClick={() => handleGuess(card)}
-                                        game="clashroyale"
-                                    />
-                                ))}
-                            </div>
-                        )}
+                            {showSuggestions && inputValue.length > 0 && filteredCards.length > 0 && !isWon && (
+                                <div className="absolute top-full left-0 right-0 mt-2 bg-white/95 backdrop-blur-sm border border-blue-200 rounded-xl shadow-2xl z-50 max-h-60 overflow-y-auto">
+                                    {filteredCards.slice(0, 8).map((card, index) => (
+                                        <SuggestionItem
+                                            key={card.card}
+                                            name={card.card}
+                                            isFirst={index === 0}
+                                            onClick={() => handleGuess(card)}
+                                            game="clashroyale"
+                                        />
+                                    ))}
+                                </div>
+                            )}
+                        </div>
                     </div>
 
                     {isWon && (
@@ -710,44 +716,48 @@ const ClassicGame = () => {
                     )}
 
                     {/* Guess Grid */}
-                    <div className="flex flex-col items-center">
-                        {guesses.length > 0 && (
-                            <div className="mb-4">
-                                <div className="grid grid-cols-[repeat(9,5rem)] gap-1">
-                                    <div className="text-center text-base font-bold text-white pb-2">
-                                        <span className="inline-block border-b-4 border-white pb-2 w-20">Card</span>
+                    <div className="flex flex-col items-center min-h-[60vh] sm:min-h-0">
+                        <div className="overflow-x-auto overflow-y-hidden -mx-4 px-4 sm:mx-0 sm:px-0 w-full">
+                            <div className="flex flex-col items-center mx-auto" style={{ width: 'fit-content' }}>
+                                {guesses.length > 0 && (
+                                    <div className="mb-4">
+                                        <div className="grid grid-cols-[repeat(9,3.25rem)] md:grid-cols-[repeat(9,4.5rem)] lg:grid-cols-[repeat(9,5rem)] gap-1">
+                                            <div className="text-center text-base font-bold text-white pb-2">
+                                                <span className="inline-block border-b-2 sm:border-b-4 border-white pb-1 sm:pb-2 w-[3.25rem] md:w-[4.5rem] lg:w-20 text-[10px] leading-tight md:text-sm lg:text-base">Card</span>
+                                            </div>
+                                            {attributes.map(attr => (
+                                                <div key={attr.key} className="text-center text-base font-bold text-white pb-2">
+                                                    <span className="inline-block border-b-2 sm:border-b-4 border-white pb-1 sm:pb-2 w-[3.25rem] md:w-[4.5rem] lg:w-20 text-[10px] leading-tight md:text-sm lg:text-base">{attr.label}</span>
+                                                </div>
+                                            ))}
+                                        </div>
                                     </div>
-                                    {attributes.map(attr => (
-                                        <div key={attr.key} className="text-center text-base font-bold text-white pb-2">
-                                            <span className="inline-block border-b-4 border-white pb-2 w-20">{attr.label}</span>
+                                )}
+
+                                <div className="space-y-1.5 sm:space-y-4">
+                                    {guesses.map((guess, rowIndex) => (
+                                        <div key={`${guess.card}-${rowIndex}`} className="grid grid-cols-[repeat(9,3.25rem)] md:grid-cols-[repeat(9,4.5rem)] lg:grid-cols-[repeat(9,5rem)] gap-1">
+                                            <CardPortrait name={guess.card} zoom={1.30} focus="center 60%" />
+                                            {attributes.map((attr, attrIndex) => (
+                                                <AttributeCard
+                                                    key={`${attr.key}-${rowIndex}`}
+                                                    attribute={attr.key}
+                                                    value={guess[attr.key]}
+                                                    status={guess.comparison ? guess.comparison[attr.key] : ''}
+                                                    isFlipping={flippingRows.has(rowIndex)}
+                                                    delay={attrIndex * 500}
+                                                />
+                                            ))}
                                         </div>
                                     ))}
                                 </div>
                             </div>
-                        )}
-
-                        <div className="space-y-4">
-                            {guesses.map((guess, rowIndex) => (
-                                <div key={`${guess.card}-${rowIndex}`} className="grid grid-cols-[repeat(9,5rem)] gap-1">
-                                    <CardPortrait name={guess.card} zoom={1.30} focus="center 60%" />
-                                    {attributes.map((attr, attrIndex) => (
-                                        <AttributeCard
-                                            key={`${attr.key}-${rowIndex}`}
-                                            attribute={attr.key}
-                                            value={guess[attr.key]}
-                                            status={guess.comparison ? guess.comparison[attr.key] : ''}
-                                            isFlipping={flippingRows.has(rowIndex)}
-                                            delay={attrIndex * 500}
-                                        />
-                                    ))}
-                                </div>
-                            ))}
                         </div>
                     </div>
 
                     {/* Instructions */}
                     {guesses.length === 0 && (
-                        <div className="w-96 mx-auto bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6 mt-8">
+                        <div className="w-full max-w-sm sm:max-w-md mx-auto bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6 mt-8">
                             <h2 className="text-xl font-bold text-white mb-4 flex items-center justify-center underline decoration-2 underline-offset-4">
                                 How to Play
                             </h2>

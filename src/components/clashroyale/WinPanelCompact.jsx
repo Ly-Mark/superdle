@@ -3,7 +3,7 @@ import useNextMidnightCountdown from '../../hooks/useNextMidnightCountdown.js';
 import { buildShareText, copyToClipboard } from '../../utils/clashroyale/shareText.js';
 
 // map statuses -> emojis
-const TILE = { correct: '🟩', close: '🟨', wrong: '🟥', higher: '🔺', lower: '🔻' };
+const TILE = { correct: '🟩', close: '🟨', wrong: '🟥', higher: '🔻', lower: '🔺' };
 const toEmoji = (s) => TILE[s] || TILE.wrong;
 
 // thresholds for distribution colors
@@ -106,9 +106,9 @@ export default function WinPanelCompact({
     const slug = useMemo(() => String(cardName).toLowerCase().replace(/[^a-z0-9]+/g, '-'), [cardName]);
 
     return (
-        <div className="mx-auto my-4 overflow-x-auto" style={{maxWidth: '100%'}}>
+        <div className="mx-auto my-4 w-full">
             <div
-                className="w-[704px] h-[704px] mx-auto mb-6 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-xl p-4 overflow-hidden">
+                className="w-full max-w-[704px] mx-auto mb-6 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-xl p-4 overflow-hidden">
 
                 {/* centered win message */}
                 <div className="flex flex-col items-center text-center">

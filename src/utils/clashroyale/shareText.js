@@ -1,12 +1,14 @@
 import { buildUrl } from '../shareBase.js';
 
 // Map your comparison statuses to emojis
+// Note: 'higher' = player's guess > target → render ▼ (target is lower, guess lower).
+// 'lower' = player's guess < target → render ▲. The status names describe the guess; the arrows describe the target.
 const TILE = {
     correct: '🟩',
     close:   '🟨',
     wrong:   '🟥',
-    higher:  '🔺',
-    lower:   '🔻',
+    higher:  '🔻',
+    lower:   '🔺',
 };
 
 const statusToEmoji = (attrKey, status) => {

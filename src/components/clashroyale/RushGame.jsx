@@ -87,10 +87,10 @@ const TILE_EMOJI = { correct: '🟩', close: '🟨', wrong: '🟥', higher: '�
 const toEmoji = (s) => TILE_EMOJI[s] || TILE_EMOJI.wrong;
 
 // Tile size for emoji squares — also used by the mobile header.
-// 8 attrs + 1 name pill + 8 gaps × 2px = ~248px in a 360px viewport. Plenty of margin.
-const MOBILE_TILE = 'w-6 h-6';        // 24px — comfortable tap target row, fits everything
-const MOBILE_NAME = 'w-16 h-6';       // 64px name pill on the left
-const MOBILE_GAP  = 'gap-[2px]';
+// Scales up on larger phones (390px+) so we don't waste horizontal space.
+const MOBILE_TILE = 'w-7 h-7 [@media(min-width:390px)]:w-8 [@media(min-width:390px)]:h-8 [@media(min-width:430px)]:w-9 [@media(min-width:430px)]:h-9';
+const MOBILE_NAME = 'w-16 h-7 [@media(min-width:390px)]:w-20 [@media(min-width:390px)]:h-8 [@media(min-width:430px)]:w-24 [@media(min-width:430px)]:h-9';
+const MOBILE_GAP  = 'gap-[3px] [@media(min-width:390px)]:gap-1';
 
 const EmojiRow = ({ guess, attributes, expanded, onToggle }) => (
     <div className="w-full">
@@ -147,18 +147,11 @@ const EmojiRow = ({ guess, attributes, expanded, onToggle }) => (
 // Mobile header — abbreviated labels in same widths as emoji squares.
 const HEADER_ABBREV = { rarity: 'R', cost: 'C', type: 'T', targets: 'Tg', healthCategory: 'H', arena: 'A', moveSpeed: 'Sp', year: 'Y' };
 
-const MobileHeader = ({ attributes }) => (
-    <div className={`flex items-center ${MOBILE_GAP} justify-center px-1 mb-1`}>
-        <div className={`${MOBILE_NAME} flex items-center justify-center`}>
-            <span className="text-[10px] font-bold text-white/80 uppercase tracking-wide">Card</span>
-        </div>
-        {attributes.map((attr) => (
-            <div key={attr.key} className={`${MOBILE_TILE} flex items-center justify-center`}>
-                <span className="text-[10px] font-bold text-white/80 uppercase">
-                    {HEADER_ABBREV[attr.key] || attr.label[0]}
-                </span>
-            </div>
-        ))}
+const MobileHeader = ({ attributes: _attributes }) => (
+    <div className="flex items-center justify-center px-1 mb-2">
+        <span className="text-[10px] text-blue-100/60 italic">
+            Tap a guess to see attribute details
+        </span>
     </div>
 );
 

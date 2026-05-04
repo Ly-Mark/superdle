@@ -716,7 +716,7 @@ const ClassicGame = () => {
                     )}
 
                     {/* Guess Grid */}
-                    <div className="flex flex-col items-center">
+                    <div className="flex flex-col items-center min-h-[60vh] sm:min-h-0">
                         <div className="overflow-x-auto overflow-y-hidden -mx-4 px-4 sm:mx-0 sm:px-0 w-full">
                             <div className="flex flex-col items-center mx-auto" style={{ width: 'fit-content' }}>
                                 {guesses.length > 0 && (
@@ -734,9 +734,9 @@ const ClassicGame = () => {
                                     </div>
                                 )}
 
-                                <div className="space-y-4">
+                                <div className="space-y-1.5 sm:space-y-4">
                                     {guesses.map((guess, rowIndex) => (
-                                        <div key={`${guess.card}-${rowIndex}`} className="grid grid-cols-[repeat(9,5rem)] gap-1">
+                                        <div key={`${guess.card}-${rowIndex}`} className="grid grid-cols-[repeat(9,3.25rem)] sm:grid-cols-[repeat(9,5rem)] gap-1">
                                             <CardPortrait name={guess.card} zoom={1.30} focus="center 60%" />
                                             {attributes.map((attr, attrIndex) => (
                                                 <AttributeCard

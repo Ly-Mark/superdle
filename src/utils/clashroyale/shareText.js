@@ -22,7 +22,7 @@ const statusToEmoji = (attrKey, status) => {
 
 // --- Daily index ---
 // Original (UTC-based):
-const EPOCH_ISO = '2025-01-01T00:00:00';
+const EPOCH_ISO = '2026-05-07T00:00:00Z'; // trailing Z = UTC
 export const getDayIndex = (d = new Date()) =>
     Math.floor( (d - new Date(EPOCH_ISO)) / 86400000 );
 

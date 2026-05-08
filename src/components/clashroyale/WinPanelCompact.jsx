@@ -111,6 +111,8 @@ export default function WinPanelCompact({
                                             onOpenStats,                // optional
                                             shareUrl = '',
                                             currentMode,                 // 'classic' | 'description'
+                                            onShare,
+                                            shareTextOverride,
                                         }) {
     const nextMode = useMemo(
         () => getNextModeSuggestion(currentMode, dayKey),
@@ -121,9 +123,12 @@ export default function WinPanelCompact({
     const tz = getLocalIanaTz();
     const utcOff = getUtcOffsetLabel();
 
-    const shareText = useMemo(() => buildShareText({
-        dayIndex, guessCount: guesses.length, attributes, guesses, url: shareUrl
-    }), [dayIndex, guesses, attributes, shareUrl]);
+    const shareText = useMemo(() => {
+        if (shareTextOverride) return shareTextOverride;
+        return buildShareText({
+            dayIndex, guessCount: guesses.length, attributes, guesses, url: shareUrl
+        });
+    }, [shareTextOverride, dayIndex, guesses, attributes, shareUrl]);
 
     const slug = useMemo(() => String(cardName).toLowerCase().replace(/[^a-z0-9]+/g, '-'), [cardName]);
 

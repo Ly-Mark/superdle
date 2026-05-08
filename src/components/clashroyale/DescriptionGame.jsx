@@ -116,19 +116,16 @@ export default function DescriptionGame() {
     const shareUrl = useMemo(() => buildUrl("/clashroyale/description"), []);
 
     const handleShare = async () => {
-        const text = buildShareText({
-            dayIndex,
-            guessCount: guesses.length,
-            attributes: [], // no attribute tiles in this mode yet
-            guesses: [],    // no grid share yet
-            url: shareUrl,
-        });
+        const tries = guesses.length;
+        const tiles = guesses
+            .map((g) => (g.card === targetCard.card ? '🟩' : '🟥'))
+            .join(''); // <-- empty string, NOT '\n'
+
+        const header = `CLASHDLE #${dayIndex} — ${tries} ${tries === 1 ? 'try' : 'tries'}`;
+        const text = `${header}\n${tiles}\n${shareUrl}`;
 
         if (navigator.share) {
-            try {
-                await navigator.share({ text });
-                return;
-            } catch {}
+            try { await navigator.share({ text }); return; } catch {}
         }
         await copyToClipboard(text);
     };

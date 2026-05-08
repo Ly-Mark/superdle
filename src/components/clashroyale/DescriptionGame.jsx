@@ -2,7 +2,6 @@ import React, { useMemo, useState, useEffect } from "react";
 import ClashroyaleBackground from "../../components/clashroyale/CRBackground.jsx";
 import CardThumb from "../../components/clashroyale/CardThumb.jsx";
 import WinPanelCompact from "../../components/clashroyale/WinPanelCompact.jsx";
-import { buildShareText, copyToClipboard } from "../../utils/clashroyale/shareText.js";
 import { buildUrl } from "../../utils/shareBase.js";
 import GameModeNav from "./GameModeNav";
 
@@ -115,20 +114,14 @@ export default function DescriptionGame() {
 
     const shareUrl = useMemo(() => buildUrl("/clashroyale/description"), []);
 
-    const handleShare = async () => {
+    const shareText = useMemo(() => {
         const tries = guesses.length;
-        const tiles = guesses
+        const tiles = [...guesses].reverse()
             .map((g) => (g.card === targetCard.card ? '🟩' : '🟥'))
-            .join(''); // <-- empty string, NOT '\n'
-
+            .join('');
         const header = `CLASHDLE #${dayIndex} — ${tries} ${tries === 1 ? 'try' : 'tries'}`;
-        const text = `${header}\n${tiles}\n${shareUrl}`;
-
-        if (navigator.share) {
-            try { await navigator.share({ text }); return; } catch {}
-        }
-        await copyToClipboard(text);
-    };
+        return `${header}\n${tiles}\n${shareUrl}`;
+    }, [guesses, targetCard.card, dayIndex, shareUrl]);
 
     const prompt = targetCard.description || targetCard.hint1 || "No description available.";
 
@@ -244,6 +237,21 @@ export default function DescriptionGame() {
                         </div>
                     </div>
 
+                    {/* Win panel (reuse existing component) */}
+                    {isWon && (
+                        <WinPanelCompact
+                            cardName={targetCard.card}
+                            dayIndex={dayIndex}
+                            dayKey={dayKey}
+                            guesses={guesses}
+                            attributes={[]}
+                            stats={stats}
+                            currentMode="description"
+                            shareUrl={shareUrl}
+                            shareTextOverride={shareText}
+                        />
+                    )}
+
                     {/* Guess History (tiles) */}
                     {guesses.length > 0 && (
                         <div className="max-w-md mx-auto mt-6 space-y-3">
@@ -258,20 +266,6 @@ export default function DescriptionGame() {
                         </div>
                     )}
 
-                    {/* Win panel (reuse existing component) */}
-                    {isWon && (
-                        <WinPanelCompact
-                            cardName={targetCard.card}
-                            dayIndex={dayIndex}
-                            dayKey={dayKey}
-                            guesses={guesses}
-                            attributes={[]} // no classic attributes in this mode
-                            stats={stats}
-                            currentMode="description"
-                            shareUrl={shareUrl}
-                            onShare={handleShare}
-                        />
-                    )}
                 </div>
             </div>
         </ClashroyaleBackground>

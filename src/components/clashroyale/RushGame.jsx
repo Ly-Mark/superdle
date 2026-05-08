@@ -846,9 +846,9 @@ const RushGame = () => {
 
                                         <button
                                             onClick={handleNewRun}
-                                            className="mt-4 w-full px-4 py-3 rounded-2xl bg-emerald-500/30 hover:bg-emerald-500/40 border border-emerald-200/30 text-emerald-50 font-black shadow-lg"
+                                            className="mt-4 w-full px-5 py-3.5 rounded-2xl bg-emerald-600/90 hover:bg-emerald-500 active:bg-emerald-700 border border-emerald-400/40 text-white font-bold text-base shadow-md shadow-emerald-900/30 hover:shadow-emerald-500/30 hover:scale-[1.01] active:scale-[0.99] transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-emerald-400/60"
                                         >
-                                            New Game
+                                            New Game →
                                         </button>
 
                                         <div className="mt-3 text-xs text-blue-100/70">

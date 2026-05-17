@@ -16,11 +16,17 @@
 import { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
+import SiteFooter from './components/layout/SiteFooter.jsx';
 
 const ClassicGame = lazy(() => import('./components/clashroyale/ClassicGame.jsx'));
 const DescriptionGame   = lazy(() => import('./components/clashroyale/DescriptionGame'));
 const RushGame   = lazy(() => import('./components/clashroyale/RushGame.jsx'));
 const MemoryGame    = lazy(() => import('./components/clashroyale/MemoryGame.jsx'));
+
+const AboutPage   = lazy(() => import('./pages/AboutPage.jsx'));
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage.jsx'));
+const ContactPage = lazy(() => import('./pages/ContactPage.jsx'));
+const TermsPage   = lazy(() => import('./pages/TermsPage.jsx'));
 
 export default function App() {
     return (
@@ -31,9 +37,16 @@ export default function App() {
                     <Route path="/clashroyale/description" element={<DescriptionGame />} />
                     <Route path="/clashroyale/rush" element={<RushGame />} />
                     <Route path="/clashroyale/memory" element={<MemoryGame />} />
+
+                    <Route path="/about"   element={<AboutPage />} />
+                    <Route path="/privacy" element={<PrivacyPage />} />
+                    <Route path="/contact" element={<ContactPage />} />
+                    <Route path="/terms"   element={<TermsPage />} />
+
                     <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
             </Suspense>
+            <SiteFooter />
         </BrowserRouter>
     );
 }

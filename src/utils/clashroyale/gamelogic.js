@@ -18,7 +18,7 @@ const normalizeMulti = (val) =>
         .toLowerCase()
         .replace(/\s+and\s+/g, '/')   // "Air and Ground" → "Air/Ground" (safety)
         .replace(/\s*&\s*/g, '/')     // "Air & Ground"   → "Air/Ground"
-        .split(/[\/,]+/)              // split on "/", "&", ","
+        .split(/[/,]+/)              // split on "/", "&", ","
         .map(s => s.trim())
         .filter(Boolean);
 

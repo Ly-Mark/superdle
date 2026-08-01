@@ -38,18 +38,9 @@ export default function HomeContent() {
                 Clashdle — Daily Clash Royale Card Guessing Game
             </h1>
 
-            <h2 className={h2}>How to play</h2>
-            <p>
-                Every day Clashdle picks one Clash Royale card, and your job is to work
-                out which one. Type any card name to make a guess. Each guess comes back
-                as a row of coloured tiles comparing it to the answer: green means that
-                attribute matches, yellow means it partly matches — a card that hits both
-                air and ground when the answer only hits ground — and red means no match
-                at all. Elixir cost, release year, and arena also show an arrow telling
-                you whether the answer is higher or lower than your guess. Keep going
-                until you land it. Hints unlock as you accumulate guesses, and a new card
-                arrives at midnight.
-            </p>
+            {/* No "How to play" section here. The <HowToPlay> block higher up the
+                page covers it in more detail and is checked against the code —
+                this used to duplicate it, less accurately. */}
 
             <h2 className={h2}>Game modes</h2>
             <p>

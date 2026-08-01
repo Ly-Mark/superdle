@@ -8,7 +8,11 @@
 // of this from anyone — human or bot — without JS.
 //
 // `steps` is [{ heading, body }]. `body` may be a string or JSX.
-export default function HowToPlay({ tagline, steps }) {
+//
+// Open by default: a new player shouldn't have to click three times to find out
+// how the game works. They still collapse, so a returning player can fold them
+// away. `open` only sets the initial state — the browser tracks it after that.
+export default function HowToPlay({ tagline, steps, defaultOpen = true }) {
     return (
         <section className="max-w-2xl mx-auto mt-8 text-left">
             <h2 className="text-lg font-bold text-white">How to play</h2>
@@ -19,7 +23,7 @@ export default function HowToPlay({ tagline, steps }) {
             <ol className="divide-y divide-white/10 border-y border-white/10">
                 {steps.map(({ heading, body }, i) => (
                     <li key={heading}>
-                        <details className="group py-3">
+                        <details className="group py-3" open={defaultOpen}>
                             <summary className="cursor-pointer list-none flex items-start gap-3 text-white font-semibold marker:content-['']">
                                 <span
                                     aria-hidden="true"

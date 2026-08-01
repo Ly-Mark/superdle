@@ -7,6 +7,14 @@ import reactRefresh from 'eslint-plugin-react-refresh';
 export default [
     { ignores: ['dist', 'node_modules'] },
     {
+        // Build-time files. These run in Node, not the browser, so `process`,
+        // `__dirname` and friends are legitimately available here.
+        files: ['vite.config.js', 'scripts/**/*.{js,mjs}', 'src/prerender.jsx'],
+        languageOptions: {
+            globals: { ...globals.node },
+        },
+    },
+    {
         files: ['**/*.{js,jsx}'],
         languageOptions: {
             ecmaVersion: 2022,

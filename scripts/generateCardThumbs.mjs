@@ -31,6 +31,19 @@ const OUT = path.join(SRC, 'thumb');
 // of cards, because the right crop is not the same for all of them.
 const WIDTH = 160;
 
+// A few source images are mostly empty canvas. Furnace is 850x850 with the
+// artwork occupying 515x623 — 44% of the frame, against a median of 80% across
+// the deck. Left alone it renders visibly smaller than every other card,
+// because object-cover has nothing to crop on a square source and the zoom
+// alone can't make up the difference.
+//
+// Any image below this ratio gets its transparent padding trimmed first, which
+// brings it back in line with the rest. Deliberately a threshold rather than a
+// list of card names: it also catches whatever gets added next. Trimming
+// everything was rejected — it would re-frame the 120 cards that already look
+// right.
+const TRIM_BELOW = 0.6;
+
 if (!existsSync(OUT)) mkdirSync(OUT, { recursive: true });
 
 const sources = readdirSync(SRC).filter((f) => /\.(png|jpe?g)$/i.test(f));
@@ -41,6 +54,7 @@ if (!sources.length) {
 
 let srcBytes = 0;
 let outBytes = 0;
+const trimmed = [];
 
 for (const file of sources) {
     const from = path.join(SRC, file);
@@ -48,7 +62,26 @@ for (const file of sources) {
 
     srcBytes += statSync(from).size;
 
-    await sharp(from)
+    const meta = await sharp(from).metadata();
+    let input = from;
+
+    // Measure how much of the canvas is actually artwork, and tighten the
+    // outliers. Wrapped in try/catch because trim() throws on a fully uniform
+    // image, which should not take the whole run down.
+    try {
+        const { info } = await sharp(from)
+            .trim({ threshold: 1 })
+            .toBuffer({ resolveWithObject: true });
+        const filled = (info.width * info.height) / (meta.width * meta.height);
+        if (filled < TRIM_BELOW) {
+            input = await sharp(from).trim({ threshold: 1 }).toBuffer();
+            trimmed.push(`${file} (${Math.round(filled * 100)}% filled)`);
+        }
+    } catch {
+        // leave it alone
+    }
+
+    await sharp(input)
         .resize({ width: WIDTH, withoutEnlargement: true })
         .webp({ quality: 82 })
         .toFile(to);
@@ -61,3 +94,6 @@ console.log(
     `Thumbnails: ${sources.length} images, ${mb(srcBytes)} MB -> ${mb(outBytes)} MB ` +
     `(${Math.round((1 - outBytes / srcBytes) * 100)}% smaller)`
 );
+if (trimmed.length) {
+    console.log(`Padding trimmed on ${trimmed.length}: ${trimmed.join(', ')}`);
+}

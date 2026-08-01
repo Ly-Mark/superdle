@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import cardsData from "../../data/cards.json";
 import GameModeNav from "./GameModeNav";
 import ModeIntro from "../layout/ModeIntro.jsx";
+import { exactKeysFor, normalizeCardName } from "../../utils/clashroyale/cardSearch.js";
 import CRBackground from "../../components/clashroyale/CRBackground.jsx";
 import CardThumb from "../../components/clashroyale/CardThumb.jsx";
 
@@ -85,7 +86,13 @@ export default function MemoryGame() {
 
     const cardMap = useMemo(() => {
         const m = new Map();
-        for (const c of cards) m.set(normalize(c.card), c);
+        for (const c of cards) {
+            m.set(normalize(c.card), c);
+            // Also accept the normalised form and any aliases, so "log" resolves
+            // to The Log, "xbow" to X-Bow, and "giant snowball" to Snowball.
+            // Same rule the guessing modes use, rather than a second dialect.
+            for (const k of exactKeysFor(c.card)) m.set(k, c);
+        }
         return m;
     }, [cards]);
 
@@ -150,8 +157,13 @@ export default function MemoryGame() {
         const key = normalize(raw);
         if (!key) return null;
 
-        // 1) exact + plural variants (keep current behavior)
-        const keysToTry = pluralVariants(key);
+        // 1) exact + plural variants (keep current behavior), then the same
+        //    forms with articles and punctuation stripped so "log" and "xbow"
+        //    resolve the way they do in the guessing modes.
+        const keysToTry = [
+            ...pluralVariants(key),
+            ...pluralVariants(normalizeCardName(raw)),
+        ];
         for (const k of keysToTry) {
             const hit = cardMap.get(k);
             if (hit) return hit;

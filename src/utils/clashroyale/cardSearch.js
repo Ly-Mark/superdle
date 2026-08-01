@@ -20,5 +20,44 @@ export const normalizeCardName = (s) =>
         .replace(/^(the|a|an)\s+/, '')
         .replace(/[^a-z0-9 ]/g, '');
 
-export const matchesCardQuery = (cardName, query) =>
-    normalizeCardName(cardName).startsWith(normalizeCardName(query));
+// Extra names players actually use, where the card's written name in
+// cards.json differs from what people type. Deliberately a short explicit
+// list rather than fuzzy matching — each entry is a decision, not a guess.
+//
+// "Giant Snowball" is the card's real in-game name; cards.json calls it
+// "Snowball" and the artwork is stored as snowball.png, so aliasing is less
+// disruptive than renaming.
+const ALIASES = {
+    Snowball: ['Giant Snowball'],
+};
+
+// card name -> [normalised name, ...normalised aliases]
+const SEARCH_KEYS = new Map(
+    Object.entries(ALIASES).map(([card, alts]) => [
+        card,
+        [normalizeCardName(card), ...alts.map(normalizeCardName)],
+    ])
+);
+
+const keysFor = (cardName) =>
+    SEARCH_KEYS.get(cardName) ?? [normalizeCardName(cardName)];
+
+export const matchesCardQuery = (cardName, query) => {
+    const q = normalizeCardName(query);
+    if (!q) return false;
+
+    const [primary, ...aliases] = keysFor(cardName);
+    if (primary.startsWith(q)) return true;
+
+    // An alias only kicks in once the player is past its first word. Without
+    // this, the "giant snowball" alias would make typing "giant" surface
+    // Snowball alongside the actual Giants — handing out a card the player
+    // was not looking for. "giant s" is a deliberate search; "giant" is not.
+    return aliases.some(
+        (alias) => alias.startsWith(q) && q.length > alias.split(' ')[0].length
+    );
+};
+
+// Every string that should resolve to this card on an exact match. Used by
+// Memory mode, which validates a typed answer rather than suggesting one.
+export const exactKeysFor = (cardName) => keysFor(cardName);

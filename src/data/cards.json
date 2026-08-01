@@ -691,7 +691,7 @@
     "card": "Furnace",
     "rarity": "Rare",
     "cost": 4,
-    "type": "Troop",
+    "type": "Troops",
     "targets": "None",
     "healthValue": 1056,
     "healthCategory": "High",
@@ -1426,7 +1426,7 @@
   {
     "card": "X-Bow",
     "rarity": "Epic",
-    "cost": 9,
+    "cost": 6,
     "type": "Building",
     "targets": "Air / Ground",
     "healthValue": 2325,

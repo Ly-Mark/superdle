@@ -2,7 +2,10 @@
 // Single source of truth for per-route document metadata. Consumed only by
 // src/prerender.jsx at build time, which is what puts these tags into the
 // initial HTML where a crawler with JS disabled can actually see them.
-
+//
+// Deliberately imports NOTHING. scripts/generateSitemap.mjs pulls this in from
+// plain Node, where a JSON import needs `with { type: 'json' }` that Vite does
+// not want — so card data is passed in by the caller instead of imported here.
 export const SITE_NAME = 'Clashdle';
 export const SITE_ORIGIN = 'https://clash.ac';
 // Absolute https PNG. Relative paths and SVGs are not valid og:image values.
@@ -51,25 +54,59 @@ const ROUTE_META = {
 // normalize: strip trailing slash except for root
 const normalize = (url) => (url.length > 1 ? url.replace(/\/+$/, '') : url);
 
-export function getRouteMeta(url) {
+/**
+ * Canonical URL for a path. Depends on the path only — no card data, no route
+ * table — so the sitemap script can call it for every prerendered route,
+ * including /cards/:slug pages whose titles it has no way to resolve.
+ *
+ * Trailing slash is deliberate: the prerender plugin emits `about/index.html`,
+ * so Cloudflare Pages serves it at `/about/` and 308s `/about` to it. A
+ * canonical pointing at the redirecting form would tell Google the
+ * authoritative URL is one that redirects away.
+ */
+export function toCanonical(path) {
+    const key = normalize(path);
+    return `${SITE_ORIGIN}${key === '/' ? '/' : `${key}/`}`;
+}
+
+// Metadata for an individual card page, derived from the card so it cannot
+// fall out of step with what the page actually shows. The caller supplies the
+// card — see the note at the top about why this file imports nothing.
+export function cardRouteMeta(card) {
+    return {
+        title: `${card.card} — Clash Royale Card Guide — Clashdle`,
+        description: `${card.card}: ${card.cost} elixir ${card.rarity.toLowerCase()} ${card.type.toLowerCase()}, unlocked in ${card.arena}, released ${card.year}. Stats, mechanics and where it sits in the roster.`,
+        ogTitle: `${card.card} — Clash Royale card guide`,
+        ogDescription: card.description,
+    };
+}
+
+/**
+ * @param url    the route being rendered
+ * @param card   optional card object, when url is a /cards/:slug page
+ */
+export function getRouteMeta(url, card = null) {
     const key = normalize(url);
+
+    const meta =
+        key in ROUTE_META
+            ? ROUTE_META[key]
+            : card && key.startsWith('/cards/')
+              ? cardRouteMeta(card)
+              : null;
+
     // Unknown paths redirect to "/" in App.jsx, so they canonicalise there too.
-    const resolvedKey = key in ROUTE_META ? key : '/';
-    const meta = ROUTE_META[resolvedKey];
+    const resolvedKey = meta ? key : '/';
+    const resolved = meta ?? ROUTE_META['/'];
 
     return {
-        title: meta.title,
-        description: meta.description,
-        // Derived, never hand-written. Eight hand-copied URLs is eight chances
-        // to typo a domain, and a wrong canonical de-indexes the page.
-        //
-        // Trailing slash is deliberate. The prerender plugin emits
-        // `about/index.html`, so Cloudflare Pages serves that at `/about/` and
-        // 308s `/about` to it. A canonical pointing at the redirecting form
-        // would tell Google the authoritative URL is one that redirects away.
-        canonical: `${SITE_ORIGIN}${resolvedKey === '/' ? '/' : `${resolvedKey}/`}`,
-        ogTitle: meta.ogTitle ?? meta.title,
-        ogDescription: meta.ogDescription ?? meta.description,
+        title: resolved.title,
+        description: resolved.description,
+        // Derived, never hand-written. Hand-copied URLs are chances to typo a
+        // domain, and a wrong canonical de-indexes the page.
+        canonical: toCanonical(resolvedKey),
+        ogTitle: resolved.ogTitle ?? resolved.title,
+        ogDescription: resolved.ogDescription ?? resolved.description,
         ogImage: OG_IMAGE,
         siteName: SITE_NAME,
         themeColor: THEME_COLOR,

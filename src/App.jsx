@@ -25,6 +25,7 @@ const RushGame   = lazy(() => import('./components/clashroyale/RushGame.jsx'));
 const MemoryGame    = lazy(() => import('./components/clashroyale/MemoryGame.jsx'));
 
 const CardsIndex  = lazy(() => import('./pages/CardsIndex.jsx'));
+const CardDetail  = lazy(() => import('./pages/CardDetail.jsx'));
 
 const AboutPage   = lazy(() => import('./pages/AboutPage.jsx'));
 const PrivacyPage = lazy(() => import('./pages/PrivacyPage.jsx'));
@@ -54,6 +55,7 @@ export default function App() {
                     <Route path="/clashroyale/memory" element={<MemoryGame />} />
 
                     <Route path="/cards"   element={<CardsIndex />} />
+                    <Route path="/cards/:slug" element={<CardDetail />} />
 
                     <Route path="/about"   element={<AboutPage />} />
                     <Route path="/privacy" element={<PrivacyPage />} />

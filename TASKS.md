@@ -178,11 +178,24 @@ crawlable text. This section fixes that.
   titles/descriptions for 121 card routes rather than list them by hand.
   *Blocked by:* T4.
 
-- [ ] **T7 · Generate `sitemap.xml` + link it from `robots.txt`**
-  Neither exists today. Should be generated at build time from the same
-  `getPrerenderRoutes()` list so it can't drift from the real routes.
-  *Done when:* `dist/sitemap.xml` lists every prerendered route and
-  `robots.txt` has a `Sitemap:` line.
+- [x] **T7 · Generate `sitemap.xml` + link it from `robots.txt`** *(2026-08-01)*
+  `scripts/generateSitemap.mjs`, run after `vite build`. URLs come from
+  `getRouteMeta().canonical` so the sitemap and the canonical tags cannot
+  disagree; routes come from `getPrerenderRoutes()` so it can never list a
+  page that was not built. Verifies each file exists and no URL repeats,
+  and exits non-zero otherwise. Verified: 8 URLs, each matching its page's
+  canonical exactly.
+
+  **Also fixed here — soft 404s.** `_redirects` held `/* /index.html 200`
+  from the client-rendered era, so every typo'd URL returned the homepage
+  with HTTP 200 (`/this-page-does-not-exist` -> 200, 18,119 bytes). Google
+  calls that a soft 404. Rule removed; `public/404.html` added, which
+  Cloudflare Pages serves with a real 404 status. Plain HTML, no scripts,
+  so it renders even if the bundle fails.
+
+  *Trap for later:* a new route in `App.jsx` must also be added to
+  `scripts/prerenderRoutes.mjs` or it will 404 on direct navigation. There
+  is no catch-all to hide it any more. Noted in `_redirects` too.
 
 - [x] **T15 · Borrow the light lifts from the reference mock** *(2026-08-01)*
   Reviewed `clashdle-9v8.pages.dev`, a mock generated for this site by

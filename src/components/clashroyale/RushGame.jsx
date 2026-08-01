@@ -6,6 +6,7 @@ import GameModeNav from "./GameModeNav";
 import ModeIntro from "../layout/ModeIntro.jsx";
 import CRBackground from "../../components/clashroyale/CRBackground.jsx";
 import CardThumb from "../../components/clashroyale/CardThumb.jsx";
+import { matchesCardQuery } from "../../utils/clashroyale/cardSearch.js";
 
 /* -------------------------------------------------------
    Seeded shuffle helpers (stable per run)
@@ -451,7 +452,7 @@ const RushGame = () => {
         if (!q) return [];
         return cardsData.filter((card) => {
             const name = card.card.trim().toLowerCase();
-            return name.startsWith(q) && !guessedSet.has(name);
+            return matchesCardQuery(name, q) && !guessedSet.has(name);
         });
     }, [guesses, inputValue]);
 

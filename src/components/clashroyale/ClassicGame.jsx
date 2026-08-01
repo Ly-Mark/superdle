@@ -13,6 +13,7 @@ import { PUBLIC_BASE, buildUrl } from '../../utils/shareBase.js';
 
 import GameModeNav from "./GameModeNav";
 import HomeContent from "../layout/HomeContent.jsx";
+import { matchesCardQuery } from '../../utils/clashroyale/cardSearch.js';
 
 const shareUrlRoot   = buildUrl('/');                    // → "https://clash.ac/"
 const shareUrlCR     = buildUrl('/clashroyale/classic'); // → "https://clash.ac/clashroyale/classic"
@@ -502,7 +503,7 @@ const ClassicGame = () => {
     const filteredCards = cardsData.filter(card => {
         const name = card.card.trim().toLowerCase();
         return (
-            name.startsWith(inputValue.trim().toLowerCase()) &&
+            matchesCardQuery(name, inputValue) &&
             !guessedSet.has(name) &&
             !queuedSet.has(name)
         );

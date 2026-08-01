@@ -19,6 +19,10 @@ const COLUMNS = [
         ],
     },
     {
+        heading: 'Cards',
+        links: [{ label: 'Card guide', to: '/cards' }],
+    },
+    {
         heading: 'About',
         links: [
             { label: 'The project', to: '/about' },

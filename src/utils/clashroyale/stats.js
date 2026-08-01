@@ -17,11 +17,18 @@ const defaultStats = () => ({
     lastWinDayKey: null
 });
 
+// These run during render (via useState initializers), so they must survive
+// the build-time prerender pass in Node, where localStorage doesn't exist.
+// Without the guard the whole route throws and ships an empty #root.
+const hasStorage = () => typeof localStorage !== 'undefined';
+
 export function loadStats(mode) {
+    if (!hasStorage()) return defaultStats();
     return safeParse(localStorage.getItem(statsKey(mode)), defaultStats());
 }
 
 export function saveStats(mode, stats) {
+    if (!hasStorage()) return;
     try { localStorage.setItem(statsKey(mode), JSON.stringify(stats)); } catch {}
 }
 

@@ -1,7 +1,7 @@
 // src/pages/PrivacyPage.jsx
 import InfoPage from '../components/layout/InfoPage.jsx';
 
-const LAST_UPDATED = 'May 17, 2026';
+const LAST_UPDATED = 'August 1, 2026';
 
 const sectionH2 = 'text-xl font-semibold text-white mt-6 mb-2';
 const linkCls = 'text-blue-300 hover:text-blue-200 underline';
@@ -12,16 +12,26 @@ export default function PrivacyPage() {
             <p className="text-sm text-white/60">Last updated: {LAST_UPDATED}</p>
 
             <p>
-                This Privacy Policy describes how Clashdle ("we", "the site", clash.ac)
-                handles information when you use the site.
+                This Privacy Policy describes how Clashdle (&quot;we&quot;, &quot;the
+                site&quot;, clash.ac) handles information when you use the site. Clashdle
+                is run by Mark Ly from Vancouver, British Columbia, Canada.
+            </p>
+
+            <h2 className={sectionH2}>The short version</h2>
+            <p>
+                There are no accounts and no sign-in. We never ask for your name, email, or
+                Clash Royale account. The only data about you is your own puzzle progress,
+                and it stays in your browser. Google AdSense serves the ads and Cloudflare
+                hosts the site; both may set cookies.
             </p>
 
             <h2 className={sectionH2}>Information we collect</h2>
             <p>
                 Clashdle does not require an account and we do not collect personally
-                identifiable information directly. The site stores your game progress,
-                streaks, and statistics in your browser&apos;s localStorage — this data never
-                leaves your device.
+                identifiable information directly. Your daily progress, streaks, and
+                statistics are stored in your browser&apos;s localStorage under the{' '}
+                <code className="text-blue-200">clashdle:</code> prefix — this data never
+                leaves your device and is not transmitted to us or anyone else.
             </p>
 
             <h2 className={sectionH2}>Third-party services</h2>
@@ -90,6 +100,50 @@ export default function PrivacyPage() {
                     contact us
                 </a>{' '}
                 and we will take appropriate action.
+            </p>
+
+            <h2 className={sectionH2}>Your rights</h2>
+            <p>
+                Because your data never leaves your browser, most data-protection rights
+                you can exercise yourself, immediately:
+            </p>
+            <ul className="list-disc list-inside space-y-1 ml-2">
+                <li>
+                    <strong className="text-white">Access.</strong> Open your browser&apos;s
+                    developer tools and inspect localStorage under the{' '}
+                    <code className="text-blue-200">clashdle:</code> prefix. That is the
+                    complete record.
+                </li>
+                <li>
+                    <strong className="text-white">Erasure.</strong> Clear site data for
+                    clash.ac in your browser settings. Nothing is retained elsewhere, so
+                    there is nothing for us to delete on your behalf.
+                </li>
+                <li>
+                    <strong className="text-white">Objection to ad personalization.</strong>{' '}
+                    Use Google&apos;s Ads Settings, linked above.
+                </li>
+            </ul>
+            <p className="mt-2">
+                If you are in the EEA, UK, or Switzerland and want to raise a concern, you
+                may also contact your local data-protection authority.
+            </p>
+
+            <h2 className={sectionH2}>Data retention</h2>
+            <p>
+                Your statistics stay in your browser until you clear them — we set no
+                expiry. Cloudflare retains standard server logs according to its own
+                policy, and any Google advertising cookies follow Google&apos;s documented
+                lifetimes. We hold no database and no backups of user data.
+            </p>
+
+            <h2 className={sectionH2}>Security</h2>
+            <p>
+                All traffic is served over HTTPS. There are no logins, no payment
+                processing, and no user-generated content on the site, which removes most
+                of the risk that would otherwise apply. Clashdle is maintained by one
+                person as a side project — please report anything that looks wrong via the{' '}
+                <a href="/contact" className={linkCls}>Contact page</a>.
             </p>
 
             <h2 className={sectionH2}>Changes to this policy</h2>

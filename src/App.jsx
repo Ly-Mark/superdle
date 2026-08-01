@@ -14,8 +14,9 @@
 
 // src/App.jsx
 import { Suspense, lazy } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
+import SiteHeader from './components/layout/SiteHeader.jsx';
 import SiteFooter from './components/layout/SiteFooter.jsx';
 
 const ClassicGame = lazy(() => import('./components/clashroyale/ClassicGame.jsx'));
@@ -30,7 +31,9 @@ const TermsPage   = lazy(() => import('./pages/TermsPage.jsx'));
 
 export default function App() {
     return (
-        <BrowserRouter>
+        <>
+            <SiteHeader />
+
             <Suspense fallback={<div />}>
                 <Routes>
                     <Route path="/" element={<ClassicGame />} />
@@ -46,7 +49,8 @@ export default function App() {
                     <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
             </Suspense>
+            
             <SiteFooter />
-        </BrowserRouter>
+        </>
     );
 }

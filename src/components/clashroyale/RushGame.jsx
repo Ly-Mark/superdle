@@ -3,6 +3,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import cardsData from "../../data/cards.json";
 import { compareAttributes, getAttributeColor } from "../../utils/clashroyale/gamelogic.js";
 import GameModeNav from "./GameModeNav";
+import ModeIntro from "../layout/ModeIntro.jsx";
 import CRBackground from "../../components/clashroyale/CRBackground.jsx";
 import CardThumb from "../../components/clashroyale/CardThumb.jsx";
 
@@ -626,14 +627,30 @@ const RushGame = () => {
               <div className="container mx-auto px-4 py-4 sm:py-8">
                   {/* Header */}
                   <div className="text-center mb-4 sm:mb-8">
-                      <h1 className="mb-2 sm:mb-4">
+                      {/* Decorative wordmark — the real <h1> is in ModeIntro below. */}
+                      <div className="mb-2 sm:mb-4">
                           <img
                               src="/wordmark.png"
                               alt="Clashdle"
                               className="mx-auto min-h-36 sm:h-28 md:h-28 w-auto"
                           />
-                      </h1>
+                      </div>
                     <GameModeNav />
+
+                    <ModeIntro title="Rush Mode — Timed Clash Royale Card Guessing">
+                        <p>
+                            Rush mode drops the one-a-day format. You start with ninety
+                            seconds, but the clock isn&apos;t fixed — every card you get right
+                            adds time back. Solve one on your first guess and you earn a full
+                            thirty seconds; take more attempts and the reward tapers down to a
+                            floor of eight. That turns Rush into a survival run rather than a
+                            sprint: keep answering well and you keep playing, up to a ceiling of
+                            three and a half minutes on the clock. Points follow the same logic,
+                            with a multiplier for fewer guesses plus bonuses for speed and for
+                            streaks at three, five, and seven. The timer starts on your first
+                            guess, not on page load.
+                        </p>
+                    </ModeIntro>
 
                     <div className="max-w-xl mx-auto bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-4 sm:p-6">
                         <p className="text-blue-200 text-xl sm:text-2xl font-medium mb-2 sm:mb-3">Rush Mode</p>

@@ -12,6 +12,7 @@ import { getDayIndex, buildShareText, copyToClipboard } from "../../utils/clashr
 import { PUBLIC_BASE, buildUrl } from '../../utils/shareBase.js';
 
 import GameModeNav from "./GameModeNav";
+import HomeContent from "../layout/HomeContent.jsx";
 
 const shareUrlRoot   = buildUrl('/');                    // → "https://clash.ac/"
 const shareUrlCR     = buildUrl('/clashroyale/classic'); // → "https://clash.ac/clashroyale/classic"
@@ -632,13 +633,14 @@ const ClassicGame = () => {
             <div className="relative z-20 container mx-auto px-4 py-8">
                 {/* Header */}
                 <div className="text-center mb-8">
-                    <h1 className="mb-4">
+                    {/* Decorative wordmark — the real <h1> lives in HomeContent below. */}
+                    <div className="mb-4">
                         <img
                             src="/wordmark.png"
                             alt="Clashdle"
                             className="mx-auto min-h-36 sm:h-28 md:h-28 w-auto"
                         />
-                    </h1>
+                    </div>
                     <GameModeNav />
 
                     {/* Hints */}
@@ -775,6 +777,7 @@ const ClassicGame = () => {
                 {/* Legend */}
                 {showLegend && <InlineLegend onClose={() => setShowLegend(false)} />}
 
+                <HomeContent />
             </div>
             {/*<WinModal*/}
             {/*    isOpen={showWinModal}*/}

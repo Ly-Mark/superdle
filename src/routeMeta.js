@@ -36,6 +36,12 @@ const ROUTE_META = {
         ogTitle: 'Memory Mode — Clashdle',
         ogDescription: 'How many of the 121 Clash Royale cards can you name from memory?',
     },
+    '/cards': {
+        title: 'Clash Royale Card Guide — All 121 Cards — Clashdle',
+        description: 'Every Clash Royale card in one reference: elixir cost, type, arena and release year, grouped by rarity from Common through Champion.',
+        ogTitle: 'Clash Royale Card Guide — all 121 cards',
+        ogDescription: 'Elixir cost, type, arena and year for every card, grouped by rarity.',
+    },
     '/about':   { title: 'About — Clashdle',           description: 'About Clashdle, a free fan-made daily Clash Royale guessing game with four modes and a full card guide.' },
     '/privacy': { title: 'Privacy Policy — Clashdle',  description: 'How Clashdle handles data, cookies, advertising, and local storage.' },
     '/terms':   { title: 'Terms of Use — Clashdle',    description: 'Terms of use for Clashdle, a free fan-made Clash Royale guessing game.' },

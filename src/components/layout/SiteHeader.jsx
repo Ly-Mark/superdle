@@ -9,6 +9,7 @@ const NAV = [
     { label: 'Description', path: '/clashroyale/description' },
     { label: 'Rush', path: '/clashroyale/rush' },
     { label: 'Memory', path: '/clashroyale/memory' },
+    { label: 'Cards', path: '/cards' },
     { label: 'About', path: '/about' },
 ];
 

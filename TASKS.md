@@ -115,7 +115,20 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
   *Watch for:* server renders default stats, client's first render reads
   real ones — possible hydration mismatch. T3 must check.
 
-- [ ] **T3 · Verify hydration actually works**
+- [x] **T3 · Verify hydration actually works** *(owner checked 2026-08-01)*
+  Confirmed working in a real browser: navigation and all four modes fine.
+  This was the last unverified risk from the prerender change.
+
+- [ ] **T20 · robots.txt Sitemap line never reaches crawlers**
+  Cloudflare's managed robots.txt intercepts the exact path `/robots.txt`
+  and serves its own AI-crawler-blocking version instead of ours. Proven:
+  `/robots.txt` has no Sitemap line, `/robots.txt?x=1` (which bypasses the
+  interception) has it. The deployment is correct; Cloudflare replaces it
+  in transit.
+  *Options:* disable managed robots.txt in the Cloudflare dashboard, and/or
+  submit the sitemap directly in Google Search Console — the latter is the
+  primary discovery route anyway and worth doing regardless.
+  *Needs owner action — dashboard, not code.*
   Prerendered HTML + `hydrateRoot` has never been exercised. Mismatches
   fail silently in prod but log in the console.
   *Done when:* `npm run build && npm run preview`, then load `/`,
@@ -130,7 +143,18 @@ The rejection reason was low value. Root cause: 8 total URLs, 4 of them
 boilerplate legal pages, 4 of them JS-driven game screens with no
 crawlable text. This section fixes that.
 
-- [ ] **T4 · Build the card pages** (`/cards` index + `/cards/:slug`)
+- [~] **T4 · Build the card pages** (`/cards` index + `/cards/:slug`)
+  **Index done 2026-08-01.** `/cards` lists all 121 grouped by rarity with
+  art, cost, type, arena, year and description — 2,700+ words on one page,
+  more than the rest of the site combined. Deliberately ONE page: at ~45
+  unique words per card, 121 separate pages would be mostly repeated
+  boilerplate, which is the rejection reason we are trying to remove.
+
+  Thumbnails: source art is 28.9 MB across 121 files. `npm run thumbs`
+  generates 128px webp copies — 0.7 MB, 98% smaller. Committed, so CI never
+  runs sharp.
+
+  **Still open:** the per-card pages, and only for a handful. See T16.
   `scripts/prerenderRoutes.mjs` already has `getCardRoutes()` written and
   gated behind `INCLUDE_CARD_ROUTES = false`, waiting on these pages.
   Takes the site from 8 URLs to ~130.
@@ -285,7 +309,12 @@ crawlable text. This section fixes that.
   `utils/slug.js`, `utils/clashroyale/cardImages.js`, and an inline copy
   in `ClassicGame.jsx`. T4 will need slugs and risks adding a fourth.
 
-- [ ] **T11 · Fix the lint error and clear warnings**
+- [~] **T11 · Fix the lint error and clear warnings**
+  Errors done — a Node-globals block in `eslint.config.js` cleared both the
+  `__dirname` and `process` errors. Now 7 warnings, 0 errors.
+  Remaining: 7 warnings (unused vars in `ClassicGame`, `RushGame`,
+  `WinPanelCompact`; one `exhaustive-deps`), and lint is still not wired
+  into CI so it can rot again.
   `vite.config.js:12` — `__dirname` is undefined under ESM (`no-undef`),
   plus 7 warnings. Then wire `npm run lint` into CI so it can't rot.
 

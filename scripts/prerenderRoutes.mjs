@@ -14,6 +14,7 @@ export const STATIC_ROUTES = [
     '/clashroyale/description',
     '/clashroyale/rush',
     '/clashroyale/memory',
+    '/cards',
     '/about',
     '/privacy',
     '/terms',

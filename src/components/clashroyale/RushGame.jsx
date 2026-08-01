@@ -7,6 +7,8 @@ import ModeIntro from "../layout/ModeIntro.jsx";
 import CRBackground from "../../components/clashroyale/CRBackground.jsx";
 import CardThumb from "../../components/clashroyale/CardThumb.jsx";
 import { matchesCardQuery } from "../../utils/clashroyale/cardSearch.js";
+import HowToPlay from "../layout/HowToPlay.jsx";
+import { RUSH_HOW_TO_PLAY } from "./modeHowToPlay.jsx";
 
 /* -------------------------------------------------------
    Seeded shuffle helpers (stable per run)
@@ -640,16 +642,14 @@ const RushGame = () => {
 
                     <ModeIntro title="Rush Mode — Timed Clash Royale Card Guessing">
                         <p>
-                            Rush mode drops the one-a-day format. You start with ninety
-                            seconds, but the clock isn&apos;t fixed — every card you get right
-                            adds time back. Solve one on your first guess and you earn a full
-                            thirty seconds; take more attempts and the reward tapers down to a
-                            floor of eight. That turns Rush into a survival run rather than a
-                            sprint: keep answering well and you keep playing, up to a ceiling of
-                            three and a half minutes on the clock. Points follow the same logic,
-                            with a multiplier for fewer guesses plus bonuses for speed and for
-                            streaks at three, five, and seven. The timer starts on your first
-                            guess, not on page load.
+                            Ninety seconds to start, and every card you get right buys more
+                            time. Solve one on the first guess and earn a full thirty seconds;
+                            take longer and the reward tapers to eight.
+                        </p>
+                        <p>
+                            That turns Rush into a survival run rather than a sprint — keep
+                            answering well and you keep playing, up to a ceiling of three and a
+                            half minutes on the clock.
                         </p>
                     </ModeIntro>
 
@@ -1041,21 +1041,9 @@ const RushGame = () => {
                     </div>
 
 
-                    {/* Instructions */}
-                    {guesses.length === 0 && correctHistory.length === 0 && (
-                        <div className="w-full max-w-sm sm:max-w-md mx-auto bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6 mt-8">
-                            <h2 className="text-xl font-bold text-white mb-4 flex items-center justify-center underline decoration-2 underline-offset-4">
-                                How to Play (Rush)
-                            </h2>
-                            <div className="text-blue-200 space-y-2">
-                                <p>• Timer starts on your first guess</p>
-                                <p>• Correct guess = base points + bonuses</p>
-                                <p>• Correct clears board and starts a new target</p>
-                                <p>• Tiles reveal instantly (no flip)</p>
-                            </div>
-                        </div>
-                    )}
                 </div>
+
+                <HowToPlay {...RUSH_HOW_TO_PLAY} />
           </main>
 </CRBackground>
     );

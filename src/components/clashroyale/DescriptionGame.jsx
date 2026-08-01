@@ -5,6 +5,8 @@ import WinPanelCompact from "../../components/clashroyale/WinPanelCompact.jsx";
 import { buildUrl } from "../../utils/shareBase.js";
 import GameModeNav from "./GameModeNav";
 import ModeIntro from "../layout/ModeIntro.jsx";
+import HowToPlay from "../layout/HowToPlay.jsx";
+import { DESCRIPTION_HOW_TO_PLAY } from "./modeHowToPlay.jsx";
 
 import { useDailyModeGame } from "./useDailyModeGame.js";
 
@@ -143,14 +145,14 @@ export default function DescriptionGame() {
 
                     <ModeIntro title="Description Mode — Guess the Card from Its Description">
                         <p>
-                            Description mode gives you a card&apos;s flavour text instead of its
-                            stats. You get a short line describing what the card does, and you
-                            have to name it. It&apos;s a different kind of recall from Classic —
-                            attribute comparison won&apos;t help you here, so it rewards players
-                            who actually read card text rather than memorising elixir costs. One
-                            hint unlocks after a few guesses if you stall. Like Classic, the card
-                            changes daily, and your progress is saved if you close the tab and
-                            come back.
+                            Guess the card from its description alone. No attribute tiles here —
+                            just the words. One clue unlocks after five guesses.
+                        </p>
+                        <p>
+                            It&apos;s a different kind of recall from Classic: attribute
+                            comparison won&apos;t help you, so it rewards players who actually
+                            read card text rather than memorising elixir costs. The card changes
+                            daily, and your progress is saved if you close the tab.
                         </p>
                     </ModeIntro>
                     {/* Prompt panel styled similarly to Classic hints panel */}
@@ -282,6 +284,8 @@ export default function DescriptionGame() {
                     )}
 
                 </div>
+
+                <HowToPlay {...DESCRIPTION_HOW_TO_PLAY} />
             </main>
         </ClashroyaleBackground>
 );

@@ -3,6 +3,8 @@ import cardsData from "../../data/cards.json";
 import GameModeNav from "./GameModeNav";
 import ModeIntro from "../layout/ModeIntro.jsx";
 import { exactKeysFor, normalizeCardName } from "../../utils/clashroyale/cardSearch.js";
+import HowToPlay from "../layout/HowToPlay.jsx";
+import { MEMORY_HOW_TO_PLAY } from "./modeHowToPlay.jsx";
 import CRBackground from "../../components/clashroyale/CRBackground.jsx";
 import CardThumb from "../../components/clashroyale/CardThumb.jsx";
 
@@ -260,14 +262,13 @@ export default function MemoryGame() {
 
                     <ModeIntro title="Memory Mode — Name Every Clash Royale Card">
                         <p>
-                            Memory mode isn&apos;t really a guessing game, because nothing is
-                            hidden. The challenge is to type out every Clash Royale card you can
-                            remember before the clock runs out. There are 121 in the dataset and
-                            most people stall somewhere short of half. The timer starts on your
-                            first entry, not on page load. Because there&apos;s no daily answer
-                            to protect, Memory doesn&apos;t track streaks or win stats — it&apos;s
-                            a pure recall drill, and the only score worth beating is the one you
-                            set last time.
+                            Type every Clash Royale card you can remember in two minutes. All
+                            121 of them: 29 Commons, 30 Rares, 33 Epics, 21 Legendaries and 8
+                            Champions. Wrong answers cost you nothing.
+                        </p>
+                        <p>
+                            Nothing is hidden here — it&apos;s pure recall, and most people
+                            stall somewhere short of half.
                         </p>
                     </ModeIntro>
                 </div>
@@ -427,6 +428,8 @@ export default function MemoryGame() {
                         );
                     })}
                 </div>
+
+                <HowToPlay {...MEMORY_HOW_TO_PLAY} />
 
                 {foundCount === totalCount && (
                     <div className="max-w-xl mx-auto mt-8 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl p-6 text-center">

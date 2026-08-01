@@ -14,6 +14,8 @@ import { PUBLIC_BASE, buildUrl } from '../../utils/shareBase.js';
 import GameModeNav from "./GameModeNav";
 import HomeContent from "../layout/HomeContent.jsx";
 import { matchesCardQuery } from '../../utils/clashroyale/cardSearch.js';
+import HowToPlay from "../layout/HowToPlay.jsx";
+import { CLASSIC_HOW_TO_PLAY } from "./modeHowToPlay.jsx";
 
 const shareUrlRoot   = buildUrl('/');                    // → "https://clash.ac/"
 const shareUrlCR     = buildUrl('/clashroyale/classic'); // → "https://clash.ac/clashroyale/classic"
@@ -758,22 +760,12 @@ const ClassicGame = () => {
                         </div>
                     </div>
 
-                    {/* Instructions */}
-                    {guesses.length === 0 && (
-                        <div className="w-full max-w-sm sm:max-w-md mx-auto bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6 mt-8">
-                            <h2 className="text-xl font-bold text-white mb-4 flex items-center justify-center underline decoration-2 underline-offset-4">
-                                How to Play
-                            </h2>
-                            <div className="text-blue-200 space-y-2">
-                                <p>• Guess the daily Clash Royale card in unlimited tries</p>
-                                <p>• Refreshes Daily</p>
-                                <p>• <span className="inline-block w-4 h-4 bg-emerald-500 rounded mr-2"></span> Green = Correct</p>
-                                <p>• <span className="inline-block w-4 h-4 bg-red-500 rounded mr-2"></span> Red = Wrong</p>
-                                <p>• <span className="inline-block w-4 h-4 bg-amber-500 rounded mr-2"></span> Yellow = Partial</p>
-                            </div>
-                        </div>
-                    )}
                 </div>
+
+                {/* Replaces the old bullet panel that only appeared before the first
+                    guess. This one is always present, so the rules stay reachable
+                    mid-game and stay in the HTML for crawlers. */}
+                <HowToPlay {...CLASSIC_HOW_TO_PLAY} />
 
                 {/* Legend */}
                 {showLegend && <InlineLegend onClose={() => setShowLegend(false)} />}

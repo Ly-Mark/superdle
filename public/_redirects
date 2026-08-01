@@ -1,1 +1,14 @@
-/*    /index.html   200
+# Every route in the app is prerendered to a real file (see
+# scripts/prerenderRoutes.mjs), so the SPA catch-all this file used to hold
+# is no longer needed:
+#
+#     /*    /index.html   200
+#
+# That rule made EVERY unmatched URL return the homepage with HTTP 200, so
+# /any-typo-at-all looked like a real page to Google. Search engines call
+# that a soft 404 and treat it as a quality problem.
+#
+# Cloudflare Pages serves /404.html with a real 404 status for unmatched
+# paths automatically, so no rule is needed here at all. If a new route is
+# ever added to App.jsx, add it to scripts/prerenderRoutes.mjs too or it
+# will 404 on direct navigation.

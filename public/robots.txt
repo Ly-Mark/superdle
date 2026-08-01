@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://clash.ac/sitemap.xml

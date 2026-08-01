@@ -3,6 +3,7 @@ import cardsData from "../../data/cards.json";
 import { getDailyCard } from "../../utils/clashroyale/gamelogic.js";
 import { loadStats, markAttempt, updateStatsOnWin } from "../../utils/clashroyale/stats.js";
 import { getDayIndex } from "../../utils/clashroyale/shareText.js";
+import { matchesCardQuery } from "../../utils/clashroyale/cardSearch.js";
 
 const getLocalDayKey = (d = new Date()) => {
     const y = d.getFullYear();
@@ -95,7 +96,7 @@ export function useDailyModeGame({
         if (!q) return [];
         return cardsData.filter((c) => {
             const name = String(c.card).trim().toLowerCase();
-            return name.startsWith(q) && !guessedSet.has(name);
+            return matchesCardQuery(name, q) && !guessedSet.has(name);
         });
     }, [inputValue, guessedSet]);
 

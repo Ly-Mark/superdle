@@ -56,7 +56,12 @@ export function getRouteMeta(url) {
         description: meta.description,
         // Derived, never hand-written. Eight hand-copied URLs is eight chances
         // to typo a domain, and a wrong canonical de-indexes the page.
-        canonical: `${SITE_ORIGIN}${resolvedKey}`,
+        //
+        // Trailing slash is deliberate. The prerender plugin emits
+        // `about/index.html`, so Cloudflare Pages serves that at `/about/` and
+        // 308s `/about` to it. A canonical pointing at the redirecting form
+        // would tell Google the authoritative URL is one that redirects away.
+        canonical: `${SITE_ORIGIN}${resolvedKey === '/' ? '/' : `${resolvedKey}/`}`,
         ogTitle: meta.ogTitle ?? meta.title,
         ogDescription: meta.ogDescription ?? meta.description,
         ogImage: OG_IMAGE,

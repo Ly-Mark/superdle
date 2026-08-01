@@ -36,11 +36,11 @@ export default function PrivacyPage() {
 
             <h2 className={sectionH2}>Third-party services</h2>
             <p>
-                <strong className="text-white">Google AdSense.</strong> We use Google
-                AdSense to display advertisements. Google and its partners may use
-                cookies and similar technologies to serve ads based on your prior visits
-                to this site or other sites. You can opt out of personalized advertising
-                by visiting{' '}
+                <strong className="text-white">Google AdSense.</strong> Google, as a
+                third-party vendor, uses cookies to serve ads on Clashdle. Google&apos;s
+                use of advertising cookies enables it and its partners to serve ads to
+                you based on your visits to Clashdle and other sites on the Internet.
+                You may opt out of personalised advertising by visiting{' '}
                 <a
                     href="https://www.google.com/settings/ads"
                     target="_blank"
@@ -49,7 +49,16 @@ export default function PrivacyPage() {
                 >
                     Google&apos;s Ads Settings
                 </a>
-                . For more information about how Google uses data, see{' '}
+                , or read the{' '}
+                <a
+                    href="https://policies.google.com/technologies/ads"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={linkCls}
+                >
+                    Google ad and content network privacy policy
+                </a>
+                . For more on what Google collects from sites using its services, see{' '}
                 <a
                     href="https://policies.google.com/technologies/partner-sites"
                     target="_blank"

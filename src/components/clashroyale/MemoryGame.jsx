@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import cardsData from "../../data/cards.json";
 import GameModeNav from "./GameModeNav";
+import ModeIntro from "../layout/ModeIntro.jsx";
 import CRBackground from "../../components/clashroyale/CRBackground.jsx";
 import CardThumb from "../../components/clashroyale/CardThumb.jsx";
 
@@ -232,17 +233,31 @@ export default function MemoryGame() {
 
     return (
         <CRBackground>
-            <div className="container mx-auto px-4 py-8">
+            <main id="main-content" tabIndex={-1} className="container mx-auto px-4 py-8">
                 {/* Title */}
                 <div className="text-center mb-6">
-                    <h1 className="mb-2">
+                    {/* Decorative wordmark — the real <h1> is in ModeIntro below. */}
+                    <div className="mb-2">
                         <img
                             src="/wordmark.png"
                             alt="Clashdle"
                             className="mx-auto min-h-36 sm:h-28 md:h-28 w-auto"
                         />
-                    </h1>
+                    </div>
                     <GameModeNav />
+
+                    <ModeIntro title="Memory Mode — Name Every Clash Royale Card">
+                        <p>
+                            Memory mode isn&apos;t really a guessing game, because nothing is
+                            hidden. The challenge is to type out every Clash Royale card you can
+                            remember before the clock runs out. There are 121 in the dataset and
+                            most people stall somewhere short of half. The timer starts on your
+                            first entry, not on page load. Because there&apos;s no daily answer
+                            to protect, Memory doesn&apos;t track streaks or win stats — it&apos;s
+                            a pure recall drill, and the only score worth beating is the one you
+                            set last time.
+                        </p>
+                    </ModeIntro>
                 </div>
 
                 {/* ONE centered top panel (instructions + input + stats) */}
@@ -407,7 +422,7 @@ export default function MemoryGame() {
                         <div className="text-blue-100/90 mt-1">You found every card.</div>
                     </div>
                 )}
-            </div>
+            </main>
         </CRBackground>
     );
 }

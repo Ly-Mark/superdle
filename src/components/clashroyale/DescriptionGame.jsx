@@ -4,6 +4,7 @@ import CardThumb from "../../components/clashroyale/CardThumb.jsx";
 import WinPanelCompact from "../../components/clashroyale/WinPanelCompact.jsx";
 import { buildUrl } from "../../utils/shareBase.js";
 import GameModeNav from "./GameModeNav";
+import ModeIntro from "../layout/ModeIntro.jsx";
 
 import { useDailyModeGame } from "./useDailyModeGame.js";
 
@@ -127,17 +128,31 @@ export default function DescriptionGame() {
 
     return (
         <ClashroyaleBackground>
-            <div className="container mx-auto px-4 py-8">
+            <main id="main-content" tabIndex={-1} className="container mx-auto px-4 py-8">
                 {/* Header */}
                 <div className="text-center mb-8">
-                    <h1 className="mb-4">
+                    {/* Decorative wordmark — the real <h1> is in ModeIntro below. */}
+                    <div className="mb-4">
                         <img
                             src="/wordmark.png"
                             alt="Clashdle"
                             className="mx-auto min-h-36 sm:h-28 md:h-28 w-auto"
                         />
-                    </h1>
+                    </div>
                     <GameModeNav />
+
+                    <ModeIntro title="Description Mode — Guess the Card from Its Description">
+                        <p>
+                            Description mode gives you a card&apos;s flavour text instead of its
+                            stats. You get a short line describing what the card does, and you
+                            have to name it. It&apos;s a different kind of recall from Classic —
+                            attribute comparison won&apos;t help you here, so it rewards players
+                            who actually read card text rather than memorising elixir costs. One
+                            hint unlocks after a few guesses if you stall. Like Classic, the card
+                            changes daily, and your progress is saved if you close the tab and
+                            come back.
+                        </p>
+                    </ModeIntro>
                     {/* Prompt panel styled similarly to Classic hints panel */}
                     <div className="max-w-xl mx-auto bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6">
                         <p className="text-blue-200 text-2xl md:text-3xl font-semibold mb-4">
@@ -267,7 +282,7 @@ export default function DescriptionGame() {
                     )}
 
                 </div>
-            </div>
+            </main>
         </ClashroyaleBackground>
 );
 }

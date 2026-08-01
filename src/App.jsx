@@ -14,8 +14,9 @@
 
 // src/App.jsx
 import { Suspense, lazy } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
+import SiteHeader from './components/layout/SiteHeader.jsx';
 import SiteFooter from './components/layout/SiteFooter.jsx';
 
 const ClassicGame = lazy(() => import('./components/clashroyale/ClassicGame.jsx'));
@@ -30,7 +31,19 @@ const TermsPage   = lazy(() => import('./pages/TermsPage.jsx'));
 
 export default function App() {
     return (
-        <BrowserRouter>
+        <>
+            {/* First focusable element on the page. Invisible until it receives
+                keyboard focus, then appears top-left. Lets keyboard and screen
+                reader users jump past the nav links on every route. */}
+            <a
+                href="#main-content"
+                className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:font-semibold focus:text-slate-900 focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            >
+                Skip to content
+            </a>
+
+            <SiteHeader />
+
             <Suspense fallback={<div />}>
                 <Routes>
                     <Route path="/" element={<ClassicGame />} />
@@ -46,7 +59,8 @@ export default function App() {
                     <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
             </Suspense>
+            
             <SiteFooter />
-        </BrowserRouter>
+        </>
     );
 }

@@ -12,6 +12,7 @@
 // HTML, so the whole roster is readable without JavaScript.
 import CRBackground from '../components/clashroyale/CRBackground.jsx';
 import cardsData from '../data/cards.json';
+import { slugifyCardName } from '../utils/clashroyale/cardImages.js';
 
 const RARITY_ORDER = ['Common', 'Rare', 'Epic', 'Legendary', 'Champion'];
 
@@ -94,11 +95,31 @@ export default function CardsIndex() {
                                     key={c.card}
                                     className="bg-white/5 border border-white/10 rounded-xl p-4"
                                 >
-                                    <h3 className="font-semibold text-white">{c.card}</h3>
-                                    <p className="text-xs text-blue-200/70 mt-0.5">
-                                        {c.cost} elixir · {c.type} · {c.arena} · {c.year}
-                                    </p>
-                                    <p className="text-sm text-blue-100/80 mt-2 leading-relaxed">
+                                    <div className="flex items-start gap-3">
+                                        {/* 128px webp from `npm run thumbs`. Plain <img>
+                                            rather than CardThumb: this page renders 121 of
+                                            them, and CardThumb carries per-image state for
+                                            format fallback that is wasted here. */}
+                                        <img
+                                            src={`/games/clashroyale/cards/thumb/${slugifyCardName(c.card)}.webp`}
+                                            alt=""
+                                            width={128}
+                                            height={188}
+                                            loading="lazy"
+                                            decoding="async"
+                                            className="w-14 h-auto shrink-0 rounded-md ring-1 ring-white/15"
+                                        />
+                                        <div className="min-w-0">
+                                            <h3 className="font-semibold text-white">{c.card}</h3>
+                                            <p className="text-xs text-blue-200/70 mt-0.5">
+                                                {c.cost} elixir · {c.type}
+                                            </p>
+                                            <p className="text-xs text-blue-200/70">
+                                                {c.arena} · {c.year}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <p className="text-sm text-blue-100/80 mt-3 leading-relaxed">
                                         {c.description}
                                     </p>
                                 </li>

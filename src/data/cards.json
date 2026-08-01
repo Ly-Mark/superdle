@@ -11,8 +11,8 @@
     "moveSpeed": "Fast",
     "year": 2016,
     "hint1": "They can fly, and will crush you!",
-    "hint2": "Three fast, moderate-damage single-target ranged air troops.",
-    "hint3": "A bit vulnerable to splash damage, but it'll do the trick.",
+    "hint2": "Three arrive together, and a single splash hit clears all three.",
+    "hint3": "Small, blue, and permanently airborne.",
     "description": "A small flying group shows up and starts causing problems."
   },
   {
@@ -27,8 +27,8 @@
     "moveSpeed": "Medium",
     "year": 2016,
     "hint1": "They'll help you take down ground and air units, but you're on your own with hair coloring advice.",
-    "hint2": "Two low-damage yet medium-ranged single-target troops with knowledge in hair coloring.",
-    "hint3": "They are inexpensive support troops or a quick defense against small pushes.",
+    "hint2": "A pair who loose arrows one at a time from a comfortable distance - no splash, just steady chip damage.",
+    "hint3": "Two women in green hoods with longbows.",
     "description": "Two ranged helpers who try their best from a safe distance."
   },
   {
@@ -43,8 +43,8 @@
     "moveSpeed": "Medium",
     "year": 2016,
     "hint1": "The Barbarian's handsome, cultured cousin.",
-    "hint2": "A moderate-damage single-target melee troop.",
-    "hint3": "This jack-of-most-trades card can act as a great mini-tank.",
+    "hint2": "Swings a short sword at one target at a time, and soaks up far more punishment than he deals out.",
+    "hint3": "Armoured head to toe in blue-grey plate, with a neat beard and a small round shield.",
     "description": "A dude who walks forward and soaks up trouble."
   },
   {
@@ -59,8 +59,8 @@
     "moveSpeed": "Very Fast",
     "year": 2016,
     "hint1": "Who the heck taught these guys to throw spears?!",
-    "hint2": "Three very fast, low-damage single-target ranged troops.",
-    "hint3": "They are excellent against small single-target ground pushes.",
+    "hint2": "Three of them hurl javelins from a distance, one target at a time.",
+    "hint3": "Green, scrawny and grinning, each armed with a pointed stick taller than it is.",
     "description": "A pack of quick pests that poke at things from range."
   },
   {
@@ -75,8 +75,8 @@
     "moveSpeed": "Very Fast",
     "year": 2016,
     "hint1": "Small, fast, green and mean!",
-    "hint2": "Four very fast, moderate damage, single-target melee troops.",
-    "hint3": "Just watch out for any gold that you might have.",
+    "hint2": "Four of them rush in and stab at close range - individually harmless, collectively a problem.",
+    "hint3": "Knife-wielding, sharp-eared, and famously interested in other people’s gold.",
     "description": "Fast little attackers that appear, stab, and disappear"
   },
   {
@@ -91,8 +91,8 @@
     "moveSpeed": "Medium",
     "year": 2016,
     "hint1": "Small, lightly protected skeleton who throws bombs.",
-    "hint2": "While fragile and only targeting ground, he is decent against medium to large swarms.",
-    "hint3": "He is a very fragile unit that provides a great ranged splash attack.",
+    "hint2": "Lobs explosives that burst on impact, damaging everything clustered around the landing spot.",
+    "hint3": "A small figure in a tattered blue cap, hauling a sack nearly as big as he is.",
     "description": "A fragile troublemaker who throws something that goes boom."
   },
   {
@@ -107,8 +107,8 @@
     "moveSpeed": "Fast",
     "year": 2016,
     "hint1": "Surround your enemies with this pile of bones!",
-    "hint2": "Three fast, low-damage single-target melee troops.",
-    "hint3": "They can distract enemies when timed right or just exist to cycle your deck.",
+    "hint2": "Three of them swarm whatever is closest and scratch at it - good for a distraction, little else.",
+    "hint3": "Three of them, each carrying a small sword. Cheap enough to throw away.",
     "description": "Tiny distractions meant to annoy, delay, and get in the way."
   },
   {
@@ -123,8 +123,8 @@
     "moveSpeed": "Medium",
     "year": 2016,
     "hint1": "A horde of melee attackers with mean mustaches and even meaner tempers.",
-    "hint2": "Despite only targeting ground, they are a mighty collective force.",
-    "hint3": "They are a mighty collective force and can swiftly deal with a great variety of threats.",
+    "hint2": "Four of them swing heavy axes, one target apiece - together they dismantle almost anything they can reach.",
+    "hint3": "Shirtless, kilted and blond, each carrying a broad axe.",
     "description": "A loud group that runs in and starts swinging"
   },
   {
@@ -139,8 +139,8 @@
     "moveSpeed": "Very Fast",
     "year": 2020,
     "hint1": "Locked in an eternal battle with Knight for the best mustache.",
-    "hint2": "His attack will chain onto up to nine units within four tiles of each other.",
-    "hint3": "Shows his killer mustache to the table.",
+    "hint2": "Sacrifices itself to send a bolt arcing between up to nine nearby targets.",
+    "hint3": "A small crackling ball of blue lightning, grinning.",
     "description": "A tiny spark that jumps in and causes a quick mess."
   },
   {
@@ -155,8 +155,8 @@
     "moveSpeed": "Fast",
     "year": 2020,
     "hint1": "They also play a mean rib cage xylophone duet.",
-    "hint2": "Skeletal cousins of the Baby Dragon move.",
-    "hint3": "However, their bones seem to be a bit brittle, as they have much less health.",
+    "hint2": "A pair of fliers whose breath splashes across a small area rather than hitting one target.",
+    "hint3": "Two winged creatures of bare ribs and hollow sockets, with no flesh to speak of.",
     "description": "A flying pair that makes clustered areas uncomfortable."
   },
   {
@@ -171,8 +171,8 @@
     "moveSpeed": "Very Fast",
     "year": 2016,
     "hint1": "It'd be adorable if it wasn't on fire.",
-    "hint2": "One very fast, near-melee splash troop that packs a flaming hot punch.",
-    "hint3": "Good incinerating tool against tightly-packed swarms and glass cannons.",
+    "hint2": "Charges in and detonates on contact, scorching everything in a small radius.",
+    "hint3": "A tiny grinning ball of flame with stubby little arms.",
     "description": "A small fiery thing that rushes in and vanishes fast."
   },
   {
@@ -187,8 +187,8 @@
     "moveSpeed": "Very Fast",
     "year": 2017,
     "hint1": "Think of them as sweet, purple... balls of DESTRUCTION!",
-    "hint2": "Five single-target melee units that offer good defensive and offensive value.",
-    "hint3": "Their strong bites can easily deal with solo mini-tanks.",
+    "hint2": "Five of them flit in and bite one target each - fragile enough that any splash clears the lot.",
+    "hint3": "Five small purple fliers with oversized ears and tiny fangs.",
     "description": "A fast swarm that overwhelms lonely targets."
   },
   {
@@ -203,8 +203,8 @@
     "moveSpeed": "Medium",
     "year": 2018,
     "hint1": "They dream of ponies and one day wearing metal buckets.",
-    "hint2": "Six fairly tough melee ground troops spread out in a horizontal formation across the arena.",
-    "hint3": "With the addition of a shield to absorb otherwise devastating strikes, they can distract and repel most enemies.",
+    "hint2": "Six deploy in a line spanning the whole arena, each behind a shield that absorbs one hit.",
+    "hint3": "Six young soldiers in blue tabards, each with a spear and a wooden shield.",
     "description": "A spread-out squad that tries to hold the line"
   },
   {
@@ -219,8 +219,8 @@
     "moveSpeed": "Slow",
     "year": 2016,
     "hint1": "Destroying enemy buildings with his massive cannon is his job; making a raggedy blond beard look good is his passion.",
-    "hint2": "An infamous, hulking beast of a man.",
-    "hint3": "His powerful cannonballs plough through any building he decides to shoot.",
+    "hint2": "Fires cannonballs from well outside tower range, strolling past everything else to do it.",
+    "hint3": "A vast bearded man in a red singlet, hauling an artillery piece under one arm.",
     "description": "A big guy who prefers to target important structures."
   },
   {
@@ -235,8 +235,8 @@
     "moveSpeed": "Very Fast",
     "year": 2016,
     "hint1": "Stay frosty.",
-    "hint2": "He's got enough health to survive one attack from most units while he deploys, allowing him to get the jump on them.",
-    "hint3": "Has excellent defensive and offensive capabilities due to his freeze.",
+    "hint2": "Hops onto a target and bursts, briefly locking everything nearby in place.",
+    "hint3": "A tiny pale-blue ball with a cheeky grin.",
     "description": "A tiny blue thing that buys you a brief moment."
   },
   {
@@ -251,8 +251,8 @@
     "moveSpeed": "Fast",
     "year": 2025,
     "hint1": "It's surprising how often she needs her axes sharpened.",
-    "hint2": "She won't hesitate to tear you apart.",
-    "hint3": "She attacks very fast and is resistant to spells.",
+    "hint2": "Swings faster the longer she is left alone, and shrugs off spell damage that would finish others.",
+    "hint3": "Twin axes, war paint, and no armour to speak of.",
     "description": "A quick fighter who never seems to slow down"
   },
   {
@@ -267,8 +267,8 @@
     "moveSpeed": "Fast",
     "year": 2017,
     "hint1": "It's a Skeleton party in the sky.",
-    "hint2": "Packed with bones that drifts through the air looking for towers.",
-    "hint3": "It's a bit on the fragile side, but it soars quickly through the arena.",
+    "hint2": "Floats overhead toward the nearest building, then bursts and drops a squad of bones below.",
+    "hint3": "A wooden keg slung beneath a bunch of balloons, rattling as it drifts.",
     "description": "A floating surprise that turns into extra problems."
   },
   {
@@ -283,8 +283,8 @@
     "moveSpeed": "Very Fast",
     "year": 2017,
     "hint1": "It's like a Goblin Value Pack!",
-    "hint2": "Together, they can clear a multitude of units.",
-    "hint3": "Three have knives for powerful ground melee combat deployed in front, and three have spears for ranged attacks.",
+    "hint2": "Six arrive at once - the front rank stabs at close range while the back rank throws from a distance.",
+    "hint3": "Green and sharp-eared, some clutching knives, others carrying spears.",
     "description": "A mixed group of pests that covers multiple situations."
   },
   {
@@ -299,8 +299,8 @@
     "moveSpeed": "Fast",
     "year": 2016,
     "hint1": "Spawns a pair of leveled up Barbarians.",
-    "hint2": "Brain? How about some brawn instead!",
-    "hint3": "Together, they can wreck tanks, evaporate glass cannons.",
+    "hint2": "Two of them, charging in far quicker than their size suggests and hitting hard enough to erase most single targets.",
+    "hint3": "A pair of hulking blond warriors with braided beards and war paint.",
     "description": "Two fast bruisers who arrive earlier than you wanted."
   },
   {
@@ -315,8 +315,8 @@
     "moveSpeed": "Fast",
     "year": 2016,
     "hint1": "Three's a crowd, six is a horde!",
-    "hint2": "But keep caution using them, otherwise you may lose everything...",
-    "hint3": "This card has ridiculously high damage per second.",
+    "hint2": "Six fliers arrive at once, each stabbing a single target - devastating together, erased by any splash.",
+    "hint3": "Six small blue creatures with bat wings and a single horn.",
     "description": "A lot of flying trouble all at once."
   },
   {
@@ -331,8 +331,8 @@
     "moveSpeed": "Fast",
     "year": 2020,
     "hint1": "This is what happens when Archers get bored!",
-    "hint2": "This former Archer has turned rebellious.",
-    "hint3": "She'll push herself back with every attack, making it harder for enemy troops to reach her.",
+    "hint2": "Launches a rocket that bursts into sparks behind the target, and recoils backwards with every shot.",
+    "hint3": "A woman in a bandana with a launch tube held at her side.",
     "description": "A chaotic ranged attacker who never stands still."
   },
   {
@@ -347,8 +347,8 @@
     "moveSpeed": "Medium",
     "year": 2018,
     "hint1": "Slingshots full of Double Trouble Gum!",
-    "hint2": "A value pack of a trio of trouble, with one boy and two girls.",
-    "hint3": "With big health and big damage combined, this card is a complete wombo combo of a push by themselves.",
+    "hint2": "Three together - a large boy shielding the front while two girls attack from behind him.",
+    "hint3": "Three kids in blue caps: one big lad, two smaller girls behind.",
     "description": "A small crew: one up front, others behind."
   },
   {
@@ -363,8 +363,8 @@
     "moveSpeed": "None",
     "year": 2016,
     "hint1": "A medium-sized shaft, red fletchings.",
-    "hint2": "Its moderate damage and large radius makes clearing swarms.",
-    "hint3": "Lackluster against higher health units like the Knight.",
+    "hint2": "A wide volley rains over a large area, clearing anything fragile caught underneath.",
+    "hint3": "A dark flight of shafts falling point-first across a broad circle.",
     "description": "A simple answer to ‘too many small things.'"
   },
   {
@@ -379,8 +379,8 @@
     "moveSpeed": "None",
     "year": 2016,
     "hint1": "Briefly stunning them and dealing damage inside a small radius.",
-    "hint2": "Forces enemies to re-target, resets attacks or brings that slight extra damage to finish things off.",
-    "hint3": "What's not to like in this bottle of voltage?",
+    "hint2": "A brief jolt over a small area that stuns and resets whatever enemies were doing.",
+    "hint3": "A quick violet flash, gone almost before you see it.",
     "description": "A quick burst that interrupts whatever was happening."
   },
   {
@@ -395,8 +395,8 @@
     "moveSpeed": "None",
     "year": 2018,
     "hint1": "Once it began rolling down Frozen Peak, there was no stopping it.",
-    "hint2": "It will make them slow down for 3 seconds and chill out.",
-    "hint3": "Squishier troops tend to go splat while all but the heaviest of troops get knocked back.",
+    "hint2": "Knocks light troops backwards and slows whatever it hits for a few seconds.",
+    "hint3": "A packed sphere of ice.",
     "description": "A big shove that also slows things down."
   },
   {
@@ -411,8 +411,8 @@
     "moveSpeed": "None",
     "year": 2020,
     "hint1": "No need to sign for this package!",
-    "hint2": "You know what they say, 3 seconds or it's free!",
-    "hint3": "It will be delivered with a 2 second delay, dropping from the sky.",
+    "hint2": "A crate drops from the sky after a short delay, damaging the area and releasing a soldier.",
+    "hint3": "A wooden crate on a parachute, with a guard climbing out.",
     "description": "A delayed surprise that hits an area and leaves help."
   },
   {
@@ -427,8 +427,8 @@
     "moveSpeed": "None",
     "year": 2016,
     "hint1": "Shoots cannonballs with deadly effect.",
-    "hint2": "One of the shortest lifetimes out of all the buildings.",
-    "hint3": "For 3 Elixir, you get a building which has moderate hitpoints and damage.",
+    "hint2": "A ground-only emplacement firing steady single shots until its short lifetime runs out.",
+    "hint3": "A squat iron tube on a wooden mount, aimed low.",
     "description": "A basic defensive tool that focuses on ground threats."
   },
   {
@@ -443,8 +443,8 @@
     "moveSpeed": "None",
     "year": 2016,
     "hint1": "Shoots big boulders that deal area damage.",
-    "hint2": "It's quite hard to stop these explosive shells from hitting a tower.",
-    "hint3": "Any enemy troop that gets too close will be ignored.",
+    "hint2": "Lobs shells clear over the river at the enemy tower, but ignores anything that walks right up to it.",
+    "hint3": "A stubby wide-mouthed barrel angled at the sky.",
     "description": "A long-range annoyance that doesn’t like close company."
   },
   {
@@ -459,8 +459,8 @@
     "moveSpeed": "None",
     "year": 2016,
     "hint1": "The power of Electrickery is best kept grounded.",
-    "hint2": "Hides underground, preventing any and all damage sources.",
-    "hint3": "It can zap enemies, although it won't stun like most electric-based cards do.",
+    "hint2": "Stays buried until something comes near, then surfaces and zaps it - untouchable while hidden.",
+    "hint3": "A coil on a retractable platform, crackling when it rises.",
     "description": "A defensive surprise that appears when it’s needed."
   },
   {
@@ -475,8 +475,8 @@
     "moveSpeed": "Fast",
     "year": 2016,
     "hint1": "The Arena is a certified butterfly-free zone.",
-    "hint2": "The classic glass cannon — a mighty punch packed within a moderate health.",
-    "hint3": "Deliver him some pancakes, and you'll see his sweet and cute side!",
+    "hint2": "Hits harder in a single swing than almost anything else, but folds to a swarm.",
+    "hint3": "A compact suit of dark armour with an enormous sword.",
     "description": "A small fighter with big damage energy."
   },
   {
@@ -491,8 +491,8 @@
     "moveSpeed": "Medium",
     "year": 2016,
     "hint1": "Don't be fooled by her delicately coiffed hair.",
-    "hint2": "A consistent 4 Elixir single-target shot attacking both air and ground.",
-    "hint3": "She is a reliable support or defense unit with a trusty boomstick.",
+    "hint2": "Fires single shots from long range - reliable against almost anything, but slow to reload.",
+    "hint3": "A woman in a wide-brimmed hat holding a long-barrelled gun with a flared mouth.",
     "description": "A steady shooter who handles problems one at a time."
   },
   {
@@ -507,8 +507,8 @@
     "moveSpeed": "Slow",
     "year": 2016,
     "hint1": "A real one-man wrecking crew!",
-    "hint2": "He ignores all enemy troops and slowly makes his way towards buildings.",
-    "hint3": "The \"original\" tank.",
+    "hint2": "Absorbs enormous punishment and never once stops to fight back at what is hitting him.",
+    "hint3": "A huge bald man in a brown tunic with a broad belt and bare feet.",
     "description": "A slow tank that ignores distractions."
   },
   {
@@ -523,8 +523,8 @@
     "moveSpeed": "Medium",
     "year": 2016,
     "hint1": "She can take them all out with a few spins.",
-    "hint2": "You can't run, don't even hide!",
-    "hint3": "This tough mini-tank swings her axe 360º to take out swarms.",
+    "hint2": "Spins a full circle with her axe, striking everything around her at once.",
+    "hint3": "A red-haired warrior with a heavy double-headed axe.",
     "description": "A tough brawler who clears space around herself."
   },
   {
@@ -539,8 +539,8 @@
     "moveSpeed": "Medium",
     "year": 2016,
     "hint1": "Flying, armored and powerful. What could be its weakness?! Cupcakes.",
-    "hint2": "He is spell resistant, so not even a lone Fireball can take him out!",
-    "hint3": "A flying armored gargoyle with below-average health and high damage.",
+    "hint2": "Strikes slowly but heavily, and shrugs off spell damage that would clear lighter fliers.",
+    "hint3": "An armoured grey gargoyle with a horned helm and a spiked tail.",
     "description": "A durable flying attacker with a serious hit."
   },
   {
@@ -555,8 +555,8 @@
     "moveSpeed": "Medium / Very Fast",
     "year": 2017,
     "hint1": "Two troops holding a big log charge at the nearest building.",
-    "hint2": "A fast but fragile 4 Elixir surprise to smash into buildings.",
-    "hint3": "Once it gets charging, it must be taken out before it rams into a tower.",
+    "hint2": "Builds speed as it runs, and the pair carrying it keep fighting after it shatters.",
+    "hint3": "Two bearded soldiers hauling a huge banded log between them.",
     "description": "A fast push tool that wants to reach something important."
   },
   {
@@ -571,8 +571,8 @@
     "moveSpeed": "Medium",
     "year": 2016,
     "hint1": "The most awesome man to ever set foot in the Arena.",
-    "hint2": "Excels against groups of enemies, but not so much against tanks.",
-    "hint3": "Burns foes on the ground and in the air with heavy-hitting fireballs.",
+    "hint2": "Hurls bursts of flame that scorch everything clustered around the point of impact.",
+    "hint3": "A bearded man in a purple robe with rolled-up sleeves.",
     "description": "A flashy ranged attacker who likes groups."
   },
   {
@@ -587,8 +587,8 @@
     "moveSpeed": "Fast",
     "year": 2017,
     "hint1": "The Master Builder has sent his first contraption to the Arena!",
-    "hint2": "A 4 Elixir flying card with moderately-low hitpoints.",
-    "hint3": "Its long range and moderate damage allow it to attack from afar, often out-ranging its target.",
+    "hint2": "Out-ranges nearly everything it faces, plinking away from a safe distance.",
+    "hint3": "A goggled pilot in a rickety wooden contraption with a spinning rotor.",
     "description": "A fragile flyer that pokes from farther than expected."
   },
   {
@@ -603,8 +603,8 @@
     "moveSpeed": "Very Fast",
     "year": 2016,
     "hint1": "Fast melee troop that targets buildings and can jump over the river.",
-    "hint2": "Zoom past troops with his moderate-high health and blazing fast speed.",
-    "hint3": "Also, his hog will jump over the river!",
+    "hint2": "Vaults clean over the river in a single bound, which is how he reaches a tower before defenders gather.",
+    "hint3": "A grinning man with a mohawk riding a large boar bareback.",
     "description": "A fast guy who heads straight for the objective"
   },
   {
@@ -619,8 +619,8 @@
     "moveSpeed": "Very Fast",
     "year": 2018,
     "hint1": "The King’s personal pets are loose! They love to chomp on apples and towers alike.",
-    "hint2": "Their speed and numbers make them difficult to stop.",
-    "hint3": "For 5 Elixir, four moderate health, low damage troops that rush the enemy tower.",
+    "hint2": "Four vault the river together and spread out, which makes them awkward to clear with one spell.",
+    "hint3": "Four pink porkers in tiny crowns, snouts down and charging.",
     "description": "Multiple fast attackers that split your attention."
   },
   {
@@ -635,8 +635,8 @@
     "moveSpeed": "Medium",
     "year": 2016,
     "hint1": "Disrespecting them would not be just a mistake, it would be a cardinal sin!",
-    "hint2": "They can stop almost anything with their powerful muskets.",
-    "hint3": "Three independent, very powerful markswomen with high burst damage.",
+    "hint2": "A trio of long-range shooters who can be split across both lanes on deployment.",
+    "hint3": "A trio in matching plumed hats, each with a long-barrelled firearm.",
     "description": "A pricey commitment that demands you protect it."
   },
   {
@@ -651,8 +651,8 @@
     "moveSpeed": "Medium",
     "year": 2020,
     "hint1": "With each attack, she unleashes a powerful healing aura that restores Hitpoints to herself and friendly Troops.",
-    "hint2": "Even though she has wings, she cannot attack air units.",
-    "hint3": "Whenever she is deployed or hits something, she heals herself and all troops around herself.",
+    "hint2": "Attacking triggers a pulse that restores hitpoints to her and anything friendly nearby.",
+    "hint3": "Winged and armoured, carrying a staff rather than a blade.",
     "description": "A fighter who keeps herself (and nearby friends) going."
   },
   {
@@ -667,8 +667,8 @@
     "moveSpeed": "Slow",
     "year": 2016,
     "hint1": "He's tough, targets buildings and explodes when destroyed, slowing nearby enemies.",
-    "hint2": "A cheap yet versatile mini-tank.",
-    "hint3": "Deals slowing death damage that can destroy low-health enemy units.",
+    "hint2": "Bursts on death, chilling everything nearby and finishing off anything already weakened.",
+    "hint3": "A squat, lumbering figure built from pale blue crystal.",
     "description": "A cheap tank that leaves a parting inconvenience."
   },
   {
@@ -683,8 +683,8 @@
     "moveSpeed": "Very Fast",
     "year": 2017,
     "hint1": "Runs fast, shoots far and chews gum.",
-    "hint2": "A 3 Elixir card with a fast fire rate, long range, and high speed.",
-    "hint3": "He resembles a Goblin, but wears a voodoo mask with red eyes.",
+    "hint2": "Fires faster and further than almost anything else its size, but folds instantly to splash.",
+    "hint3": "Sharp-eared and green, in a voodoo mask with red eyes, carrying a blowpipe.",
     "description": "A speedy ranged pest with constant pressure."
   },
   {
@@ -699,8 +699,8 @@
     "moveSpeed": "Slow",
     "year": 2016,
     "hint1": "It also makes great brick-oven pancakes.",
-    "hint2": "This 4 Elixir metallic oven has magically grown feet and arms.",
-    "hint3": "But the oven is not for show, as he will spawn waves of a Fire Spirit at the front every 5 seconds.",
+    "hint2": "Sits still and periodically coughs out a small burning creature to run at whatever is nearest.",
+    "hint3": "A squat metal oven that has sprouted stubby arms and feet.",
     "description": "A walking building that keeps producing trouble."
   },
   {
@@ -715,8 +715,8 @@
     "moveSpeed": "Medium",
     "year": 2017,
     "hint1": "Spawns a pack of miniature Zap machines.",
-    "hint2": "If it moves, then it won’t for much longer.",
-    "hint3": "This 4 Elixir trio of menaces will stun a target until it is destroyed.",
+    "hint2": "Three of them chain stuns onto a target, keeping it permanently interrupted while they whittle it down.",
+    "hint3": "Three little wheeled machines topped with crackling coils.",
     "description": "Three small stunners that are annoying together."
   },
   {
@@ -731,8 +731,8 @@
     "moveSpeed": "Medium",
     "year": 2024,
     "hint1": "Boom goes dynamite!",
-    "hint2": "For 4 Elixir, this Goblin is packed with explosions and dynamite.",
-    "hint3": "Once he falls to his demise, he goes out with a BANG.",
+    "hint2": "Throws explosives while alive, then detonates properly when he dies.",
+    "hint3": "A stocky green fellow in a hard hat, arms full of dynamite.",
     "description": "A short fuse on legs."
   },
   {
@@ -747,8 +747,8 @@
     "moveSpeed": "Very Fast",
     "year": 2020,
     "hint1": "A mischievous Spirit that leaps at enemies.",
-    "hint2": "This little guy runs, jumps, and splashes just like his Spirit siblings.",
-    "hint3": "It is lemon in color and is shaped more closely to a rectangle.",
+    "hint2": "Leaps at the enemy and bursts, but the splash restores your own troops instead of hurting theirs.",
+    "hint3": "A small lemon-yellow blob with a cheerful face.",
     "description": "A tiny helper that leaves a useful effect behind."
   },
   {
@@ -763,8 +763,8 @@
     "moveSpeed": "Medium",
     "year": 2024,
     "hint1": "This invisible bush skulks towards the nearest building.",
-    "hint2": "It's still a deceptive tacti- I mean, a completely ordinary bush!!",
-    "hint3": "For 2 Elixir, this totally normal bush crawls towards the nearest building.",
+    "hint2": "Creeps forward unseen until something spots it, then bursts open and lets out what is hiding inside.",
+    "hint3": "A perfectly ordinary shrub. Nothing to see here.",
     "description": "A moving ‘nothing to see here’ that isn’t nothing."
   },
   {
@@ -779,8 +779,8 @@
     "moveSpeed": "Slow",
     "year": 2019,
     "hint1": "Splits into two when destroyed.",
-    "hint2": "Provides formidable tanking and damaging ability for the very low price of 3 Elixir.",
-    "hint3": "A hefty mound of Elixir.",
+    "hint2": "Splits in two when destroyed, then splits again.",
+    "hint3": "A wobbling mound of glowing purple goo.",
     "description": "A strange purple mass that refuses to stay in one piece."
   },
   {
@@ -795,8 +795,8 @@
     "moveSpeed": "None",
     "year": 2016,
     "hint1": "Incinerates a small area, dealing high damage.",
-    "hint2": "It's a bird! It's a plane! It's a… meteor?",
-    "hint3": "It can even knock back some ground troops!",
+    "hint2": "A single heavy impact on a modest area, with enough force to shove lighter troops backwards.",
+    "hint3": "A blazing orb trailing smoke as it arcs down.",
     "description": "A direct answer to a crowded spot."
   },
   {
@@ -811,8 +811,8 @@
     "moveSpeed": "None",
     "year": 2016,
     "hint1": "Deals high damage to a small area. Looks really awesome doing it.",
-    "hint2": "The ridiculously high damage comes with a ridiculously small area of effect and a long delay.",
-    "hint3": "It is large with a nose cone, an iron hull, fins, and a skull printed on.",
+    "hint2": "Enormous damage in a very small circle, with a delay long enough that anything mobile walks out of it.",
+    "hint3": "A finned iron shell with a nose cone and a skull painted on the side.",
     "description": "One expensive solution to one specific area."
   },
   {
@@ -827,8 +827,8 @@
     "moveSpeed": "None",
     "year": 2019,
     "hint1": "Deals Damage per second to Troops and Crown Towers.",
-    "hint2": "It is a murky brown liquid encased in a small oblong vial.",
-    "hint3": "Rocking the ground for 3 Elixir.",
+    "hint2": "Rumbles on for several seconds after it lands, wearing down anything standing in the area - buildings included.",
+    "hint3": "A murky brown vial that shatters and sets the tiles heaving.",
     "description": "A ground-based mess that punishes certain strategies."
   },
   {
@@ -843,8 +843,8 @@
     "moveSpeed": "None",
     "year": 2019,
     "hint1": "Brawler always skips leg day.",
-    "hint2": "That cage won't hold for long though.",
-    "hint3": "Larger and bulkier, has a unibrow.",
+    "hint2": "Sits and waits; when it breaks open, the bruiser locked inside comes out swinging.",
+    "hint3": "A barred iron box with something large and unhappy pacing inside.",
     "description": "A defensive box that turns into a new problem."
   },
   {
@@ -859,8 +859,8 @@
     "moveSpeed": "None",
     "year": 2016,
     "hint1": "Don't look inside... you don't want to see how they're made.",
-    "hint2": "For 4 Elixir, the building will take a nap when there is no action.",
-    "hint3": "A wooden hut with a thatched roof.",
+    "hint2": "Sits at the back and periodically pops out a small green thrower to harass the far tower.",
+    "hint3": "A ramshackle wooden shack with a thatched roof and a crooked door.",
     "description": "A small factory that keeps adding annoying units."
   },
   {
@@ -875,8 +875,8 @@
     "moveSpeed": "None",
     "year": 2016,
     "hint1": "Building that periodically spawns Skeletons to fight the enemy.",
-    "hint2": "A cheap spawner with moderate hitpoints at the cost of only 3 Elixir.",
-    "hint3": "When destroyed, 4 more spooky scary Skeletons pop up.",
+    "hint2": "Trickles out bone soldiers while it stands, and coughs up four more the moment it breaks.",
+    "hint3": "A cracked grey grave marker leaning in a patch of dirt.",
     "description": "A lonely structure with unsettling activity around it."
   },
   {
@@ -891,8 +891,8 @@
     "moveSpeed": "None",
     "year": 2016,
     "hint1": "Deals area damage to anything dumb enough to stand near it.",
-    "hint2": "This building is one of the most effective against ground units in the game.",
-    "hint3": "The building is made of wood, surrounded by steel rams, tied with ropes on the sides.",
+    "hint2": "Hurls explosives down from above, bursting over anything clustered beneath.",
+    "hint3": "A bony figure perched atop a roped wooden frame, lobbing charges from on high.",
     "description": "A building that makes ground crowds regret grouping."
   },
   {
@@ -907,8 +907,8 @@
     "moveSpeed": "None",
     "year": 2016,
     "hint1": "Burns through even the biggest and toughest enemies!",
-    "hint2": "For 5 Elixir, this incinerator will roast even massive tanks.",
-    "hint3": "A tall, narrow building made of iron, straddling on top of a lava pool, with a glowing orange lens on top.",
+    "hint2": "A beam that starts weak and ramps up the longer it stays on one target, melting even the biggest.",
+    "hint3": "A glowing orange lens set atop a tall iron frame.",
     "description": "A building that gets more dangerous the longer it’s ignored."
   },
   {
@@ -923,8 +923,8 @@
     "moveSpeed": "None",
     "year": 2016,
     "hint1": "Building that periodically spawns Troops to fight the enemy.",
-    "hint2": "This crude but high-hitpoint barrack spawns a trio of Troops every 15 seconds.",
-    "hint3": "A wooden hut with a team-colored roof and a sword hoisted above the entrance.",
+    "hint2": "Periodically turns out a single axe-wielding brute to march down the lane.",
+    "hint3": "A crude wooden shack with a sword hoisted above the entrance.",
     "description": "A hut that keeps releasing more visitors."
   },
   {
@@ -939,8 +939,8 @@
     "moveSpeed": "None",
     "year": 2016,
     "hint1": "You gotta spend Elixir to make Elixir!",
-    "hint2": "For 6 Elixir, this passive building has moderate health along with the ability to produce bonus Elixir.",
-    "hint3": "A wooden building reinforced with team-colored seals on top and bases on the bottom, with a vertical glass vat in between two wooden slabs.",
+    "hint2": "Produces nothing offensive at all - it just quietly pays for itself and then some.",
+    "hint3": "A wooden rig with a tall glass vat bubbling between two slabs.",
     "description": "A building that tempts your opponent into doing something."
   },
   {
@@ -955,8 +955,8 @@
     "moveSpeed": "Fast",
     "year": 2016,
     "hint1": "Three ruthless bone brothers with shields.",
-    "hint2": "Surround enemies with this armored pile of bones.",
-    "hint3": "They appear to be Skeletons, but are somewhat taller, wear black helmets with team-colored feathers.",
+    "hint2": "Three of them, each behind a shield that soaks one hit before they turn fragile.",
+    "hint3": "Three bony figures in black helmets with coloured plumes, carrying spears and small shields.",
     "description": "A small group that’s tougher than it first looks."
   },
   {
@@ -971,8 +971,8 @@
     "moveSpeed": "Fast",
     "year": 2016,
     "hint1": "Burps fireballs from the sky that deal area damage.",
-    "hint2": "A 4 Elixir troop with moderately high hitpoints and fast movement speed that deals low splash damage.",
-    "hint3": "A small, spring green dragon with short, stubby, team-colored wings, ears, spikes, tongue, hands and feet, brown eyes, and yellow sclerae.",
+    "hint2": "Breathes flame that splashes across a small area rather than striking one target.",
+    "hint3": "A small spring-green hatchling with stubby wings and a permanent grin.",
     "description": "A flying splash attacker with steady value."
   },
   {
@@ -987,8 +987,8 @@
     "moveSpeed": "Fast",
     "year": 2016,
     "hint1": "Meet Larry and his friends Harry, Terry, Gerry, Mary, etc.",
-    "hint2": "This massive swarm can overwhelm single-target enemy units in the blink of an eye!",
-    "hint3": "Spawns 15 Skeletons in a scatter formation.",
+    "hint2": "Fifteen arrive at once and mob a single target - unstoppable without splash, erased by any.",
+    "hint3": "A scattered crowd of small bone figures, all sword and no armour.",
     "description": "A sudden crowd that punishes slow answers."
   },
   {
@@ -1003,8 +1003,8 @@
     "moveSpeed": "Medium",
     "year": 2016,
     "hint1": "Summons Skeletons, shoots destructo beams, has glowing pink eyes that unfortunately don't shoot lasers.",
-    "hint2": "While her health is only decent and splash damage is mediocre for 5 Elixir.",
-    "hint3": "A woman with glowing pink eyes, no legs, wears a violet cloak.",
+    "hint2": "Fires splash bolts while continuously summoning small bone helpers to screen her.",
+    "hint3": "A pale woman in a violet cloak with glowing pink eyes, floating rather than walking.",
     "description": "A ranged unit that keeps bringing extra company."
   },
   {
@@ -1019,8 +1019,8 @@
     "moveSpeed": "Slow",
     "year": 2016,
     "hint1": "Swings from the hip, but packs a huge punch.",
-    "hint2": "A very tender robot from the inside, unless you decide to be mean to her or her butterflies!",
-    "hint3": "She wears heavy dark steel blue armor.",
+    "hint2": "One devastating swing at a time, slow enough that swarms tear her apart before she connects twice.",
+    "hint3": "A towering suit of dark blue-steel armour with a massive blade.",
     "description": "A slow wall of steel with one-job focus"
   },
   {
@@ -1035,8 +1035,8 @@
     "moveSpeed": "Medium / Very Fast",
     "year": 2016,
     "hint1": "It sounds like he has a bucket on his head.",
-    "hint2": "For 4 Elixir, the lesser known Prince has moderately high hitpoints.",
-    "hint3": "A man who has blue eyes, black eyebrows, and is mostly covered in dark steel armor.",
+    "hint2": "Charges up to a heavy first strike, carries a shield that absorbs a hit, and splashes on contact.",
+    "hint3": "A man in near-black plate with a horned helm and a spiked club.",
     "description": "A charging threat that’s hard to stop cleanly."
   },
   {
@@ -1051,8 +1051,8 @@
     "moveSpeed": "Medium / Very Fast",
     "year": 2016,
     "hint1": "Don't let the little pony fool you.",
-    "hint2": "Very high damage and good hitpoints for 5 Elixir.",
-    "hint3": "A man in heavy, golden armor, who wields a striped team-colored lance.",
+    "hint2": "Builds up a charge and lands a doubled first blow, then settles into ordinary swings.",
+    "hint3": "A man in gleaming golden armour on a small horse, carrying a striped lance.",
     "description": "A heavy hitter that becomes scary when it gets momentum."
   },
   {
@@ -1067,8 +1067,8 @@
     "moveSpeed": "Medium",
     "year": 2016,
     "hint1": "As pretty as they are, you won't want a parade of THESE.",
-    "hint2": "Watch out, an air raid is coming!",
-    "hint3": "Held together by patches and ropes, and is piloted by a Wall Breaker.",
+    "hint2": "Drifts overhead dropping heavy explosives, and leaves one more behind when it goes down.",
+    "hint3": "A patched cloth sack trailing ropes, with a small pilot in the basket beneath.",
     "description": "A slow flying threat that you must respect."
   },
   {
@@ -1083,8 +1083,8 @@
     "moveSpeed": "Medium",
     "year": 2016,
     "hint1": "The bigger the skeleton, the bigger the bomb.",
-    "hint2": "This oversized skeleton costs 6 Elixir and gets distracted by everything.",
-    "hint3": "A colossal Skeleton that wears a team-colored ushanka, has an underbite.",
+    "hint2": "Carries a payload that detonates enormously where he dies, which is often more dangerous than he is.",
+    "hint3": "A colossal frame of bone in a furred cap, with a pronounced underbite.",
     "description": "A big tank that leaves a final ‘goodbye.’"
   },
   {
@@ -1099,8 +1099,8 @@
     "moveSpeed": "Medium",
     "year": 2025,
     "hint1": "Need your weapons sharpened? You've come to the right place.",
-    "hint2": "Don't mess with this bulky and big woman!",
-    "hint3": "A large humanoid creature with long orange hair which covers her eyes and a large red nose.",
+    "hint2": "Empowers friendly troops around her as she advances, making them considerably more dangerous.",
+    "hint3": "A hulking woman with long orange hair hiding her eyes.",
     "description": "A supportive tank that makes nearby allies feel stronger."
   },
   {
@@ -1115,8 +1115,8 @@
     "moveSpeed": "Medium",
     "year": 2018,
     "hint1": "This jolly green Goblin Giant stomps towards enemy buildings.",
-    "hint2": "Not all Goblins are weak!",
-    "hint3": "A colossal, aquamarine-skinned Goblin wearing a brown aviator hat.",
+    "hint2": "Carries a pair of small throwers on his back who keep attacking over his shoulders.",
+    "hint3": "A colossal aquamarine brute in a brown aviator cap.",
     "description": "A big attacker who arrives with backup."
   },
   {
@@ -1131,8 +1131,8 @@
     "moveSpeed": "Medium",
     "year": 2017,
     "hint1": "What he lacks in accuracy, he makes up for with his impressively bushy eyebrows.",
-    "hint2": "For 4 Elixir, this mustachioed man with a double-barreled gun has moderate health and can shoot a wave of bullets.",
-    "hint3": "A man wearing a brown cloth, gloves, belt, pants and boots, a team-colored shirt and coonskin cap.",
+    "hint2": "Fires a spread of pellets that all land at once - devastating point-blank, nearly harmless at range.",
+    "hint3": "Bushy moustache, fur cap, and a sawn-off he clearly maintains himself.",
     "description": "A ranged fighter whose best work happens up close."
   },
   {
@@ -1147,8 +1147,8 @@
     "moveSpeed": "Slow",
     "year": 2016,
     "hint1": "Slow but durable, only attacks buildings.",
-    "hint2": "A massive beast of a rock.",
-    "hint3": "A menacing rock brute with team-colored eyes and crystals on its back.",
+    "hint2": "Explodes when destroyed and leaves two smaller versions that carry on, each exploding in turn.",
+    "hint3": "A lumbering brute of dark rock with glowing eyes and crystals across its back.",
     "description": "A massive commitment that doesn’t end when it ‘ends."
   },
   {
@@ -1163,8 +1163,8 @@
     "moveSpeed": "Medium",
     "year": 2018,
     "hint1": "Suffers from middle child syndrome to boot.",
-    "hint2": "This dragon attacks slowly and does low damage per hit for 5 Elixir.",
-    "hint3": "A small blue dragon with blue eyes, gray spots on its back.",
+    "hint2": "Each shot forks to three targets in a line, briefly interrupting all of them.",
+    "hint3": "A stout blue flier with grey spots along its back and crackling jaws.",
     "description": "A flying attacker that spreads pressure across targets."
   },
   {
@@ -1179,8 +1179,8 @@
     "moveSpeed": "Very Fast",
     "year": 2019,
     "hint1": "A daring duo of dangerous dive bombers.",
-    "hint2": "Those guys have broke the Arena's walls and inserted their way into the King's deck!",
-    "hint3": "They resemble Skeletons donning team-colored bandannas.",
+    "hint2": "Two of them sprint past all defenders and detonate on arrival, achieving nothing at all if intercepted first.",
+    "hint3": "Two bony runners in coloured bandanas, each shouldering a lit charge.",
     "description": "A fast gamble that aims for high impact."
   },
   {
@@ -1195,8 +1195,8 @@
     "moveSpeed": "Slow",
     "year": 2020,
     "hint1": "Don't tell him that his finger guns aren't real!",
-    "hint2": "This shocking version of the Giant has a Zap Pack, which zaps back anything nearby that attacks him.",
-    "hint3": "He generally resembles the Giant, but is bare-chested, has spiky eyebrows and beard.",
+    "hint2": "Anything that hits him gets shocked in return, punishing melee defenders for engaging.",
+    "hint3": "A bare-chested colossus with a spiked beard and a humming pack strapped to his back.",
     "description": "A huge threat that punishes you for hitting it wrong."
   },
   {
@@ -1211,8 +1211,8 @@
     "moveSpeed": "Slow",
     "year": 2016,
     "hint1": "This big blue dude digs the simple things in life - Dark Elixir drinks and throwing rocks.",
-    "hint2": "This huge menacing but also relaxed ogre with high hitpoints throws boulders.",
-    "hint3": "An indigo-skinned humanoid creature with blue eyes.",
+    "hint2": "Rolls a boulder that keeps going in a straight line, striking everything behind the first target too.",
+    "hint3": "A relaxed indigo-skinned ogre with blue eyes and heavy shoulders.",
     "description": "A slow tanky unit that controls space in a straight line."
   },
   {
@@ -1227,8 +1227,8 @@
     "moveSpeed": "Medium",
     "year": 2017,
     "hint1": "It's a miracle he doesn't lose an arm.",
-    "hint2": "For 5 Elixir, he provides insane value with moderately high hitpoints and a sharp piercing axe that damages everything.",
-    "hint3": "A shirtless man who has blue eyes, a large red nose, and a five-o'clock shadow.",
+    "hint2": "Throws an axe that damages everything on the way out and again on the way back.",
+    "hint3": "A shirtless man with a large red nose and a permanent five-o'clock shadow.",
     "description": "A durable ranged unit that hits more than once."
   },
   {
@@ -1243,8 +1243,8 @@
     "moveSpeed": "Medium",
     "year": 2017,
     "hint1": "Bet they won't see that coming!",
-    "hint2": "It's slick and quick too, being able to sneakily lock onto a Princess Tower in the blink of an eye.",
-    "hint3": "A Cannon with a wooden base atop a wooden cart.",
+    "hint2": "Rolls forward behind a shield; when that breaks it plants itself and keeps firing from where it stands.",
+    "hint3": "A wheeled wooden wagon with an iron tube mounted on top.",
     "description": "A mobile threat that changes behavior when pressured."
   },
   {
@@ -1259,8 +1259,8 @@
     "moveSpeed": "None",
     "year": 2016,
     "hint1": "It's going to be a thrilling ride, boys!",
-    "hint2": "3 Goblins for 3 Elixir that fly in a barrel.",
-    "hint3": "A wooden barrel with a Goblin logo on it.",
+    "hint2": "Thrown anywhere on the map, cracking open to spill three small green attackers on landing.",
+    "hint3": "A wooden keg tumbling through the air, painted with a grinning green face.",
     "description": "An object that lands where you don’t want it."
   },
   {
@@ -1275,8 +1275,8 @@
     "moveSpeed": "None",
     "year": 2016,
     "hint1": "Bolts of lightning damage and stun up to three enemy troops or buildings.",
-    "hint2": "It's great when taking out support units in a huge push.",
-    "hint3": "A deep blue liquid encased in a large vial.",
+    "hint2": "Strikes the three highest-health targets in the area and briefly stuns each of them.",
+    "hint3": "A deep blue liquid in a heavy vial.",
     "description": "A sharp answer from above."
   },
   {
@@ -1291,8 +1291,8 @@
     "moveSpeed": "None",
     "year": 2016,
     "hint1": "Everybody chill.",
-    "hint2": "This 4 Elixir spell incapacitates and slightly damages troops and buildings for 4 seconds.",
-    "hint3": "A cyan liquid bottled inside a transparent jar.",
+    "hint2": "Stops everything caught in the area dead for a few seconds, dealing almost no damage.",
+    "hint3": "A cyan liquid bottled in a transparent jar.",
     "description": "A spell that creates a short, unfair moment."
   },
   {
@@ -1307,8 +1307,8 @@
     "moveSpeed": "None",
     "year": 2018,
     "hint1": "It rolls over and damages anything in its path.",
-    "hint2": "An angry Barbarian in a barrel rolls a moderate distance.",
-    "hint3": "A spiked barrel with a Barbarian inside it.",
+    "hint2": "Rolls along the ground damaging everything in its path, then breaks open and lets out a fighter.",
+    "hint3": "A spiked wooden keg tumbling end over end.",
     "description": "A rolling clear that leaves something behind."
   },
   {
@@ -1323,7 +1323,7 @@
     "moveSpeed": "None",
     "year": 2016,
     "hint1": "Covers the area in a deadly toxin.",
-    "hint2": "A 4 Elixir area-denial spell that maintains a powerful presence.",
+    "hint2": "Lingers over an area for several seconds, steadily wearing down anything that stays in it.",
     "hint3": "A deep red liquid in a thin oblong vial.",
     "description": "A lingering area that makes standing still a bad plan."
   },
@@ -1339,8 +1339,8 @@
     "moveSpeed": "None",
     "year": 2024,
     "hint1": "And thrice were their afflictions... nixed, vexed, and hexed!",
-    "hint2": "For 2 Elixir, this spell deals very low damage in its duration.",
-    "hint3": "A lime colored liquid encased in a large vial, which is secured by a thin rope, with a large, rectangular wood,en cap that has three golden hair and two green eyes on the front.",
+    "hint2": "Deals little damage itself, but makes everything in the area take more from everything else.",
+    "hint3": "A lime-green liquid in a vial capped with a wooden face - three golden hairs, two green eyes.",
     "description": "A spell that changes how losses feel."
   },
   {
@@ -1355,8 +1355,8 @@
     "moveSpeed": "None",
     "year": 2016,
     "hint1": "Increases troop movement and attack speed.",
-    "hint2": "Pump up your troops with a 2 Elixir boost!",
-    "hint3": "A deep purple potion packed in a large bottle.",
+    "hint2": "Makes friendly troops in the area move and strike noticeably faster for a short while.",
+    "hint3": "A deep purple potion in a large bottle.",
     "description": "A simple ‘go faster’ moment."
   },
   {
@@ -1371,8 +1371,8 @@
     "moveSpeed": "None",
     "year": 2016,
     "hint1": "Troops are fragile, but pack the same punch as the original!",
-    "hint2": "For only 3 Elixir, it doubles the damage and can overwhelm opponents.",
-    "hint3": "A translucent, teal colored liquid encased in a small oblong vial.",
+    "hint2": "Duplicates your own troops in the area - the copies hit just as hard but die to a stiff breeze.",
+    "hint3": "A translucent teal liquid in a small oblong vial.",
     "description": "“A risky trick that can snowball or flop."
   },
   {
@@ -1387,8 +1387,8 @@
     "moveSpeed": "None",
     "year": 2016,
     "hint1": "Drags enemy troops to its center while dealing damage over time, just like a magnet.",
-    "hint2": "This windy spell pulls any troops in its large effective radius.",
-    "hint3": "A very large radius and low damage that is dealt every second for 1.05 seconds.",
+    "hint2": "Drags every enemy in a wide radius into one spot while chipping away at them.",
+    "hint3": "A swirling grey funnel that hauls everything toward its middle.",
     "description": "spell that ruins positioning."
   },
   {
@@ -1403,8 +1403,8 @@
     "moveSpeed": "None",
     "year": 2016,
     "hint1": "Does not appear in your starting hand.",
-    "hint2": "It can be used to double up attacks for a high reward.",
-    "hint3": "It does not have a defined Elixir cost.",
+    "hint2": "Plays whatever you played last all over again, for one more than it cost the first time.",
+    "hint3": "A reflective silver surface in an ornate frame.",
     "description": "A flexible card that depends on what you just did."
   },
   {
@@ -1419,7 +1419,7 @@
     "moveSpeed": "None",
     "year": 2024,
     "hint1": "You shall not pass! Unless there are lot of you...",
-    "hint2": "For 3 Elixir, this black magic spell encroaches a black hole in the arena.",
+    "hint2": "Pulses three times over a few seconds, hurting a single strong target far more than a crowd.",
     "hint3": "A deep orange-amber liquid in a large vial.",
     "description": "A dark zone that’s stronger in the right situation."
   },
@@ -1435,8 +1435,8 @@
     "moveSpeed": "None",
     "year": 2016,
     "hint1": "Nice tower you got there. Would be a shame if this whittled it down from this side of the Arena...",
-    "hint2": "It can quickly whittle down small swarms and moderate-health troops.",
-    "hint3": "A crossbow with wooden, stone, and metallic features along with a shining steel bolt for ammunition mounted on top of a base with a metal rim.",
+    "hint2": "Plants itself and fires a rapid stream of bolts clear across the arena at the enemy tower.",
+    "hint3": "A siege weapon of wood, stone and steel with a gleaming bolt loaded on top.",
     "description": "A device that locks in and refuses to blink."
   },
   {
@@ -1451,8 +1451,8 @@
     "moveSpeed": "None",
     "year": 2021,
     "hint1": "Building capable of burrowing underground and appearing anywhere in the Arena.",
-    "hint2": "These Goblins have abandoned locomotion with wooden barrels; now they've got a whole machine!",
-    "hint3": "A wooden hull, a circular hatch, a team-colored stripe, and a metal drill on its top.",
+    "hint2": "Burrows underground and surfaces anywhere on the map, then keeps sending up small green fighters.",
+    "hint3": "A wooden hull with a circular hatch and a spinning metal bit on top.",
     "description": "A structure that shows up uninvited."
   },
   {
@@ -1467,8 +1467,8 @@
     "moveSpeed": "Medium",
     "year": 2017,
     "hint1": "He lands with the force of 1,000 mustaches, then jumps from one foe to the next.",
-    "hint2": "This super soldier will land with a BOOM.",
-    "hint3": "A man with blue eyes, wears a helmet with a team-colored feather on top, maces, and huge armor.",
+    "hint2": "Lands with a crushing blast on arrival, then leaps between targets doing the same again.",
+    "hint3": "A hulking figure in heavy armour with a plumed helm and a mace on each fist.",
     "description": "A heavy entrance followed by heavy presence."
   },
   {
@@ -1483,8 +1483,8 @@
     "moveSpeed": "Medium / Very Fast",
     "year": 2018,
     "hint1": "Together they charge through the Arena; snaring enemies, knocking down towers... and chewing grass?!",
-    "hint2": "It snares and damages any nearby troops, slowing their travelling speed significantly.",
-    "hint3": "A dark-skinned woman who has light brown eyes and white spots on her face, wears a sandal dress.",
+    "hint2": "Builds into a charge against structures, while the woman on top flings a snare that badly slows anything nearby.",
+    "hint3": "A shaggy horned beast at full tilt, with a set of bolas whirling overhead.",
     "description": "A fast duo that disrupts movement and plans."
   },
   {
@@ -1499,8 +1499,8 @@
     "moveSpeed": "Fast",
     "year": 2016,
     "hint1": "He lands with a \"POW!\", stuns nearby enemies and shoots lightning with both hands!",
-    "hint2": "For just 4 Elixir, he lands with a free zap and continues to zap two opponents at once.",
-    "hint3": "A man with blue eyes, long ears, black spiky hair, eyebrows and moustache.",
+    "hint2": "Arrives with a stun, then fires from both hands at once, interrupting two targets continuously.",
+    "hint3": "A sharp-eared man with black spiked hair, a matching moustache, and crackling gloves.",
     "description": "A flashy arrival that interrupts fights."
   },
   {
@@ -1515,8 +1515,8 @@
     "moveSpeed": "Medium",
     "year": 2016,
     "hint1": "Shoots a focused beam of fire that increases in damage over time. Wears a helmet because flying can be dangerous.",
-    "hint2": "For 4 Elixir, this dragon has moderately high health and high damage.",
-    "hint3": "A Dragon with a helmet, a yellow hose and a fuel tank on its back.",
+    "hint2": "A focused beam that grows hotter the longer it holds one target, but resets the moment it is interrupted.",
+    "hint3": "A small flier in an aviator helmet with a fuel tank strapped on and a yellow hose.",
     "description": "A flyer that becomes scarier the longer it’s ignored."
   },
   {
@@ -1531,8 +1531,8 @@
     "moveSpeed": "Slow",
     "year": 2016,
     "hint1": "Overkill isn't in her vocabulary.",
-    "hint2": "A powerful machine with moderately high hitpoints that nukes a small area on the ground every 4 seconds.",
-    "hint3": "A front-facing golden tesla coil with an attached steel ram.",
+    "hint2": "Takes several seconds to wind up, then unleashes one enormous blast - and any stun resets the whole charge.",
+    "hint3": "A golden coil on wheels with a steel ram bolted to the front.",
     "description": "Slow buildup, huge payoff."
   },
   {
@@ -1547,8 +1547,8 @@
     "moveSpeed": "Fast",
     "year": 2016,
     "hint1": "It's not magic, it's a shovel.",
-    "hint2": "This underground mini-tank is always a surprise to the opponent!",
-    "hint3": "A man wearing a dark gray helmet with a partially melted candle on top.",
+    "hint2": "Tunnels underground and surfaces anywhere you like, including right on top of a tower.",
+    "hint3": "A man in a dark grey helmet with a half-melted candle stuck on top.",
     "description": "A sneaky unit that shows up where you don’t want it."
   },
   {
@@ -1563,8 +1563,8 @@
     "moveSpeed": "Medium",
     "year": 2016,
     "hint1": "If you're feeling warm feelings towards her, it's probably because you're on fire.",
-    "hint2": "For 3 Elixir, she sets anything on fire with her moderate hitpoints, area damage, and very long range!",
-    "hint3": "A woman with brown eyes, dark brown hair and eyebrows, wearing a crown.",
+    "hint2": "Strikes from further away than anything else in the game, setting a small area alight.",
+    "hint3": "A woman with dark brown hair in a crown, carrying a longbow.",
     "description": "A long-range nuisance that forces awkward answers."
   },
   {
@@ -1579,8 +1579,8 @@
     "moveSpeed": "Medium",
     "year": 2022,
     "hint1": "This mystical creature will be reborn as an egg when destroyed.",
-    "hint2": "He packs moderately low health, with decent damage, and to compensate, he will lay an Egg when he dies.",
-    "hint3": "It is a light red bird with teal eyes, yellow sclerae, a maroon beak.",
+    "hint2": "Comes back once - when killed it leaves an egg that hatches into a smaller version of itself.",
+    "hint3": "A light red bird with teal eyes and a maroon beak, trailing embers.",
     "description": "A flying threat that refuses to be a one-time deal."
   },
   {
@@ -1595,8 +1595,8 @@
     "moveSpeed": "Fast",
     "year": 2018,
     "hint1": "He drifts invisibly through the Arena until he's startled by an enemy.",
-    "hint2": "A vengeful spirit is haunting the Arena!",
-    "hint3": "An undead King who wears a crown, dark gauntlets and chain mail.",
+    "hint2": "Drifts along unseen and untouchable, only becoming solid in the moment he swings.",
+    "hint3": "A translucent undead king in a crown, chain mail and dark gauntlets.",
     "description": "A roaming threat that appears and disappears."
   },
   {
@@ -1611,8 +1611,8 @@
     "moveSpeed": "Medium",
     "year": 2016,
     "hint1": "He has a handlebar mustache that's too hot for TV.",
-    "hint2": "For 3 Elixir, it may not seem like much, but he can stop enemies in their tracks.",
-    "hint3": "A man with cyan spiky hair, fuzzy eyebrows, glowing eyes.",
+    "hint2": "Every shot chills what it touches, slowing attacks and movement rather than killing outright.",
+    "hint3": "Frost-white spiked hair, a heavy blue cloak, and a moustache with its own gravity.",
     "description": "A control unit that makes everything feel slower."
   },
   {
@@ -1627,8 +1627,8 @@
     "moveSpeed": "Medium",
     "year": 2018,
     "hint1": "Not quite a Wizard, nor an Archer.",
-    "hint2": "He can safely pierce buildings from afar, as well as multiple targets within the arrow's linear path.",
-    "hint3": "A man with white hair, glowing turquoise eyes, bushy black eyebrows.",
+    "hint2": "Looses a single shot that travels right through everything in its path, hitting a whole line at once.",
+    "hint3": "A white-haired man with glowing turquoise eyes and a slender bow.",
     "description": "A ranged unit that punishes bad lines."
   },
   {
@@ -1643,8 +1643,8 @@
     "moveSpeed": "Fast",
     "year": 2017,
     "hint1": "The mask keeps her identity safe.",
-    "hint2": "When she dashes, nothing can touch her.",
-    "hint3": "She has green eyes and white hair, wears a mask, and a dark olive cloak.",
+    "hint2": "Dashes at anything far enough away, and cannot be touched at all mid-dash.",
+    "hint3": "A green-eyed woman in a mask and dark olive cloak, white hair tied back.",
     "description": "A quick figure that never stays still."
   },
   {
@@ -1659,8 +1659,8 @@
     "moveSpeed": "Slow",
     "year": 2016,
     "hint1": "A majestic flying beast that attacks buildings.",
-    "hint2": "This tank is slow and expensive at 7 Elixir, and must be well-supported.",
-    "hint3": "A flying, burning rock beast with an underbite.",
+    "hint2": "Soaks damage on the way in, then bursts into a swarm of small angry fliers when destroyed.",
+    "hint3": "A floating mass of molten rock with an underbite and glowing cracks.",
     "description": "A giant flying commitment that brings extra baggage."
   },
   {
@@ -1675,8 +1675,8 @@
     "moveSpeed": "Medium",
     "year": 2017,
     "hint1": "Summons Bats to do her bidding!",
-    "hint2": "She can quickly swarm units and towers with her Bats.",
-    "hint3": "She has glowing blue eyes and wears a black cloak.",
+    "hint2": "Continuously sends out small winged creatures while she fights, and releases a final batch on death.",
+    "hint3": "A blue-eyed woman in a black cloak carrying a heavy staff.",
     "description": "A support threat that keeps adding pressure over time."
   },
   {
@@ -1691,8 +1691,8 @@
     "moveSpeed": "Very Fast",
     "year": 2016,
     "hint1": "He chops trees by day and hunts The Log by night.",
-    "hint2": "He shreds tanks, towers, and even small swarms with his extremely fast attack speed and high damage.",
-    "hint3": "He wields an axe and carries a Rage Spell on his shoulder.",
+    "hint2": "Swings faster than almost anything alive, and drops a lingering boost on his allies when he falls.",
+    "hint3": "A burly man with an axe and a bottle strapped to his shoulder.",
     "description": "A fast hitter that leaves a messy aftermath"
   },
   {
@@ -1707,8 +1707,8 @@
     "moveSpeed": "Medium",
     "year": 2025,
     "hint1": "Rider of Dragons.",
-    "hint2": "Comes into the arena depending on your need.",
-    "hint3": "A scimitar with a light blue glow and a blue handle.",
+    "hint2": "Can be played small and cheap or large and expensive, with the fliers she brings scaling to match.",
+    "hint3": "A warrior with a glowing blue scimitar, flanked by winged creatures.",
     "description": "A flexible threat with two moods."
   },
   {
@@ -1723,8 +1723,8 @@
     "moveSpeed": "Medium",
     "year": 2024,
     "hint1": "Who let a baby drive this thing?",
-    "hint2": "For 5 Elixir, a massive mech made of wood and metal is deployed into the arena.",
-    "hint3": "A wood and metal mech with green zig zag lines, and spikes on the edges.",
+    "hint2": "A walking mech that fires a heavy rocket volley once it has built up enough charge.",
+    "hint3": "A wood-and-metal walker with green zigzag markings and spikes along its edges.",
     "description": "A bulky contraption built by goblins."
   },
   {
@@ -1739,8 +1739,8 @@
     "moveSpeed": "Medium",
     "year": 2020,
     "hint1": "She also bakes great cookies.",
-    "hint2": "For 4 Elixir, this witch cackles wildly as she curses her foes.",
-    "hint3": "A woman with glowing blue eyes and wears a purple cloak with a pink lining.",
+    "hint2": "Curses whatever she hits, so anything that dies afterwards turns into a pig fighting for you.",
+    "hint3": "A blue-eyed woman in a purple cloak lined with pink.",
     "description": "A witch who benefits from chaos."
   },
   {
@@ -1755,8 +1755,8 @@
     "moveSpeed": "Medium",
     "year": 2019,
     "hint1": "He's also mastered the ancient art of 'Fish Slapping'.",
-    "hint2": "He pulls troops towards him with his hook so he can slow them and kill them with a slap.",
-    "hint3": "A man with a large nose, blonde eyebrows and beard.",
+    "hint2": "Hurls a hook that yanks a target across the arena to him, then slaps it about at close range.",
+    "hint3": "A broad man with a big nose and blond beard, coiled rope at his belt.",
     "description": "A disruptor that changes where fights happen."
   },
   {
@@ -1771,8 +1771,8 @@
     "moveSpeed": "None",
     "year": 2016,
     "hint1": "Now, it seeks revenge by crushing anything in its path!",
-    "hint2": "It rolls. It crushes. It knocks back.",
-    "hint3": "It appears as a long, spiked piece of wood.",
+    "hint2": "Rolls the length of the lane, crushing and shoving back everything on the ground as it goes.",
+    "hint3": "A long spiked length of timber, rolling end over end.",
     "description": "A simple rolling answer that never stops being useful."
   },
   {
@@ -1787,8 +1787,8 @@
     "moveSpeed": "None",
     "year": 2016,
     "hint1": "Surprise! It's a party. A Skeleton party, anywhere in the Arena. Yay!",
-    "hint2": "This portable 5 Elixir ritual starts a Skeleton party anywhere in the Arena!",
-    "hint3": "After 2.2 seconds, it spawns a single Skeleton.",
+    "hint2": "Summons a steady stream of bone soldiers anywhere on the map for several seconds.",
+    "hint3": "A creeping patch of cursed earth with hands clawing out of it.",
     "description": "A spell that turns any moment into a problem."
   },
     {
@@ -1803,8 +1803,8 @@
       "moveSpeed": "Medium",
       "year": 2021,
       "hint1": "A warrior with luxurious hair and outstanding flexibility.",
-      "hint2": "For 1 Elixir, you can use his dashingly Dashing Dash, instantly dashing through a foe through another for up to 10 times",
-      "hint3": "a man who has blue eyes, golden hair and eyebrows",
+      "hint2": "His ability sends him dashing from one enemy to the next, chaining up to ten times in a row.",
+      "hint3": "A blue-eyed man with flowing blond hair and a light blade.",
       "description": "A flashy fighter with sudden bursts of movement."
     },
     {
@@ -1819,8 +1819,8 @@
       "moveSpeed": "Medium",
       "year": 2021,
       "hint1": "The King of the undead himself.",
-      "hint2": "For 2 Elixir, you can use his Soul Summoning. It will release all of the souls he kept for battle in form of Skeletons around a royal Graveyard aura around him",
-      "hint3": "a massive Skeleton wearing a menacingly large dark chestplate and gauntlets",
+      "hint2": "Collects souls from everything that dies nearby, then spends them to raise a whole army at once.",
+      "hint3": "A towering figure of bone in a dark chestplate and heavy gauntlets, wearing a crown.",
       "description": "A tanky leader who benefits from nearby destruction."
     },
     {
@@ -1835,8 +1835,8 @@
       "moveSpeed": "Fast",
       "year": 2025,
       "hint1": "The boss of the Forest Gang finally shows her face...kind of.",
-      "hint2": "For 1 Elixir, you can use her Getaway Grenade, she turns invisible while teleporting back 6 tiles",
-      "hint3": "a woman with teal eyes, has light red hair and eyebrows",
+      "hint2": "Her ability blinks her six tiles backwards under cover of smoke, leaving pursuers swinging at nothing.",
+      "hint3": "A teal-eyed woman with light red hair, masked and cloaked.",
       "description": "A fast boss who doesn’t like being pinned down."
     },
     {
@@ -1851,8 +1851,8 @@
       "moveSpeed": "Medium",
       "year": 2021,
       "hint1": "She is fast, deadly and hard to catch.",
-      "hint2": "For 1 Elixir, you can use her Cloaking Cape ability, mitigating the glass part of her by turning herself invisible",
-      "hint3": "She appears as an Archer, except she wears a crown",
+      "hint2": "Her ability turns her invisible for a few seconds while she keeps firing.",
+      "hint3": "A crowned woman with a heavy crossbow and a long cape.",
       "description": "A high-threat ranged unit that demands an answer."
     },
     {
@@ -1867,8 +1867,8 @@
       "moveSpeed": "Medium",
       "year": 2022,
       "hint1": "This makes him not only the mightiest, but also the sneakiest Miner in the Arena.",
-      "hint2": "For 1 Elixir, you can use his Explosive Escape, which makes him drill underground and cross over to his other side",
-      "hint3": "a hunk with tangerine-colored hair, eyebrows and a mustache",
+      "hint2": "Grinds down whatever he touches with damage that ramps up, and his ability tunnels him to the other lane.",
+      "hint3": "A hunk with tangerine hair and a matching moustache, carrying a heavy drill.",
       "description": "A steady bruiser who can suddenly change the situation."
     },
     {
@@ -1883,8 +1883,8 @@
       "moveSpeed": "Medium",
       "year": 2024,
       "hint1": "It’s ALIVE! Monster lumbers towards enemy buildings while Doctor waits to spring the trap",
-      "hint2": "For 2 Elixir you can use his Lightning Link, which is quite shocking for him and the Monster!",
-      "hint3": "The Monster is a large, green Goblin with a square head",
+      "hint2": "Arrives as two separate units, and the ability links them with a bolt that stuns whatever is caught between.",
+      "hint3": "A hulking green brute with a square, flat-topped head, and the small doctor who built him.",
       "description": "A two-part menace that escalates fights quickly"
     },
     {
@@ -1899,8 +1899,8 @@
       "moveSpeed": "Medium",
       "year": 2023,
       "hint1": "Who let their nephew into the Arena?!",
-      "hint2": "For 3 Elixir, you can use his Royal Rescue to meet his guardian: Guardienne.",
-      "hint3": "She has cyan eyes, blonde eyebrows, and a scar on her left eye, wields a greatsword, is dressed in a gray-colored armor.",
+      "hint2": "His ability calls in his guardian, who lands hard and fights alongside him.",
+      "hint3": "A small crowned boy with a spear, and a scarred woman in grey armour with a greatsword.",
       "description": "A fragile-looking unit that becomes dangerous if ignored."
     },
     {
@@ -1915,8 +1915,8 @@
       "moveSpeed": "None",
       "year": 2025,
       "hint1": "If the troop is in the air, they'll ground them. Don't worry, they'll grow on you!",
-      "hint2": "A spell that restrains the strongest enemies in an area.",
-      "hint3": "More damage is dealt when fewer targets are affected.",
+      "hint2": "Roots the strongest enemies in place, and hits harder the fewer of them there are.",
+      "hint3": "Green tendrils bursting from the ground to wrap around whatever they catch.",
       "description": "A control spell that makes big threats behave."
     },
     {
@@ -1931,8 +1931,8 @@
       "moveSpeed": "Medium",
       "year": 2022,
       "hint1": "Has spent many isolated years perfecting a new style of combat.",
-      "hint2": "For 1 Elixir, you can use his Pensive Protection, an ability that makes him meditate for a while and chill out.",
-      "hint3": "Similar to the Hog Rider, except that he is tan, and his mohawk, beard and eyebrows are white.",
+      "hint2": "His ability has him deflect incoming attacks back the way they came for a few seconds.",
+      "hint3": "A tan man with a white mohawk and beard, fighting with open hands.",
       "description": "A calm brawler that shuts down the wrong attacks."
     }
   ]

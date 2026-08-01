@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+# Claude Code
+# Personal, machine-specific settings. CLAUDE.md and TASKS.md are tracked
+# deliberately — they are project documentation, not local config.
+# Note: "*.local" above does NOT cover this, the filename ends in .json.
+.claude/settings.local.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -96,18 +96,21 @@ export default function CardsIndex() {
                                     className="bg-white/5 border border-white/10 rounded-xl p-4"
                                 >
                                     <div className="flex items-start gap-3">
-                                        {/* 128px webp from `npm run thumbs`. Plain <img>
-                                            rather than CardThumb: this page renders 121 of
-                                            them, and CardThumb carries per-image state for
-                                            format fallback that is wasted here. */}
+                                        {/* 160x160 webp from `npm run thumbs`, already
+                                            cropped past the baked-in borders so every tile
+                                            is framed identically. Fixed square box, no
+                                            h-auto: the whole point is that they line up.
+                                            Plain <img> rather than CardThumb because this
+                                            page renders 121 of them and CardThumb carries
+                                            per-image React state for format fallback. */}
                                         <img
                                             src={`/games/clashroyale/cards/thumb/${slugifyCardName(c.card)}.webp`}
                                             alt=""
-                                            width={128}
-                                            height={188}
+                                            width={160}
+                                            height={160}
                                             loading="lazy"
                                             decoding="async"
-                                            className="w-14 h-auto shrink-0 rounded-md ring-1 ring-white/15"
+                                            className="w-16 h-16 shrink-0 rounded-lg object-cover ring-1 ring-white/15 bg-white/5"
                                         />
                                         <div className="min-w-0">
                                             <h3 className="font-semibold text-white">{c.card}</h3>

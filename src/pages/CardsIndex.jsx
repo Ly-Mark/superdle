@@ -12,7 +12,7 @@
 // HTML, so the whole roster is readable without JavaScript.
 import CRBackground from '../components/clashroyale/CRBackground.jsx';
 import cardsData from '../data/cards.json';
-import { slugifyCardName } from '../utils/clashroyale/cardImages.js';
+import CardArt from '../components/clashroyale/CardArt.jsx';
 
 const RARITY_ORDER = ['Common', 'Rare', 'Epic', 'Legendary', 'Champion'];
 
@@ -96,22 +96,11 @@ export default function CardsIndex() {
                                     className="bg-white/5 border border-white/10 rounded-xl p-4"
                                 >
                                     <div className="flex items-start gap-3">
-                                        {/* 160x160 webp from `npm run thumbs`, already
-                                            cropped past the baked-in borders so every tile
-                                            is framed identically. Fixed square box, no
-                                            h-auto: the whole point is that they line up.
-                                            Plain <img> rather than CardThumb because this
-                                            page renders 121 of them and CardThumb carries
-                                            per-image React state for format fallback. */}
-                                        <img
-                                            src={`/games/clashroyale/cards/thumb/${slugifyCardName(c.card)}.webp`}
-                                            alt=""
-                                            width={160}
-                                            height={160}
-                                            loading="lazy"
-                                            decoding="async"
-                                            className="w-16 h-16 shrink-0 rounded-lg object-cover ring-1 ring-white/15 bg-white/5"
-                                        />
+                                        {/* Same treatment as the game board, via the shared
+                                            component: square box, object-cover, zoomed past
+                                            the baked-in border. `thumb` serves the 160px
+                                            copies since this page renders all 121. */}
+                                        <CardArt name={c.card} variant="thumb" sizeClass="w-16 h-16" />
                                         <div className="min-w-0">
                                             <h3 className="font-semibold text-white">{c.card}</h3>
                                             <p className="text-xs text-blue-200/70 mt-0.5">

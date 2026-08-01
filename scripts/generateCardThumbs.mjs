@@ -21,17 +21,15 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const SRC = path.resolve(__dirname, '../public/games/clashroyale/cards');
 const OUT = path.join(SRC, 'thumb');
 
-// Every thumbnail comes out at exactly this size. The source art is not
-// consistent — widths run 285 to 460, aspect ratios differ, and some cards
-// have a decorative border baked into the image while others do not. Left
-// alone they render at different heights and with visible frames on only
-// some tiles, which looks like a mistake rather than a style.
-const SIZE = 160; // square, 2x the ~72px display size
-
-// Fraction trimmed from each edge before the square crop, to cut past the
-// baked-in borders. 0.12 removes the frame on the cards that have one without
-// biting into the artwork on the ones that don't.
-const INSET = 0.12;
+// Width only — aspect ratio is preserved and NO cropping happens here.
+//
+// Framing is deliberately left to CSS, exactly as ClassicGame's CardPortrait
+// already does it: a square box with object-cover, plus scale(1.4) from centre
+// to zoom past the border baked into some of the source art. That treatment is
+// proven in the game, and doing it in CSS means one number tunes every card at
+// once. An earlier attempt cropped in this script instead and misframed a lot
+// of cards, because the right crop is not the same for all of them.
+const WIDTH = 160;
 
 if (!existsSync(OUT)) mkdirSync(OUT, { recursive: true });
 
@@ -50,23 +48,8 @@ for (const file of sources) {
 
     srcBytes += statSync(from).size;
 
-    const image = sharp(from);
-    const { width, height } = await image.metadata();
-
-    // Trim past the border, then take a square from the upper-middle. Cards are
-    // portrait and the character sits above centre, so a straight centre crop
-    // cuts heads off. `position: 'top'` after the inset lands on the subject.
-    const dx = Math.round(width * INSET);
-    const dy = Math.round(height * INSET);
-
-    await image
-        .extract({
-            left: dx,
-            top: dy,
-            width: width - dx * 2,
-            height: height - dy * 2,
-        })
-        .resize(SIZE, SIZE, { fit: 'cover', position: 'top' })
+    await sharp(from)
+        .resize({ width: WIDTH, withoutEnlargement: true })
         .webp({ quality: 82 })
         .toFile(to);
 

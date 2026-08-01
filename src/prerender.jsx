@@ -6,6 +6,21 @@ import { StaticRouter } from 'react-router';
 import App from './App.jsx';
 import { getRouteMeta } from './routeMeta.js';
 
+// React's scheduler creates a MessageChannel for task scheduling. The prerender
+// script is bundled with browser resolution conditions, so react-dom/static
+// resolves to the browser build and that channel is never closed. Its
+// MessagePort is a live libuv handle, so `vite build` completes every page and
+// then never exits — CI sat for 5h59m before being killed at the job limit.
+//
+// Unref-ing the port tells Node it does not count toward keeping the process
+// alive. Rendering is already awaited and complete by this point, so nothing is
+// still relying on it.
+function releaseSchedulerHandles() {
+    for (const handle of process._getActiveHandles?.() ?? []) {
+        if (handle?.constructor?.name === 'MessagePort') handle.unref?.();
+    }
+}
+
 export async function prerender(data) {
     // react-dom/static's prerender resolves lazy() routes before emitting HTML.
     const { prelude } = await reactPrerender(
@@ -14,6 +29,7 @@ export async function prerender(data) {
         </StaticRouter>
     );
     const html = await new Response(prelude).text();
+    releaseSchedulerHandles();
 
     const meta = getRouteMeta(data.url);
 

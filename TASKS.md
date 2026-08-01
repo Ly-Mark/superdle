@@ -78,7 +78,11 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
   corrected.
   *Done when:* `npm run build` exits 0. — build verification in progress.
 
-- [ ] **T2 · Commit the in-flight prerender work**
+- [x] **T2 · Commit the in-flight prerender work**
+  Done. Merged to `main` via PR #7 (`a6ea66b`) and deployed. `clash.ac`
+  now serves 18,119 bytes with 756 words of body text, verified with a
+  cache-busted Googlebot fetch — it was 1,932 bytes and an empty `#root`
+  this morning.
   `scripts/`, `src/prerender.jsx`, `src/routeMeta.js` are untracked;
   `src/App.jsx`, `src/main.jsx`, `vite.config.js` are modified. All of it
   is one logical change and none of it is committed.
@@ -295,7 +299,8 @@ crawlable text. This section fixes that.
 
 Items that need your call before the task under them can start.
 
-- **D5 (blocks T19): `react-helmet-async` is the wrong tool here.**
+- **D5 (answered 2026-08-01 — helmet not used): `react-helmet-async` was
+  the wrong tool here.**
   Three reasons, in order of weight:
   1. **This site prerenders.** Head tags are emitted at build time from
      `prerender.jsx`'s `head.elements`. Helmet would be a *second*
@@ -318,12 +323,12 @@ Items that need your call before the task under them can start.
 
   *Needs owner sign-off, since the request specified helmet.*
 
-- **D6 (blocks T19): confirm the production domain for `canonical`.**
-  Not guessing, per instruction. Evidence points to **`clash.ac`** — it
-  appears in `index.html` (`og:url`), the Terms and Privacy pages, and
-  as `PRODUCTION_ORIGIN` in `shareBase.js`. Needs explicit confirmation
-  before any canonical tag is written, since a wrong canonical actively
-  de-indexes pages.
+- **D6 (answered 2026-08-01): production domain is `clash.ac`**, confirmed
+  by the owner. Canonicals include a **trailing slash** for sub-routes —
+  the prerender plugin emits `about/index.html`, so Cloudflare serves it
+  at `/about/` and 308s the slash-less form. A canonical on the
+  redirecting form points Google at a URL that redirects away.
+  *(Fix committed locally as `9dd406b`, not yet merged.)*
 
 - **D1 (answered 2026-08-01):** Fix the import, don't create `src/seo/`.
   The folder would only have justified itself by also holding the sitemap

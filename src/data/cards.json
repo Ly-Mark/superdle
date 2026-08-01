@@ -198,7 +198,7 @@
     "type": "Troops",
     "targets": "Ground",
     "healthValue": 796,
-    "healthCategory": "Medium / Medium",
+    "healthCategory": "Medium",
     "arena": "Royal Arena",
     "moveSpeed": "Medium",
     "year": 2018,

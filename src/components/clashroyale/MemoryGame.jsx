@@ -233,7 +233,7 @@ export default function MemoryGame() {
 
     return (
         <CRBackground>
-            <div className="container mx-auto px-4 py-8">
+            <main id="main-content" tabIndex={-1} className="container mx-auto px-4 py-8">
                 {/* Title */}
                 <div className="text-center mb-6">
                     {/* Decorative wordmark — the real <h1> is in ModeIntro below. */}
@@ -422,7 +422,7 @@ export default function MemoryGame() {
                         <div className="text-blue-100/90 mt-1">You found every card.</div>
                     </div>
                 )}
-            </div>
+            </main>
         </CRBackground>
     );
 }

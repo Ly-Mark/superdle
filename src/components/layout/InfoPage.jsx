@@ -6,7 +6,7 @@ export default function InfoPage({ title, children }) {
     return (
         <CRBackground>
             {/* No local header — SiteHeader in App.jsx now covers every route. */}
-            <main className="max-w-2xl w-full mx-auto px-4 py-8 text-white/90">
+            <main id="main-content" tabIndex={-1} className="max-w-2xl w-full mx-auto px-4 py-8 text-white/90">
                 <p className="mb-4">
                     <Link
                         to="/"

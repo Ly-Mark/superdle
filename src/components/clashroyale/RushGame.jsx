@@ -624,7 +624,7 @@ const RushGame = () => {
       }
       .time-pop { animation: timePop 900ms ease-out forwards; }
     `}</style>
-              <div className="container mx-auto px-4 py-4 sm:py-8">
+              <main id="main-content" tabIndex={-1} className="container mx-auto px-4 py-4 sm:py-8">
                   {/* Header */}
                   <div className="text-center mb-4 sm:mb-8">
                       {/* Decorative wordmark — the real <h1> is in ModeIntro below. */}
@@ -1055,7 +1055,7 @@ const RushGame = () => {
                         </div>
                     )}
                 </div>
-          </div>
+          </main>
 </CRBackground>
     );
 };

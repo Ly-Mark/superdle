@@ -128,7 +128,7 @@ export default function DescriptionGame() {
 
     return (
         <ClashroyaleBackground>
-            <div className="container mx-auto px-4 py-8">
+            <main id="main-content" tabIndex={-1} className="container mx-auto px-4 py-8">
                 {/* Header */}
                 <div className="text-center mb-8">
                     {/* Decorative wordmark — the real <h1> is in ModeIntro below. */}
@@ -282,7 +282,7 @@ export default function DescriptionGame() {
                     )}
 
                 </div>
-            </div>
+            </main>
         </ClashroyaleBackground>
 );
 }

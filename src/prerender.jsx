@@ -16,6 +16,10 @@ export async function prerender(data) {
     const html = await new Response(prelude).text();
 
     const meta = getRouteMeta(data.url);
+
+    // NOTE: the plugin REPLACES head.title but APPENDS head.elements. Anything
+    // emitted here must not also exist in index.html, or the page ships two of
+    // it. That was already happening with the description tag.
     return {
         html,
         head: {
@@ -23,6 +27,21 @@ export async function prerender(data) {
             title: meta.title,
             elements: new Set([
                 { type: 'meta', props: { name: 'description', content: meta.description } },
+                { type: 'link', props: { rel: 'canonical', href: meta.canonical } },
+
+                { type: 'meta', props: { property: 'og:site_name',   content: meta.siteName } },
+                { type: 'meta', props: { property: 'og:type',        content: 'website' } },
+                { type: 'meta', props: { property: 'og:url',         content: meta.canonical } },
+                { type: 'meta', props: { property: 'og:title',       content: meta.ogTitle } },
+                { type: 'meta', props: { property: 'og:description', content: meta.ogDescription } },
+                { type: 'meta', props: { property: 'og:image',       content: meta.ogImage } },
+
+                { type: 'meta', props: { name: 'twitter:card',        content: 'summary_large_image' } },
+                { type: 'meta', props: { name: 'twitter:title',       content: meta.ogTitle } },
+                { type: 'meta', props: { name: 'twitter:description', content: meta.ogDescription } },
+                { type: 'meta', props: { name: 'twitter:image',       content: meta.ogImage } },
+
+                { type: 'meta', props: { name: 'theme-color', content: meta.themeColor } },
             ]),
         },
     };

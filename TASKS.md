@@ -13,7 +13,63 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
 
 ---
 
-## Now — build is red, nothing else ships until this is green
+## Now
+
+- [x] **T19 · Finish per-route SEO metadata + accessibility** — **P1**
+  *(requested and completed 2026-08-01)*
+
+  Done in four reviewed steps: routeMeta fields -> prerender emits them
+  and index.html drops its copies -> `<main>` landmark -> skip link.
+  All 8 routes verified: unique canonical, unique og:title, exactly one
+  of each tag, one `<main id="main-content" tabindex="-1">`, skip link
+  first in DOM order.
+
+  Fixed along the way: **every page was shipping two
+  `<meta name="description">` tags** — one static from index.html, one
+  per-route from prerender. The plugin *replaces* `head.title` but
+  *appends* `head.elements`, so anything emitted from `prerender.jsx`
+  must not also live in `index.html`. Noted in a comment there.
+
+  `tabIndex={-1}` on each `<main>` is deliberate: without it some
+  browser/screen-reader combinations scroll to the content but leave
+  focus on the link, so the next Tab lands back in the nav — a skip
+  link that looks like it works and doesn't.
+
+  Not adopted: `react-helmet-async` (see D5).
+
+  **Already done, do not redo:**
+  - Per-route `<title>` and `<meta description>` — live for all 8 routes
+    via `routeMeta.js` + `prerender.jsx`.
+  - Footer disclaimer naming Supercell and linking the Fan Content
+    Policy — shipped in b3f910f.
+  - `og:image` as an absolute https PNG (`https://clash.ac/og.png`),
+    `og:type`, `twitter:card=summary_large_image`, `theme-color` — all
+    present in `index.html`.
+
+  **Actually missing:**
+  - `canonical` — absent on every route.
+  - `og:site_name` — absent.
+  - Per-route `og:title` / `og:description` / `og:url` — currently
+    identical on all 8 routes because they are hardcoded in
+    `index.html`. Every page shares one preview card.
+  - Skip-to-content link as the first focusable element.
+  - **A `<main>` landmark on the four game routes.** Only `InfoPage` has
+    one, so there is currently nothing for a skip link to target. Must
+    land before the skip link is meaningful.
+
+  **Two corrections to the request:**
+  - `/clashroyale/quote` does not exist. The route is
+    `/clashroyale/description` and the component is `DescriptionGame`.
+    (Same stale reference that was in the CLAUDE.md header block.)
+  - The request names 2 routes; there are 8. Metadata should cover all
+    of them or the untouched six keep sharing one preview card.
+
+  **Do NOT use react-helmet-async — see D5.**
+
+  **Deferred until D5 is answered:** the canonical domain. Not guessing
+  per instruction.
+
+## Later blockers *(build is green as of 2026-08-01)*
 
 - [x] **T1 · Fix broken prerender import**
   `src/prerender.jsx:5` imported `./seo/routeMeta.js`; the file lives at
@@ -238,6 +294,36 @@ crawlable text. This section fixes that.
 ## Open decisions
 
 Items that need your call before the task under them can start.
+
+- **D5 (blocks T19): `react-helmet-async` is the wrong tool here.**
+  Three reasons, in order of weight:
+  1. **This site prerenders.** Head tags are emitted at build time from
+     `prerender.jsx`'s `head.elements`. Helmet would be a *second*
+     mechanism writing to the same place — duplicate or conflicting
+     tags — and getting its output into the prerendered HTML means
+     wiring `HelmetProvider` context extraction into `prerender.jsx`.
+     Client-side tag injection is invisible to a crawler with JS off,
+     which is the entire problem T19 exists to solve.
+  2. **React 19 hoists document metadata natively.** `<title>`,
+     `<meta>`, and `<link>` rendered anywhere in the tree are lifted
+     into `<head>` with no library. This project is on React 19.1.
+  3. `react-helmet-async` is effectively unmaintained and has peer-dep
+     friction with React 19.
+
+  **Recommended instead:** extend `routeMeta.js` with `canonical`,
+  `ogTitle`, `ogDescription`, `ogImage`, `siteName`, and emit them from
+  `prerender.jsx`. No new dependency, one source of truth, already
+  proven to reach the initial HTML. Remove the now-duplicated static
+  `og:`/`twitter:` block from `index.html` so tags aren't defined twice.
+
+  *Needs owner sign-off, since the request specified helmet.*
+
+- **D6 (blocks T19): confirm the production domain for `canonical`.**
+  Not guessing, per instruction. Evidence points to **`clash.ac`** — it
+  appears in `index.html` (`og:url`), the Terms and Privacy pages, and
+  as `PRODUCTION_ORIGIN` in `shareBase.js`. Needs explicit confirmation
+  before any canonical tag is written, since a wrong canonical actively
+  de-indexes pages.
 
 - **D1 (answered 2026-08-01):** Fix the import, don't create `src/seo/`.
   The folder would only have justified itself by also holding the sitemap

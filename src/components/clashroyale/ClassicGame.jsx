@@ -630,7 +630,7 @@ const ClassicGame = () => {
 
 
             {/* Main content */}
-            <div className="relative z-20 container mx-auto px-4 py-8">
+            <main id="main-content" tabIndex={-1} className="relative z-20 container mx-auto px-4 py-8">
                 {/* Header */}
                 <div className="text-center mb-8">
                     {/* Decorative wordmark — the real <h1> lives in HomeContent below. */}
@@ -778,7 +778,7 @@ const ClassicGame = () => {
                 {showLegend && <InlineLegend onClose={() => setShowLegend(false)} />}
 
                 <HomeContent />
-            </div>
+            </main>
             {/*<WinModal*/}
             {/*    isOpen={showWinModal}*/}
             {/*    onClose={() => setShowWinModal(false)}*/}

@@ -143,7 +143,18 @@ The rejection reason was low value. Root cause: 8 total URLs, 4 of them
 boilerplate legal pages, 4 of them JS-driven game screens with no
 crawlable text. This section fixes that.
 
-- [ ] **T4 · Build the card pages** (`/cards` index + `/cards/:slug`)
+- [~] **T4 · Build the card pages** (`/cards` index + `/cards/:slug`)
+  **Index done 2026-08-01.** `/cards` lists all 121 grouped by rarity with
+  art, cost, type, arena, year and description — 2,700+ words on one page,
+  more than the rest of the site combined. Deliberately ONE page: at ~45
+  unique words per card, 121 separate pages would be mostly repeated
+  boilerplate, which is the rejection reason we are trying to remove.
+
+  Thumbnails: source art is 28.9 MB across 121 files. `npm run thumbs`
+  generates 128px webp copies — 0.7 MB, 98% smaller. Committed, so CI never
+  runs sharp.
+
+  **Still open:** the per-card pages, and only for a handful. See T16.
   `scripts/prerenderRoutes.mjs` already has `getCardRoutes()` written and
   gated behind `INCLUDE_CARD_ROUTES = false`, waiting on these pages.
   Takes the site from 8 URLs to ~130.

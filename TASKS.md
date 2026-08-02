@@ -4,8 +4,9 @@ Working board for Clashdle. Maintained by Claude Code — see the "Task board
 protocol" section of `CLAUDE.md` for the update rules.
 
 **Last updated:** 2026-08-02
-**Current branch:** `p7-ui-polish` — pushed, ready to PR (15 commits)
-**Next branch:** `p6-code-migration` — cut and waiting, starts with T9
+**Current branch:** `main` — `p7-ui-polish` merged via PR #12
+**Next branch:** `p6-code-migration` — cut and waiting, starts with T9.
+It was branched *before* `p7`, so rebase it onto `main` before starting.
 
 Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
 
@@ -138,9 +139,20 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
   explicit decision. The reference mock showed invented numbers; publishing
   fake engagement figures was rejected outright.
 
-- [ ] **T13 · Prune stale local branches**
-  `bug-description-game-copy`, `feature-mobile-responsiveness`,
-  `feature/rushmode`, `p3-og-meta`, `pr4-gameplay-polish`.
+- [ ] **T13 · Prune stale branches** *(surveyed 2026-08-02)*
+  **`origin/bug-description-game-copy` is the open PR showing in GitHub
+  Desktop, and it is obsolete.** It fixed Description's share text producing
+  blank emojis, but that fix is already on `main` — `shareTextOverride` exists
+  at `DescriptionGame.jsx:269` and `WinPanelCompact.jsx:128`, so the work
+  landed some other way. The branch is 2 ahead / 58 behind and would conflict
+  across three files `p7` just rewrote, to re-apply something already there.
+  *Recommended:* close the PR unmerged, delete the branch.
+  **Fully merged, safe to delete now:** `feature/rushmode`, `p5-adsense`,
+  `p7-ui-polish` (local).
+  **Have unmerged commits — check before deleting:**
+  `feature-mobile-responsiveness` (7 — possibly relevant to **T34**),
+  `pr4-gameplay-polish` (3), `p3-og-meta` (1),
+  `bug-description-game-copy` (2, superseded per above).
 
 ---
 

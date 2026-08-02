@@ -933,3 +933,481 @@ nothing breaks.
 - Strongest when it outcycles the opponent’s building or forces awkward spell usage.
 - Often paired with cheap defense so it can be played repeatedly.
 - Loses value if the defender gets free King Tower activation early.
+
+## Giant
+
+### Balance history
+- 2016-02-09 — Hitpoints increased by 5%.
+- 2016-02-29 — Sight range reduced from 8 to 7.5 tiles.
+- 2016-03-23 — Damage increased by 5%.
+- 2016-05-03 — Range bug fixed; listed range changed from 2 to 1.25 tiles with effective range unchanged.
+- 2016-09-19 — Damage reduced by 5%.
+- 2016-10-20 — Hitpoints reduced by 5%.
+- 2018-11-05 — Hitpoints reduced by 2%.
+- 2019-07-01 — Range reduced from 1.25 to 1.2 tiles.
+- 2022-02-03 — Hitpoints increased by 4%.
+- 2023-10-03 — Range increased from 1.2 to 1.6 tiles.
+- 2024-06-17 — Range reduced from 1.6 to 1.2 tiles.
+
+### Counters
+- Inferno Tower
+- P.E.K.K.A.
+- Mini P.E.K.K.A.
+- Prince
+- Skeleton Army
+- Minion Horde
+- Any central building pull
+- High DPS ground defense with support
+
+### Synergies
+- Musketeer
+- Witch
+- Prince
+- Mini P.E.K.K.A.
+- Balloon
+- Graveyard
+- Fireball
+- Zap
+
+### Strategy notes
+- Straightforward tank win condition that depends on support behind it.
+- Best when it crosses the bridge with surviving defenders already stacked.
+- Usually gets more value from counterpush setups than blind back plays in fast matchups.
+- Struggles if the opponent cycles buildings and tank killers efficiently.
+
+## Goblin Cage
+
+### Balance history
+- 2019-03-17 — Card added.
+- 2019-07-01 — Lifetime increased from 15 sec to 20 sec; Goblin Brawler damage increased by 25%.
+
+### Counters
+- Royal Giant
+- Earthquake-supported pushes
+- Air pushes that ignore the Brawler body block
+- Dual-lane pressure
+- Swarms after the cage breaks
+
+### Synergies
+- Royal Giant
+- Hog Rider defense shells
+- Ram Rider defense shells
+- Zap
+- The Log
+- Poison
+
+### Strategy notes
+- Defensive building that also creates counterpush threat through the Brawler.
+- Very good into Hog Rider and Ram Rider type pressure.
+- Best in control decks that want both pull value and leftover bridge pressure.
+- Less reliable against split-lane or air-heavy pressure.
+
+## Goblin Demolisher
+
+### Balance history
+- 2024-06-17 — Card added.
+- 2024-07-02 — Death damage radius reduced from 3 to 2.5 tiles; death damage reduced by 13.1%; attack interval increased to 1.2 sec from 1.1 sec.
+- 2024-10-08 — Lifetime reduced from 10 sec to 7 sec.
+- 2025-01-08 — Lifetime increased from 7 sec to 8 sec.
+- 2025-06-03 — Lifetime increased from 8 sec to 10 sec.
+
+### Counters
+- Fireball
+- Void
+- Any centered defensive building
+- Minions
+- Bats
+- Knight
+- Mini P.E.K.K.A.
+- Valkyrie
+
+### Synergies
+- Prince
+- Goblin Drill
+- Royal Giant
+- Monk
+- Zap
+- Tornado
+
+### Strategy notes
+- Flexible card that defends swarms early and threatens building damage after losing health.
+- Dangerous in counterpushes because the charge and death damage punish bad spacing.
+- Works best when paired with cards that force awkward defensive troop placements.
+- Can be neutralized cleanly by buildings or precise spell timing.
+
+## Goblin Hut
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Earthquake
+- Poison
+- Fireball over time with tower help
+- Miner
+- Big pushes that ignore slow spawn pressure
+
+### Synergies
+- Fireball-bait shells
+- Royal Hogs
+- Flying Machine
+- Zappies
+- Split-lane pressure decks
+
+### Strategy notes
+- Best for drip pressure and forcing repeated responses.
+- Gains value over time rather than in one big interaction.
+- Stronger in longer games where chip and lane control matter.
+- Weak when the opponent has efficient building or spell answers.
+
+## Heal Spirit
+
+### Balance history
+- 2020-04-02 — Card added, replacing Heal.
+- 2020-09-09 — Healing radius reduced from 4 to 3.5 tiles.
+- 2020-10-06 — Healing effect reduced by 9%.
+- 2020-12-09 — Damage reduced by 69%.
+- 2021-03-30 — Damage increased by 225%; healing radius reduced from 3.5 to 2.5 tiles.
+- 2025-03-31 — Hitpoints reduced by 0.43%; healing increased by 0.25%.
+
+### Counters
+- The Log
+- Barbarian Barrel
+- Royal Delivery
+- Skeletons placed to pull it away from the main push
+- Bats
+- Goblins
+- Spear Goblins
+- Ice Golem
+
+### Synergies
+- Royal Hogs
+- Minion Horde
+- Barbarians
+- Elite Barbarians
+- Sparky
+- Balloon
+- Royal Giant
+- Electro Giant
+- Elixir Golem
+
+### Strategy notes
+- Best when it heals units that would otherwise barely die to spells or tower fire.
+- More valuable in proactive pushes than in static defense.
+- Positioning matters a lot because the heal field is small.
+- Can swing trades hard for only 1 elixir when timed behind the right troop.
+
+## Hog Rider
+
+### Balance history
+- 2016-02-29 — Sight range reduced from 10 to 9.5 tiles.
+- 2016-06-21 — Damage reduced by 6%.
+- 2017-12-12 — Hit speed increased to 1.6 sec from 1.5 sec; first attack time increased to 0.6 sec from 0.5 sec.
+
+### Counters
+- Cannon
+- Tesla
+- Bomb Tower
+- Inferno Tower
+- Tombstone
+- Tornado with King Tower activation
+- Mini P.E.K.K.A.
+- P.E.K.K.A.
+- Hunter
+- Goblin Cage
+  n- Skeleton Army
+
+### Synergies
+- Ice Golem
+- Musketeer
+- Firecracker
+- Earthquake
+- Cannon
+- Tesla
+- The Log
+- Skeletons
+- Ice Spirit
+
+### Strategy notes
+- Fast win condition built around repeat pressure and clean cycle.
+- Strongest when it outcycles the opponent’s building or forces awkward spell usage.
+- Often paired with cheap defense so it can be played repeatedly.
+- Loses value if the defender gets free King Tower activation early.
+
+## Musketeer
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Fireball
+- Poison over time with support
+- Mini tanks dropped on top after distraction
+- Miner pressure onto unsupported backline positions
+- Long-range duel support like Magic Archer with protection
+- Fast bridge pressure that prevents clean defensive placement
+
+### Synergies
+- Giant
+- Hog Rider
+- Royal Giant
+- Miner control shells
+- Fireball
+- Ice Golem
+- Cannon
+- Tesla
+
+### Strategy notes
+- Reliable single-target support that fits both control and beatdown decks.
+- Best when protected behind a tank or defensive building.
+- Strong into air and medium-health support units.
+- Loses value quickly when the opponent can spell it out or force awkward placements.
+
+## Royal Hogs
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Bomb Tower
+- Valkyrie
+- Dark Prince
+- Mega Knight
+- Cannon with support
+- Goblin Cage
+- Tornado into splash support
+- Any fast splash defender that catches both lanes cleanly
+
+### Synergies
+- Earthquake
+- Fireball
+- Royal Recruits
+- Flying Machine
+- Zappies
+- Heal Spirit
+- Split-lane pressure shells
+
+### Strategy notes
+- Strong win condition when split pressure forces the defender to divide answers.
+- Much better when paired with spell support that removes buildings.
+- Can chip steadily even without huge breakthroughs.
+- Less effective when the opponent keeps splash buildings in cycle.
+
+## Mini P.E.K.K.A.
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Skeleton Army
+- Guards
+- Bats
+- Minion Horde
+- Tombstone
+- Ice Golem kite with tower help
+- Swarms after first hit timing
+- Ranged support behind distraction units
+
+### Synergies
+- Giant
+- Royal Giant
+- Freeze
+- Zap
+- Miner
+- Bridge pressure shells
+- Defensive counterpush setups
+
+### Strategy notes
+- High burst tank killer that also threatens heavy counterpush damage.
+- Excels when dropped reactively onto tanks and win conditions.
+- Can punish overcommitments harder than most 4-elixir troops.
+- Vulnerable to kiting and cheap swarm distractions if unsupported.
+
+## Goblin Hut
+
+### Balance history
+- 2020-07-04 — Lifetime reduced to 40 sec from 50 sec, but it spawns 3 Spear Goblins on destruction instead of 2.
+- 2021-06-07 — Hitpoints decreased by 35% and Spear Goblin spawn speed changed to 1.6 sec from 1.5 sec.
+- 2021-10-27 — Hitpoints decreased by 17%, lifetime reduced to 31 sec from 40 sec, and Spear Goblin spawn period decreased to 4 sec from 4.5 sec.
+
+### Counters
+- Earthquake
+- Poison
+- Fireball over time with tower help
+- Miner
+- Big pushes that ignore slow spawn pressure
+- Splash troops that erase spawned Spear Goblins efficiently
+
+### Synergies
+- Fireball-bait shells
+- Royal Hogs
+- Flying Machine
+- Zappies
+- Split-lane pressure decks
+- Spell-cycle control plans
+
+### Strategy notes
+- Best for drip pressure and repeated lane control instead of instant burst.
+- Gains value over time if the opponent lacks a clean spell answer.
+- Works better in decks that layer multiple annoying threats.
+- Weak when the opponent can remove it cheaply and keep tempo.
+
+## Furnace
+
+### Balance history
+- 2021-10-27 — Lifetime decreased to 33 sec from 49 sec, Fire Spirit spawn period decreased to 6 sec from 7 sec, hitpoints decreased by 17%, and Fire Spirit death spawn added.
+
+### Counters
+- Earthquake
+- Poison
+- Miner
+- Bomb Tower
+- Bowler
+- Splash troops that absorb or clear Fire Spirits efficiently
+- Heavy pushes that do not care about trickle chip damage
+
+### Synergies
+- Royal Hogs
+- Graveyard
+- Miner
+- Fireball-bait shells
+- Control decks that want constant chip pressure
+- Cards that punish overdefending on one lane
+
+### Strategy notes
+- Provides steady chip and forces awkward answers over a long defense cycle.
+- Strongest when its Fire Spirits keep support troops or swarm cards uncomfortable.
+- Often used to pressure passively while saving elixir for defense.
+- Underwhelming when the opponent has Earthquake or easy building removal.
+
+## Three Musketeers
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Fireball
+- Poison
+- Rocket
+- Lightning
+- Mega Knight on grouped placements
+- Fast opposite-lane pressure after a heavy investment
+- Splash plus medium spell combinations
+
+### Synergies
+- Elixir Collector
+- Battle Ram
+- Royal Hogs
+- Heal Spirit
+- Golden Knight
+- Bandit
+- Split-lane bridge spam shells
+
+### Strategy notes
+- High-risk split-lane pressure card that demands excellent elixir management.
+- Usually strongest when split behind the King Tower to threaten both lanes.
+- Can overwhelm defenders who are out of spell cycle or low on elixir.
+- Very punishable if played carelessly into heavy spell hands.
+
+## Bowler
+
+### Balance history
+- 2016-07-04 — Card added.
+- 2016-08-24 — Elixir cost reduced to 5 from 6; hitpoints decreased by 7%; damage decreased by 10%.
+- 2020-08-04 — Range reduced to 4 from 5; projectile range increased to 7.5 from 6; hitpoints increased by 8%.
+- 2025-03-31 — Hitpoints increased by 0.04% and damage increased by 0.34%.
+
+### Counters
+- Minions
+- Bats
+- Mega Minion
+- Phoenix
+- Inferno Dragon
+- P.E.K.K.A. placed on top
+- Mega Knight placed on top
+- Inferno Tower
+- Cannon Cart
+- Sparky
+
+### Synergies
+- Tornado
+- Ice Wizard
+- Electro Wizard
+- Electro Giant
+- Graveyard control shells
+- Defensive counterpush decks
+- Splash-heavy lane denial setups
+
+### Strategy notes
+- Elite ground control card with knockback, piercing damage, and strong anti-bridge value.
+- Especially strong into swarms, spawners, and many lane-based ground pushes.
+- Needs help versus air and heavy knockback-immune tanks.
+- Becomes much harder to break when paired with Tornado or slowing support.
+
+## Hunter
+
+### Balance history
+- 2017-12-12 — Card added.
+- 2018-01-24 — Range decreased to 4 from 5 and bullet spread slightly decreased.
+- 2019-10-07 — Damage increased by 2%.
+- 2021-03-30 — First attack time increased to 1.1 sec from 0.7 sec.
+- 2021-09-06 — First attack time decreased to 0.9 sec from 1.1 sec.
+- 2022-02-03 — First attack time decreased to 0.8 sec from 0.9 sec.
+- 2024-08-06 — Hitpoints increased by 5.5%.
+- 2025-03-03 — Evolution added.
+- 2025-03-31 — Hitpoints increased by 0.11%.
+- 2025-06-03 — First attack time decreased to 0.7 sec from 0.8 sec.
+
+### Counters
+- Prince
+- Skeletons
+- Goblins
+- Bats
+- Minions
+- Bowler
+- Executioner
+- Baby Dragon
+- Electro Dragon
+- Giant Snowball with tower help
+
+### Synergies
+- Fisherman
+- Skeletons
+- Zap
+- Ice Spirit
+- Electro Spirit
+- Balloon defense shells
+- Royal Giant control decks
+
+### Strategy notes
+- One of the best close-range burst defenders in the game when placed correctly.
+- Excels versus tanks, Balloon, and many building-targeting win conditions.
+- Damage falls off sharply at range, so placement matters a lot.
+- Can be overwhelmed by swarms or outranged if left unsupported.
+
+## Cannon Cart
+
+### Balance history
+- Need source verification.
+
+### Counters
+- P.E.K.K.A.
+- Inferno Tower
+- Mini tanks placed on top after shield break
+- Air troops that ignore its ground-only attack
+- Swarms once it is distracted or unsupported
+- Buildings and ranged control that force slow shield loss
+
+### Synergies
+- Royal Ghost
+- Graveyard
+- Bridge pressure shells
+- Beatdown support packages
+- Tornado-based control setups
+- Defensive counterpush decks
+
+### Strategy notes
+- Hybrid pressure troop that shifts from mobile attacker to stationary cannon after shield loss.
+- Strong in matchups where its range and survivability let it stay on board for multiple trades.
+- Can generate a lot of value if protected behind a tank or after a successful defense.
+- Less reliable when the opponent has heavy single-target DPS or easy air pressure.

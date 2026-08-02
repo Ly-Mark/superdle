@@ -13,6 +13,7 @@ import cardsData from '../data/cards.json';
 import { slug } from '../utils/slug.js';
 import { CARD_SPOTLIGHTS } from '../content/cardSpotlights.jsx';
 import { getCardContent, formatBalanceDate } from '../utils/clashroyale/cardContent.js';
+import { normalizeCardName } from '../utils/clashroyale/cardSearch.js';
 
 const linkCls = 'text-blue-300 hover:text-blue-200 underline';
 const panel = 'bg-white/5 border border-white/10 rounded-xl p-5 mt-6';
@@ -20,35 +21,73 @@ const h2 = 'text-lg font-bold text-white mb-3';
 
 const byName = new Map(cardsData.map((c) => [c.card, c]));
 
-// Counters and synergies are free text — some entries are a card name, others
-// are phrases like "Air troops like Minions, Bats...". Link only exact matches,
-// and only to cards that actually have a page.
-function Entry({ text }) {
-    const target = byName.get(text);
-    if (target && getCardContent(text)) {
-        return (
-            <Link to={`/cards/${slug(text)}`} className={linkCls}>
-                {text}
-            </Link>
-        );
+// Match on the normalised name rather than the exact string. The research file
+// is hand-written, so it says "P.E.K.K.A." where cards.json says "PEKKA" — an
+// exact match would drop those to plain text and lose the art. Normalising also
+// covers "The Log" and "X-Bow".
+const byNormalised = new Map(
+    cardsData.map((c) => [normalizeCardName(c.card), c.card])
+);
+
+// Counters and synergies mix two kinds of entry: card names, and phrases like
+// "Air troops like Minions, Bats...". Split them so the names can be shown with
+// their art, the way the arena list does, and the rest stay as prose rather
+// than being force-matched into something they aren't.
+function splitEntries(items = []) {
+    const cards = [];
+    const notes = [];
+    for (const t of items) {
+        // Resolve to the canonical name so the chip, the link and the artwork
+        // all agree even when the file spells it differently.
+        const canonical = byNormalised.get(normalizeCardName(t));
+        if (canonical) cards.push(canonical);
+        else notes.push(t);
     }
-    return <>{text}</>;
+    return { cards, notes };
 }
 
-function BulletPanel({ heading, items, intro }) {
-    if (!items?.length) return null;
+function CardChip({ name }) {
+    const card = byName.get(name);
+    const hasPage = !!getCardContent(name);
+    return (
+        <li className="flex items-center gap-2 text-sm">
+            <CardArt name={name} variant="thumb" sizeClass="w-10 h-10" />
+            <span>
+                {hasPage ? (
+                    <Link to={`/cards/${slug(name)}`} className={linkCls}>{name}</Link>
+                ) : (
+                    <span className="text-white">{name}</span>
+                )}
+                {card && <span className="text-blue-200/60"> · {card.cost}</span>}
+            </span>
+        </li>
+    );
+}
+
+function EntryPanel({ heading, intro, items }) {
+    const { cards, notes } = splitEntries(items);
+    if (!cards.length && !notes.length) return null;
     return (
         <section className={panel}>
             <h2 className={h2}>{heading}</h2>
-            {intro && <p className="text-sm text-blue-100/70 mb-3">{intro}</p>}
-            <ul className="grid gap-x-6 gap-y-1.5 sm:grid-cols-2 text-sm text-blue-100/85">
-                {items.map((t) => (
-                    <li key={t} className="flex gap-2">
-                        <span aria-hidden="true" className="text-white/30">•</span>
-                        <span><Entry text={t} /></span>
-                    </li>
-                ))}
-            </ul>
+            {intro && <p className="text-sm text-blue-100/70 mb-4">{intro}</p>}
+
+            {cards.length > 0 && (
+                <ul className="flex flex-wrap gap-x-5 gap-y-3">
+                    {cards.map((n) => <CardChip key={n} name={n} />)}
+                </ul>
+            )}
+
+            {notes.length > 0 && (
+                <ul className={`space-y-1.5 text-sm text-blue-100/85 ${cards.length ? 'mt-4 pt-4 border-t border-white/10' : ''}`}>
+                    {notes.map((t) => (
+                        <li key={t} className="flex gap-2">
+                            <span aria-hidden="true" className="text-white/30">•</span>
+                            <span>{t}</span>
+                        </li>
+                    ))}
+                </ul>
+            )}
         </section>
     );
 }
@@ -61,14 +100,15 @@ export default function CardDetail() {
 
     if (!card || (!spotlight && !content)) return <Navigate to="/cards" replace />;
 
-    // Only the five that actually tell you something at a glance. The full
-    // attribute set is on the card guide index and in the game itself.
+    // Only the five that tell you something at a glance. Labelled, because
+    // "Arena 7" and "2018" mean nothing on their own. The full attribute set is
+    // on the card guide index and in the game itself.
     const stats = [
-        `${card.cost} elixir`,
-        card.rarity,
-        card.type,
-        card.arena,
-        `Released ${card.year}`,
+        ['Elixir', card.cost],
+        ['Rarity', card.rarity],
+        ['Type', card.type],
+        ['Arena', card.arena],
+        ['Released', card.year],
     ];
 
     const sameArena = cardsData
@@ -98,12 +138,17 @@ export default function CardDetail() {
                             {card.card}
                         </h1>
                         <ul className="flex flex-wrap gap-2 mt-3">
-                            {stats.map((s) => (
+                            {stats.map(([label, value]) => (
                                 <li
-                                    key={s}
-                                    className="text-xs bg-white/10 border border-white/15 rounded-full px-2.5 py-1 text-blue-100/90"
+                                    key={label}
+                                    className="bg-white/10 border border-white/15 rounded-lg px-3 py-1.5 leading-tight"
                                 >
-                                    {s}
+                                    <span className="block text-[10px] uppercase tracking-wide text-blue-200/60">
+                                        {label}
+                                    </span>
+                                    <span className="block text-sm font-semibold text-white">
+                                        {value}
+                                    </span>
                                 </li>
                             ))}
                         </ul>
@@ -140,16 +185,16 @@ export default function CardDetail() {
                     </section>
                 )}
 
-                <BulletPanel
-                    heading="What answers it"
+                <EntryPanel
+                    heading={`Counters to ${card.card}`}
+                    intro={`Cards that deal with ${card.card} efficiently.`}
                     items={content?.counters}
-                    intro="Cards and approaches that deal with it efficiently."
                 />
 
-                <BulletPanel
-                    heading="What it works with"
+                <EntryPanel
+                    heading={`Pairs with ${card.card}`}
+                    intro={`Cards commonly played alongside ${card.card}.`}
                     items={content?.synergies}
-                    intro="Cards it is commonly paired with."
                 />
 
                 {content?.balance?.length > 0 && (

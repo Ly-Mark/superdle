@@ -183,7 +183,9 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
     *Review 4 (owner):* dots approved. Wanted a darker gradient, flagged that
     the background image changes size between modes, and asked for more blobs,
     smaller and better scattered but **fixed** in place. All three done:
-    - **Gradient darkened** `#0b1f3a/#0b3a82/#0c59b6` → `#04101f/#082247/#0a3a76`.
+    - **Gradient darkened** `#0b1f3a/#0b3a82/#0c59b6` → `#08182d/#0a2e65/#0b4a96`.
+      (First attempt went to `#04101f/#082247/#0a3a76`; owner called it too
+      dark, so it sits at the midpoint between original and that.)
       The gradient is CSS, not an image — only the diamond overlay is an asset,
       so this was a three-value edit. `brand.*` tokens updated to match; the
       old trio is kept as `brand.*Legacy`.
@@ -199,8 +201,24 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
       between the build-time prerender pass and the browser hydrate, which
       React reports as a mismatch. Verified identical across four routes.
       Pulse keyframes sit inside `prefers-reduced-motion: no-preference`.
-  - [ ] **T24c · Guide polish.** Thumbnail placeholder (see T24x). Isolated
+  - [x] **T24c · Guide polish.** Thumbnail placeholder (see T24x). Isolated
     pages, no game logic. *(brief task 10)*
+    `CardArt` now paints a pulsing placeholder underneath the image, so the
+    121 lazy thumbnails have a visible resting state instead of reading as
+    broken. Two things worth keeping in mind if this is touched again:
+    - The image is **not** faded in from `opacity-0` by React state. These
+      pages are prerendered, so that markup would ship with every image
+      invisible and depend on JS to reveal them. The placeholder is painted
+      first and therefore sits underneath; the image covers it as it arrives,
+      with no JS in the path. Verified: 0 occurrences of `opacity-0` on card
+      art in the built HTML, 121 placeholders present.
+    - `onLoad` does not fire for an image the browser has already decoded,
+      which is likely here since the HTML is prerendered and hydration comes
+      later. An effect checks `imgRef.current.complete` on mount to cover it.
+    Guide rows use the new `PANEL_CARD` export — the panel treatment **without**
+    `backdrop-blur`. The blur makes the compositor sample everything behind the
+    element, which is fine for a handful of panels on a game screen and not
+    fine for 121 rows on one page.
     Rush stat tiles (brief task 8) were **done early in T24b** — they were
     already being converted to panels, and the unevenness turned out to be the
     same root cause: three flex children under `items-center`, each sizing to

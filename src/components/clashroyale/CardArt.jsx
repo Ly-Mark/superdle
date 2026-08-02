@@ -14,7 +14,7 @@
 // Doing this in CSS rather than cropping the files means one number retunes
 // every card at once. Cropping per file was tried and misframed a lot of them,
 // because the correct crop is not the same for every card.
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { slugifyCardName } from '../../utils/clashroyale/cardImages.js';
 
 const DEFAULT_ZOOM = 1.4;
@@ -41,6 +41,8 @@ export default function CardArt({
 
     const [idx, setIdx] = useState(0);
     const [failed, setFailed] = useState(false);
+    const [loaded, setLoaded] = useState(false);
+    const imgRef = useRef(null);
 
     const handleError = () => {
         setIdx((prev) => {
@@ -53,27 +55,62 @@ export default function CardArt({
         });
     };
 
+    // A cached image can already be complete before React attaches onLoad, in
+    // which case the event never fires and the placeholder would sit there
+    // forever. This is guaranteed on the prerendered pages: the HTML ships
+    // with loaded=false, and by the time hydration runs the browser may well
+    // have decoded the image already. Checking `complete` on mount closes it.
+    useEffect(() => {
+        if (imgRef.current?.complete) setLoaded(true);
+    }, [idx]);
+
     return (
         <div
             className={`relative ${sizeClass} shrink-0 rounded-xl overflow-hidden shadow-[0_8px_18px_rgba(0,0,0,0.35)] ring-1 ring-white/20 bg-white/5 ${className}`}
         >
             {!failed ? (
-                <img
-                    src={sources[idx]}
-                    // Decorative: the card name is always rendered as real text
-                    // beside this, so alt text would make a screen reader say
-                    // every name twice.
-                    alt=""
-                    loading="lazy"
-                    decoding="async"
-                    className="absolute inset-0 w-full h-full object-cover"
-                    style={{
-                        transform: `scale(${zoom})`,
-                        transformOrigin: 'center',
-                        objectPosition: focus,
-                    }}
-                    onError={handleError}
-                />
+                <>
+                    {/* Placeholder.
+                        The card guide renders 121 of these at loading="lazy",
+                        so everything below the fold is an empty box until it
+                        is scrolled to — which reads as broken images rather
+                        than as pending ones, and is what a screenshot pass
+                        catches. A visible resting state makes the wait look
+                        deliberate. The box already has a fixed size, so this
+                        is about perceived state, not layout shift. */}
+                    {!loaded && (
+                        <div
+                            aria-hidden="true"
+                            className="absolute inset-0 bg-white/10 motion-safe:animate-pulse"
+                        />
+                    )}
+                    <img
+                        ref={imgRef}
+                        src={sources[idx]}
+                        // Decorative: the card name is always rendered as real text
+                        // beside this, so alt text would make a screen reader say
+                        // every name twice.
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                        // Deliberately NOT faded in from opacity-0 by React
+                        // state. These pages are prerendered, so that markup
+                        // would ship with every image invisible and rely on JS
+                        // running to reveal them — if hydration is slow or
+                        // fails, the whole guide looks empty. Instead the
+                        // placeholder is painted first and therefore sits
+                        // underneath; the image simply covers it as it
+                        // arrives, with no JS in the path.
+                        className="absolute inset-0 w-full h-full object-cover"
+                        style={{
+                            transform: `scale(${zoom})`,
+                            transformOrigin: 'center',
+                            objectPosition: focus,
+                        }}
+                        onLoad={() => setLoaded(true)}
+                        onError={handleError}
+                    />
+                </>
             ) : (
                 <div className="absolute inset-0 flex items-center justify-center px-1">
                     <span className="text-[9px] font-bold text-gray-100 text-center leading-tight">

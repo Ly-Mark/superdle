@@ -9,10 +9,12 @@
 // visual no-op. If it isn't, the token below is wrong, not the component.
 //
 // Values were taken from what the tree already uses, not invented:
-//   #04101f / #082247 / #0a3a76  CRBackground gradient stops (darkened in
+//   #08182d / #0a2e65 / #0b4a96  CRBackground gradient stops. Darkened in
 //                                T24b so the dot texture and panel shadows
-//                                have something to read against; the original
-//                                lighter trio is kept as *Legacy below)
+//                                have something to read against, then pulled
+//                                back to the midpoint on review — the first
+//                                attempt read as too heavy. The original
+//                                lighter trio is kept as *Legacy below.
 //   #00d8ff                      lone cyan accent already in use
 //   emerald/amber/red 500+600    the guess-tile states
 export default {
@@ -26,9 +28,9 @@ export default {
         // The blue identity. `deep` → `bright` is the page gradient,
         // darkest to lightest.
         brand: {
-          deep: '#04101f',
-          mid: '#082247',
-          bright: '#0a3a76',
+          deep: '#08182d',
+          mid: '#0a2e65',
+          bright: '#0b4a96',
           cyan: '#00d8ff',
           // The original, lighter gradient. Kept because it is still the
           // reference for anything that needs to sit against the old look.

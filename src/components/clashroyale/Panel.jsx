@@ -19,6 +19,13 @@ import React from 'react';
 
 const SHELL = 'relative rounded-panel border backdrop-blur-lg';
 
+// Same treatment without the backdrop filter. `backdrop-blur` forces the
+// compositor to sample everything behind the element, which is fine for the
+// handful of panels on a game screen and decidedly not fine for the card
+// guide, which renders 121 rows on one page. Use this for anything that
+// appears in a long list.
+const SHELL_FLAT = 'relative rounded-panel border';
+
 const VARIANTS = {
     // Sits on the page gradient.
     base: 'bg-panel border-panel-border shadow-panel',
@@ -34,6 +41,8 @@ const VARIANTS = {
 // title/meta header is wanted — these are for mechanical conversions.
 export const PANEL_BASE = `${SHELL} ${VARIANTS.base}`;
 export const PANEL_RAISED = `${SHELL} ${VARIANTS.raised}`;
+// For list items — see SHELL_FLAT.
+export const PANEL_CARD = `${SHELL_FLAT} ${VARIANTS.base}`;
 
 export default function Panel({
     children,

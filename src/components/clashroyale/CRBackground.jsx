@@ -40,7 +40,7 @@ const BLOBS = [
 
 export default function CRBackground({ children }) {
     return (
-        <div className="min-h-screen relative bg-gradient-to-br from-[#04101f] via-[#082247] to-[#0a3a76]">
+        <div className="min-h-screen relative bg-gradient-to-br from-[#08182d] via-[#0a2e65] to-[#0b4a96]">
             <style>{`
         /* The overlay is viewport-locked rather than element-locked.
            It used to be background-size: cover on this container, whose height

@@ -37,21 +37,9 @@ Only fill in cards that are getting a page. There's no value in doing all 121.
 
 ---
 
-## Goblin Barrel
+## Arrows
 
-<!--
-Delete this comment and add bullets below. Example of the shape:
-
-- 2016-02-29 — Released, unlocks in P.E.K.K.A's Playhouse
-- 2017-06-12 — Nerf: goblin damage reduced 6%
-- 2024-06-03 — Rework: barrel now takes longer to land
-
-Leave the section empty and the page simply won't show a history section —
-nothing breaks.
--->
-# Arrows
-
-## Balance history
+### Balance history
 - 2016-02-02 — Damage reduced by 4%.
 - 2016-02-19 — Crown Tower damage reduced from 50% to 40% of full damage.
 - 2017-03-13 — Projectile speed increased from 600 to 800.
@@ -63,14 +51,14 @@ nothing breaks.
 - 2024-08-06 — Crown Tower damage reduced from 30% to 25% of full damage.
 - 2025-03-04 — Radius reduced from 4 to 3.5 tiles.
 
-## Counters
+### Counters
 - No direct counter once cast.
 - Best defended by not giving spell value.
 - Spread swarm placements.
 - Stagger support troops.
 - Higher-health troops that survive the volleys.
 
-## Synergies
+### Synergies
 - Graveyard
 - Goblin Barrel
 - Skeleton Barrel
@@ -82,15 +70,15 @@ nothing breaks.
 - Firecracker
 - Magic Archer
 
-## Strategy notes
+### Strategy notes
 - Best used to clear swarm defenders and fragile support.
 - Strong answer to Goblin Barrel, Minion Horde, Skeleton Army, Bats, and Goblin Gang.
 - Often used to open a path for single-target push cards.
 - More reliable than many small spells because of large area coverage.
 
-# Barbarians
+## Barbarians
 
-## Balance history
+### Balance history
 - 2016-02-02 — Hitpoints reduced by 3%.
 - 2016-02-29 — Sight range reduced from 6 to 5.5 tiles.
 - 2018-06-04 — Attack interval reduced from 1.5 sec to 1.4 sec; deployment spacing increased.
@@ -99,7 +87,7 @@ nothing breaks.
 - 2022-06-07 — Attack interval reduced from 1.4 sec to 1.3 sec.
 - 2025-03-31 — Spawn formation mirrored correctly based on side of arena.
 
-## Counters
+### Counters
 - Fireball
 - Poison
 - Rocket
@@ -113,56 +101,57 @@ nothing breaks.
 - Goblin Demolisher
 - Air troops like Minions, Bats, Baby Dragon, Electro Dragon, Flying Machine, Mega Minion, Phoenix, Skeleton Dragons
 
-## Synergies
+### Synergies
 - Rage
 - Tanks in front after a successful defense
 - Fireball-bait support cards like Zappies, Magic Archer, Mother Witch, Skeleton Dragons, Flying Machine
 - Defensive counterpush shells
 
-## Strategy notes
+### Strategy notes
 - Strong against tanks and single-target melee units.
 - Weak into splash, air, and efficient spells.
 - Best when used reactively on defense, then turned into a counterpush.
 - Risky when played unsupported into full elixir.
 
-# Bomber
+## Bomber
 
-## Balance history
+### Balance history
 - Need source verification.
 
-## Counters
+### Counters
 - Spells that remove low-HP support troops.
 - Air units.
 - Long-range troops.
 - Fast cards that reach it before it gets repeated value.
 
-## Synergies
+### Synergies
 - Ground tanks
 - Tornado
 - Cheap cycle support
 - Defensive splash control shells
 
-## Strategy notes
+### Strategy notes
 - Cheap ground splash support.
 - Best into swarm-heavy or ground-stacked pushes.
 - Vulnerable because it cannot hit air.
 - Good behind tanks or in defensive cycle decks.
-# Cannon
 
-## Balance history
+## Cannon
+
+### Balance history
 - 2016-02-02 — Elixir cost reduced from 6 to 3; range reduced from 7 to 6; lifetime reduced from 60 sec to 40 sec; hitpoints reduced by 55%.
 - 2016-03-23 — Lifetime reduced from 40 sec to 30 sec.
 - 2016-05-03 — Hitpoints reduced by 11%.
 - 2016-05-18 — Hitpoints reduced by 5%.
 - 2016-06-21 — Hitpoints reduced by 8%.
 
-## Counters
+### Counters
 - Earthquake
 - Air troops
 - Ranged support behind a tank
 - Spell support after it is locked onto a tank
 
-## Synergies
+### Synergies
 - Hog Rider
 - Ice Golem
 - Ice Spirit
@@ -170,28 +159,28 @@ nothing breaks.
 - Archer Queen
 - Earthquake in fast cycle decks
 
-## Strategy notes
+### Strategy notes
 - Cheap defensive building for pulling ground win conditions.
 - Usually strongest in fast cycle and control decks.
 - Needs help versus air because it cannot target flying units.
 - Best placed centrally to pull units into both towers.
 
-# Fire Spirit
+## Fire Spirit
 
-## Balance history
+### Balance history
 - Need source verification.
 
-## Counters
+### Counters
 - Cheap splash or instant small damage.
 - Cards that absorb the jump efficiently.
 - Buildings or troops that deny connection value.
 
-## Synergies
+### Synergies
 - Mirror
 - Split-push or pressure decks
 - Bait and cycle shells
 
-## Strategy notes
+### Strategy notes
 - Cheap cycle splash for swarm control and chip.
 - Good for forcing responses at low cost.
 - Value drops if the opponent can absorb the jump cleanly.
@@ -2585,3 +2574,559 @@ nothing breaks.
 - Spells that remove buildings or backline DPS make him much more threatening.
 - He is less impressive when the defender can kite, separate, and burn him down from range.
 
+
+
+<!-- ===================================================================
+     Skeletons for the 54 cards that do not have a page yet.
+     Fill in any section and that card gets a page on the next build.
+     A card needs only ONE bullet anywhere to qualify — you do not have to
+     complete all four. Delete the ones you are not going to write.
+     =================================================================== -->
+
+<!-- ---------- Common ---------- -->
+
+## Archers
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Bats
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Berserker
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Electro Spirit
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Elite Barbarians
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Firecracker
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Goblin Gang
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Ice Spirit
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Rascals
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Royal Delivery
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Royal Recruits
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Skeleton Barrel
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Skeleton Dragons
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Snowball
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+<!-- ---------- Rare ---------- -->
+
+## Barbarian Hut
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Earthquake
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Elixir Collector
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Elixir Golem
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Ice Golem
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Mega Minion
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Rocket
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Suspicious Bush
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Tombstone
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Valkyrie
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Wizard
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Zappies
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+<!-- ---------- Legendary ---------- -->
+
+## Bandit
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Electro Wizard
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Fisherman
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Goblin Machine
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Graveyard
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Ice Wizard
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Lava Hound
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Lumberjack
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Magic Archer
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Mega Knight
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Miner
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Mother Witch
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Night Witch
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Phoenix
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Princess
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Ram Rider
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Royal Ghost
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Sparky
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Spirit Empress
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## The Log
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+<!-- ---------- Champion ---------- -->
+
+## Archer Queen
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Boss Bandit
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Goblinstein
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Golden Knight
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Little Prince
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Mighty Miner
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Monk
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes
+
+## Skeleton King
+
+### Balance history
+
+### Counters
+
+### Synergies
+
+### Strategy notes

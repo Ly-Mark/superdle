@@ -8,6 +8,7 @@
     "build": "vite build && node scripts/generateSitemap.mjs",
     "lint": "eslint .",
     "thumbs": "node scripts/generateCardThumbs.mjs",
+    "check:cards": "node scripts/checkCardContent.mjs",
     "preview": "vite preview"
   },
   "engines": {

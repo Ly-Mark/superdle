@@ -41,6 +41,8 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
   *Avoid at launch:* **has Evolution** (needs upkeep every time Supercell ships
   one) and **ranged/melee** (a near-partition of troops, so it behaves like a
   second `targets` axis rather than a new one).
+  *Plus `Goblin family` from Tier 3*, which is free — see the Tier 3 note in
+  T36. That gives a launch set of 18 Tier 1 + 4 Tier 2 + 1 family.
 
 - **T36 · `Spirit Empress` has `cost: "3 / 6"`.** Pick 3 or 6 and document it.
 
@@ -147,6 +149,37 @@ card reuse, daily reset.
   **Ship 4 Tier 2 tags, not 9.** Four gets ~18k filter-passing grids, which is
   decades. Nine is solving a problem we do not have, and every tag is manual
   data entry that has to stay correct as Supercell ships cards.
+
+  **Tier 3 families — measured 2026-08-02. Take Goblin, and probably stop.**
+  The intuition that families are a lighter lift than Tier 2 does not hold.
+  Measured cumulatively at MIN=4:
+
+  | Added | Total grids | Grids containing a family | Hand-added members |
+  |---|---|---|---|
+  | Tier 1 only | 6,322 | 0 | — |
+  | **+ Goblin family (13)** | **8,016** | **1,694** | **0** |
+  | + Undead (16) | 11,686 | 5,364 | 10 |
+  | + Royal (11), Electric (10), Big tank (13), Fire/Ice (11) | 15,850 | 9,528 | 17 more |
+
+  Six families yield +9,528 usable grids; six Tier 2 tags yield +45,160 for
+  comparable effort. Families cover 10–16 cards against Tier 2's 14–40, and a
+  small category struggles to reach 4 answers in intersection.
+
+  - **`Goblin family` is free and should ship.** 13 cards from a pure
+    substring match on `card`, no exceptions, no judgment calls, and it
+    self-maintains — any future card named `Goblin X` joins automatically. Best
+    effort-to-value item in the whole brief.
+  - **Every other family needs hand-added members**, because names alone are
+    too thin: Skeleton and Giant hit 6, Royal and Spirit 5, Dragon and
+    Barbarian 4. **56 of 121 cards match no family stem at all** (Knight,
+    PEKKA, Valkyrie, Sparky, Miner, Bandit, every spell).
+  - Families also carry judgment cost Tier 2 does not. "Does it deal splash
+    damage" has an answer; "is Phoenix a dragon, is Balloon skeleton family"
+    are arguments. The brief concedes this by asking for a `families.md`.
+  - **The case for families is texture, not volume.** `Goblin family × Cost ≤2`
+    is a better cell than `Splash × Cost ≤2`. Worth one or two, not six.
+  - Treat all families as a single attribute family for the max-two rule — a
+    grid with three species rows would read as a gimmick.
 
   **Drop "Champion ability" from the Tier 2 list.** It is not data entry — it
   is exactly `rarity === "Champion"`, the same 8 cards as the existing Champion

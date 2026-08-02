@@ -2,19 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Lilita One — display face for headings only (TASKS.md T24e).
+   SIL OFL 1.1, (c) 2011 Juan Montoreano. Licence text ships alongside the
+   font at /fonts/OFL.txt, which is what the OFL requires.
+
+   Self-hosted rather than loaded from Google's CDN: it removes a third-party
+   request during an AdSense review, and it is one 10.6 KB file.
+
+   Latin subset only. The latin-ext subset is deliberately not shipped — no
+   copy on the site needs it, and it would roughly double the cost.
+
+   `swap` rather than `optional`: this face is much heavier and narrower than
+   any system fallback, so `optional` would show the fallback on a first visit
+   and the real face only on the next one, which looks like a bug. The file is
+   preloaded in index.html so the swap window is short. */
+@font-face {
+    font-family: 'Lilita One';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/lilita-one-latin-400.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+    U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+    U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 html,
 body,
 #root {
-    background-color: #0b1f3a;
+    /* Matches brand.deep, the first stop of the CRBackground gradient. Keep
+       these in step — this is what paints before React mounts, so a stale
+       value shows as a colour flash on load. */
+    background-color: #08182d;
     min-height: 100%;
 }
 
 body {
     margin: 0;
     overflow-x: hidden;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    /* Body text is the system stack: 0 bytes, 0 requests, and Segoe UI
+       Variable / SF Pro / Roboto are all modern screen faces. `system-ui`
+       leads so each OS picks its own current UI font. */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }

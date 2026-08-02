@@ -15,6 +15,7 @@ import { CARD_SPOTLIGHTS } from '../content/cardSpotlights.jsx';
 import { getCardContent, formatBalanceDate } from '../utils/clashroyale/cardContent.js';
 import { normalizeCardName } from '../utils/clashroyale/cardSearch.js';
 import { cardHasPage } from '../utils/clashroyale/cardPages.js';
+import ElixirCost from '../components/clashroyale/ElixirCost.jsx';
 
 const linkCls = 'text-blue-300 hover:text-blue-200 underline';
 const panel = 'bg-white/5 border border-white/10 rounded-xl p-5 mt-6';
@@ -60,7 +61,7 @@ function CardChip({ name }) {
             <CardArt name={name} variant="thumb" sizeClass="w-10 h-10" />
             <span>
                 <span className={hasPage ? linkCls : 'text-white'}>{name}</span>
-                {card && <span className="text-blue-200/60"> · {card.cost}</span>}
+                {card && <ElixirCost cost={card.cost} className="ml-1.5 text-blue-200/70" />}
             </span>
         </>
     );
@@ -81,19 +82,66 @@ function CardChip({ name }) {
     );
 }
 
+// Counters and synergy lists ran as one undifferentiated wall of chips — up to
+// two dozen on the busier cards. `cards.json` already carries exactly the split
+// that helps: Troops (88), Spells (21), Building (12). Grouping by it turns the
+// list into three short scannable ones without inventing a taxonomy.
+//
+// Order is fixed rather than by size, so the same heading sits in the same
+// place on every card page. Empty groups are dropped, so a card countered only
+// by spells still shows one heading, not three.
+const TYPE_GROUPS = [
+    { key: 'Troops', label: 'Units' },
+    { key: 'Spells', label: 'Spells' },
+    { key: 'Building', label: 'Buildings' },
+];
+
+function groupByType(names) {
+    const groups = TYPE_GROUPS.map((g) => ({ ...g, names: [] }));
+    // Anything whose type is missing or unrecognised goes to the end rather
+    // than being dropped — silently losing a card would be worse than an
+    // slightly odd heading.
+    const other = [];
+
+    for (const name of names) {
+        const card = byName.get(name);
+        const group = groups.find((g) => g.key === card?.type);
+        (group ? group.names : other).push(name);
+    }
+
+    if (other.length) groups.push({ key: 'other', label: 'Other', names: other });
+    return groups.filter((g) => g.names.length > 0);
+}
+
 function EntryPanel({ heading, intro, items }) {
     const { cards, notes } = splitEntries(items);
     if (!cards.length && !notes.length) return null;
+
+    const groups = groupByType(cards);
+    // With only one group the heading is noise — it would just restate what
+    // every chip already shows.
+    const showGroupHeadings = groups.length > 1;
+
     return (
         <section className={panel}>
             <h2 className={h2}>{heading}</h2>
             {intro && <p className="text-sm text-blue-100/70 mb-4">{intro}</p>}
 
-            {cards.length > 0 && (
-                <ul className="flex flex-wrap gap-x-5 gap-y-3">
-                    {cards.map((n) => <CardChip key={n} name={n} />)}
-                </ul>
-            )}
+            {groups.map((g, i) => (
+                <div key={g.key} className={i > 0 ? 'mt-4' : ''}>
+                    {showGroupHeadings && (
+                        <h3 className="text-[11px] font-semibold uppercase tracking-wider text-blue-200/60 mb-2">
+                            {g.label}
+                            <span className="ml-1.5 text-blue-200/40 normal-case tracking-normal">
+                                {g.names.length}
+                            </span>
+                        </h3>
+                    )}
+                    <ul className="flex flex-wrap gap-x-5 gap-y-3">
+                        {g.names.map((n) => <CardChip key={n} name={n} />)}
+                    </ul>
+                </div>
+            ))}
 
             {notes.length > 0 && (
                 <ul className={`space-y-1.5 text-sm text-blue-100/85 ${cards.length ? 'mt-4 pt-4 border-t border-white/10' : ''}`}>
@@ -121,7 +169,9 @@ export default function CardDetail() {
     // "Arena 7" and "2018" mean nothing on their own. The full attribute set is
     // on the card guide index and in the game itself.
     const stats = [
-        ['Elixir', card.cost],
+        // The icon rather than the bare number, since this is the one stat
+        // that has a symbol everyone already reads at a glance.
+        ['Elixir', <ElixirCost key="elixir" cost={card.cost} size="md" />],
         ['Rarity', card.rarity],
         ['Type', card.type],
         ['Arena', card.arena],

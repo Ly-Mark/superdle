@@ -7,6 +7,7 @@ import HowToPlay from "../layout/HowToPlay.jsx";
 import { MEMORY_HOW_TO_PLAY } from "./modeHowToPlay.jsx";
 import CRBackground from "../../components/clashroyale/CRBackground.jsx";
 import CardThumb from "../../components/clashroyale/CardThumb.jsx";
+import { PANEL_BASE } from "./Panel.jsx";
 
 /* -------------------------------------------------------
    Helpers
@@ -78,6 +79,8 @@ export default function MemoryGame() {
 
     const [inputValue, setInputValue] = useState("");
     const [foundSet, setFoundSet] = useState(() => new Set());
+    // Normalised key of the most recent find — drives the reveal pop.
+    const [justFound, setJustFound] = useState(null);
     const [message, setMessage] = useState("");
 
     // Timer: doesn’t start until first guess
@@ -228,6 +231,12 @@ export default function MemoryGame() {
         next.add(k);
         setFoundSet(next);
         setMessage(`✅ Found: ${card.card}`);
+
+        // Marks the cell that just flipped so it can play a one-shot pop. Kept
+        // as a plain key rather than a timer-cleared flag: the animation is
+        // CSS and ends on its own, and holding a timeout per guess would add
+        // work to the one path in this mode that has to stay fast.
+        setJustFound(k);
     };
 
     const onSubmit = (e) => {
@@ -274,7 +283,7 @@ export default function MemoryGame() {
                 </div>
 
                 {/* ONE centered top panel (instructions + input + stats) */}
-                <div className="max-w-5xl mx-auto bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-5 mb-6">
+                <div className={`${PANEL_BASE} max-w-5xl mx-auto p-5 mb-6`}>
                     <div className="grid grid-cols-1 xl:grid-cols-[1fr_1.4fr_1fr] gap-4 items-start">
 
                         {/* Instructions square */}
@@ -373,7 +382,7 @@ export default function MemoryGame() {
                         return (
                             <div
                                 key={rarity}
-                                className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-3"
+                                className={`${PANEL_BASE} p-3`}
                             >
                                 <div className="flex items-baseline justify-between mb-3">
                                     <div className="text-lg font-bold text-white">{rarity}</div>
@@ -382,21 +391,42 @@ export default function MemoryGame() {
                                     </div>
                                 </div>
 
-                                <div className="columns-2 2xl:columns-3 gap-2">
+                                {/* Every box is exactly the same size, and it
+                                    takes all three of these to guarantee it:
+
+                                    - a grid, not `columns-2`. CSS multi-column
+                                      sizes each cell to its own content.
+                                    - `auto-rows-[2.75rem]`, not a `min-h` on
+                                      the cell. A minimum still lets a row grow:
+                                      "Goblin Demolisher" wrapping to three
+                                      lines dragged its whole row taller. A
+                                      fixed track height cannot.
+                                    - `line-clamp-2` on the name, so a name that
+                                      would need a third line is truncated
+                                      rather than overflowing a fixed-height box.
+
+                                    Two columns at every width. Three columns
+                                    inside an already-narrow rarity panel left
+                                    too little room for the longer names, which
+                                    is what forced the third line in the first
+                                    place. */}
+                                <div className="grid grid-cols-2 gap-2 auto-rows-[2.75rem]">
                                     {list.map((c) => {
-                                        const isFound = foundSet.has(normalize(c.card));
+                                        const key = normalize(c.card);
+                                        const isFound = foundSet.has(key);
                                         const isMissed = isGameOver && !isFound;
+                                        const isJustFound = key === justFound;
 
                                         return (
                                             <div
                                                 key={c.card}
-                                                className={`break-inside-avoid rounded-lg border px-2 py-1 flex items-start gap-2 leading-tight ${
+                                                className={`rounded-lg border px-2 py-1 flex items-center gap-2 leading-tight overflow-hidden transition-colors duration-200 ${
                                                     isFound
                                                         ? "bg-emerald-500/10 border-emerald-500/30"
                                                         : isMissed
                                                             ? "bg-red-500/15 border-red-300/30"
                                                             : "bg-black/15 border-white/10"
-                                                }`}
+                                                } ${isJustFound ? "motion-safe:animate-[mem-pop_450ms_ease-out]" : ""}`}
                                             >
                                                 {/* Thumb / placeholder */}
                                                 {isFound || isMissed ? (
@@ -411,12 +441,18 @@ export default function MemoryGame() {
                                                     </div>
                                                 )}
 
-                                                {/* Name / placeholder */}
-                                                <div className="text-sm font-semibold text-white/95 whitespace-normal break-words">
+                                                {/* Name / placeholder.
+                                                    min-w-0 lets the flex child
+                                                    shrink so long names wrap
+                                                    inside the cell instead of
+                                                    pushing it wider than its
+                                                    grid column. */}
+                                                <div className="min-w-0 flex-1 text-sm font-semibold text-white/95 break-words line-clamp-2">
                                                     {isFound || isMissed ? (
-                                                        <span className={isMissed ? "text-red-100" : ""}>{c.card}</span>
+                                                        // title so a clamped name is still readable on hover
+                                                        <span className={isMissed ? "text-red-100" : ""} title={c.card}>{c.card}</span>
                                                     ) : (
-                                                        <div className="mt-1 h-2 rounded bg-white/15 w-full max-w-[180px]" />
+                                                        <div className="h-2 rounded bg-white/15 w-full max-w-[180px]" />
                                                     )}
                                                 </div>
                                             </div>

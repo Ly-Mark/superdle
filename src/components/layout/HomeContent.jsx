@@ -2,10 +2,11 @@
 // Static prose block below the Classic game on "/". This is the text Googlebot
 // sees on the site's most-visited URL, so every word of it must be present in
 // the initial HTML — no tabs, no accordions, no "show more".
-// Carries the homepage <h1>; the wordmark image above is decorative.
+// The homepage <h1> is NOT here — it moved to ModeHero above the board in
+// T24d so it leads the document. This block opens with an <h2>.
 import { Link } from 'react-router-dom';
 
-const h2 = 'text-lg font-bold text-white mt-6 mb-2';
+const h2 = 'font-display text-xl text-white tracking-wide mt-6 mb-2';
 const linkCls = 'text-blue-300 hover:text-blue-200 underline';
 
 // Rendered with native <details>/<summary>. That matters: the answers stay in
@@ -34,9 +35,14 @@ const FAQ = [
 export default function HomeContent() {
     return (
         <section className="max-w-2xl mx-auto px-4 mt-12 text-blue-100/85 leading-relaxed text-sm sm:text-base">
-            <h1 className="text-2xl sm:text-3xl font-bold text-white">
+            {/* Demoted from <h1> to <h2> in T24d/T25. The page's single <h1>
+                now sits in ModeHero above the board, where a top-level heading
+                belongs; this block used to carry it from near the bottom of
+                the document, below the board, the rules and the legend. The
+                wording is unchanged — it is the phrase the page ranks on. */}
+            <h2 className="font-display text-2xl sm:text-3xl text-white tracking-wide">
                 Clashdle — Daily Clash Royale Card Guessing Game
-            </h1>
+            </h2>
 
             {/* No "How to play" section here. The <HowToPlay> block higher up the
                 page covers it in more detail and is checked against the code —

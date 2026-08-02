@@ -19,6 +19,8 @@ import cardsData from '../data/cards.json';
 import { slug } from '../utils/slug.js';
 import { cardHasPage } from '../utils/clashroyale/cardPages.js';
 import { normalizeCardName } from '../utils/clashroyale/cardSearch.js';
+import { PANEL_CARD } from '../components/clashroyale/Panel.jsx';
+import ElixirCost from '../components/clashroyale/ElixirCost.jsx';
 
 const RARITY_ORDER = ['Common', 'Rare', 'Epic', 'Legendary', 'Champion'];
 
@@ -56,8 +58,10 @@ function CardRow({ card }) {
                             </span>
                         )}
                     </h3>
-                    <p className="text-xs text-blue-200/70 mt-0.5">
-                        {card.cost} elixir · {card.type}
+                    <p className="text-xs text-blue-200/70 mt-0.5 flex items-center gap-1.5">
+                        <ElixirCost cost={card.cost} unit />
+                        <span aria-hidden="true">·</span>
+                        <span>{card.type}</span>
                     </p>
                     <p className="text-xs text-blue-200/70">
                         {card.arena} · {card.year}
@@ -71,11 +75,11 @@ function CardRow({ card }) {
     );
 
     return (
-        <li className="bg-white/5 border border-white/10 rounded-xl">
+        <li className={`${PANEL_CARD} transition-shadow hover:shadow-panel-lg`}>
             {hasPage ? (
                 <Link
                     to={`/cards/${slug(card.card)}`}
-                    className="block p-4 rounded-xl hover:bg-white/5 transition-colors"
+                    className="block p-4 rounded-panel hover:bg-white/5 transition-colors"
                 >
                     {body}
                 </Link>

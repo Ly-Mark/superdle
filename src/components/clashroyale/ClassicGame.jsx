@@ -12,6 +12,9 @@ import { getDayIndex, buildShareText, copyToClipboard } from "../../utils/clashr
 import { PUBLIC_BASE, buildUrl } from '../../utils/shareBase.js';
 
 import GameModeNav from "./GameModeNav";
+import CRBackground from "./CRBackground.jsx";
+import Panel from "./Panel.jsx";
+import ModeHero from "./ModeHero.jsx";
 import HomeContent from "../layout/HomeContent.jsx";
 import { matchesCardQuery } from '../../utils/clashroyale/cardSearch.js';
 import HowToPlay from "../layout/HowToPlay.jsx";
@@ -251,11 +254,22 @@ const SuggestionItem = ({ name, onClick, isFirst, game = 'clashroyale' }) => {
    Legend
 ------------------------------------------------------- */
 const InlineLegend = ({ onClose }) => (
-    <div className="w-full max-w-sm sm:max-w-md mx-auto bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6 mt-8">
-        <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-bold text-white underline underline-offset-4">Color Indicators</h3>
-            <button onClick={onClose} className="bg-red-500 hover:bg-red-600 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs transition-colors">✕</button>
-        </div>
+    <Panel
+        className="w-full max-w-sm sm:max-w-md mx-auto p-6 mt-8"
+        title="Color Indicators"
+        // h3: this sits below the game panel's h2, so promoting it would skip
+        // a level. See T25 on the board for the wider heading-order problem.
+        titleAs="h3"
+        meta={
+            <button
+                onClick={onClose}
+                aria-label="Hide the colour legend"
+                className="bg-white/10 hover:bg-white/20 border border-white/20 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs transition-colors"
+            >
+                ✕
+            </button>
+        }
+    >
         <div className="flex flex-wrap justify-center gap-3 mb-3">
             <div className="text-center">
                 <div className="w-10 h-10 bg-emerald-500 rounded-lg mb-1 border-2 border-emerald-600"></div>
@@ -282,7 +296,7 @@ const InlineLegend = ({ onClose }) => (
                 <span className="text-white text-xs font-medium">Lower</span>
             </div>
         </div>
-    </div>
+    </Panel>
 );
 
 /* -------------------------------------------------------
@@ -332,10 +346,12 @@ const HintsPanel = ({
     const revealedList = HINT_DEFS.filter(h => revealedHints[h.key]);
 
     return (
-        <div className="max-w-xl mx-auto bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6">
-            <p className="text-blue-200 text-2xl font-medium mb-4">
-                Guess today's Clash Royale Card
-            </p>
+        <Panel
+            as="section"
+            className="max-w-xl mx-auto p-6"
+            title="Guess today's Clash Royale Card"
+            meta={guessesCount > 0 ? `${guessesCount} ${guessesCount === 1 ? 'guess' : 'guesses'}` : null}
+        >
 
             {/* Circles row */}
             {guessesCount >= 2 && (
@@ -362,7 +378,7 @@ const HintsPanel = ({
 
             {/* Revealed area */}
             {guessesCount >= 2 && (
-                <div className="mt-4 bg-white/15 backdrop-blur-sm border border-white/30 rounded-xl p-4 shadow-lg text-left">
+                <Panel variant="raised" className="mt-4 p-4 text-left">
                     <div className="max-h-40 overflow-y-auto pr-1 space-y-4">
                         {revealedList.length === 0 ? (
                             <p className="text-blue-200/80 text-sm text-center">
@@ -382,9 +398,9 @@ const HintsPanel = ({
                             ))
                         )}
                     </div>
-                </div>
+                </Panel>
             )}
-        </div>
+        </Panel>
     );
 };
 
@@ -472,30 +488,53 @@ const ClassicGame = () => {
 
             setGuesses(hydrated);
             setIsWon(!!data.isWon);
+
+            // Saved games from before revealed hints were persisted have no
+            // `revealedHints` key, so fall back rather than spreading
+            // undefined and blanking the flags.
+            if (data.revealedHints) {
+                setRevealedHints({
+                    hint1: !!data.revealedHints.hint1,
+                    hint2: !!data.revealedHints.hint2,
+                    hint3: !!data.revealedHints.hint3,
+                });
+            }
         } catch { /* ignore */ }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [ENABLE_DAILY_LOCK, targetCard.card]);
 
 
-    // ---- Save today's result when the player wins ----
+    // ---- Save today's progress ----
+    // Runs on every guess, not only on the win. It used to bail on `!isWon`,
+    // which meant an unfinished game was never written at all: leaving Classic
+    // for another mode unmounts this component, and coming back restored
+    // nothing because nothing had been stored. Matches the guard in
+    // `useDailyModeGame.js:72`, which is why Description never had this bug.
+    //
+    // The `guesses.length === 0` half of the guard matters: on mount this
+    // effect fires before the restore effect has repopulated state, and
+    // without it an empty array would overwrite a real saved game.
     useEffect(() => {
         if (!ENABLE_DAILY_LOCK) return;
-        if (!isWon) return;
+        if (!isWon && guesses.length === 0) return;
 
         try {
             // Ensure the final saved state has a fully solved row if it's missing for any reason
             const hasSolved = guesses.some(g => g.card === targetCard.card);
-            const toSave = hasSolved ? guesses : [makeSolvedRow(targetCard), ...guesses];
+            const toSave = (isWon && !hasSolved)
+                ? [makeSolvedRow(targetCard), ...guesses]
+                : guesses;
 
             localStorage.setItem(storageKeyForToday(), JSON.stringify({
                 card: targetCard.card,
-                isWon: true,
+                isWon,
                 guesses: toSave,
+                revealedHints,
                 ts: Date.now(),
             }));
         } catch {}
         // The dependency array here is correct and won't cause a loop.
-    }, [ENABLE_DAILY_LOCK, isWon, guesses, targetCard.card]);
+    }, [ENABLE_DAILY_LOCK, isWon, guesses, revealedHints, targetCard.card]);
 
 
     // exclude already guessed/queued from suggestions
@@ -582,8 +621,12 @@ const ClassicGame = () => {
     const handleRevealHint = (hintKey) => setRevealedHints(prev => ({ ...prev, [hintKey]: true }));
 
     return (
-        <div className="min-h-screen relative bg-gradient-to-br from-[#0b1f3a] via-[#0b3a82] to-[#0c59b6]">
-            {/* CSS blocks */}
+        <CRBackground>
+            {/* Only the flip animation is Classic-specific and stays here. The
+                gradient, diamond overlay and blobs used to be copy-pasted into
+                this file; they are now CRBackground's, which every other route
+                already used. Keeping the copy meant the dot texture and
+                vignette landed on all four modes except the homepage. */}
             <style>{`
                 .perspective-1000 { perspective: 1000px; }
                 .transform-style-3d { transform-style: preserve-3d; }
@@ -595,55 +638,31 @@ const ClassicGame = () => {
                     50% { transform: rotateY(90deg) scale(0.95); }
                     100% { transform: rotateY(180deg); }
                 }
-                /* Diamond IMAGE overlay styles */
-                .diamond-img {
-                    background-image: url('/bg/clashroyale/diamonds-1280.png');
-                    background-repeat: no-repeat;
-                    background-position: center;
-                    background-size: cover;
-                    opacity: 0.28;
-                    mix-blend-mode: overlay;
-                }
-                @supports (background-image: image-set(url('/bg/clashroyale/diamonds-640.png') 1x)) {
-                    .diamond-img {
-                        background-image: image-set(
-                                url('/bg/clashroyale/diamonds-640.png') 1x,
-                                url('/bg/clashroyale/diamonds-1280.png') 2x,
-                                url('/bg/clashroyale/diamonds-1920.png') 3x
-                        );
-                    }
-                }
-                @media (min-width: 1536px) {
-                    .diamond-img { opacity: 0.24; }
-                }
             `}</style>
-
-            {/* Diamond IMAGE overlay (above blobs, below content) */}
-            <div aria-hidden="true" className="absolute inset-0 pointer-events-none z-10 diamond-img" />
-
-            {/* Background blobs */}
-            <div className="absolute inset-0 overflow-hidden z-0">
-                <div
-                    className="absolute -top-40 -right-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply blur-xl opacity-20 motion-safe:animate-[pulse_12s_ease-in-out_infinite]"></div>
-                <div
-                    className="absolute -bottom-40 -left-40 w-80 h-80 bg-sky-400 rounded-full mix-blend-multiply blur-xl opacity-20 motion-safe:animate-[pulse_14s_ease-in-out_infinite_2s]"></div>
-                <div
-                    className="absolute top-40 left-1/2 w-80 h-80 bg-cyan-400 rounded-full mix-blend-multiply blur-xl opacity-20 motion-safe:animate-[pulse_16s_ease-in-out_infinite_4s]"></div>
-            </div>
 
 
             {/* Main content */}
             <main id="main-content" tabIndex={-1} className="relative z-20 container mx-auto px-4 py-8">
                 {/* Header */}
                 <div className="text-center mb-8">
-                    {/* Decorative wordmark — the real <h1> lives in HomeContent below. */}
+                    {/* Decorative — the page's <h1> is in ModeHero below.
+                        alt="" rather than "Clashdle" so a screen reader does
+                        not announce the name twice in a row. */}
                     <div className="mb-4">
                         <img
                             src="/wordmark.png"
-                            alt="Clashdle"
+                            alt=""
+                            aria-hidden="true"
                             className="mx-auto min-h-36 sm:h-28 md:h-28 w-auto"
                         />
                     </div>
+
+                    <ModeHero
+                        title="Clashdle — Daily Clash Royale Card Guessing Game"
+                        subhead="One card a day, drawn from all 121. Guess freely — every guess narrows it down."
+                        getDayNumber={getDayIndex}
+                    />
+
                     <GameModeNav />
 
                     {/* Hints */}
@@ -665,7 +684,12 @@ const ClassicGame = () => {
 
                 {/* Main Game */}
                 <div className="max-w-6xl mx-auto px-4">
-                    {/* Search */}
+                    {/* Search.
+                        Was briefly sticky (T31) so the input stayed reachable
+                        while scrolling back through guesses. Reverted: making
+                        it stick needs an opaque band behind it, and that band
+                        reads as a dark slab across the page. Revisit only with
+                        a treatment that does not need one. */}
                     <div className="relative mb-8 flex justify-center">
                         <div className="relative w-full max-w-sm sm:max-w-md">
                             <input
@@ -785,7 +809,7 @@ const ClassicGame = () => {
             {/*    onShare={handleShare}*/}
             {/*/>*/}
 
-        </div>
+        </CRBackground>
     );
 };
 

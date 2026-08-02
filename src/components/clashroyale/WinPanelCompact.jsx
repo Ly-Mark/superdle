@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import useNextMidnightCountdown from '../../hooks/useNextMidnightCountdown.js';
 import { buildShareText, copyToClipboard } from '../../utils/clashroyale/shareText.js';
 import { loadStats } from '../../utils/clashroyale/stats.js';
+import { PANEL_BASE } from "./Panel.jsx";
 
 // Suggest what to play next after a daily-mode win.
 // If the *other* daily mode is still un-attempted today, push them there to
@@ -135,7 +136,7 @@ export default function WinPanelCompact({
     return (
         <div className="mx-auto my-4 w-full">
             <div
-                className="w-full max-w-[704px] mx-auto mb-6 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-xl p-4 overflow-hidden">
+                className={`${PANEL_BASE} w-full max-w-[704px] mx-auto mb-6 p-4 overflow-hidden`}>
 
                 {/* centered win message */}
                 <div className="flex flex-col items-center text-center">

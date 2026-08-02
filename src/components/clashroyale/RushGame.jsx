@@ -3,6 +3,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import cardsData from "../../data/cards.json";
 import { compareAttributes, getAttributeColor } from "../../utils/clashroyale/gamelogic.js";
 import GameModeNav from "./GameModeNav";
+import Panel, { PANEL_BASE } from "./Panel.jsx";
 import ModeIntro from "../layout/ModeIntro.jsx";
 import CRBackground from "../../components/clashroyale/CRBackground.jsx";
 import CardThumb from "../../components/clashroyale/CardThumb.jsx";
@@ -653,48 +654,55 @@ const RushGame = () => {
                         </p>
                     </ModeIntro>
 
-                    <div className="max-w-xl mx-auto bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-4 sm:p-6">
-                        <p className="text-blue-200 text-xl sm:text-2xl font-medium mb-2 sm:mb-3">Rush Mode</p>
-
-                        <div className="flex items-center justify-center gap-4 text-blue-100">
-                            <div className="relative px-4 py-2 rounded-xl bg-white/10 border border-white/20">
+                    <Panel as="section" className="max-w-xl mx-auto p-4 sm:p-6" title="Rush Mode">
+                        {/* The three tiles were previously flex children under
+                            `items-center`, so each sized to its own content and
+                            they visibly disagreed — Time and Score carry a line
+                            of sub-text, Round carries none. A grid makes them
+                            equal-width, and `items-stretch` (the grid default)
+                            makes them equal-height, so the sub-text no longer
+                            changes the tile size. Round stays hidden below `sm`,
+                            which is why the grid is 2 columns there and 3 above. */}
+                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-blue-100">
+                            <Panel variant="raised" className="relative px-3 py-2 text-center">
                                 <TimeBonusPop pop={timePop} />
 
                                 <div className="text-xs uppercase tracking-wide text-blue-200/80">Time</div>
-                                <div className={`text-3xl font-black ${isTimeUp ? "text-red-200" : "text-white"}`}>
+                                <div className={`text-3xl font-black tabular-nums ${isTimeUp ? "text-red-200" : "text-white"}`}>
                                     {mm}:{ss}
                                 </div>
                                 {!hasStarted && !isTimeUp && (
                                     <div className="text-xs text-blue-200/80 mt-1">Starts on first guess</div>
                                 )}
-                            </div>
+                            </Panel>
 
-
-                            <div className="px-4 py-2 rounded-xl bg-white/10 border border-white/20">
+                            <Panel variant="raised" className="px-3 py-2 text-center">
                                 <div className="text-xs uppercase tracking-wide text-blue-200/80">Score</div>
-                                <div className="text-3xl font-black text-white">{score}</div>
-                                <div className="text-xs text-blue-200/80 mt-1">100 base • bonuses for speed & streak</div>
-                            </div>
+                                <div className="text-3xl font-black tabular-nums text-white">{score}</div>
+                                <div className="text-xs text-blue-200/80 mt-1">100 base • bonuses for speed &amp; streak</div>
+                            </Panel>
 
-                            <div className="px-4 py-2 rounded-xl bg-white/10 border border-white/20 hidden sm:block">
+                            <Panel variant="raised" className="px-3 py-2 text-center hidden sm:block">
                                 <div className="text-xs uppercase tracking-wide text-blue-200/80">Round</div>
-                                <div className="text-3xl font-black text-white">{roundIndex + 1}</div>
-                            </div>
+                                <div className="text-3xl font-black tabular-nums text-white">{roundIndex + 1}</div>
+                            </Panel>
+                        </div>
 
-                            {hasStarted && !isTimeUp && (
+                        {hasStarted && !isTimeUp && (
+                            <div className="mt-3 flex justify-center">
                                 <button
                                     onClick={() => {
                                         if (window.confirm('Restart the run? Your current score will be lost.')) {
                                             handleNewRun();
                                         }
                                     }}
-                                    className="px-3 py-2 rounded-xl bg-white/5 hover:bg-white/15 border border-white/15 text-blue-100 text-xs font-semibold self-stretch flex items-center"
+                                    className="px-3 py-2 rounded-xl bg-white/5 hover:bg-white/15 border border-white/15 text-blue-100 text-xs font-semibold transition-colors"
                                     title="Restart this run"
                                 >
                                     ↻ Restart
                                 </button>
-                            )}
-                        </div>
+                            </div>
+                        )}
 
                         {lastCorrect && !isTimeUp && (
                             <div className="mt-3 text-emerald-200 font-semibold">
@@ -707,7 +715,7 @@ const RushGame = () => {
                         <div className="mt-3 sm:mt-4 text-xs sm:text-sm text-blue-200/90">
                             Correct guess clears the board, adds time and starts a new target.
                         </div>
-                    </div>
+                    </Panel>
                 </div>
 
                 {/* Main */}
@@ -716,7 +724,7 @@ const RushGame = () => {
                     {/* End of run summary (wide, uncluttered) */}
                     {isTimeUp && finalTarget && (
                         <div className="max-w-6xl mx-auto mb-6">
-                            <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-5">
+                            <div className={`${PANEL_BASE} p-5`}>
                                 <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-5">
 
                                     {/* Left: charts + scrollable breakdown */}
@@ -925,7 +933,7 @@ const RushGame = () => {
                     {/* Correct strip */}
                     {correctHistory.length > 0 && (
                         <div className="max-w-3xl mx-auto mb-6">
-                            <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-3">
+                            <div className={`${PANEL_BASE} p-3`}>
                                 <div className="text-blue-100 font-semibold mb-2">Correct Cards</div>
 
                                 <div className="flex items-center gap-2 overflow-x-auto whitespace-nowrap pb-1 justify-start">

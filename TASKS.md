@@ -4,119 +4,139 @@ Working board for Clashdle. Maintained by Claude Code — see the "Task board
 protocol" section of `CLAUDE.md` for the update rules.
 
 **Last updated:** 2026-08-02
-**Current branches:** `p6-code-migration` (debt) and `p7-ui-polish` (look and
-feel), both cut from `p5-adsense` HEAD. `p5-adsense` merged to `main` via #7,
-#8, #10; its last commit (this board) is not yet on `main`.
-**Current state:** Everything on the site side is done and live. What remains
-needs AdSense/Search Console access, or is maintenance debt.
-
-**Branch split — which work goes where:**
-- `p6-code-migration` — T9, T11, T22, T10, T12. Refactors only; **no visible
-  change to any page.** Landing this first keeps p7's diffs readable.
-- `p7-ui-polish` — T24, T14, T23. Visual only; no behaviour change.
-- The two collide in `ClassicGame.jsx` (T9 rewrites it, T24 restyles it) and in
-  the card-art components (T22 collapses them, T24 restyles them). **Merge p6
-  first**, then rebase p7.
+**Current branch:** `p7-ui-polish` — pushed, ready to PR (15 commits)
+**Next branch:** `p6-code-migration` — cut and waiting, starts with T9
 
 Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
+
+---
+
+## Open decisions
+
+- **Rush icon — keep the helm?** Owner said fine, so this is closed unless the
+  view changes. Recorded because the measurement is worth keeping: the helm
+  inks **39%** of its canvas against 71–74% for the other three, so it carries
+  about half their visual weight and is the least legible of the four at 20 px.
+  Per-icon `size` overrides in `GameModeNav` compensate. **Tune those before
+  touching the artwork.** Crossed swords would fill a square better if it is
+  ever revisited.
+
+- **T31 · Guess bar scrolls off on Classic — approach undecided.** The board
+  grows past a screenful, so reading earlier guesses takes the input away with
+  it. Real problem, still unsolved.
+  *Attempt 1, reverted:* `sticky top-12` on a blurred band. Sticking it needs
+  an opaque backdrop or the board scrolls visibly through, and that band read
+  as a dark slab across the page.
+  *Options:* a floating pill · a compact bar that only appears once scrolled
+  past the input *(recommended)* · move the board into its own scroll container
+  so the page never scrolls. **Do not just re-apply `sticky` with a background.**
 
 ---
 
 ## Blocked on account access — not code
 
 - [ ] **T20 · Submit the sitemap in Google Search Console**
-  Cloudflare's managed `robots.txt` intercepts `/robots.txt` and serves its
-  own AI-crawler-blocking version, so our `Sitemap:` line never reaches
-  crawlers. Proven: `/robots.txt` has no Sitemap line, `/robots.txt?x=1`
-  (which bypasses the interception) has it. The deployment is correct.
-  *Fix:* add `clash.ac` as a **Domain** property in Search Console, verify
-  with a TXT record in Cloudflare DNS, then submit `sitemap.xml`.
-  The live sitemap is correct and complete: **130 URLs, 122 card pages.**
+  Cloudflare's managed `robots.txt` intercepts `/robots.txt` and serves its own
+  AI-crawler-blocking version, so our `Sitemap:` line never reaches crawlers.
+  Proven: `/robots.txt` has no Sitemap line, `/robots.txt?x=1` (which bypasses
+  the interception) has it. The deployment is correct.
+  *Fix:* add `clash.ac` as a **Domain** property in Search Console, verify with
+  a TXT record in Cloudflare DNS, then submit `sitemap.xml`.
+  Live sitemap is correct and complete: **130 URLs, 122 card pages.**
 
 - [ ] **T21 · EU consent banner (CMP)**
   Google requires a *certified* consent management platform to serve
-  personalised ads in the EEA, UK and Switzerland. Google's own is free, and
-  it is **delivered through the AdSense script already on the page** — so
-  this is entirely a dashboard task with no code change.
+  personalised ads in the EEA, UK and Switzerland. Google's own is free and is
+  **delivered through the AdSense script already on the page** — a dashboard
+  task with no code change.
   *Owner:* AdSense → Privacy & messaging → GDPR → create message → publish.
   A hand-rolled banner would not satisfy the certified-CMP requirement and
   would look compliant without being so, so nothing has been built.
-  *Follow-up once published:* a "Privacy options" link in the footer letting
-  EU users reopen the dialog. It calls a function the CMP defines, so it
-  would be a dead link until the message exists.
-  Until then `/privacy` states the position honestly: if you do not see a
-  banner, the ads you are served are non-personalised.
+  *Follow-up once published:* a "Privacy options" footer link that reopens the
+  dialog. It calls a function the CMP defines, so it would be a dead link until
+  the message exists.
+  Until then `/privacy` states the position honestly: no banner means the ads
+  served are non-personalised.
 
-- [ ] **T8 · Resubmit to AdSense**
-  Everything on the site side is done. Best done after T20 and T21.
+- [ ] **T8 · Resubmit to AdSense.** Site side is done. Best after T20 and T21.
 
 ---
 
-## Maintenance debt — `p6-code-migration`. Real, none of it urgent
+## `p6-code-migration` — maintenance debt
 
 - [ ] **T9 · Migrate `ClassicGame.jsx` onto `useDailyModeGame`**
-  Classic predates the shared hook and reimplements daily-state, storage-key
-  and stats logic inline across ~800 lines. Description already uses the
-  hook. **Any change to daily-state behaviour has to be made twice**, and a
-  bug fixed in one will survive in the other. The highest-value item here.
+  **The highest-value item on this board, and the case got stronger on
+  2026-08-02.** Classic predates the shared hook and reimplements daily-state,
+  storage-key and stats logic inline across ~800 lines. Two real user-facing
+  bugs were found during `p7` that existed *only* because of that duplication:
+  - **T26** — progress was never saved unless you won, so leaving Classic
+    mid-game lost the board. Description was fine; the hook already guarded
+    correctly at `useDailyModeGame.js:72`.
+  - **T27** — Classic carried its own copy of `CRBackground`, so a change to
+    the shared one landed on every route except the homepage.
+  Both were invisible until something forced a comparison. Assume more.
+
+- [ ] **T24f · Guess tiles + motion** *(carried over from `p7`)*
+  Gradient fill, darker border and inner shadow per state; a distinct treatment
+  for higher/lower arrow tiles versus plain wrong; staggered reveal. Hover lift
+  and transitions on interactive elements, all behind `motion-safe:`.
+  **Deliberately left for this branch** — the tiles live in `ClassicGame`,
+  which T9 rewrites wholesale, so doing it on `p7` meant building them twice.
+  **Do not touch the higher/lower arrow direction logic** — `RushGame.jsx:91`
+  documents why it looks inverted.
 
 - [ ] **T11 · Wire lint into CI**
-  Errors are cleared (0 errors, 7 warnings) but `npm run lint` still is not
-  run by CI, so it can rot again. The 7 warnings are unused vars in
-  `ClassicGame`, `RushGame`, `WinPanelCompact`, plus one `exhaustive-deps`.
+  0 errors, 7 warnings, but `npm run lint` still is not run by CI so it can rot
+  again. Warnings are unused vars in `ClassicGame`, `RushGame`,
+  `WinPanelCompact`, plus one `exhaustive-deps`.
 
 - [ ] **T22 · Collapse `CardPortrait` and `CardThumb` into `CardArt`**
-  Three near-identical components render card art. `CardArt` is the shared
-  one and already used by the guide; `ClassicGame` still has its own
-  `CardPortrait`, and `CardThumb` is a third. Left alone so far because
-  consolidating means touching the game board.
+  Three near-identical components render card art. `CardArt` is the shared one;
+  `ClassicGame` still has its own `CardPortrait` and `CardThumb` is a third.
+  Left alone so far because consolidating means touching the game board.
 
 - [ ] **T10 · Collapse the slugify implementations**
-  `slug` (routes), `slugifyCardName` (images), `deckshopSlug` (outbound), and
-  an inline copy in `ClassicGame`. They agree today; nothing enforces that.
+  `slug` (routes), `slugifyCardName` (images), `deckshopSlug` (outbound), and an
+  inline copy in `ClassicGame`. They agree today; nothing enforces that.
 
 - [ ] **T12 · Decide the fate of the Brawl Stars scaffold**
   `src/components/brawlstars/`, `src/data/brawlers.json`,
-  `src/utils/brawlstars/gamelogic.js`. No route, nothing imports them. Wire
-  up or delete — right now it misleads anyone reading the tree.
-
-- [ ] **T23 · Furnace renders small on the game board** *(owner picking up; belongs on `p7-ui-polish`)*
-  Furnace is the only square source image (850x850, everything else is
-  portrait) and its artwork fills 44% of the canvas against a median of 80%.
-  The card guide handles it by trimming padding under a 60% threshold;
-  `ClassicGame` uses the full-size asset, so it is still small there. Fixing
-  it properly means editing the source image.
+  `src/utils/brawlstars/gamelogic.js`. No route, nothing imports them. Wire up
+  or delete — it currently misleads anyone reading the tree.
 
 ---
 
-## UI/UX polish — `p7-ui-polish`
+## UI/UX — remaining
 
-- [ ] **T24 · Give the site a design system, then apply it**
-  The site reads flat next to modern sites. The measurable cause, not a taste
-  judgement: `tailwind.config.js` has an **empty `theme.extend`**. There are no
-  tokens at all — colours are inline hexes (`#0b1f3a`, `#0b3a82`, `#0c59b6` in
-  `CRBackground`), and the only depth on the page is three `blur-xl` blobs.
-  No shadow scale, no radius scale, no type scale, so nothing establishes
-  hierarchy or elevation.
-  *Ordered plan — each step is shippable on its own:*
-  1. **Tokens first.** Fill `theme.extend` with the colours already in use, plus
-     a shadow, radius and type scale. Purely additive; changes nothing yet.
-  2. **Replace inline hexes** with the tokens. Should be a no-op visually —
-     that is how you know step 1 captured the real palette.
-  3. **Elevation and surface.** The guess rows, the tiles and the win panel are
-     all flat fills on a flat gradient. Layered shadows and a defined card
-     surface are what actually reads as "modern".
-  4. **Type scale.** Sizes are currently picked per-component.
-  5. **Motion.** Tile reveal and row entry. Keep every one behind
-     `motion-safe:` — `CRBackground` already sets that precedent.
-  *Constraint:* visual only. No behaviour, storage-key or daily-logic changes —
-  those belong to T9 on `p6-code-migration`.
-  *Verify with `npm run build && npm run preview`*, not `npm run dev` — the
-  prerender/hydrate path is the one that ships.
+- [ ] **T23 · Furnace renders small on the game board** *(owner picking up)*
+  The only square source image (850×850; everything else is portrait) and its
+  artwork fills 44% of the canvas against a median of 80%. The card guide trims
+  padding under a 60% threshold; `ClassicGame` uses the full-size asset, so it
+  is still small there. Fixing it properly means editing the source image.
 
-- [ ] **T14 · Resolve `SiteHeader` / `GameModeNav` overlap**
-  Both render the same four mode links on game pages. Harmless, mildly
-  redundant. Decide once you have looked at the two together.
+- [ ] **T34 · Mobile pass at 390 px — never verified by anyone**
+  Three `p7` changes take a different path on small screens and none has been
+  looked at: the diamond overlay falls back to `scroll` + `100vw auto` below
+  768 px, heading sizes step down, and the nav pills now carry icons on a
+  narrow row. Build-verified only, which proves nothing about how it looks.
+
+- [ ] **T35 · `ModeHero` is Classic-only**
+  Description, Rush and Memory still lead with `ModeIntro`, which carries its
+  own `<h1>`, so dropping `ModeHero` in would give them two. If the chip row is
+  wanted there, `ModeIntro` has to hand over its heading first.
+
+---
+
+## Optional, not blocking
+
+- [ ] **T16b · Strategy articles.** Rarity explainers, arena progression, elixir
+  economy. Would add depth; the site no longer needs them to clear the
+  thin-content bar.
+
+- [ ] **T17 · Rush leaderboard** *(deferred by owner 2026-08-01)*
+  Needs a backend, which the Scope rule in `CLAUDE.md` forbids without an
+  explicit decision. The reference mock showed invented numbers; publishing
+  fake engagement figures was rejected outright.
 
 - [ ] **T13 · Prune stale local branches**
   `bug-description-game-copy`, `feature-mobile-responsiveness`,
@@ -124,56 +144,39 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
 
 ---
 
-## Optional, not blocking
+## Durable notes from the `p7` work
 
-- [ ] **T16b · Strategy articles**
-  Long-form guides — rarity explainers, arena progression, elixir economy.
-  Would add depth, but the site no longer needs them to clear the
-  thin-content bar.
+Not tasks — decisions and traps that would otherwise be rediscovered the hard
+way. Everything else about `p7` is in git.
 
-- [ ] **T17 · Rush leaderboard** *(deferred by owner 2026-08-01)*
-  Needs a backend, which the Scope rule in `CLAUDE.md` forbids without an
-  explicit decision. The reference mock showed one with invented numbers;
-  publishing fake engagement figures was rejected outright.
-
----
-
-## Done
-
-Shipped and live across #7, #8 and #10 on 2026-08-01 and 2026-08-02.
-
-**The site went from 4 pages with an empty `#root` to 130 pages and 55,007
-visible words.**
-
-- **Build was broken and had never once succeeded.** A bad import path, then
-  two stacked crashes underneath it — `new URL(path, '')` at module scope in
-  `ClassicGame`, and `localStorage` read during render in `stats.js`. The
-  prerender pass fails *silently*: a throw becomes an empty `#root` and the
-  build still exits 0.
-- **Build never exited.** CI ran 5h59m and was killed at the job limit. React's
-  scheduler leaves a `MessagePort` open because the prerender script is bundled
-  with browser resolution conditions. Unref'd; build now exits in ~2s.
-- **Content:** homepage block, per-mode intros, shared `HowToPlay` on all four
-  modes, FAQ, site header, restructured footer, real `<h1>` per route.
-- **Card guide:** `/cards` plus all 121 card pages, driven by
-  `content/balance-history.md` — fill in a card and its page, route, metadata
-  and sitemap entry appear on the next build. `npm run check:cards` catches
-  headings whose content is being dropped.
-- **Card text:** all 121 cards' `hint2`/`hint3` rewritten. The originals came
-  from the Clash Royale wiki (CC BY-SA, unattributed, not covered by the Fan
-  Content Policy). Rewritten from each card's own stats.
-- **SEO:** per-route canonical, og and twitter tags; sitemap generated from the
-  route list; real 404s instead of a soft-200 homepage for every typo'd URL.
-- **Accessibility:** `<main>` landmark and a working skip link on every route.
-- **Data fixes:** Furnace's type was `"Troop"` singular, so its type tile showed
-  red against every card; Royal Recruits' health was `"Medium / Medium"`, so an
-  exact match showed yellow; X-Bow cost 9 → 6.
-- **Search:** `log` finds The Log, `xbow` finds X-Bow, `giant snowball` finds
-  Snowball — without turning `giant` into a list of every Giant.
-- **Legal:** Terms gained acceptable use, BC/Vancouver governing law,
-  severability. Privacy gained rights, retention, security, and the AdSense
-  third-party-vendor cookie disclosure.
-
-Deliberately **not** built, in every case because it would have meant publishing
-something untrue: leaderboards, player counts, solve statistics, a "median
-guesses" stat, Supercell API tag validation, and a consent banner that isn't one.
+- **Gold is an action colour, never a heading colour.** Owner rejected gold
+  headings on sight. Confining it to the submit button and the active nav pill
+  also sidesteps a collision: the accent and the "close match" tile state were
+  the same amber, so a gold button read as a partial match.
+- **Tile hues are Supercell's and do not move.** Green/amber/red come from the
+  games. When the accent needed separating from the tiles, the *accent* moved.
+- **`shadow-glow-gold` duplicates `gold.DEFAULT` by necessity** — a box-shadow
+  cannot reference a colour token. If the accent moves, move both.
+- **Never render a date-derived value during the prerender pass.**
+  `getDayIndex()` reads `new Date()`, so the build date would be baked into the
+  shipped HTML, indexed by crawlers, and mismatched on hydrate. `ModeHero`
+  renders the day chip from `useEffect`. Same reason the blob field is
+  hand-placed rather than generated.
+- **Do not fade prerendered images in from `opacity-0` via React state.** The
+  HTML would ship with every image invisible and depend on JS to reveal them.
+  `CardArt` paints its placeholder *underneath* instead. Also: `onLoad` never
+  fires for an image the browser decoded before hydration, so it checks
+  `img.complete` on mount.
+- **`backdrop-blur` does not scale to lists.** It makes the compositor sample
+  everything behind the element. `PANEL_CARD` is the blur-free variant; use it
+  for anything rendered many times on one page.
+- **`min-h` does not align a grid** — a minimum still lets a row grow.
+  `grid-auto-rows` plus `line-clamp` is what actually guarantees equal boxes.
+- **No backticks inside the `<style>` template literals** in `CRBackground` —
+  one closes the string and breaks the build.
+- **Verify prerender by byte size and markup, not by exit code.** A route that
+  throws still exits 0. Grep the built HTML for `<!--$!-->` and check `<h1>`
+  counts; a green build proves nothing.
+- **Icons: measure ink coverage, not just canvas size.** Two correctly-made
+  96×96 files can carry very different visual weight — the mode icons range
+  from 39% to 74% ink, which is why they need per-icon size overrides.

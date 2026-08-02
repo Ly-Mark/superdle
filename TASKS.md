@@ -112,7 +112,55 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
   *Constraint:* visual only. No behaviour, storage-key or daily-logic changes —
   those belong to T9 on `p6-code-migration`.
   *Verify with `npm run build && npm run preview`*, not `npm run dev` — the
-  prerender/hydrate path is the one that ships.
+  prerender/hydrate path is the one that ships. **Every group below ends with
+  that check**, not just the last one.
+
+  Split into shippable groups, easiest and lowest-risk first. Derived from
+  `redesign-brief.md`, with its corrections recorded under T24x.
+
+  - [x] **T24a · Design tokens.** Filled the empty `theme.extend` with
+    `brand`, `gold`, `state`, `panel`, a shadow scale, `rounded-panel`, and an
+    inert `font-display` stack. Names Tailwind doesn't ship, so nothing is
+    overridden. **Verified a true no-op:** Tailwind emits only used utilities,
+    and `f5c542` / `d99a1a` / `Lilita` all appear 0 times in the built CSS.
+    All routes prerendered (no `<!--$!-->`; home 20 KB, cards 200 KB, rush
+    15.5 KB). *(brief task 1)*
+  - [ ] **T24b · Panel treatment + gold consolidation.** Shared container
+    style; collapse the five ad-hoc golds onto one token. First group where
+    the site stops looking flat. *(brief tasks 2, 4)*
+  - [ ] **T24c · Guide polish.** Thumbnail placeholder (see T24x), Rush stat
+    tiles. Isolated pages, no game logic. *(brief tasks 10, 8)*
+  - [ ] **T24d · Hero, mode identity, accordion.** Pill-badge row, per-mode
+    icons, styled accordion. Absorbs **T14**. Countdown cut — see T24x.
+    *(brief tasks 6, 7, 9)*
+  - [ ] **T24e · Typography.** Self-hosted **Lilita One** (SIL OFL). Deferred
+    behind b/c because it adds the site's first webfont — needs
+    `font-display: swap` and a CLS check. *(brief task 5)*
+  - [ ] **T24f · Guess tiles + motion.** Last: collides with T9, which
+    rewrites `ClassicGame` wholesale. **Do not touch the higher/lower arrow
+    direction logic** — `RushGame.jsx:91` documents why it looks inverted.
+    *(brief tasks 3, 11)*
+
+- [ ] **T24x · Corrections to `redesign-brief.md`** — record, don't re-litigate
+  - **"Card Guide thumbnails render as blank squares" is wrong.** 121 `.webp`
+    thumbs exist and are tracked; live URLs return 200 (`archers.webp` 7852b).
+    `CardArt.jsx:38` also has a `.png` and a text fallback. The real issue:
+    `CardsIndex` renders 121 images at `loading="lazy"` with no placeholder and
+    no reserved aspect box, so below-fold cards are empty until scrolled and a
+    screenshot pass catches them mid-load. Fixed in T24c as a placeholder.
+  - **"No accent colour exists" is wrong.** `amber-500` ×7, `amber-600` ×5,
+    `amber-300` ×2, plus `yellow-400` and `orange-500`. T24b is a
+    consolidation, not an introduction — which is why it's cheap.
+  - **Gold and "close" are currently the same amber.** The brief lists
+    `--accent-gold` and `--partial` separately but never flags the collision.
+    A gold button reads as a "close match" tile. `state.close` is shifted off
+    `amber-500` in the token set; keep them visibly apart.
+  - **Countdown-to-next-card cut from T24d.** `getDailyCard` is local-date
+    based, `getDayIndex()` in `shareText.js` is UTC based. A visible countdown
+    forces a choice between them and would expose the disagreement near
+    midnight. That's a behaviour decision, not a visual one.
+  - **`#00d8ff`** was in use and unmentioned by the brief; captured as
+    `brand.cyan`.
 
 - [ ] **T14 · Resolve `SiteHeader` / `GameModeNav` overlap**
   Both render the same four mode links on game pages. Harmless, mildly

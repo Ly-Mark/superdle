@@ -29,6 +29,16 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
   touching the artwork.** Crossed swords would fill a square better if it is
   ever revisited.
 
+- **T36 · May both Spirit Empress entries be used in the same grid?** It ships
+  as `Spirit Empress (Ground)` (3 elixir) and `Spirit Empress (Flying)` (6),
+  which are separate rows, so nothing stops a player filling a `Cost 3` cell
+  and a `Cost 5+` cell with one each. This is the only behavioural difference
+  between two entries and single-entry-in-both-buckets.
+  *Recommended: allow it.* They are genuinely different deployments, the names
+  are distinct on screen, and blocking it means a special-case rule for one
+  card. But players will notice either way, so it should be a decision rather
+  than an accident.
+
 - **T31 · Guess bar scrolls off on Classic — approach undecided.** The board
   grows past a screenful, so reading earlier guesses takes the input away with
   it. Real problem, still unsolved.
@@ -63,9 +73,8 @@ card reuse, daily reset.
   `Common × Common` can never occur. This is what the enumeration assumes.
 - **Splash and flying are partitions, not booleans** — splash/single-target,
   flying/grounded. Two categories each for the same data entry.
-- **Cost buckets are `≤2 / 3 / 4 / 5+`,** and a card may sit in more than one:
-  `Spirit Empress` is `"3 / 6"`, so it counts in both `Cost 3` and `Cost 5+`.
-  The generator must split on `/` rather than parse a single number.
+- **Cost buckets are `≤2 / 3 / 4 / 5+`.** `Spirit Empress` deploys as ground
+  for 3 or flying for 6, so it ships as **two entries** — see T36.
 
 **Measured launch pool: 51,768 grids at MIN=4**, using only data that exists
 today (23 categories: rarity, cost, type, year, targets, arena, Goblin,
@@ -109,14 +118,22 @@ least 484 grids, so none is dead weight.
     the others are multi-targeting (`Air / Ground`) or two-unit cards with
     split speed/HP (Rascals, Guards, Dark Prince, Battle Ram, Goblinstein,
     Little Prince). Write the predicate generally anyway.
-    **Rejected: giving it two entries** (one ground at 3, one flying at 5+).
-    Two rows sharing a `card` name break the search modal (two identical
-    options, indistinguishable), break card-art keying, and make the no-reuse
-    rule ambiguous. Membership in both buckets already produces identical grid
-    behaviour, and correctly still allows only one use per grid.
-    *Unknown:* what the `3 / 6` represents mechanically. Nobody has confirmed
-    it. It does not change the grid logic either way, but it may change what
-    the chip should be labelled.
+    **Superseded — ship it as two entries instead.** Owner confirmed the
+    mechanic 2026-08-02: the card is deployed as **ground for 3 elixir or
+    flying for 6**, depending on what you have. So the file carries
+    `Spirit Empress (Ground)` and `Spirit Empress (Flying)`.
+    An earlier objection here — that two entries would break the search modal —
+    was wrong: it assumed two rows sharing a name, and distinct display names
+    dissolve it.
+    **Two entries also express something membership cannot:** the flying
+    variant belongs in the `Flying` tag and the ground one does not. A single
+    entry would have to pick one and be wrong about half the card. It differs
+    on cost *and* mobility, which is accurate.
+    *Needs:* an explicit `slug: "spirit-empress"` on both entries, because
+    `slugifyCardName("Spirit Empress (Flying)")` resolves to no image. One
+    field in `clashdoku.json`; no change to `cardImages.js`.
+    *Keep the `/`-splitting cost predicate anyway* — it costs nothing and a
+    future dual-cost card should not need a second special case.
   - **Year buckets must be disjoint.** The brief proposes `2016 / 2018+ /
     2021+`, but `2021+` is a strict subset of `2018+` — a grid drawing both as
     rows would make one row's cells a subset of the other's. Use
@@ -208,21 +225,22 @@ least 484 grids, so none is dead weight.
 
   | Tag | Cards | Pool after | Gain |
   |---|---|---|---|
-  | **Human family** | 44 | 91,618 | **+77%** |
+  | **Human family** | 43 | 85,234 | **+65%** |
   | **Spawns units** | 20 | 88,002 | **+70%** |
   | Win condition | 20 | 65,318 | +26% |
   | Flying | 13 | 57,320 | +11% |
   | ~~Grounded~~ | 75 | 100,412 | +94% |
-  | *all five (28 categories)* | — | **305,454** | — |
+  | *all five (28 categories)* | — | **291,634** | — |
 
   - **`Human family` (Tier 3) is the biggest single lever in the whole brief**,
     bigger than any Tier 2 tag. Raised by owner 2026-08-02; the earlier
     "families are a weak lever" conclusion was drawn from the small species
-    families and does not hold for this one. 44 cards, and it is the broad
+    families and does not hold for this one. 43 cards, and it is the broad
     "not goblin, not skeleton, not machine" axis the others lack.
-    *Excluded and arguable:* PEKKA, Mini PEKKA, Sparky, Cannon Cart, Zappies,
-    Skeleton King, Royal Ghost, Goblinstein. *Included and arguable:* Giant,
-    Royal Giant, Electro Giant, Guards.
+    *Boundary, reviewed by owner 2026-08-02:* the giants (Giant, Royal Giant,
+    Electro Giant, Rune Giant) are **in**. `Guards` is **out — it is Undead**,
+    not Human. Excluded as machines/undead: PEKKA, Mini PEKKA, Sparky, Cannon
+    Cart, Zappies, Skeleton King, Royal Ghost, Goblinstein.
   - **Win condition and Spawns units are both 20 cards but not equally
     valuable** — +26% against +70%. Win conditions cluster (nearly all cost 4+,
     nearly all ground troops, many `Buildings only`) so they intersect thinly

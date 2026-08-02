@@ -60,7 +60,25 @@ function CardChip({ name }) {
             <CardArt name={name} variant="thumb" sizeClass="w-10 h-10" />
             <span>
                 <span className={hasPage ? linkCls : 'text-white'}>{name}</span>
-                {card && <span className="text-blue-200/60"> · {card.cost}</span>}
+                {card && (
+                    <span className="inline-flex items-center gap-0.5 ml-1.5 text-blue-200/70 align-middle">
+                        {/* Official fankit asset, already in the tree and used
+                            the same way in DescriptionGame. aria-hidden with
+                            the cost as adjacent text, so a screen reader reads
+                            "Archers 3" rather than naming the icon. */}
+                        <img
+                            src="/games/clashroyale/icons/elixir.png"
+                            alt=""
+                            aria-hidden="true"
+                            width={12}
+                            height={14}
+                            loading="lazy"
+                            decoding="async"
+                            className="w-3 h-3.5 shrink-0"
+                        />
+                        {card.cost}
+                    </span>
+                )}
             </span>
         </>
     );
@@ -81,19 +99,66 @@ function CardChip({ name }) {
     );
 }
 
+// Counters and synergy lists ran as one undifferentiated wall of chips — up to
+// two dozen on the busier cards. `cards.json` already carries exactly the split
+// that helps: Troops (88), Spells (21), Building (12). Grouping by it turns the
+// list into three short scannable ones without inventing a taxonomy.
+//
+// Order is fixed rather than by size, so the same heading sits in the same
+// place on every card page. Empty groups are dropped, so a card countered only
+// by spells still shows one heading, not three.
+const TYPE_GROUPS = [
+    { key: 'Troops', label: 'Units' },
+    { key: 'Spells', label: 'Spells' },
+    { key: 'Building', label: 'Buildings' },
+];
+
+function groupByType(names) {
+    const groups = TYPE_GROUPS.map((g) => ({ ...g, names: [] }));
+    // Anything whose type is missing or unrecognised goes to the end rather
+    // than being dropped — silently losing a card would be worse than an
+    // slightly odd heading.
+    const other = [];
+
+    for (const name of names) {
+        const card = byName.get(name);
+        const group = groups.find((g) => g.key === card?.type);
+        (group ? group.names : other).push(name);
+    }
+
+    if (other.length) groups.push({ key: 'other', label: 'Other', names: other });
+    return groups.filter((g) => g.names.length > 0);
+}
+
 function EntryPanel({ heading, intro, items }) {
     const { cards, notes } = splitEntries(items);
     if (!cards.length && !notes.length) return null;
+
+    const groups = groupByType(cards);
+    // With only one group the heading is noise — it would just restate what
+    // every chip already shows.
+    const showGroupHeadings = groups.length > 1;
+
     return (
         <section className={panel}>
             <h2 className={h2}>{heading}</h2>
             {intro && <p className="text-sm text-blue-100/70 mb-4">{intro}</p>}
 
-            {cards.length > 0 && (
-                <ul className="flex flex-wrap gap-x-5 gap-y-3">
-                    {cards.map((n) => <CardChip key={n} name={n} />)}
-                </ul>
-            )}
+            {groups.map((g, i) => (
+                <div key={g.key} className={i > 0 ? 'mt-4' : ''}>
+                    {showGroupHeadings && (
+                        <h3 className="text-[11px] font-semibold uppercase tracking-wider text-blue-200/60 mb-2">
+                            {g.label}
+                            <span className="ml-1.5 text-blue-200/40 normal-case tracking-normal">
+                                {g.names.length}
+                            </span>
+                        </h3>
+                    )}
+                    <ul className="flex flex-wrap gap-x-5 gap-y-3">
+                        {g.names.map((n) => <CardChip key={n} name={n} />)}
+                    </ul>
+                </div>
+            ))}
 
             {notes.length > 0 && (
                 <ul className={`space-y-1.5 text-sm text-blue-100/85 ${cards.length ? 'mt-4 pt-4 border-t border-white/10' : ''}`}>

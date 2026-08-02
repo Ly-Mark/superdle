@@ -79,6 +79,8 @@ export default function MemoryGame() {
 
     const [inputValue, setInputValue] = useState("");
     const [foundSet, setFoundSet] = useState(() => new Set());
+    // Normalised key of the most recent find — drives the reveal pop.
+    const [justFound, setJustFound] = useState(null);
     const [message, setMessage] = useState("");
 
     // Timer: doesn’t start until first guess
@@ -229,6 +231,12 @@ export default function MemoryGame() {
         next.add(k);
         setFoundSet(next);
         setMessage(`✅ Found: ${card.card}`);
+
+        // Marks the cell that just flipped so it can play a one-shot pop. Kept
+        // as a plain key rather than a timer-cleared flag: the animation is
+        // CSS and ends on its own, and holding a timeout per guess would add
+        // work to the one path in this mode that has to stay fast.
+        setJustFound(k);
     };
 
     const onSubmit = (e) => {
@@ -383,21 +391,31 @@ export default function MemoryGame() {
                                     </div>
                                 </div>
 
-                                <div className="columns-2 2xl:columns-3 gap-2">
+                                {/* A grid, not `columns-2`. CSS multi-column
+                                    sizes every cell to its own content, so a
+                                    two-line name like "Goblin Demolisher" made
+                                    a taller box than "Bats" and the list came
+                                    out ragged and hard to scan. A grid gives
+                                    equal columns, and the min-height below
+                                    makes one- and two-line cells match, so
+                                    every box in the list is the same size. */}
+                                <div className="grid grid-cols-2 2xl:grid-cols-3 gap-2">
                                     {list.map((c) => {
-                                        const isFound = foundSet.has(normalize(c.card));
+                                        const key = normalize(c.card);
+                                        const isFound = foundSet.has(key);
                                         const isMissed = isGameOver && !isFound;
+                                        const isJustFound = key === justFound;
 
                                         return (
                                             <div
                                                 key={c.card}
-                                                className={`break-inside-avoid rounded-lg border px-2 py-1 flex items-start gap-2 leading-tight ${
+                                                className={`rounded-lg border px-2 py-1 flex items-center gap-2 leading-tight min-h-[2.75rem] transition-colors duration-200 ${
                                                     isFound
                                                         ? "bg-emerald-500/10 border-emerald-500/30"
                                                         : isMissed
                                                             ? "bg-red-500/15 border-red-300/30"
                                                             : "bg-black/15 border-white/10"
-                                                }`}
+                                                } ${isJustFound ? "motion-safe:animate-[mem-pop_450ms_ease-out]" : ""}`}
                                             >
                                                 {/* Thumb / placeholder */}
                                                 {isFound || isMissed ? (
@@ -412,12 +430,17 @@ export default function MemoryGame() {
                                                     </div>
                                                 )}
 
-                                                {/* Name / placeholder */}
-                                                <div className="text-sm font-semibold text-white/95 whitespace-normal break-words">
+                                                {/* Name / placeholder.
+                                                    min-w-0 lets the flex child
+                                                    shrink so long names wrap
+                                                    inside the cell instead of
+                                                    pushing it wider than its
+                                                    grid column. */}
+                                                <div className="min-w-0 flex-1 text-sm font-semibold text-white/95 break-words">
                                                     {isFound || isMissed ? (
                                                         <span className={isMissed ? "text-red-100" : ""}>{c.card}</span>
                                                     ) : (
-                                                        <div className="mt-1 h-2 rounded bg-white/15 w-full max-w-[180px]" />
+                                                        <div className="h-2 rounded bg-white/15 w-full max-w-[180px]" />
                                                     )}
                                                 </div>
                                             </div>

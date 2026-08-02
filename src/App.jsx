@@ -18,6 +18,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import SiteHeader from './components/layout/SiteHeader.jsx';
 import SiteFooter from './components/layout/SiteFooter.jsx';
+import ScrollToTop from './components/layout/ScrollToTop.jsx';
 
 const ClassicGame = lazy(() => import('./components/clashroyale/ClassicGame.jsx'));
 const DescriptionGame   = lazy(() => import('./components/clashroyale/DescriptionGame'));
@@ -44,6 +45,10 @@ export default function App() {
             >
                 Skip to content
             </a>
+
+            {/* Outside <Routes> so it survives every route change. Renders
+                nothing. */}
+            <ScrollToTop />
 
             <SiteHeader />
 

@@ -161,6 +161,16 @@ export default function CRBackground({ children }) {
             50%      { transform: translate(-50%, -50%) scale(1.12); }
           }
         }
+
+        /* One-shot reveal used when a guess lands (Memory's card cells).
+           Transform and box-shadow only — both composite on the GPU and
+           neither triggers layout, which matters because Memory can fire this
+           many times in quick succession. */
+        @keyframes mem-pop {
+          0%   { transform: scale(1);    box-shadow: 0 0 0 0 rgba(16,185,129,0.55); }
+          35%  { transform: scale(1.06); box-shadow: 0 0 0 6px rgba(16,185,129,0.20); }
+          100% { transform: scale(1);    box-shadow: 0 0 0 0 rgba(16,185,129,0); }
+        }
       `}</style>
 
             {/* Page content */}

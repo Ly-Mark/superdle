@@ -414,6 +414,55 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
   text nav; `GameModeNav` is the iconned in-game switcher with a gold active
   pill. They no longer read as the same control twice.
 
+- [x] **T28 · Navigation kept the previous page's scroll position** *(reported
+  by owner; fixed)*
+  Following a "Pairs with" link from halfway down a card page landed halfway
+  down the next one. **Cause:** the app had **no scroll handling at all.** A
+  browser restores scroll on a real page load, but a client-side route change
+  is not one — React Router swaps the tree and leaves the offset alone.
+  *Fixed:* `ScrollToTop` in `components/layout/`, rendered once in `App.jsx`
+  outside `<Routes>`. Not `<ScrollRestoration>` — that ships with the data
+  routers (`createBrowserRouter`) and this app uses the component `<Routes>`
+  API. Back/forward (`POP`) is left alone so the browser's remembered position
+  still wins, and a URL with a `#hash` is left alone so in-page anchors work.
+
+- [x] **T29 · Card pages: elixir icon, and counters/synergies grouped by type**
+  *(requested by owner)*
+  - Elixir cost in `CardChip` now carries `icons/elixir.png` — the official
+    fankit asset already in the tree, used the same way in `DescriptionGame`.
+    `aria-hidden` with the number as adjacent text, so a screen reader reads
+    "Archers 3" rather than naming the icon.
+  - Counters and "pairs with" were one undifferentiated wall of up to two dozen
+    chips. Now split into **Units / Spells / Buildings**, straight off the
+    `type` field that already exists in `cards.json` (Troops 88, Spells 21,
+    Building 12) — no new taxonomy invented. Order is fixed so the same heading
+    sits in the same place on every card page; empty groups are dropped;
+    headings are hidden entirely when there is only one group, where they would
+    just restate what every chip shows. Unknown types fall into "Other" rather
+    than being silently dropped.
+
+- [x] **T30 · Memory: uneven boxes, and finds that did not register**
+  *(reported by owner)*
+  - **Uneven boxes.** The list used `columns-2` — CSS multi-column, which sizes
+    every cell to its own content, so "Goblin Demolisher" made a taller box
+    than "Bats" and the grid came out ragged. Now a real grid with a
+    `min-h-[2.75rem]` floor, so one- and two-line cells match and every box is
+    the same size. The name cell gained `min-w-0` so long names wrap inside
+    their column instead of widening it.
+  - **Finds now register.** A correct guess plays a one-shot `mem-pop` on that
+    cell — scale plus an expanding emerald ring. **Transform and box-shadow
+    only**, both GPU-composited and neither triggering layout, because Memory
+    can fire this many times in quick succession and speed was the explicit
+    constraint. Behind `motion-safe:`. No timer per guess: the animation is CSS
+    and ends by itself, so nothing is scheduled on the hot path.
+
+- [x] **T31 · Guess bar scrolled away on Classic** *(reported by owner)*
+  The board grows past a screenful after a few guesses, so reading earlier rows
+  took the input off-screen — every guess meant scrolling down, typing, and
+  scrolling back. The search row is now `sticky top-12` (directly under
+  `SiteHeader`, which is `sticky top-0 h-12`) on a blurred band.
+  **Rush has the same layout and probably the same problem — not yet done.**
+
 - [ ] **T13 · Prune stale local branches**
   `bug-description-game-copy`, `feature-mobile-responsiveness`,
   `feature/rushmode`, `p3-og-meta`, `pr4-gameplay-polish`.

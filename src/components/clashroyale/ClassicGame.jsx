@@ -685,17 +685,12 @@ const ClassicGame = () => {
                 {/* Main Game */}
                 <div className="max-w-6xl mx-auto px-4">
                     {/* Search.
-                        Sticky because the guess board grows past a screenful
-                        after a handful of guesses: scrolling back to read your
-                        earlier rows used to take the input off-screen with it,
-                        so every guess meant scrolling down, typing, scrolling
-                        up again.
-
-                        `top-12` parks it directly under SiteHeader, which is
-                        `sticky top-0` at `h-12`. The negative margins and
-                        padding let the blurred band run full width while the
-                        input stays in the same column as the board. */}
-                    <div className="sticky top-12 z-30 -mx-4 px-4 py-3 mb-6 flex justify-center bg-brand-deep/70 backdrop-blur-md border-b border-white/10">
+                        Was briefly sticky (T31) so the input stayed reachable
+                        while scrolling back through guesses. Reverted: making
+                        it stick needs an opaque band behind it, and that band
+                        reads as a dark slab across the page. Revisit only with
+                        a treatment that does not need one. */}
+                    <div className="relative mb-8 flex justify-center">
                         <div className="relative w-full max-w-sm sm:max-w-md">
                             <input
                                 type="text"

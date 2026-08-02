@@ -15,6 +15,7 @@ import { CARD_SPOTLIGHTS } from '../content/cardSpotlights.jsx';
 import { getCardContent, formatBalanceDate } from '../utils/clashroyale/cardContent.js';
 import { normalizeCardName } from '../utils/clashroyale/cardSearch.js';
 import { cardHasPage } from '../utils/clashroyale/cardPages.js';
+import ElixirCost from '../components/clashroyale/ElixirCost.jsx';
 
 const linkCls = 'text-blue-300 hover:text-blue-200 underline';
 const panel = 'bg-white/5 border border-white/10 rounded-xl p-5 mt-6';
@@ -60,25 +61,7 @@ function CardChip({ name }) {
             <CardArt name={name} variant="thumb" sizeClass="w-10 h-10" />
             <span>
                 <span className={hasPage ? linkCls : 'text-white'}>{name}</span>
-                {card && (
-                    <span className="inline-flex items-center gap-0.5 ml-1.5 text-blue-200/70 align-middle">
-                        {/* Official fankit asset, already in the tree and used
-                            the same way in DescriptionGame. aria-hidden with
-                            the cost as adjacent text, so a screen reader reads
-                            "Archers 3" rather than naming the icon. */}
-                        <img
-                            src="/games/clashroyale/icons/elixir.png"
-                            alt=""
-                            aria-hidden="true"
-                            width={12}
-                            height={14}
-                            loading="lazy"
-                            decoding="async"
-                            className="w-3 h-3.5 shrink-0"
-                        />
-                        {card.cost}
-                    </span>
-                )}
+                {card && <ElixirCost cost={card.cost} className="ml-1.5 text-blue-200/70" />}
             </span>
         </>
     );
@@ -186,7 +169,9 @@ export default function CardDetail() {
     // "Arena 7" and "2018" mean nothing on their own. The full attribute set is
     // on the card guide index and in the game itself.
     const stats = [
-        ['Elixir', card.cost],
+        // The icon rather than the bare number, since this is the one stat
+        // that has a symbol everyone already reads at a glance.
+        ['Elixir', <ElixirCost key="elixir" cost={card.cost} size="md" />],
         ['Rarity', card.rarity],
         ['Type', card.type],
         ['Arena', card.arena],

@@ -20,6 +20,7 @@ import { slug } from '../utils/slug.js';
 import { cardHasPage } from '../utils/clashroyale/cardPages.js';
 import { normalizeCardName } from '../utils/clashroyale/cardSearch.js';
 import { PANEL_CARD } from '../components/clashroyale/Panel.jsx';
+import ElixirCost from '../components/clashroyale/ElixirCost.jsx';
 
 const RARITY_ORDER = ['Common', 'Rare', 'Epic', 'Legendary', 'Champion'];
 
@@ -57,8 +58,10 @@ function CardRow({ card }) {
                             </span>
                         )}
                     </h3>
-                    <p className="text-xs text-blue-200/70 mt-0.5">
-                        {card.cost} elixir · {card.type}
+                    <p className="text-xs text-blue-200/70 mt-0.5 flex items-center gap-1.5">
+                        <ElixirCost cost={card.cost} unit />
+                        <span aria-hidden="true">·</span>
+                        <span>{card.type}</span>
                     </p>
                     <p className="text-xs text-blue-200/70">
                         {card.arena} · {card.year}

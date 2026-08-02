@@ -456,12 +456,34 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
     constraint. Behind `motion-safe:`. No timer per guess: the animation is CSS
     and ends by itself, so nothing is scheduled on the hot path.
 
-- [x] **T31 · Guess bar scrolled away on Classic** *(reported by owner)*
+- [ ] **T31 · Guess bar scrolls away on Classic** *(tried and reverted)*
   The board grows past a screenful after a few guesses, so reading earlier rows
-  took the input off-screen — every guess meant scrolling down, typing, and
-  scrolling back. The search row is now `sticky top-12` (directly under
-  `SiteHeader`, which is `sticky top-0 h-12`) on a blurred band.
-  **Rush has the same layout and probably the same problem — not yet done.**
+  takes the input off-screen — every guess means scrolling down, typing, and
+  scrolling back. Real problem, still unsolved.
+  *Attempt 1, reverted:* `sticky top-12` on a blurred band. Sticking it needs
+  an opaque backdrop or the board scrolls visibly through it, and that backdrop
+  read as a dark slab across the page. Owner rejected on sight.
+  *If revisited:* needs a treatment that does not require a full-width band —
+  a floating pill, a compact bar that only appears once scrolled past the
+  input, or moving the board into its own scroll container so the page never
+  scrolls at all. Do not simply re-apply `sticky` with a background.
+
+- [x] **T32 · Mode icons wired up** *(fankit art supplied by owner)*
+  `target.png` → Classic, `scroll.png` → Description, `book.png` → Memory, all
+  96×96 as specced. **Rush still uses the ⚡ emoji** pending its swords/helm
+  art — `GAME_MODES` carries `img` and `emoji` as separate fields so the two
+  coexist without a placeholder image standing in.
+  Not lazy-loaded: they sit at the top of every game page, so lazy would only
+  delay something already in the viewport. React 19 additionally emits
+  `<link rel="preload" as="image">` for them during the static pass, for free.
+
+- [x] **T33 · `ElixirCost` component** *(requested by owner)*
+  The icon was wanted in a third place, so the markup was extracted rather than
+  copied again. Now used in the card-guide rows (`3 elixir · Troops`), the
+  card-detail stat pill at the top, and the counter/synergy chips.
+  `aria-hidden` icon with the number as adjacent text, so a screen reader reads
+  the value rather than announcing an image. `unit` prop adds the visible word
+  "elixir" where the icon alone would be ambiguous next to the type.
 
 - [ ] **T13 · Prune stale local branches**
   `bug-description-game-copy`, `feature-mobile-responsiveness`,

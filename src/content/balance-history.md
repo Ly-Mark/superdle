@@ -176,7 +176,7 @@ nothing breaks.
 - Needs help versus air because it cannot target flying units.
 - Best placed centrally to pull units into both towers.
 
-# Fire Spirits
+# Fire Spirit
 
 ## Balance history
 - Need source verification.
@@ -1263,7 +1263,7 @@ nothing breaks.
 - Miner
 - Bomb Tower
 - Bowler
-- Splash troops that absorb or clear Fire Spirits efficiently
+- Splash troops that absorb or clear Fire Spirit efficiently
 - Heavy pushes that do not care about trickle chip damage
 
 ### Synergies
@@ -1276,7 +1276,7 @@ nothing breaks.
 
 ### Strategy notes
 - Provides steady chip and forces awkward answers over a long defense cycle.
-- Strongest when its Fire Spirits keep support troops or swarm cards uncomfortable.
+- Strongest when its Fire Spirit keep support troops or swarm cards uncomfortable.
 - Often used to pressure passively while saving elixir for defense.
 - Underwhelming when the opponent has Earthquake or easy building removal.
 
@@ -1504,7 +1504,7 @@ nothing breaks.
 - The Log
 - Arrows
 - Zap
-- Fire Spirits
+- Fire Spirit
 - Barbarian Barrel
 - Valkyrie
 - Bomber
@@ -1643,3 +1643,431 @@ nothing breaks.
 - Best when it forces the opponent to either commit heavily or give up space.
 - Death damage can swing entire pushes if units are grouped.
 - Slow movement makes it vulnerable to kiting and lane splitting.
+
+## Witch
+
+### Balance history
+- 2016-01-03 — Card added.
+- 2019-01-28 — Arena unlock moved from Training Camp to Bone Pit.
+- 2019-04-01 — Started spawning 3 Skeletons on death.
+- 2019-10-07 — Damage increased by 220%, area radius reduced to 0.5 tiles from 1.1, hitpoints reduced by 12%, attack interval increased to 1.4 sec from 1, first attack time reduced to 0.4 sec from 0.5, and death Skeletons were removed.
+- The card has received more balance changes than any other card according to the wiki summary.
+
+### Counters
+- Poison.
+- Lightning.
+- Valkyrie.
+- Bowler.
+- Executioner.
+- Firecracker.
+- Magic Archer.
+- Barbarian Barrel.
+
+### Synergies
+- Miner.
+- Giant.
+- Mega Knight.
+- Flying Machine.
+- Elixir Collector.
+- Beatdown support shells.
+
+### Strategy notes
+- Witch is strongest when protected long enough to build Skeleton value behind a tank.
+- She pressures both air and ground, but splash and heavy spells remain the cleanest answers.
+- Her value usually comes from support DPS plus spawned Skeleton control, not from raw dueling strength alone.
+
+## Goblin Giant
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Inferno Tower.
+- Inferno Dragon.
+- P.E.K.K.A.
+- Mini P.E.K.K.A.
+- Buildings that separate him from support.
+- High single-target DPS with reset or distraction support.
+
+### Synergies
+- Sparky.
+- P.E.K.K.A.
+- Furnace.
+- Beatdown shells.
+- Spear Goblin chip support behind tank pushes.
+
+### Strategy notes
+- Goblin Giant works best as a mid-cost tank that forces awkward anti-tank responses while the backpack Spear Goblins add chip.
+- He becomes much more threatening when paired with heavy support that punishes Inferno-style counters.
+- Most of his success comes from support synergy rather than solo tower pressure.
+
+## Electro Dragon
+
+### Balance history
+- 2026 Season 84 tracker notes a hitpoint increase from 998 to 1049, a 5% buff.
+- Need source verification for earlier full history.
+
+### Counters
+- Musketeer.
+- Hunter.
+- Electro Wizard.
+- Mega Minion.
+- Inferno Dragon in safer positions.
+- Buildings plus ranged anti-air support.
+
+### Synergies
+- Golem.
+- Elixir Golem.
+- Tornado.
+- Baby Dragon.
+- Beatdown decks with reset support.
+
+### Strategy notes
+- Electro Dragon brings chain damage and reset utility, so it shines most in slower pushes.
+- It is especially useful when the opponent depends on Inferno units or stacked support troops.
+- Its slow attack makes it weaker when isolated or forced into quick trades.
+
+## Wall Breakers
+
+### Balance history
+- 2019-02-13 — Card added.
+- 2019-03-04 — Attack time reduced to 1.2 sec from 1.5.
+- 2019-05-06 — Damage increased by 10%, range increased to 0.5 tiles from 0.25, and splash radius was recentered.
+- 2019-10-07 — Cost reduced to 2 elixir from 3, damage reduced by 10%, mass increased, collision radius reduced, and deploy placement adjusted.
+- 2019-11-04 — Damage reduced by 19%, area radius reduced to 1.5 tiles from 2, and spawn spacing increased.
+- 2020-06-02 — Deploy stagger added.
+
+### Counters
+- Bomber.
+- Valkyrie.
+- Bowler.
+- Cheap buildings.
+- Log plus tower timing.
+- Fast melee units placed early.
+
+### Synergies
+- Miner.
+- Fast-moving tanks.
+- Bridge spam shells.
+- Pressure decks that force awkward building placement.
+
+### Strategy notes
+- Wall Breakers are mostly a tempo and threat card, not a standalone push piece.
+- They become dangerous when paired with other lane pressure that removes simple answers.
+- Their low cost makes them strong for forcing reactions and outcycling counters.
+
+## Golem
+
+### Balance history
+- 2016 release-era stats and early changes are summarized in the history source, including a May 2016 appearance update and range bug fix with unchanged effective range.
+- The history source says Golem has had five stat changes over the years, including a collective 6% hitpoint increase and 5% damage increase, while death damage decreased overall.
+- Need source verification for a line-by-line official balance list.
+
+### Counters
+- Inferno Tower.
+- Inferno Dragon.
+- P.E.K.K.A.
+- Mighty Miner.
+- Ram Rider.
+- Buildings plus high DPS support.
+
+### Synergies
+- Electro Dragon.
+- Baby Dragon.
+- Night Witch.
+- Tornado.
+- Beatdown support packages.
+
+### Strategy notes
+- Golem is at its best in full beatdown, where tower damage and support stacking matter more than tempo.
+- It usually wins by forcing defenders into bad trades against layered support, not by the tank alone.
+- Fast opposite-lane pressure and Inferno cards remain some of the most reliable answers.
+
+## Electro Giant
+
+### Balance history
+- Need source verification.
+
+### Counters
+- P.E.K.K.A.
+- Inferno Tower.
+- Inferno Dragon.
+- Buildings placed to maximize retargeting.
+- High DPS units outside stun radius.
+
+### Synergies
+- Tornado.
+- Lightning.
+- Bomber.
+- Baby Dragon.
+- Beatdown control hybrids.
+
+### Strategy notes
+- Electro Giant punishes swarms and contact defenders through reflected zap damage.
+- He is strongest when supported by spells that remove buildings or ranged DPS.
+- He struggles most against clean building placement and heavy single-target damage that stays efficient.
+
+## Rune Giant
+
+### Balance history
+- 2025-01-01 — Introduced as the 117th card and scheduled for release on January 6.
+- Rune Giant is a 4-elixir Epic win condition that enchants up to two nearby allied troops, giving bonus damage every third attack.
+
+### Counters
+- Kill the buffed support troops first, then finish the Giant.
+- Inferno Tower-style tank killers.
+- Air troops if unsupported.
+- Strong defensive buildings that stall the approach.
+
+### Synergies
+- Musketeer.
+- Witch.
+- Any two support troops that benefit from repeated bonus-damage triggers.
+
+### Strategy notes
+- Rune Giant is more about boosting support damage than dealing tower damage by herself.
+- Her pressure spikes when two backline troops stay alive long enough to receive repeated enchants.
+- Removing the support often matters more than burning down the Giant first.
+
+## Inferno Dragon
+
+### Balance history
+- 2016-09-29 — Card added.
+- 2016-11-01 — Arena briefly changed to Frozen Peak, then reverted the next day.
+- 2016-12-15 — Hitpoints increased by 5% and re-targeting time decreased by 0.4 seconds.
+- 2017-06-12 — Hitpoints increased by 7% and re-targeting speed decreased by 0.2 seconds.
+- 2018-06-20 — Arena moved from P.E.K.K.A.'s Playhouse to Builder's Workshop.
+- 2018-08-06 — Range reduced to 3.5 from 4 and knockback interaction enabled.
+- 2018-12-12 — Re-targeting time increased.
+- 2025 Season 84 — Hitpoints buffed from 998 to 1049.
+
+### Counters
+- Zap.
+- Electro Wizard.
+- Lightning.
+- Minion Horde.
+- Minions.
+- Bats.
+- Ice Spirit.
+- Freeze and reset pressure.
+- Inferno Tower.
+- Swarms that force retargets.
+
+### Synergies
+- Giant.
+- Bowler.
+- Archers.
+- Miner.
+- Lava Hound.
+- Balloon.
+- Mega Minion.
+- Prince.
+- Mini P.E.K.K.A.
+- Tornado.
+
+### Strategy notes
+- Inferno Dragon is strongest when it can stay locked onto one target long enough to ramp damage.
+- It pairs very well with tanks that protect it from ranged or swarm disruption.
+- Reset effects are the cleanest answer, so careful placement matters a lot.
+- It is much better in slower pushes than in rapid cycle trades.
+
+## Inferno Tower
+
+### Balance history
+- 2016-01-03 — Card added.
+- Need source verification for detailed balance history.
+
+### Counters
+- Lightning.
+- Earthquake.
+- P.E.K.K.A.
+- Mini P.E.K.K.A.
+- Royal Giant with spell support.
+- Heavy beatdown tanks.
+- Split-lane pressure.
+
+### Synergies
+- Hog Rider defense shells.
+- Miner control decks.
+- Musketeer.
+- Ice Golem.
+- Skeletons.
+- Tesla-style control shells.
+
+### Strategy notes
+- Inferno Tower is one of the best pure tank killers in the game.
+- It rewards tight defensive timing and good elixir discipline.
+- Opponents often try to force it out of cycle before committing their tank.
+- It loses value when repeatedly reset or paired against heavy spell support.
+
+## P.E.K.K.A.
+
+### Balance history
+- 2016-01-03 — Card added.
+- 2019-09-02 — Range reduced to 1.2 tiles from 1.6.
+- 2019-08-05 — Hitpoints reduced by 9.5%, range increased to 1.6 tiles from 0.75, then later adjusted again.
+- Need source verification for the full detailed list.
+
+### Counters
+- Skeleton Army.
+- Guards.
+- Mini P.E.K.K.A.
+- Inferno Tower.
+- Inferno Dragon.
+- Buildings plus swarm support.
+- Kiting and split pressure.
+
+### Synergies
+- Executioner.
+- Mega Knight.
+- Goblin Giant.
+- Electro Wizard.
+- Bowler.
+- Baby Dragon.
+- Heavy beatdown shells.
+- Bridge spam support.
+
+### Strategy notes
+- P.E.K.K.A. is a massive single-target defender that punishes tanks and high-HP pushes.
+- She is strongest when used to defend first, then counterpush with surviving support.
+- Swarms and kiting are the main ways to blunt her efficiency.
+- She needs support to keep from being isolated and surrounded.
+
+## Hunter
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Swarms.
+- Kiting.
+- Long-range chip from outside his burst range.
+- Fast air pressure when unsupported.
+
+### Synergies
+- Fisherman.
+- Skeletons.
+- Zap.
+- Ice Spirit.
+- Balloon defense shells.
+- Royal Giant control decks.
+
+### Strategy notes
+- Hunter is one of the best close-range burst defenders in the game.
+- His damage falls off sharply at distance, so positioning is everything.
+- He shines against tanks and Balloon-style pressure.
+- He is much weaker when forced to shoot from the edge of his range.
+
+## Bowler
+
+### Balance history
+- 2016-07-04 — Card added.
+- 2016-08-24 — Elixir cost reduced to 5 from 6; hitpoints decreased by 7%; damage decreased by 10%.
+- 2020-08-04 — Range reduced to 4 from 5; projectile range increased to 7.5 from 6; hitpoints increased by 8%.
+- 2025-03-31 — Hitpoints increased by 0.04% and damage increased by 0.34%.
+
+### Counters
+- Minions.
+- Bats.
+- Mega Minion.
+- Phoenix.
+- Inferno Dragon.
+- P.E.K.K.A. placed on top.
+- Mega Knight placed on top.
+- Inferno Tower.
+- Cannon Cart.
+- Sparky.
+
+### Synergies
+- Tornado.
+- Ice Wizard.
+- Electro Wizard.
+- Electro Giant.
+- Graveyard control shells.
+- Defensive counterpush decks.
+
+### Strategy notes
+- Bowler is excellent at denying ground lanes and shoving troops back.
+- He becomes much stronger when Tornado can pull units into his line.
+- Air pressure and heavy single-target tanks are his awkward matchups.
+- He usually shines in defensive control rather than pure aggression.
+
+## Executioner
+
+### Balance history
+- 2017-01-27 — Card added.
+- 2017-02-13 — Damage decreased by 6%, range reduced to 4.5 tiles from 5 tiles, projectile range reduced to 6.5 tiles from 7 tiles, and axe area radius reduced to 0.9 tiles from 1 tile.
+- 2017-03-13 — Axe radius increased to 1 tile from 0.9 tiles and projectile speed decreased to 550 from 600.
+- 2019-09-02 — Damage increased by 82%, range reduced to 3 tiles from 4.5 tiles, and several timing values changed.
+- 2019-11-26 — Hitpoints increased by 5%, range increased to 4.5 tiles from 4 tiles, and damage reduced by 45%.
+- 2021-12-07 — Hitpoints increased by 5%.
+- 2025-04-07 — Evolution added.
+
+### Counters
+- Mini P.E.K.K.A.
+- Lumberjack.
+- Valkyrie.
+- Knight.
+- Dark Prince.
+- Royal Ghost.
+- Prince.
+- Musketeer.
+- Wizard.
+- Inferno Dragon.
+- Electro Wizard.
+- Barbarians.
+- Minion Horde.
+- Bats.
+- Skeleton Army.
+- Royal Recruits.
+- Goblin Gang.
+- Rocket.
+
+### Synergies
+- P.E.K.K.A.
+- Prince.
+- Tornado.
+- Goblin Drill.
+- Lava Hound.
+- Balloon.
+- Giant.
+- Goblin Barrel.
+- Fisherman.
+- Ice Wizard.
+- Electro Giant.
+- Bowler.
+- Graveyard.
+- Witch.
+
+### Strategy notes
+- Executioner is a long-range splash defender that gets huge value from piercing axe returns.
+- He is strongest when the opponent stacks support troops behind a tank.
+- Tornado creates some of his best board-control interactions.
+- He struggles when separated, kited, or rushed by fast mini tanks.
+
+## Cannon Cart
+
+### Balance history
+- Need source verification.
+
+### Counters
+- P.E.K.K.A.
+- Inferno Tower.
+- Mini tanks placed on top after shield break.
+- Air troops that ignore its ground-only attack.
+- Swarms once it is distracted or unsupported.
+- Buildings and ranged control that force slow shield loss.
+
+### Synergies
+- Royal Ghost.
+- Graveyard.
+- Bridge pressure shells.
+- Beatdown support packages.
+- Tornado-based control setups.
+- Defensive counterpush decks.
+
+### Strategy notes
+- Cannon Cart is a hybrid pressure troop that becomes a stationary cannon after the shield is lost.
+- It can generate a lot of value if protected behind a tank or after a successful defense.
+- Its shield and range make it awkward to remove cleanly.
+- It is less reliable when the opponent has heavy single-target DPS or easy air pressure.

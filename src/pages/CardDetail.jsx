@@ -10,7 +10,7 @@ import { Link, useParams, Navigate } from 'react-router-dom';
 import CRBackground from '../components/clashroyale/CRBackground.jsx';
 import CardArt from '../components/clashroyale/CardArt.jsx';
 import cardsData from '../data/cards.json';
-import { slug } from '../utils/slug.js';
+import { slug, deckshopLinks } from '../utils/slug.js';
 import { CARD_SPOTLIGHTS } from '../content/cardSpotlights.jsx';
 import { getCardContent, formatBalanceDate } from '../utils/clashroyale/cardContent.js';
 import { normalizeCardName } from '../utils/clashroyale/cardSearch.js';
@@ -127,6 +127,10 @@ export default function CardDetail() {
         ['Arena', card.arena],
         ['Released', card.year],
     ];
+
+    const outboundLinks = [...deckshopLinks(card.card), ...(spotlight?.links ?? [])]
+        // A spotlight may repeat a generated link; keep the first of each.
+        .filter((l, i, all) => all.findIndex((x) => x.href === l.href) === i);
 
     const sameArena = cardsData
         .filter((c) => c.card !== card.card && c.arena === card.arena)
@@ -246,11 +250,15 @@ export default function CardDetail() {
                     </section>
                 )}
 
-                {spotlight?.links?.length > 0 && (
+                {/* Deck Shop links are generated for every card, not just the
+                    ones with a hand-written spotlight — otherwise 26 of the 27
+                    pages would have no outbound references at all. A spotlight
+                    can add its own on top. */}
+                {outboundLinks.length > 0 && (
                     <section className={panel}>
                         <h2 className={h2}>Elsewhere</h2>
                         <ul className="space-y-3 text-sm">
-                            {spotlight.links.map((l) => (
+                            {outboundLinks.map((l) => (
                                 <li key={l.href}>
                                     <a href={l.href} target="_blank" rel="noopener noreferrer" className={linkCls}>
                                         {l.label}

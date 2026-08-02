@@ -80,7 +80,10 @@ export default {
         panel: '0 4px 24px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.10)',
         'panel-lg': '0 12px 40px rgba(0,0,0,0.36), inset 0 1px 0 rgba(255,255,255,0.14)',
         tile: '0 2px 6px rgba(0,0,0,0.30), inset 0 1px 0 rgba(255,255,255,0.18)',
-        'glow-gold': '0 0 0 1px rgba(245,197,66,0.40), 0 0 18px rgba(245,197,66,0.28)',
+        // Keep this in step with `gold.DEFAULT` above — it is #ffd23f as rgb.
+        // A box-shadow cannot reference a Tailwind colour token, so the value
+        // is duplicated here by necessity; if the accent moves, move both.
+        'glow-gold': '0 0 0 1px rgba(255,210,63,0.40), 0 0 18px rgba(255,210,63,0.28)',
         lift: '0 8px 20px rgba(0,0,0,0.34)',
       },
 

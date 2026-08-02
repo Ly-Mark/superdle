@@ -24,20 +24,26 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
 
 ## Open decisions
 
-- **Heading font — blocks T24e.** Body is settled (Inter). Headings are not.
-  The owner's shortlist was Poppins / Montserrat / Oswald; all three are
-  neutral UI sans faces, and `redesign-brief.md`'s complaint #4 was *"generic
-  bold sans headings; nothing matches the energy of the hand-drawn wordmark."*
-  Picking one of those three is a legitimate choice, but it answers a
-  different question than the brief asked — it makes the site cleanly generic
-  rather than characterful. Two coherent routes:
-  - **Restrained:** Inter throughout, headings by weight and size only.
-    Cheapest, one font file, zero risk, reads "modern SaaS."
-  - **Characterful:** Inter body + a chunky display face (Lilita One) for the
-    h1/h2 only. Matches the wordmark and the Clash Royale identity; costs a
-    second file and needs a CLS check.
-  *Not blocking anything before T24e.* T24e will ship a compare page so this
-  gets decided by looking at it.
+- **Heading font — blocks T24e.** Owner asked for the lightest options.
+  Ranked by weight:
+  - **System stack, 0 KB, 0 requests** — `system-ui, -apple-system,
+    "Segoe UI", Roboto, sans-serif`. Segoe UI Variable on Windows, SF Pro on
+    Apple, Roboto on Android; all three are modern screen faces. Zero CLS
+    risk, nothing to self-host, nothing to review. Cost: the site looks
+    slightly different per OS, so it can't be signed off on one machine.
+  - **System body + one display face for headings only, ~15–20 KB**
+    *(recommended)* — single-weight Latin-subset woff2 on `h1`/`h2` alone.
+    Character where it counts, almost nothing paid for it.
+  - **Self-hosted Inter, ~25–35 KB** — only worth it if cross-OS consistency
+    matters more than bytes. Inter is close enough to Segoe UI and SF that
+    most visitors would not see the difference.
+  The earlier framing still stands: Poppins / Montserrat / Oswald are all
+  neutral UI sans faces, so picking one answers a different question than
+  `redesign-brief.md`'s complaint #4 (*"nothing matches the energy of the
+  hand-drawn wordmark"*) — it makes the site cleanly generic rather than
+  characterful. Both are defensible; it is a taste call, not a technical one.
+  *Not blocking anything before T24e*, which ships a compare page so this gets
+  decided by looking.
 
 ---
 
@@ -225,9 +231,35 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
     its own content, where Time and Score carry a line of sub-text and Round
     carries none. Now an equal-width grid, 2 columns below `sm` (Round is
     hidden there) and 3 above.
-  - [ ] **T24d · Hero, mode identity, accordion.** Pill-badge row, per-mode
+  - [x] **T24d · Hero, mode identity, accordion.** Pill-badge row, per-mode
     icons, styled accordion. Absorbs **T14**. Countdown cut — see T24x.
     *(brief tasks 6, 7, 9)*
+    - **`ModeHero`** — new component above the board on Classic: chip row,
+      the page `<h1>`, one-line subhead. **Fixes T25.**
+    - **The day chip is client-only, and must stay that way.** `getDayIndex()`
+      reads `new Date()`, so rendering it during the build-time prerender
+      would bake the *build* date into the shipped HTML — wrong for every
+      visitor, indexed that way by crawlers, and a hydration mismatch when the
+      client computes the real value. It renders from `useEffect`. Verified:
+      `Day #` appears **0** times in the prerendered HTML.
+    - **`GameModeNav`** — emoji icon per mode, gold active pill with glow,
+      hover lift. Emoji rather than an icon set: no dependency, no sprite, no
+      request, and the hint buttons already do this.
+    - **T14 resolved without merging the two navs.** `SiteHeader`'s links are
+      part of what makes every URL reachable from every other for crawlers, so
+      removing them would cost more than the duplication does. Instead the two
+      now have visibly different jobs: the header is thin site-wide text nav,
+      `GameModeNav` is the iconned in-game switcher.
+    - **`HowToPlay`** — panel rows, gold numbered chips, rotating chevron.
+      Still native `<details>`, so the crawlability guarantee holds.
+    - Caught during verification: `shadow-glow-gold` still hardcoded the old
+      `#f5c542` after `gold.DEFAULT` moved to `#ffd23f`. A box-shadow can't
+      reference a colour token, so the value is necessarily duplicated —
+      **if the accent moves again, move both.**
+    - *Not applied to Description/Rush/Memory:* they already carry an `<h1>`
+      via `ModeIntro`, and dropping `ModeHero` in would give them two. If the
+      chip row is wanted there, `ModeIntro` needs to hand over its heading
+      first.
   - [ ] **T24e · Typography.** Body font **settled: Inter**, self-hosted,
     fallback `"Segoe UI", system-ui, Arial`. Heading font **still open** — see
     Open decisions. Deferred behind b/c because it adds the site's first
@@ -293,21 +325,22 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
   newly-reachable "restore an unfinished game" path — `markAttempt` and
   `updateStatsOnWin` are both idempotent per `dayKey` (`stats.js:37`, `:57`).
 
-- [ ] **T25 · `<h1>` sits fourth in the DOM on `/`** *(found during T24b)*
-  Heading order on the homepage is `h2 h2 h3 h1 h2 h2 …`. The `<h1>`
-  ("Clashdle — Daily Clash Royale Card Guessing Game") lives in `HomeContent`,
-  which renders *below* the game board, `HowToPlay` and the colour legend.
-  Pre-existing — T24b added one more `h2` above it by promoting the game
-  panel's title from a `<p>`, but the inversion was already there.
-  Wrong for screen-reader navigation and weak for SEO on a site being
-  resubmitted to AdSense. **Fix belongs in T24d** (hero rework), which is
-  already restructuring the top of the page: put a real `h1` above the board
-  and demote the current one. `Panel` takes a `titleAs` prop so its heading
-  level can move without touching its styling.
+- [x] **T25 · `<h1>` sat fourth in the DOM on `/`** *(found during T24b, fixed
+  in T24d)*
+  Was `h2 h2 h3 h1 h2 …`; now `h1 h2 h2 h3 h2 …` with exactly one `<h1>`, and
+  every other route verified at one `<h1>` too. `ModeHero` carries it above the
+  board; `HomeContent`'s copy is demoted to `<h2>` with its wording unchanged,
+  since that is the phrase the page ranks on. The wordmark image dropped to
+  `alt=""` / `aria-hidden` so a screen reader no longer announces "Clashdle"
+  twice in a row.
 
-- [ ] **T14 · Resolve `SiteHeader` / `GameModeNav` overlap**
-  Both render the same four mode links on game pages. Harmless, mildly
-  redundant. Decide once you have looked at the two together.
+- [x] **T14 · `SiteHeader` / `GameModeNav` overlap** *(resolved in T24d)*
+  Both render the same four mode links on game pages. **Resolved by
+  differentiating, not merging.** `SiteHeader`'s links are part of what makes
+  every URL reachable from every other one for crawlers, so deleting them
+  would cost more than the redundancy does. The header is now thin site-wide
+  text nav; `GameModeNav` is the iconned in-game switcher with a gold active
+  pill. They no longer read as the same control twice.
 
 - [ ] **T13 · Prune stale local branches**
   `bug-description-game-copy`, `feature-mobile-responsiveness`,

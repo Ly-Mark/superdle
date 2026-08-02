@@ -14,6 +14,7 @@ import { PUBLIC_BASE, buildUrl } from '../../utils/shareBase.js';
 import GameModeNav from "./GameModeNav";
 import CRBackground from "./CRBackground.jsx";
 import Panel from "./Panel.jsx";
+import ModeHero from "./ModeHero.jsx";
 import HomeContent from "../layout/HomeContent.jsx";
 import { matchesCardQuery } from '../../utils/clashroyale/cardSearch.js';
 import HowToPlay from "../layout/HowToPlay.jsx";
@@ -644,14 +645,24 @@ const ClassicGame = () => {
             <main id="main-content" tabIndex={-1} className="relative z-20 container mx-auto px-4 py-8">
                 {/* Header */}
                 <div className="text-center mb-8">
-                    {/* Decorative wordmark — the real <h1> lives in HomeContent below. */}
+                    {/* Decorative — the page's <h1> is in ModeHero below.
+                        alt="" rather than "Clashdle" so a screen reader does
+                        not announce the name twice in a row. */}
                     <div className="mb-4">
                         <img
                             src="/wordmark.png"
-                            alt="Clashdle"
+                            alt=""
+                            aria-hidden="true"
                             className="mx-auto min-h-36 sm:h-28 md:h-28 w-auto"
                         />
                     </div>
+
+                    <ModeHero
+                        title="Clashdle — Daily Clash Royale Card Guessing Game"
+                        subhead="One card a day, drawn from all 121. Guess freely — every guess narrows it down."
+                        getDayNumber={getDayIndex}
+                    />
+
                     <GameModeNav />
 
                     {/* Hints */}

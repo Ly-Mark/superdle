@@ -1,30 +1,44 @@
 import { NavLink } from "react-router-dom";
 
+// Per-mode identity (TASKS.md T24d, brief task 7).
+//
+// This nav and `SiteHeader` both link the same four modes, which reads as an
+// accidental duplicate (T14). They are deliberately not merged: the header's
+// links are part of what makes every URL reachable from every other one for
+// crawlers, and the footer repeats them for the same reason. Instead the two
+// are given clearly different jobs — the header is thin site-wide text nav,
+// this is the in-game mode switcher: larger, iconned, gold active state.
+//
+// Emoji rather than an icon set: no dependency, no sprite, no extra request,
+// and the hint buttons already use emoji this way. Each is decorative and
+// hidden from assistive tech, since its label sits right beside it.
 const GAME_MODES = [
-    { label: "Classic", path: "/" },
-    { label: "Description", path: "/clashroyale/description" },
-    { label: "Rush", path: "/clashroyale/rush" },
-    { label: "Memory", path: "/clashroyale/memory" },
+    { label: "Classic", path: "/", icon: "🎯" },
+    { label: "Description", path: "/clashroyale/description", icon: "📜" },
+    { label: "Rush", path: "/clashroyale/rush", icon: "⚡" },
+    { label: "Memory", path: "/clashroyale/memory", icon: "🧠" },
 ];
 
 export default function GameModeNav() {
     return (
-        <nav className="flex flex-wrap justify-center gap-2 mt-3 mb-4">
-            {GAME_MODES.map(({ label, path }) => (
+        <nav aria-label="Game modes" className="flex flex-wrap justify-center gap-2 mt-4 mb-4">
+            {GAME_MODES.map(({ label, path, icon }) => (
                 <NavLink
                     key={path}
                     to={path}
                     end={path === "/"}
                     className={({ isActive }) =>
-                        `
-                        px-3 py-1.5 rounded-full text-sm font-semibold transition
-                        ${isActive
-                            ? "bg-white/90 text-slate-900"
-                            : "bg-white/10 text-white/80 hover:bg-white/20 hover:text-white"
-                        }
-                        `
+                        [
+                            "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full",
+                            "text-sm font-semibold border transition-all duration-200",
+                            "motion-safe:hover:-translate-y-0.5",
+                            isActive
+                                ? "bg-gold/15 border-gold/50 text-gold shadow-glow-gold"
+                                : "bg-white/5 border-white/15 text-white/80 hover:bg-white/15 hover:text-white hover:border-white/25",
+                        ].join(" ")
                     }
                 >
+                    <span aria-hidden="true">{icon}</span>
                     {label}
                 </NavLink>
             ))}

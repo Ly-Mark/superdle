@@ -4,9 +4,19 @@ Working board for Clashdle. Maintained by Claude Code — see the "Task board
 protocol" section of `CLAUDE.md` for the update rules.
 
 **Last updated:** 2026-08-02
-**Current branch:** `p5-adsense` (merged to `main` via #7, #8, #10)
+**Current branches:** `p6-code-migration` (debt) and `p7-ui-polish` (look and
+feel), both cut from `p5-adsense` HEAD. `p5-adsense` merged to `main` via #7,
+#8, #10; its last commit (this board) is not yet on `main`.
 **Current state:** Everything on the site side is done and live. What remains
 needs AdSense/Search Console access, or is maintenance debt.
+
+**Branch split — which work goes where:**
+- `p6-code-migration` — T9, T11, T22, T10, T12. Refactors only; **no visible
+  change to any page.** Landing this first keeps p7's diffs readable.
+- `p7-ui-polish` — T24, T14, T23. Visual only; no behaviour change.
+- The two collide in `ClassicGame.jsx` (T9 rewrites it, T24 restyles it) and in
+  the card-art components (T22 collapses them, T24 restyles them). **Merge p6
+  first**, then rebase p7.
 
 Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
 
@@ -42,7 +52,7 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
 
 ---
 
-## Maintenance debt — real, none of it urgent
+## Maintenance debt — `p6-code-migration`. Real, none of it urgent
 
 - [ ] **T9 · Migrate `ClassicGame.jsx` onto `useDailyModeGame`**
   Classic predates the shared hook and reimplements daily-state, storage-key
@@ -70,7 +80,7 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
   `src/utils/brawlstars/gamelogic.js`. No route, nothing imports them. Wire
   up or delete — right now it misleads anyone reading the tree.
 
-- [ ] **T23 · Furnace renders small on the game board** *(owner picking up)*
+- [ ] **T23 · Furnace renders small on the game board** *(owner picking up; belongs on `p7-ui-polish`)*
   Furnace is the only square source image (850x850, everything else is
   portrait) and its artwork fills 44% of the canvas against a median of 80%.
   The card guide handles it by trimming padding under a 60% threshold;
@@ -79,7 +89,30 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
 
 ---
 
-## Cosmetic
+## UI/UX polish — `p7-ui-polish`
+
+- [ ] **T24 · Give the site a design system, then apply it**
+  The site reads flat next to modern sites. The measurable cause, not a taste
+  judgement: `tailwind.config.js` has an **empty `theme.extend`**. There are no
+  tokens at all — colours are inline hexes (`#0b1f3a`, `#0b3a82`, `#0c59b6` in
+  `CRBackground`), and the only depth on the page is three `blur-xl` blobs.
+  No shadow scale, no radius scale, no type scale, so nothing establishes
+  hierarchy or elevation.
+  *Ordered plan — each step is shippable on its own:*
+  1. **Tokens first.** Fill `theme.extend` with the colours already in use, plus
+     a shadow, radius and type scale. Purely additive; changes nothing yet.
+  2. **Replace inline hexes** with the tokens. Should be a no-op visually —
+     that is how you know step 1 captured the real palette.
+  3. **Elevation and surface.** The guess rows, the tiles and the win panel are
+     all flat fills on a flat gradient. Layered shadows and a defined card
+     surface are what actually reads as "modern".
+  4. **Type scale.** Sizes are currently picked per-component.
+  5. **Motion.** Tile reveal and row entry. Keep every one behind
+     `motion-safe:` — `CRBackground` already sets that precedent.
+  *Constraint:* visual only. No behaviour, storage-key or daily-logic changes —
+  those belong to T9 on `p6-code-migration`.
+  *Verify with `npm run build && npm run preview`*, not `npm run dev` — the
+  prerender/hydrate path is the one that ships.
 
 - [ ] **T14 · Resolve `SiteHeader` / `GameModeNav` overlap**
   Both render the same four mode links on game pages. Harmless, mildly

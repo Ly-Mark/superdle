@@ -39,6 +39,16 @@ const SEARCH_KEYS = new Map(
     ])
 );
 
+// normalised alias -> canonical card name. Lets anything that takes a
+// hand-typed card name resolve it the same way, rather than each caller
+// growing its own list. The research file heads its section "Giant Snowball",
+// which is the card's real in-game name; cards.json says "Snowball".
+export const ALIAS_TO_CARD = new Map(
+    Object.entries(ALIASES).flatMap(([card, alts]) =>
+        alts.map((alt) => [normalizeCardName(alt), card])
+    )
+);
+
 const keysFor = (cardName) =>
     SEARCH_KEYS.get(cardName) ?? [normalizeCardName(cardName)];
 

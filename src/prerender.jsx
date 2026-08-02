@@ -5,6 +5,17 @@ import { prerender as reactPrerender } from 'react-dom/static';
 import { StaticRouter } from 'react-router';
 import App from './App.jsx';
 import { getRouteMeta } from './routeMeta.js';
+import cardsData from './data/cards.json';
+import { slug } from './utils/slug.js';
+
+// routeMeta.js imports nothing so the sitemap script can load it in plain Node,
+// so the card lookup happens here instead, where Vite handles the JSON import.
+function cardForUrl(url) {
+    const path = url.length > 1 ? url.replace(/\/+$/, '') : url;
+    if (!path.startsWith('/cards/')) return null;
+    const wanted = path.slice('/cards/'.length);
+    return cardsData.find((c) => slug(c.card) === wanted) ?? null;
+}
 
 // React's scheduler creates a MessageChannel for task scheduling. The prerender
 // script is bundled with browser resolution conditions, so react-dom/static
@@ -31,7 +42,7 @@ export async function prerender(data) {
     const html = await new Response(prelude).text();
     releaseSchedulerHandles();
 
-    const meta = getRouteMeta(data.url);
+    const meta = getRouteMeta(data.url, cardForUrl(data.url));
 
     // NOTE: the plugin REPLACES head.title but APPENDS head.elements. Anything
     // emitted here must not also exist in index.html, or the page ships two of

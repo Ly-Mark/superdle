@@ -1,8 +1,8 @@
 // scripts/generateSitemap.mjs
 // Runs after `vite build`. Writes dist/sitemap.xml.
 //
-// URLs come from getRouteMeta().canonical rather than being assembled here, so
-// the sitemap and the <link rel="canonical"> tags cannot drift apart. That
+// URLs come from toCanonical() in routeMeta.js rather than being assembled here,
+// so the sitemap and the <link rel="canonical"> tags cannot drift apart. That
 // matters: a sitemap listing /about while the page canonicalises to /about/
 // gives Google two conflicting answers about the same page.
 //
@@ -12,13 +12,15 @@ import { writeFileSync, existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { getPrerenderRoutes } from './prerenderRoutes.mjs';
-import { getRouteMeta } from '../src/routeMeta.js';
+import { toCanonical } from '../src/routeMeta.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.resolve(__dirname, '../dist');
 
 const routes = getPrerenderRoutes();
-const urls = routes.map((route) => getRouteMeta(route).canonical);
+// Only the canonical is needed here, and that is derived from the path alone —
+// no card data required, which is why routeMeta.js can stay import-free.
+const urls = routes.map(toCanonical);
 
 // Fail loudly rather than shipping a sitemap that points at pages which do not
 // exist. A sitemap full of 404s is worse than no sitemap.

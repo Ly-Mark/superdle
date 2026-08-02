@@ -41,8 +41,17 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
   *Avoid at launch:* **has Evolution** (needs upkeep every time Supercell ships
   one) and **ranged/melee** (a near-partition of troops, so it behaves like a
   second `targets` axis rather than a new one).
-  *Plus `Goblin family` from Tier 3*, which is free — see the Tier 3 note in
-  T36. That gives a launch set of 18 Tier 1 + 4 Tier 2 + 1 family.
+  *Owner leaned toward:* win condition · splash · flying unit · spawns units.
+  **Frame splash and flying as partitions, not booleans** — splash/single-target
+  and flying/grounded give **two categories each for the same data entry**, and
+  they form a family so the max-two rule already handles them. Strictly more
+  value for identical effort.
+  *Plus `Goblin family` and `Undead` from Tier 3*, and the arena buckets, which
+  are cheaper than any of these — see T36.
+
+  **Launch set as it stands: 21 Tier 1 categories (incl. arena buckets) + 2
+  families + 4 Tier 2 tags.** Tier 1 + arena + Goblin alone is already 39,802
+  grids at MIN=4, so the Tier 2 tags are now about texture rather than volume.
 
 - **T36 · `Spirit Empress` has `cost: "3 / 6"`.** Pick 3 or 6 and document it.
 
@@ -108,8 +117,31 @@ card reuse, daily reset.
   - **Exclude `Mirror` from ClashDoku entirely.** It is uncategorisable on two
     axes at once: `targets: "Other"` and `cost: "Other"`.
   - **`Spirit Empress` has `cost: "3 / 6"`.** Pick one and document it.
-  - **Drop `Training Camp` as a category** — 8 cards, same thinness problem.
-    That removes the `arena` family from the generator altogether.
+  - **`arena` stays, bucketed. Do not drop it.** An earlier pass killed the
+    whole arena family after testing only `Training Camp` (8 cards) — testing
+    one category and concluding about a family. The brief's other arena
+    category, "unlocks Arena 10+", is 58 cards and was never tested. Bucketed
+    by unlock order it is the strongest cheap category family available:
+
+    | Bucket | Cards |
+    |---|---|
+    | Arena 1–5 (early) | 24 |
+    | Arena 6–10 (mid) | 38 |
+    | Arena 11+ (late) | 50 |
+
+    | Category set | Grids at MIN=4 |
+    |---|---|
+    | Tier 1, no arena (18) | 6,322 |
+    | + arena buckets (21) | **33,474** |
+    | + Goblin family (22) | **39,802** |
+
+    A 5× multiplier for less work than one Tier 2 tag. `Training Camp` on its
+    own stays dropped at 8 cards; it folds into "Arena 1–5".
+    **Cost: a 19-entry arena-name → unlock-order lookup.** `cards.json` stores
+    arena *names* only, with no ordering. Factual, one-time, no judgment.
+    **The ordering used for these numbers came from general knowledge of the
+    game, not from anything in the repo — verify it against the live game
+    before shipping.** A wrong order makes the buckets quietly wrong.
   - **`Champion` is thin at 8** but survives, because it still pairs with the
     large categories. Expect it to appear only against Troop / Hits air / cost
     buckets.
@@ -139,12 +171,18 @@ card reuse, daily reset.
   in cost 5+), which shrinks intersections. The shape is trustworthy, the
   magnitude is not. Re-run for real once the tags are authored.
 
-  *Why it grows faster than the category count:* after dropping arena, Tier 1
-  has only **5 families** (rarity, cost, type, year, targets), and the
+  *Why it grows faster than the category count:* variety comes from **which
+  six categories are drawn together**, not from how many cards a category
+  holds, so the pool scales with C(n,3)² — combinations, not categories. The
   max-two-per-family rule over 6 headers forces at least 3 distinct families
-  per grid. That is the binding constraint. Each Tier 2 tag is its own
-  independent family, so adding them relaxes it rather than just adding
-  options.
+  per grid, and that is the binding constraint. Each new family relaxes it
+  rather than just adding options, which is why arena (one family, 3
+  categories) outperforms four independent Tier 2 booleans.
+
+  *Corollary worth remembering:* **a category does not have to be large to
+  earn its place.** It only has to reach 4 answers against the categories it
+  gets paired with. One that pairs well with 15 others beats a bigger one that
+  pairs with 5.
 
   **Ship 4 Tier 2 tags, not 9.** Four gets ~18k filter-passing grids, which is
   decades. Nine is solving a problem we do not have, and every tag is manual
@@ -165,6 +203,11 @@ card reuse, daily reset.
   comparable effort. Families cover 10–16 cards against Tier 2's 14–40, and a
   small category struggles to reach 4 answers in intersection.
 
+  - **`Undead` is confirmed by owner 2026-08-02** and ships alongside Goblin.
+    Build it as name-stem `skeleton` plus an explicit member list — skeletons,
+    the witches, Balloon, Royal Ghost, Guards, Tombstone, Graveyard, Bats,
+    Phoenix. 16 cards. Write the boundary down so it stays arguable rather
+    than arbitrary.
   - **`Goblin family` is free and should ship.** 13 cards from a pure
     substring match on `card`, no exceptions, no judgment calls, and it
     self-maintains — any future card named `Goblin X` joins automatically. Best

@@ -19,6 +19,7 @@
 // dropped, because they never match a real card name.
 import raw from '../../content/balance-history.md?raw';
 import cardsData from '../../data/cards.json';
+import { normalizeCardName } from './cardSearch.js';
 
 const SUBSECTIONS = {
     'balance history': 'balance',
@@ -26,6 +27,9 @@ const SUBSECTIONS = {
     synergies: 'synergies',
     'strategy notes': 'notes',
 };
+
+// Lookup from normalised name -> the exact name in cards.json.
+const CANONICAL = new Map(cardsData.map((c) => [normalizeCardName(c.card), c.card]));
 
 const HEADING = /^(#{1,6})\s+(.+?)\s*$/;
 const BULLET = /^-\s+(.+?)\s*$/;
@@ -57,7 +61,11 @@ function parse(md) {
             if (known) {
                 sub = known;
             } else {
-                card = text;
+                // Resolve to the canonical card name. The file is hand-written,
+                // so headings arrive as "P.E.K.K.A." or "Fire Spirits" where
+                // cards.json says "PEKKA" and "Fire Spirit". Requiring an exact
+                // match silently discarded a card's worth of research each time.
+                card = CANONICAL.get(normalizeCardName(text)) ?? text;
                 sub = null;
                 byCard[card] = byCard[card] ?? {
                     balance: [],

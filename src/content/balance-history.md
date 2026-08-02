@@ -2071,3 +2071,517 @@ nothing breaks.
 - It can generate a lot of value if protected behind a tank or after a successful defense.
 - Its shield and range make it awkward to remove cleanly.
 - It is less reliable when the opponent has heavy single-target DPS or easy air pressure.
+
+## Freeze
+
+### Balance history
+- 2016-01-03 — Card added.
+- 2016-02-02 — Area radius decreased from 4 tiles to 3 tiles.
+- 2016-05-18 — Duration per level decreased by 1 second.
+- 2016-07-04 — Freeze was allowed to stop Elixir Collector generation and reset Inferno Tower damage.
+- 2018-12-05 — Duration set to 5 seconds and damage was added.
+- 2019-01-07 — Crown Tower damage reduced to 35% of full damage from 100%.
+- 2019-02-04 — Duration reduced to 4 seconds and damage reduced by 6%.
+- 2020-08-04 — Crown Tower damage reduced to 30% of full damage from 35%.
+- 2023-11-13 — Frozen troops could no longer be pushed.
+- 2025-07-06 — Freeze duration reduced from 1.2 sec to 1.1 sec.
+
+### Counters
+- Spread troops.
+- Cheap cycle to outpace the Freeze window.
+- Swarms only when supported by tower or other units.
+- High DPS defenders that survive the stun.
+
+### Synergies
+- Balloon.
+- Hog Rider.
+- Giant.
+- Graveyard.
+- Inferno Dragon.
+- Valkyrie.
+- Archers.
+- Elixir Collector.
+
+### Strategy notes
+- Freeze is strongest when it converts a small lead into tower damage.
+- It works best with win conditions that can reach a tower during the stun.
+- Spread placements are the cleanest defense.
+- It is weak when the defender wastes little elixir and survives the freeze.
+
+## Lightning
+
+### Balance history
+- 2016-01-03 — Card added in soft launch.
+- 2016-02-19 — Crown Tower damage reduced to 40% of full damage.
+- 2016-09-19 — Stun added for 0.5 seconds.
+- 2017-10-09 — Damage reduced by 3% and radius reduced to 3 tiles from 3.5.
+- 2017-12-12 — Crown Tower damage reduced to 35% of full damage.
+- 2018-04-25 — Radius increased back to 3.5 tiles and river placement enabled.
+- 2018-09-03 — Damage increased by 5%.
+- 2020-08-04 — Crown Tower damage reduced to 30% of full damage.
+
+### Counters
+- Three-card support stacks.
+- Inferno Tower.
+- Inferno Dragon.
+- Musketeer.
+- Wizard.
+- Executioner.
+- Witch.
+- Electro Wizard.
+- Elixir Collector.
+
+### Synergies
+- Golem.
+- Electro Giant.
+- Lava Hound.
+- P.E.K.K.A.
+- Goblin Giant.
+- Beatdown shells.
+- Support-removal control decks.
+
+### Strategy notes
+- Lightning is best at removing the most valuable support unit plus a building or tower.
+- It is expensive, so every cast should create clear value.
+- It punishes stacked defensive setups and greedy backline placements.
+- It is weaker when opponents space units well and avoid clumping.
+
+## Rage
+
+### Balance history
+- 2016-01-03 — Card added.
+- 2016-11-14 through 2022-12-05 — No balance changes in that long stretch.
+- 2022-12-05 — First major change in over six years.
+- 2025 — New ability era began.
+
+### Counters
+- Spell bait it out when possible.
+- Deny value by avoiding clumped pushes.
+- Use splash or reset to stop the buffed unit from connecting.
+
+### Synergies
+- Lumberjack.
+- Balloon.
+- Goblin Barrel.
+- Skeleton Army.
+- Golem.
+- Elixir Golem.
+- Bridge spam pressure.
+
+### Strategy notes
+- Rage is a tempo spell that turns small advantages into huge pressure.
+- It is strongest when a fast win condition is already threatening damage.
+- The spell gets more value the longer the buffed units stay alive.
+- It is much weaker when the push is stalled before it reaches the tower.
+
+## Clone
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Spells that clean up the original troops.
+- Splash damage.
+- Small spell timing before the clone value develops.
+- Towers plus support if the original push is weak.
+
+### Synergies
+- Balloon.
+- Skeleton Army.
+- Lava Hound.
+- Giant Skeleton.
+- Goblin Barrel.
+- Rage.
+- Freeze.
+- Split-lane surprise pushes.
+
+### Strategy notes
+- Clone is a high-risk snowball spell that rewards already-strong pushes.
+- It has the most value when the original troops are hard to answer cleanly.
+- If the first wave dies too quickly, Clone does almost nothing.
+- It is best in decks that can create overwhelming board states.
+
+## Mirror
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Count the card that was already used and punish the cycle.
+- Elixir denial through pressure.
+- Overcommitting into the doubled card is usually punished.
+
+### Synergies
+- Log bait shells.
+- Double spell pressure.
+- Repeated win condition cycling.
+- Surprise second copy of a strong defensive card.
+
+### Strategy notes
+- Mirror is mostly a surprise and flexibility tool.
+- It is strongest when the second copy creates a matchup the opponent did not prepare for.
+- It can also fix awkward hands by giving access to a needed card again.
+- The extra elixir cost means it must generate real tempo or value.
+
+## Goblin Barrel
+
+### Balance history
+- 2016-01-03 — Card added.
+- 2016-02-02 — Crown Tower damage reduced by 15%.
+- 2016-06-21 — Damage reduced by 9%.
+- 2018-04-25 — Crown Tower damage reduced from 100% to 80% of full damage.
+- 2022-08-02 — Damage increased by 5%.
+
+### Counters
+- The Log.
+- Barbarian Barrel.
+- Arrows.
+- Tornado.
+- Goblin Gang.
+- Skeleton Army.
+- Fast predicted small spell or troop placement.
+
+### Synergies
+- Princess.
+- Dart Goblin.
+- Log bait shells.
+- Freeze.
+- Rocket.
+- Mirror.
+- Tornado.
+- Pressure decks.
+
+### Strategy notes
+- Goblin Barrel is one of the classic bait win conditions.
+- It is strongest when the defender’s small spell is already forced out.
+- Prediction and cycle tracking matter more than raw stats.
+- It loses value quickly if the opponent always has a clean answer ready.
+
+## Goblin Drill
+
+### Balance history
+- 2021-03-30 — Card added.
+- Need source verification for detailed balance history.
+
+### Counters
+- Buildings.
+- Splash defenders.
+- Miner-type pressure onto the drill zone.
+- Troops that clear spawned Goblins efficiently.
+
+### Synergies
+- Poison.
+- Fireball.
+- Wall Breakers.
+- Log bait shells.
+- Control pressure decks.
+
+### Strategy notes
+- Goblin Drill is a pressure card that keeps generating threat even after placement.
+- It works well in decks that can keep forcing responses.
+- The spawned Goblins matter as much as the drill itself.
+- It is best when the defender cannot answer the placement and the spawns at the same time.
+
+## Goblin Curse
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Strong cleanup once the curse is applied.
+- Stop the cursed troops from getting value.
+- Avoid clustering the troop group that will be cursed.
+
+### Synergies
+- Goblin-focused pressure.
+- Spawner or bait shells.
+- Swarm conversion plans.
+
+### Strategy notes
+- Goblin Curse is a value spell that gets better when the cursed group stays active for a while.
+- It punishes clumped units and awkward defensive swarms.
+- It is at its best when it creates a chain reaction of bad trades.
+
+## Vines
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Ground troops with strong positioning.
+- Spread formations.
+- Quick pressure before the spell value develops.
+
+### Synergies
+- Goblin-oriented decks.
+- Control shells.
+- Spells that force troops into one lane.
+
+### Strategy notes
+- Vines fits as a control and disruption spell.
+- It wants the opponent to commit in a way that can be punished immediately after.
+- Its value depends heavily on placement and timing.
+
+## Void
+
+### Balance history
+- Need source verification.
+
+### Counters
+- High-value grouped targets.
+- Support troops that stay clumped.
+- Badly spaced defensive cores.
+
+### Synergies
+- Cycle decks.
+- Control decks.
+- Decks that can force predictable defensive placements.
+
+### Strategy notes
+- Void is a precision spell that wants the opponent to stack value.
+- It is strongest when it converts a small placement mistake into a huge trade.
+- It works best in decks that can repeat pressure quickly.
+
+## Tornado
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Spread offense that cannot be grouped effectively.
+- Attacks that rely on separate lanes.
+- Units that lose value when pulled into bad positions.
+
+### Synergies
+- King Tower activation plans.
+- Executioner.
+- Bowler.
+- Baby Dragon.
+- Ice Wizard.
+- Splashyard shells.
+- Control decks.
+
+### Strategy notes
+- Tornado is one of the best control tools in the game.
+- It can completely change defensive geometry and create huge synergy with splash cards.
+- Good placement matters more than raw damage.
+- It is weaker when the opponent can force pressure in multiple lanes.
+
+## Barbarian Barrel
+
+### Balance history
+- 2018-04-25 — Card added.
+- 2018-12-03 — Damage reduced by 8%.
+- 2020-06-02 — Spawned Barbarian attack speed and range adjusted.
+- 2022-10-04 — Barbarian hitpoints and barrel behavior were adjusted.
+- 2025-03-31 — Damage adjusted slightly.
+
+### Counters
+- Goblin Barrel.
+- Skeleton Army.
+- Princess.
+- Dart Goblin.
+- Firecracker.
+- Gang-style ground swarms.
+
+### Synergies
+- Log bait decks.
+- Bridge spam.
+- Miner control.
+- Pressure decks that need a cheap ground clear.
+
+### Strategy notes
+- Barbarian Barrel is a cheap spell plus body that gives both defense and pressure.
+- It is one of the cleanest answers to many bait cards.
+- The spawned Barbarian can also force extra elixir on defense.
+- It is strongest when used to keep tempo without overspending.
+
+## Poison
+
+### Balance history
+- 2016-01-03 — Card added.
+- Need source verification for the detailed full balance list.
+
+### Counters
+- Skeleton Army.
+- Minion Horde.
+- Goblin Gang.
+- Princess support lanes.
+- Tombstone-style spawn control.
+- Health-stacked support troops inside its radius.
+
+### Synergies
+- Graveyard.
+- Miner.
+- Goblin Drill.
+- Wall Breakers.
+- Bowler.
+- Executioner.
+- Control and chip decks.
+- Rascals-style pressure shells.
+
+### Strategy notes
+- Poison is a control spell that rewards patience and placement.
+- It is strongest when it denies space that the opponent needs to defend in.
+- It usually gains value over time rather than through one instant swing.
+- It pairs best with win conditions that keep enemy defenders trapped in the spell.
+
+## X-Bow
+
+### Balance history
+- 2016-01-03 — Card added.
+- 2016-02-02 — Hitpoints reduced by 15% and lost the ability to target air.
+- 2016-02-09 — Deployment time increased to 5 seconds from 3 seconds.
+- 2019-03-04 — Hitpoints increased by 4%.
+- 2020-12-09 — Damage increased by 30%, hitpoints reduced by 4%, attack speed slowed to 0.3 seconds from 0.25, and lifetime reduced to 30 seconds from 40 seconds.
+
+### Counters
+- Giant.
+- Goblin Giant.
+- Electro Giant.
+- Balloon.
+- Knight.
+- Lumberjack.
+- Mini P.E.K.K.A.
+- Dark Prince.
+- Cannon Cart.
+- Bowler.
+- Executioner.
+- Sparky.
+- Rocket.
+- Earthquake.
+- Tanky win conditions in general.
+
+### Synergies
+- Tesla.
+- Ice Golem.
+- Archers.
+- Skeletons.
+- Ice Wizard.
+- Fireball.
+- Tornado.
+- Rocket.
+- Defensive cycle shells.
+
+### Strategy notes
+- X-Bow is a siege win condition that wants protected lock-on time.
+- It is strongest when backed by cheap defense and clean cycle.
+- Good X-Bow play is mostly about defense first and only committing when the matchup allows it.
+- Tanks, heavy spells, and opposite-lane pressure are the main ways to shut it down.
+
+## Goblin Giant
+
+### Balance history
+- Released in 2018.
+- Need source verification for the detailed full balance list.
+- History sources describe a long period of weak performance before later meta success.
+
+### Counters
+- Inferno Tower.
+- Inferno Dragon.
+- P.E.K.K.A.
+- Mini P.E.K.K.A.
+- Sparky.
+- Buildings that separate him from support.
+- High single-target DPS with reset or distraction help.
+
+### Synergies
+- Sparky.
+- P.E.K.K.A.
+- Furnace.
+- Mother Witch.
+- Beatdown shells.
+- Spear Goblin backpack chip support.
+- Heavy support behind tank pushes.
+
+### Strategy notes
+- Goblin Giant is a support-dependent tank more than a solo win condition.
+- He gets the most value when the defender cannot cleanly answer both him and the support behind him.
+- The Spear Goblins add steady pressure and make small defensive mistakes worse.
+- He struggles when isolated or dragged into efficient anti-tank setups.
+
+## Rune Giant
+
+### Balance history
+- 2025-01-01 — Introduced and scheduled for release in early January 2025.
+- It entered the game as a 4-elixir Epic win condition with an enchant mechanic.
+- Need source verification for later detailed balance changes.
+
+### Counters
+- Inferno Tower-style tank killers.
+- Air troops when unsupported.
+- Strong defensive buildings.
+- Fast removal of the buffed support troops.
+- High burst on the support core before the enchant value stacks.
+
+### Synergies
+- Musketeer.
+- Witch.
+- Support troops that benefit from repeated bonus-damage triggers.
+- Two-lane support cores that stay alive behind the Giant.
+
+### Strategy notes
+- Rune Giant is more about amplifying support damage than dealing tower damage herself.
+- Her value spikes when two nearby support troops survive long enough to use the enchant repeatedly.
+- Removing the support usually matters more than burning down the Giant first.
+- She fits best in structured pushes, not chaotic fast-cycle trades.
+
+## Golem
+
+### Balance history
+- 2016-era and later history summaries indicate several stat changes over time.
+- History sources describe overall hitpoint and damage increases across the card’s lifetime, with death damage reduced overall.
+- Need source verification for the exact line-by-line official history.
+
+### Counters
+- Inferno Tower.
+- Inferno Dragon.
+- P.E.K.K.A.
+- Mighty Miner.
+- Ram Rider.
+- Buildings plus high DPS support.
+- Opposite-lane punish pressure.
+
+### Synergies
+- Electro Dragon.
+- Baby Dragon.
+- Night Witch.
+- Tornado.
+- Beatdown support packages.
+- Lightning.
+- Heavy backline stacking.
+
+### Strategy notes
+- Golem is the classic full beatdown tank.
+- It wins through support layering and elixir pressure more than through the body alone.
+- Defending well and building one overwhelming push is usually the whole game plan.
+- Fast punish decks and Inferno cards remain some of the most reliable answers.
+
+## Electro Giant
+
+### Balance history
+- Card was introduced as an Epic tank win condition.
+- Need source verification for the detailed full balance list.
+
+### Counters
+- P.E.K.K.A.
+- Inferno Tower.
+- Inferno Dragon.
+- Buildings placed to maximize retargeting.
+- High DPS units positioned outside the stun value zone.
+- Split pressure that prevents clean support stacking.
+
+### Synergies
+- Tornado.
+- Lightning.
+- Bomber.
+- Baby Dragon.
+- Beatdown-control hybrid decks.
+- Support cards that remove buildings or ranged DPS.
+
+### Strategy notes
+- Electro Giant punishes contact defenders and swarms through reflected zap damage.
+- He is strongest when the opponent is forced to defend close to him.
+- Spells that remove buildings or backline DPS make him much more threatening.
+- He is less impressive when the defender can kite, separate, and burn him down from range.
+

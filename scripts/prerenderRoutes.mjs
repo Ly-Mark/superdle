@@ -39,6 +39,14 @@ function spotlightCards() {
     return [...src.matchAll(/^\s{4}'([^']+)':\s*\{/gm)].map((m) => m[1]);
 }
 
+// Mirrors normalizeCardName in src/utils/clashroyale/cardSearch.js. Duplicated
+// rather than imported because that module is written for the browser bundle;
+// four lines is cheaper than making it Node-safe. If one changes, change both.
+const normalizeName = (s) =>
+    String(s).toLowerCase().trim()
+        .replace(/^(the|a|an)\s+/, '')
+        .replace(/[^a-z0-9 ]/g, '');
+
 // Mirrors the parser in src/utils/clashroyale/cardContent.js. Kept deliberately
 // simple — it only needs to answer "does this card have any bullets", not build
 // the full structure.
@@ -72,8 +80,14 @@ export function getPrerenderRoutes() {
     const cards = JSON.parse(read('../src/data/cards.json')).map((c) => c.card);
     const known = new Set(cards);
 
+    // Resolve names through the same normalisation the page parser uses, so a
+    // heading written "P.E.K.K.A." still produces a route for "PEKKA". Without
+    // this the card would have content but no page.
+    const canonical = new Map(cards.map((n) => [normalizeName(n), n]));
+    const resolve = (n) => (known.has(n) ? n : canonical.get(normalizeName(n)));
+
     const wanted = new Set(
-        [...spotlightCards(), ...researchedCards()].filter((n) => known.has(n))
+        [...spotlightCards(), ...researchedCards()].map(resolve).filter(Boolean)
     );
 
     // Ordered by the dataset rather than by discovery, so the route list and

@@ -391,15 +391,26 @@ export default function MemoryGame() {
                                     </div>
                                 </div>
 
-                                {/* A grid, not `columns-2`. CSS multi-column
-                                    sizes every cell to its own content, so a
-                                    two-line name like "Goblin Demolisher" made
-                                    a taller box than "Bats" and the list came
-                                    out ragged and hard to scan. A grid gives
-                                    equal columns, and the min-height below
-                                    makes one- and two-line cells match, so
-                                    every box in the list is the same size. */}
-                                <div className="grid grid-cols-2 2xl:grid-cols-3 gap-2">
+                                {/* Every box is exactly the same size, and it
+                                    takes all three of these to guarantee it:
+
+                                    - a grid, not `columns-2`. CSS multi-column
+                                      sizes each cell to its own content.
+                                    - `auto-rows-[2.75rem]`, not a `min-h` on
+                                      the cell. A minimum still lets a row grow:
+                                      "Goblin Demolisher" wrapping to three
+                                      lines dragged its whole row taller. A
+                                      fixed track height cannot.
+                                    - `line-clamp-2` on the name, so a name that
+                                      would need a third line is truncated
+                                      rather than overflowing a fixed-height box.
+
+                                    Two columns at every width. Three columns
+                                    inside an already-narrow rarity panel left
+                                    too little room for the longer names, which
+                                    is what forced the third line in the first
+                                    place. */}
+                                <div className="grid grid-cols-2 gap-2 auto-rows-[2.75rem]">
                                     {list.map((c) => {
                                         const key = normalize(c.card);
                                         const isFound = foundSet.has(key);
@@ -409,7 +420,7 @@ export default function MemoryGame() {
                                         return (
                                             <div
                                                 key={c.card}
-                                                className={`rounded-lg border px-2 py-1 flex items-center gap-2 leading-tight min-h-[2.75rem] transition-colors duration-200 ${
+                                                className={`rounded-lg border px-2 py-1 flex items-center gap-2 leading-tight overflow-hidden transition-colors duration-200 ${
                                                     isFound
                                                         ? "bg-emerald-500/10 border-emerald-500/30"
                                                         : isMissed
@@ -436,9 +447,10 @@ export default function MemoryGame() {
                                                     inside the cell instead of
                                                     pushing it wider than its
                                                     grid column. */}
-                                                <div className="min-w-0 flex-1 text-sm font-semibold text-white/95 break-words">
+                                                <div className="min-w-0 flex-1 text-sm font-semibold text-white/95 break-words line-clamp-2">
                                                     {isFound || isMissed ? (
-                                                        <span className={isMissed ? "text-red-100" : ""}>{c.card}</span>
+                                                        // title so a clamped name is still readable on hover
+                                                        <span className={isMissed ? "text-red-100" : ""} title={c.card}>{c.card}</span>
                                                     ) : (
                                                         <div className="h-2 rounded bg-white/15 w-full max-w-[180px]" />
                                                     )}

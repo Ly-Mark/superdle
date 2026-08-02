@@ -24,7 +24,38 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
 
 ## Open decisions
 
-- **Heading font — blocks T24e.** Owner asked for the lightest options.
+- **Clash Royale assets as mode icons — blocks nothing, needs a source.**
+  Owner asked whether `GameModeNav`'s emoji could be Supercell art instead.
+  **The policy permits it.** Read 2026-08-02 at
+  supercell.com/en/fan-content-policy — asset use "must be limited to
+  displaying, identifying and discussing only Supercell's products", with
+  "non-commercial fan-generated online guides and guide apps, fan pages" given
+  as permitted examples. Ads are an **explicit** exception to the no-fee rule
+  ("monetization of your Fan Content through ads, by donations or by
+  coaching"), so AdSense is not a problem. The footer disclaimer at
+  `SiteFooter.jsx:70` reads as "substantially similar" to the required notice.
+  Also noted for future ideas: no blockchain/NFTs, no physical merch without a
+  written agreement, no cheats/mods/bots.
+  **The blocker is provenance, not permission.** The policy grants rights to
+  Supercell's assets; it does not make any particular *copy* legitimately
+  obtained. This project already paid for that distinction once — all 121
+  `hint2`/`hint3` texts were rewritten because the originals came from the CR
+  wiki (CC BY-SA, unattributed, not covered by the Fan Content Policy).
+  Sourcing icons from a wiki would repeat it in image form.
+  *Already held legitimately:* 122 card PNGs, 121 thumbs, the diamond
+  backgrounds, and `public/games/clashroyale/icons/elixir.png` (tracked, used
+  at `DescriptionGame.jsx:186`).
+  *Needed from owner:* the icon files, or a source that can be vouched for.
+  Not sourcing game-client assets unilaterally.
+  *Worth weighing:* there are no official Supercell icons for Classic /
+  Description / Rush / Memory — those are Clashdle's concepts. Any asset is a
+  metaphor, and emoji may read more clearly than repurposed game art.
+
+- **Heading font — DECIDED 2026-08-02: system body + display headings.**
+  Owner picked the ~15–20 KB compromise: system stack for body text, one
+  single-weight Latin-subset display face for `h1`/`h2` only. Remaining
+  sub-question is which face — see T24e.
+  *Original option list, kept for the reasoning:*
   Ranked by weight:
   - **System stack, 0 KB, 0 requests** — `system-ui, -apple-system,
     "Segoe UI", Roboto, sans-serif`. Segoe UI Variable on Windows, SF Pro on
@@ -260,13 +291,25 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
       via `ModeIntro`, and dropping `ModeHero` in would give them two. If the
       chip row is wanted there, `ModeIntro` needs to hand over its heading
       first.
-  - [ ] **T24e · Typography.** Body font **settled: Inter**, self-hosted,
-    fallback `"Segoe UI", system-ui, Arial`. Heading font **still open** — see
-    Open decisions. Deferred behind b/c because it adds the site's first
-    webfont: needs `font-display: swap`, self-hosting (no Google CDN during
-    AdSense review), and a CLS check. Ships with a side-by-side compare page
-    so the choice is made by looking, not by reading a list.
-    *(brief task 5)*
+  - [ ] **T24e · Typography.** *(brief task 5)*
+    **Approach decided:** system stack for body (0 KB, 0 requests), one
+    single-weight Latin-subset woff2 display face for `h1`/`h2` only
+    (~15–20 KB). Supersedes the earlier "self-hosted Inter" plan — Inter is
+    close enough to Segoe UI and SF Pro that it was paying 25–35 KB for a
+    difference most visitors would not see.
+    **Still open: which display face.** Lilita One is the standing
+    recommendation (SIL OFL, chunky, closest free stand-in for Supercell
+    Magic). Alternatives worth putting side by side: Bowlby One SC, Titan One,
+    Fredoka (semi-bold).
+    *Blocked on owner:* the font binaries should not be committed without the
+    owner seeing the licence that ships with them. Either drop the woff2 +
+    OFL.txt into `public/fonts/`, or confirm the download should happen here.
+    Requirements when it lands: self-hosted (no Google CDN during AdSense
+    review), `font-display: swap`, `size-adjust` if the fallback metrics
+    differ enough to shift layout, and a before/after CLS check.
+    `tailwind.config.js` already declares `fontFamily.display`, and nothing
+    references it yet — so this is an `@font-face` rule plus a class on two
+    headings.
   - [ ] **T24f · Guess tiles + motion.** Last: collides with T9, which
     rewrites `ClassicGame` wholesale. **Do not touch the higher/lower arrow
     direction logic** — `RushGame.jsx:91` documents why it looks inverted.

@@ -144,9 +144,15 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
     and `f5c542` / `d99a1a` / `Lilita` all appear 0 times in the built CSS.
     All routes prerendered (no `<!--$!-->`; home 20 KB, cards 200 KB, rush
     15.5 KB). *(brief task 1)*
-  - [ ] **T24b · Panel treatment + gold consolidation.** Shared container
+  - [~] **T24b · Panel treatment + gold consolidation.** Shared container
     style; collapse the five ad-hoc golds onto one token. First group where
     the site stops looking flat. *(brief tasks 2, 4)*
+    **First cut is in and awaiting a look:** `Panel.jsx` applied to
+    `HintsPanel` in `ClassicGame` only — one surface, chosen because it nests
+    a panel inside a panel and so exercises both `base` and `raised` at once.
+    Nothing else is converted yet. If the treatment lands, roll it out to the
+    inline legend (`ClassicGame:254`), Rush stat tiles, the accordions and the
+    guide cards. If it doesn't, one file gets reverted instead of forty.
   - [ ] **T24c · Guide polish.** Thumbnail placeholder (see T24x), Rush stat
     tiles. Isolated pages, no game logic. *(brief tasks 10, 8)*
   - [ ] **T24d · Hero, mode identity, accordion.** Pill-badge row, per-mode
@@ -177,13 +183,28 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
   - **Gold and "close" are currently the same amber.** The brief lists
     `--accent-gold` and `--partial` separately but never flags the collision.
     A gold button reads as a "close match" tile. `state.close` is shifted off
-    `amber-500` in the token set; keep them visibly apart.
+    **Resolved:** the tile hues are Supercell's family and are the game's
+    established vocabulary, so `state.close` stays `amber-500`/`600` and the
+    *accent* moved instead — `gold` is lighter and toward yellow (~46) against
+    amber-500's more orange (~38). Check the two side by side during T24b.
   - **Countdown-to-next-card cut from T24d.** `getDailyCard` is local-date
     based, `getDayIndex()` in `shareText.js` is UTC based. A visible countdown
     forces a choice between them and would expose the disagreement near
     midnight. That's a behaviour decision, not a visual one.
   - **`#00d8ff`** was in use and unmentioned by the brief; captured as
     `brand.cyan`.
+
+- [ ] **T25 · `<h1>` sits fourth in the DOM on `/`** *(found during T24b)*
+  Heading order on the homepage is `h2 h2 h3 h1 h2 h2 …`. The `<h1>`
+  ("Clashdle — Daily Clash Royale Card Guessing Game") lives in `HomeContent`,
+  which renders *below* the game board, `HowToPlay` and the colour legend.
+  Pre-existing — T24b added one more `h2` above it by promoting the game
+  panel's title from a `<p>`, but the inversion was already there.
+  Wrong for screen-reader navigation and weak for SEO on a site being
+  resubmitted to AdSense. **Fix belongs in T24d** (hero rework), which is
+  already restructuring the top of the page: put a real `h1` above the board
+  and demote the current one. `Panel` takes a `titleAs` prop so its heading
+  level can move without touching its styling.
 
 - [ ] **T14 · Resolve `SiteHeader` / `GameModeNav` overlap**
   Both render the same four mode links on game pages. Harmless, mildly

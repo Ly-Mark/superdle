@@ -12,6 +12,7 @@ import { getDayIndex, buildShareText, copyToClipboard } from "../../utils/clashr
 import { PUBLIC_BASE, buildUrl } from '../../utils/shareBase.js';
 
 import GameModeNav from "./GameModeNav";
+import Panel from "./Panel.jsx";
 import HomeContent from "../layout/HomeContent.jsx";
 import { matchesCardQuery } from '../../utils/clashroyale/cardSearch.js';
 import HowToPlay from "../layout/HowToPlay.jsx";
@@ -332,10 +333,12 @@ const HintsPanel = ({
     const revealedList = HINT_DEFS.filter(h => revealedHints[h.key]);
 
     return (
-        <div className="max-w-xl mx-auto bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6">
-            <p className="text-blue-200 text-2xl font-medium mb-4">
-                Guess today's Clash Royale Card
-            </p>
+        <Panel
+            as="section"
+            className="max-w-xl mx-auto p-6"
+            title="Guess today's Clash Royale Card"
+            meta={guessesCount > 0 ? `${guessesCount} ${guessesCount === 1 ? 'guess' : 'guesses'}` : null}
+        >
 
             {/* Circles row */}
             {guessesCount >= 2 && (
@@ -362,7 +365,7 @@ const HintsPanel = ({
 
             {/* Revealed area */}
             {guessesCount >= 2 && (
-                <div className="mt-4 bg-white/15 backdrop-blur-sm border border-white/30 rounded-xl p-4 shadow-lg text-left">
+                <Panel variant="raised" className="mt-4 p-4 text-left">
                     <div className="max-h-40 overflow-y-auto pr-1 space-y-4">
                         {revealedList.length === 0 ? (
                             <p className="text-blue-200/80 text-sm text-center">
@@ -382,9 +385,9 @@ const HintsPanel = ({
                             ))
                         )}
                     </div>
-                </div>
+                </Panel>
             )}
-        </div>
+        </Panel>
     );
 };
 

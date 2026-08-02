@@ -1,0 +1,1888 @@
+[
+  {
+    "card": "Minions",
+    "slug": "minions",
+    "rarity": "Common",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Training Camp",
+    "arenaTier": 0,
+    "targets": "air",
+    "families": [],
+    "cost": 3,
+    "tags": [
+      "flying"
+    ]
+  },
+  {
+    "card": "Archers",
+    "slug": "archers",
+    "rarity": "Common",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Training Camp",
+    "arenaTier": 0,
+    "targets": "air",
+    "families": [
+      "human"
+    ],
+    "cost": 3,
+    "tags": []
+  },
+  {
+    "card": "Knight",
+    "slug": "knight",
+    "rarity": "Common",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Training Camp",
+    "arenaTier": 0,
+    "targets": "ground",
+    "families": [
+      "human"
+    ],
+    "cost": 3,
+    "tags": []
+  },
+  {
+    "card": "Spear Goblins",
+    "slug": "spear-goblins",
+    "rarity": "Common",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Goblin Stadium",
+    "arenaTier": 1,
+    "targets": "air",
+    "families": [
+      "goblin"
+    ],
+    "cost": 2,
+    "tags": []
+  },
+  {
+    "card": "Goblins",
+    "slug": "goblins",
+    "rarity": "Common",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Goblin Stadium",
+    "arenaTier": 1,
+    "targets": "ground",
+    "families": [
+      "goblin"
+    ],
+    "cost": 2,
+    "tags": []
+  },
+  {
+    "card": "Bomber",
+    "slug": "bomber",
+    "rarity": "Common",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Bone Pit",
+    "arenaTier": 2,
+    "targets": "ground",
+    "families": [],
+    "cost": 2,
+    "tags": [
+      "splash"
+    ]
+  },
+  {
+    "card": "Skeletons",
+    "slug": "skeletons",
+    "rarity": "Common",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Bone Pit",
+    "arenaTier": 2,
+    "targets": "ground",
+    "families": [
+      "undead"
+    ],
+    "cost": 1,
+    "tags": []
+  },
+  {
+    "card": "Barbarians",
+    "slug": "barbarians",
+    "rarity": "Common",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Barbarian Bowl",
+    "arenaTier": 3,
+    "targets": "ground",
+    "families": [
+      "human"
+    ],
+    "cost": 5,
+    "tags": []
+  },
+  {
+    "card": "Electro Spirit",
+    "slug": "electro-spirit",
+    "rarity": "Common",
+    "type": "Troop",
+    "year": 2020,
+    "arena": "Spell Valley",
+    "arenaTier": 5,
+    "targets": "air",
+    "families": [],
+    "cost": 1,
+    "tags": []
+  },
+  {
+    "card": "Skeleton Dragons",
+    "slug": "skeleton-dragons",
+    "rarity": "Common",
+    "type": "Troop",
+    "year": 2020,
+    "arena": "Spell Valley",
+    "arenaTier": 5,
+    "targets": "air",
+    "families": [
+      "undead"
+    ],
+    "cost": 4,
+    "tags": [
+      "flying"
+    ]
+  },
+  {
+    "card": "Fire Spirit",
+    "slug": "fire-spirit",
+    "rarity": "Common",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Spell Valley",
+    "arenaTier": 5,
+    "targets": "air",
+    "families": [],
+    "cost": 1,
+    "tags": []
+  },
+  {
+    "card": "Bats",
+    "slug": "bats",
+    "rarity": "Common",
+    "type": "Troop",
+    "year": 2017,
+    "arena": "Builder's Workshop",
+    "arenaTier": 6,
+    "targets": "air",
+    "families": [
+      "undead"
+    ],
+    "cost": 2,
+    "tags": [
+      "flying"
+    ]
+  },
+  {
+    "card": "Royal Recruits",
+    "slug": "royal-recruits",
+    "rarity": "Common",
+    "type": "Troop",
+    "year": 2018,
+    "arena": "Royal Arena",
+    "arenaTier": 7,
+    "targets": "ground",
+    "families": [
+      "human",
+      "royal"
+    ],
+    "cost": 7,
+    "tags": []
+  },
+  {
+    "card": "Royal Giant",
+    "slug": "royal-giant",
+    "rarity": "Common",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Royal Arena",
+    "arenaTier": 7,
+    "targets": "buildings",
+    "families": [
+      "human",
+      "royal"
+    ],
+    "cost": 6,
+    "tags": [
+      "wincon"
+    ]
+  },
+  {
+    "card": "Ice Spirit",
+    "slug": "ice-spirit",
+    "rarity": "Common",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Frozen Peak",
+    "arenaTier": 8,
+    "targets": "air",
+    "families": [],
+    "cost": 1,
+    "tags": []
+  },
+  {
+    "card": "Berserker",
+    "slug": "berserker",
+    "rarity": "Common",
+    "type": "Troop",
+    "year": 2025,
+    "arena": "Jungle Arena",
+    "arenaTier": 9,
+    "targets": "ground",
+    "families": [
+      "human"
+    ],
+    "cost": 2,
+    "tags": []
+  },
+  {
+    "card": "Skeleton Barrel",
+    "slug": "skeleton-barrel",
+    "rarity": "Common",
+    "type": "Troop",
+    "year": 2017,
+    "arena": "Jungle Arena",
+    "arenaTier": 9,
+    "targets": "ground",
+    "families": [
+      "undead"
+    ],
+    "cost": 3,
+    "tags": [
+      "spawns",
+      "wincon",
+      "flying"
+    ]
+  },
+  {
+    "card": "Goblin Gang",
+    "slug": "goblin-gang",
+    "rarity": "Common",
+    "type": "Troop",
+    "year": 2017,
+    "arena": "Jungle Arena",
+    "arenaTier": 9,
+    "targets": "air",
+    "families": [
+      "goblin"
+    ],
+    "cost": 3,
+    "tags": []
+  },
+  {
+    "card": "Elite Barbarians",
+    "slug": "elite-barbarians",
+    "rarity": "Common",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Hog Mountain",
+    "arenaTier": 10,
+    "targets": "ground",
+    "families": [
+      "human"
+    ],
+    "cost": 6,
+    "tags": []
+  },
+  {
+    "card": "Minion Horde",
+    "slug": "minion-horde",
+    "rarity": "Common",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Hog Mountain",
+    "arenaTier": 10,
+    "targets": "air",
+    "families": [],
+    "cost": 5,
+    "tags": [
+      "flying"
+    ]
+  },
+  {
+    "card": "Firecracker",
+    "slug": "firecracker",
+    "rarity": "Common",
+    "type": "Troop",
+    "year": 2020,
+    "arena": "Spooky Town",
+    "arenaTier": 12,
+    "targets": "air",
+    "families": [
+      "human"
+    ],
+    "cost": 3,
+    "tags": [
+      "splash"
+    ]
+  },
+  {
+    "card": "Rascals",
+    "slug": "rascals",
+    "rarity": "Common",
+    "type": "Troop",
+    "year": 2018,
+    "arena": "Rascal's Hideout",
+    "arenaTier": 13,
+    "targets": "air",
+    "families": [
+      "human"
+    ],
+    "cost": 5,
+    "tags": []
+  },
+  {
+    "card": "Arrows",
+    "slug": "arrows",
+    "rarity": "Common",
+    "type": "Spell",
+    "year": 2016,
+    "arena": "Training Camp",
+    "arenaTier": 0,
+    "targets": "air",
+    "families": [],
+    "cost": 3,
+    "tags": [
+      "splash"
+    ]
+  },
+  {
+    "card": "Zap",
+    "slug": "zap",
+    "rarity": "Common",
+    "type": "Spell",
+    "year": 2016,
+    "arena": "Builder's Workshop",
+    "arenaTier": 6,
+    "targets": "air",
+    "families": [],
+    "cost": 2,
+    "tags": [
+      "splash"
+    ]
+  },
+  {
+    "card": "Snowball",
+    "slug": "snowball",
+    "rarity": "Common",
+    "type": "Spell",
+    "year": 2018,
+    "arena": "Frozen Peak",
+    "arenaTier": 8,
+    "targets": "air",
+    "families": [],
+    "cost": 2,
+    "tags": [
+      "splash"
+    ]
+  },
+  {
+    "card": "Royal Delivery",
+    "slug": "royal-delivery",
+    "rarity": "Common",
+    "type": "Spell",
+    "year": 2020,
+    "arena": "Serenity Peak",
+    "arenaTier": 14,
+    "targets": "air",
+    "families": [
+      "royal"
+    ],
+    "cost": 3,
+    "tags": [
+      "spawns",
+      "splash"
+    ]
+  },
+  {
+    "card": "Cannon",
+    "slug": "cannon",
+    "rarity": "Common",
+    "type": "Building",
+    "year": 2016,
+    "arena": "Barbarian Bowl",
+    "arenaTier": 3,
+    "targets": "ground",
+    "families": [],
+    "cost": 3,
+    "tags": []
+  },
+  {
+    "card": "Mortar",
+    "slug": "mortar",
+    "rarity": "Common",
+    "type": "Building",
+    "year": 2016,
+    "arena": "Builder's Workshop",
+    "arenaTier": 6,
+    "targets": "ground",
+    "families": [],
+    "cost": 4,
+    "tags": [
+      "wincon",
+      "splash"
+    ]
+  },
+  {
+    "card": "Tesla",
+    "slug": "tesla",
+    "rarity": "Common",
+    "type": "Building",
+    "year": 2016,
+    "arena": "Hog Mountain",
+    "arenaTier": 10,
+    "targets": "air",
+    "families": [],
+    "cost": 4,
+    "tags": []
+  },
+  {
+    "card": "Mini PEKKA",
+    "slug": "mini-pekka",
+    "rarity": "Rare",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Training Camp",
+    "arenaTier": 0,
+    "targets": "ground",
+    "families": [],
+    "cost": 4,
+    "tags": []
+  },
+  {
+    "card": "Musketeer",
+    "slug": "musketeer",
+    "rarity": "Rare",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Training Camp",
+    "arenaTier": 0,
+    "targets": "air",
+    "families": [
+      "human"
+    ],
+    "cost": 4,
+    "tags": []
+  },
+  {
+    "card": "Giant",
+    "slug": "giant",
+    "rarity": "Rare",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Training Camp",
+    "arenaTier": 0,
+    "targets": "buildings",
+    "families": [
+      "human"
+    ],
+    "cost": 5,
+    "tags": [
+      "wincon"
+    ]
+  },
+  {
+    "card": "Valkyrie",
+    "slug": "valkyrie",
+    "rarity": "Rare",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Bone Pit",
+    "arenaTier": 2,
+    "targets": "ground",
+    "families": [
+      "human"
+    ],
+    "cost": 4,
+    "tags": [
+      "splash"
+    ]
+  },
+  {
+    "card": "Mega Minion",
+    "slug": "mega-minion",
+    "rarity": "Rare",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Barbarian Bowl",
+    "arenaTier": 3,
+    "targets": "air",
+    "families": [],
+    "cost": 3,
+    "tags": [
+      "flying"
+    ]
+  },
+  {
+    "card": "Battle Ram",
+    "slug": "battle-ram",
+    "rarity": "Rare",
+    "type": "Troop",
+    "year": 2017,
+    "arena": "Barbarian Bowl",
+    "arenaTier": 3,
+    "targets": "buildings",
+    "families": [
+      "human"
+    ],
+    "cost": 4,
+    "tags": [
+      "wincon"
+    ]
+  },
+  {
+    "card": "Wizard",
+    "slug": "wizard",
+    "rarity": "Rare",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Spell Valley",
+    "arenaTier": 5,
+    "targets": "air",
+    "families": [
+      "human"
+    ],
+    "cost": 5,
+    "tags": [
+      "splash"
+    ]
+  },
+  {
+    "card": "Flying Machine",
+    "slug": "flying-machine",
+    "rarity": "Rare",
+    "type": "Troop",
+    "year": 2017,
+    "arena": "Builder's Workshop",
+    "arenaTier": 6,
+    "targets": "air",
+    "families": [],
+    "cost": 4,
+    "tags": [
+      "flying"
+    ]
+  },
+  {
+    "card": "Hog Rider",
+    "slug": "hog-rider",
+    "rarity": "Rare",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Builder's Workshop",
+    "arenaTier": 6,
+    "targets": "buildings",
+    "families": [
+      "human"
+    ],
+    "cost": 4,
+    "tags": [
+      "wincon"
+    ]
+  },
+  {
+    "card": "Royal Hogs",
+    "slug": "royal-hogs",
+    "rarity": "Rare",
+    "type": "Troop",
+    "year": 2018,
+    "arena": "Royal Arena",
+    "arenaTier": 7,
+    "targets": "buildings",
+    "families": [
+      "royal"
+    ],
+    "cost": 5,
+    "tags": [
+      "wincon"
+    ]
+  },
+  {
+    "card": "Three Musketeers",
+    "slug": "three-musketeers",
+    "rarity": "Rare",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Royal Arena",
+    "arenaTier": 7,
+    "targets": "air",
+    "families": [
+      "human"
+    ],
+    "cost": 9,
+    "tags": [
+      "wincon"
+    ]
+  },
+  {
+    "card": "Battle Healer",
+    "slug": "battle-healer",
+    "rarity": "Rare",
+    "type": "Troop",
+    "year": 2020,
+    "arena": "Frozen Peak",
+    "arenaTier": 8,
+    "targets": "ground",
+    "families": [
+      "human"
+    ],
+    "cost": 4,
+    "tags": []
+  },
+  {
+    "card": "Ice Golem",
+    "slug": "ice-golem",
+    "rarity": "Rare",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Frozen Peak",
+    "arenaTier": 8,
+    "targets": "buildings",
+    "families": [],
+    "cost": 2,
+    "tags": []
+  },
+  {
+    "card": "Dart Goblin",
+    "slug": "dart-goblin",
+    "rarity": "Rare",
+    "type": "Troop",
+    "year": 2017,
+    "arena": "Jungle Arena",
+    "arenaTier": 9,
+    "targets": "air",
+    "families": [
+      "goblin"
+    ],
+    "cost": 3,
+    "tags": []
+  },
+  {
+    "card": "Furnace",
+    "slug": "furnace",
+    "rarity": "Rare",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Hog Mountain",
+    "arenaTier": 10,
+    "targets": "none",
+    "families": [],
+    "cost": 4,
+    "tags": [
+      "spawns"
+    ]
+  },
+  {
+    "card": "Zappies",
+    "slug": "zappies",
+    "rarity": "Rare",
+    "type": "Troop",
+    "year": 2017,
+    "arena": "Hog Mountain",
+    "arenaTier": 10,
+    "targets": "air",
+    "families": [],
+    "cost": 4,
+    "tags": []
+  },
+  {
+    "card": "Goblin Demolisher",
+    "slug": "goblin-demolisher",
+    "rarity": "Rare",
+    "type": "Troop",
+    "year": 2024,
+    "arena": "Spooky Town",
+    "arenaTier": 12,
+    "targets": "ground",
+    "families": [
+      "goblin"
+    ],
+    "cost": 4,
+    "tags": [
+      "splash"
+    ]
+  },
+  {
+    "card": "Heal Spirit",
+    "slug": "heal-spirit",
+    "rarity": "Rare",
+    "type": "Troop",
+    "year": 2020,
+    "arena": "Rascal's Hideout",
+    "arenaTier": 13,
+    "targets": "air",
+    "families": [],
+    "cost": 1,
+    "tags": []
+  },
+  {
+    "card": "Suspicious Bush",
+    "slug": "suspicious-bush",
+    "rarity": "Rare",
+    "type": "Troop",
+    "year": 2024,
+    "arena": "Rascal's Hideout",
+    "arenaTier": 13,
+    "targets": "buildings",
+    "families": [],
+    "cost": 2,
+    "tags": []
+  },
+  {
+    "card": "Elixir Golem",
+    "slug": "elixir-golem",
+    "rarity": "Rare",
+    "type": "Troop",
+    "year": 2019,
+    "arena": "Serenity Peak",
+    "arenaTier": 14,
+    "targets": "buildings",
+    "families": [],
+    "cost": 3,
+    "tags": [
+      "spawns"
+    ]
+  },
+  {
+    "card": "Fireball",
+    "slug": "fireball",
+    "rarity": "Rare",
+    "type": "Spell",
+    "year": 2016,
+    "arena": "Training Camp",
+    "arenaTier": 0,
+    "targets": "air",
+    "families": [],
+    "cost": 4,
+    "tags": [
+      "splash"
+    ]
+  },
+  {
+    "card": "Rocket",
+    "slug": "rocket",
+    "rarity": "Rare",
+    "type": "Spell",
+    "year": 2016,
+    "arena": "Builder's Workshop",
+    "arenaTier": 6,
+    "targets": "air",
+    "families": [],
+    "cost": 6,
+    "tags": [
+      "splash"
+    ]
+  },
+  {
+    "card": "Earthquake",
+    "slug": "earthquake",
+    "rarity": "Rare",
+    "type": "Spell",
+    "year": 2019,
+    "arena": "Spooky Town",
+    "arenaTier": 12,
+    "targets": "ground",
+    "families": [],
+    "cost": 3,
+    "tags": [
+      "splash"
+    ]
+  },
+  {
+    "card": "Goblin Cage",
+    "slug": "goblin-cage",
+    "rarity": "Rare",
+    "type": "Building",
+    "year": 2019,
+    "arena": "Goblin Stadium",
+    "arenaTier": 1,
+    "targets": "none",
+    "families": [
+      "goblin"
+    ],
+    "cost": 4,
+    "tags": [
+      "spawns"
+    ]
+  },
+  {
+    "card": "Goblin Hut",
+    "slug": "goblin-hut",
+    "rarity": "Rare",
+    "type": "Building",
+    "year": 2016,
+    "arena": "Goblin Stadium",
+    "arenaTier": 1,
+    "targets": "none",
+    "families": [
+      "goblin"
+    ],
+    "cost": 4,
+    "tags": [
+      "spawns"
+    ]
+  },
+  {
+    "card": "Tombstone",
+    "slug": "tombstone",
+    "rarity": "Rare",
+    "type": "Building",
+    "year": 2016,
+    "arena": "Bone Pit",
+    "arenaTier": 2,
+    "targets": "none",
+    "families": [
+      "undead"
+    ],
+    "cost": 3,
+    "tags": [
+      "spawns"
+    ]
+  },
+  {
+    "card": "Bomb Tower",
+    "slug": "bomb-tower",
+    "rarity": "Rare",
+    "type": "Building",
+    "year": 2016,
+    "arena": "Spell Valley",
+    "arenaTier": 5,
+    "targets": "ground",
+    "families": [],
+    "cost": 4,
+    "tags": [
+      "splash"
+    ]
+  },
+  {
+    "card": "Inferno Tower",
+    "slug": "inferno-tower",
+    "rarity": "Rare",
+    "type": "Building",
+    "year": 2016,
+    "arena": "Spell Valley",
+    "arenaTier": 5,
+    "targets": "air",
+    "families": [],
+    "cost": 5,
+    "tags": []
+  },
+  {
+    "card": "Barbarian Hut",
+    "slug": "barbarian-hut",
+    "rarity": "Rare",
+    "type": "Building",
+    "year": 2016,
+    "arena": "Jungle Arena",
+    "arenaTier": 9,
+    "targets": "none",
+    "families": [],
+    "cost": 6,
+    "tags": [
+      "spawns"
+    ]
+  },
+  {
+    "card": "Elixir Collector",
+    "slug": "elixir-collector",
+    "rarity": "Rare",
+    "type": "Building",
+    "year": 2016,
+    "arena": "Miner's Mine",
+    "arenaTier": 15,
+    "targets": "none",
+    "families": [],
+    "cost": 6,
+    "tags": []
+  },
+  {
+    "card": "Guards",
+    "slug": "guards",
+    "rarity": "Epic",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "PEKKA's Playhouse",
+    "arenaTier": 4,
+    "targets": "ground",
+    "families": [
+      "undead"
+    ],
+    "cost": 3,
+    "tags": []
+  },
+  {
+    "card": "Baby Dragon",
+    "slug": "baby-dragon",
+    "rarity": "Epic",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "PEKKA's Playhouse",
+    "arenaTier": 4,
+    "targets": "air",
+    "families": [],
+    "cost": 4,
+    "tags": [
+      "splash",
+      "flying"
+    ]
+  },
+  {
+    "card": "Skeleton Army",
+    "slug": "skeleton-army",
+    "rarity": "Epic",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "PEKKA's Playhouse",
+    "arenaTier": 4,
+    "targets": "ground",
+    "families": [
+      "undead"
+    ],
+    "cost": 3,
+    "tags": []
+  },
+  {
+    "card": "Witch",
+    "slug": "witch",
+    "rarity": "Epic",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "PEKKA's Playhouse",
+    "arenaTier": 4,
+    "targets": "air",
+    "families": [
+      "undead",
+      "human"
+    ],
+    "cost": 5,
+    "tags": [
+      "spawns",
+      "splash"
+    ]
+  },
+  {
+    "card": "PEKKA",
+    "slug": "pekka",
+    "rarity": "Epic",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "PEKKA's Playhouse",
+    "arenaTier": 4,
+    "targets": "ground",
+    "families": [],
+    "cost": 7,
+    "tags": []
+  },
+  {
+    "card": "Dark Prince",
+    "slug": "dark-prince",
+    "rarity": "Epic",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Royal Arena",
+    "arenaTier": 7,
+    "targets": "ground",
+    "families": [
+      "human",
+      "royal"
+    ],
+    "cost": 4,
+    "tags": [
+      "splash"
+    ]
+  },
+  {
+    "card": "Prince",
+    "slug": "prince",
+    "rarity": "Epic",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Royal Arena",
+    "arenaTier": 7,
+    "targets": "ground",
+    "families": [
+      "human",
+      "royal"
+    ],
+    "cost": 5,
+    "tags": []
+  },
+  {
+    "card": "Balloon",
+    "slug": "balloon",
+    "rarity": "Epic",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Royal Arena",
+    "arenaTier": 7,
+    "targets": "buildings",
+    "families": [
+      "undead"
+    ],
+    "cost": 5,
+    "tags": [
+      "wincon",
+      "flying"
+    ]
+  },
+  {
+    "card": "Giant Skeleton",
+    "slug": "giant-skeleton",
+    "rarity": "Epic",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Frozen Peak",
+    "arenaTier": 8,
+    "targets": "ground",
+    "families": [
+      "undead"
+    ],
+    "cost": 6,
+    "tags": [
+      "splash"
+    ]
+  },
+  {
+    "card": "Rune Giant",
+    "slug": "rune-giant",
+    "rarity": "Epic",
+    "type": "Troop",
+    "year": 2025,
+    "arena": "Jungle Arena",
+    "arenaTier": 9,
+    "targets": "buildings",
+    "families": [
+      "human"
+    ],
+    "cost": 4,
+    "tags": []
+  },
+  {
+    "card": "Goblin Giant",
+    "slug": "goblin-giant",
+    "rarity": "Epic",
+    "type": "Troop",
+    "year": 2018,
+    "arena": "Jungle Arena",
+    "arenaTier": 9,
+    "targets": "air",
+    "families": [
+      "goblin"
+    ],
+    "cost": 6,
+    "tags": [
+      "spawns",
+      "wincon"
+    ]
+  },
+  {
+    "card": "Hunter",
+    "slug": "hunter",
+    "rarity": "Epic",
+    "type": "Troop",
+    "year": 2017,
+    "arena": "Hog Mountain",
+    "arenaTier": 10,
+    "targets": "air",
+    "families": [
+      "human"
+    ],
+    "cost": 4,
+    "tags": []
+  },
+  {
+    "card": "Golem",
+    "slug": "golem",
+    "rarity": "Epic",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Hog Mountain",
+    "arenaTier": 10,
+    "targets": "buildings",
+    "families": [],
+    "cost": 8,
+    "tags": [
+      "spawns",
+      "wincon"
+    ]
+  },
+  {
+    "card": "Electro Dragon",
+    "slug": "electro-dragon",
+    "rarity": "Epic",
+    "type": "Troop",
+    "year": 2018,
+    "arena": "Spooky Town",
+    "arenaTier": 12,
+    "targets": "air",
+    "families": [],
+    "cost": 5,
+    "tags": [
+      "splash",
+      "flying"
+    ]
+  },
+  {
+    "card": "Wall Breakers",
+    "slug": "wall-breakers",
+    "rarity": "Epic",
+    "type": "Troop",
+    "year": 2019,
+    "arena": "Spooky Town",
+    "arenaTier": 12,
+    "targets": "buildings",
+    "families": [],
+    "cost": 2,
+    "tags": [
+      "wincon"
+    ]
+  },
+  {
+    "card": "Electro Giant",
+    "slug": "electro-giant",
+    "rarity": "Epic",
+    "type": "Troop",
+    "year": 2020,
+    "arena": "Rascal's Hideout",
+    "arenaTier": 13,
+    "targets": "buildings",
+    "families": [
+      "human"
+    ],
+    "cost": 7,
+    "tags": [
+      "wincon"
+    ]
+  },
+  {
+    "card": "Bowler",
+    "slug": "bowler",
+    "rarity": "Epic",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Rascal's Hideout",
+    "arenaTier": 13,
+    "targets": "ground",
+    "families": [
+      "human"
+    ],
+    "cost": 5,
+    "tags": [
+      "splash"
+    ]
+  },
+  {
+    "card": "Executioner",
+    "slug": "executioner",
+    "rarity": "Epic",
+    "type": "Troop",
+    "year": 2017,
+    "arena": "Serenity Peak",
+    "arenaTier": 14,
+    "targets": "air",
+    "families": [
+      "human"
+    ],
+    "cost": 5,
+    "tags": [
+      "splash"
+    ]
+  },
+  {
+    "card": "Cannon Cart",
+    "slug": "cannon-cart",
+    "rarity": "Epic",
+    "type": "Troop",
+    "year": 2017,
+    "arena": "Miner's Mine",
+    "arenaTier": 15,
+    "targets": "ground",
+    "families": [],
+    "cost": 5,
+    "tags": []
+  },
+  {
+    "card": "Goblin Barrel",
+    "slug": "goblin-barrel",
+    "rarity": "Epic",
+    "type": "Spell",
+    "year": 2016,
+    "arena": "PEKKA's Playhouse",
+    "arenaTier": 4,
+    "targets": "none",
+    "families": [
+      "goblin"
+    ],
+    "cost": 3,
+    "tags": [
+      "wincon"
+    ]
+  },
+  {
+    "card": "Lightning",
+    "slug": "lightning",
+    "rarity": "Epic",
+    "type": "Spell",
+    "year": 2016,
+    "arena": "Frozen Peak",
+    "arenaTier": 8,
+    "targets": "air",
+    "families": [],
+    "cost": 6,
+    "tags": [
+      "splash"
+    ]
+  },
+  {
+    "card": "Freeze",
+    "slug": "freeze",
+    "rarity": "Epic",
+    "type": "Spell",
+    "year": 2016,
+    "arena": "Frozen Peak",
+    "arenaTier": 8,
+    "targets": "air",
+    "families": [],
+    "cost": 4,
+    "tags": []
+  },
+  {
+    "card": "Barbarian Barrel",
+    "slug": "barbarian-barrel",
+    "rarity": "Epic",
+    "type": "Spell",
+    "year": 2018,
+    "arena": "Jungle Arena",
+    "arenaTier": 9,
+    "targets": "ground",
+    "families": [],
+    "cost": 2,
+    "tags": [
+      "spawns",
+      "splash"
+    ]
+  },
+  {
+    "card": "Poison",
+    "slug": "poison",
+    "rarity": "Epic",
+    "type": "Spell",
+    "year": 2016,
+    "arena": "Jungle Arena",
+    "arenaTier": 9,
+    "targets": "air",
+    "families": [],
+    "cost": 4,
+    "tags": [
+      "splash"
+    ]
+  },
+  {
+    "card": "Goblin Curse",
+    "slug": "goblin-curse",
+    "rarity": "Epic",
+    "type": "Spell",
+    "year": 2024,
+    "arena": "Serenity Peak",
+    "arenaTier": 14,
+    "targets": "air",
+    "families": [
+      "goblin"
+    ],
+    "cost": 2,
+    "tags": [
+      "splash"
+    ]
+  },
+  {
+    "card": "Rage",
+    "slug": "rage",
+    "rarity": "Epic",
+    "type": "Spell",
+    "year": 2016,
+    "arena": "Serenity Peak",
+    "arenaTier": 14,
+    "targets": "air",
+    "families": [],
+    "cost": 2,
+    "tags": []
+  },
+  {
+    "card": "Clone",
+    "slug": "clone",
+    "rarity": "Epic",
+    "type": "Spell",
+    "year": 2016,
+    "arena": "Miner's Mine",
+    "arenaTier": 15,
+    "targets": "air",
+    "families": [],
+    "cost": 3,
+    "tags": []
+  },
+  {
+    "card": "Tornado",
+    "slug": "tornado",
+    "rarity": "Epic",
+    "type": "Spell",
+    "year": 2016,
+    "arena": "Miner's Mine",
+    "arenaTier": 15,
+    "targets": "air",
+    "families": [],
+    "cost": 3,
+    "tags": [
+      "splash"
+    ]
+  },
+  {
+    "card": "Void",
+    "slug": "void",
+    "rarity": "Epic",
+    "type": "Spell",
+    "year": 2024,
+    "arena": "Miner's Mine",
+    "arenaTier": 15,
+    "targets": "air",
+    "families": [],
+    "cost": 3,
+    "tags": [
+      "splash"
+    ]
+  },
+  {
+    "card": "X-Bow",
+    "slug": "x-bow",
+    "rarity": "Epic",
+    "type": "Building",
+    "year": 2016,
+    "arena": "Hog Mountain",
+    "arenaTier": 10,
+    "targets": "air",
+    "families": [],
+    "cost": 6,
+    "tags": [
+      "wincon"
+    ]
+  },
+  {
+    "card": "Goblin Drill",
+    "slug": "goblin-drill",
+    "rarity": "Epic",
+    "type": "Building",
+    "year": 2021,
+    "arena": "Serenity Peak",
+    "arenaTier": 14,
+    "targets": "ground",
+    "families": [
+      "goblin"
+    ],
+    "cost": 7,
+    "tags": [
+      "spawns",
+      "wincon"
+    ]
+  },
+  {
+    "card": "Mega Knight",
+    "slug": "mega-knight",
+    "rarity": "Legendary",
+    "type": "Troop",
+    "year": 2017,
+    "arena": "Electro Valley",
+    "arenaTier": 11,
+    "targets": "ground",
+    "families": [
+      "human"
+    ],
+    "cost": 7,
+    "tags": [
+      "splash"
+    ]
+  },
+  {
+    "card": "Ram Rider",
+    "slug": "ram-rider",
+    "rarity": "Legendary",
+    "type": "Troop",
+    "year": 2018,
+    "arena": "Electro Valley",
+    "arenaTier": 11,
+    "targets": "air",
+    "families": [
+      "human"
+    ],
+    "cost": 5,
+    "tags": [
+      "wincon"
+    ]
+  },
+  {
+    "card": "Electro Wizard",
+    "slug": "electro-wizard",
+    "rarity": "Legendary",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Electro Valley",
+    "arenaTier": 11,
+    "targets": "air",
+    "families": [
+      "human"
+    ],
+    "cost": 4,
+    "tags": []
+  },
+  {
+    "card": "Inferno Dragon",
+    "slug": "inferno-dragon",
+    "rarity": "Legendary",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Electro Valley",
+    "arenaTier": 11,
+    "targets": "air",
+    "families": [],
+    "cost": 4,
+    "tags": [
+      "flying"
+    ]
+  },
+  {
+    "card": "Sparky",
+    "slug": "sparky",
+    "rarity": "Legendary",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Electro Valley",
+    "arenaTier": 11,
+    "targets": "ground",
+    "families": [],
+    "cost": 6,
+    "tags": [
+      "splash"
+    ]
+  },
+  {
+    "card": "Miner",
+    "slug": "miner",
+    "rarity": "Legendary",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Electro Valley",
+    "arenaTier": 11,
+    "targets": "ground",
+    "families": [
+      "human"
+    ],
+    "cost": 3,
+    "tags": [
+      "wincon"
+    ]
+  },
+  {
+    "card": "Princess",
+    "slug": "princess",
+    "rarity": "Legendary",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Electro Valley",
+    "arenaTier": 11,
+    "targets": "air",
+    "families": [
+      "human",
+      "royal"
+    ],
+    "cost": 3,
+    "tags": [
+      "splash"
+    ]
+  },
+  {
+    "card": "Phoenix",
+    "slug": "phoenix",
+    "rarity": "Legendary",
+    "type": "Troop",
+    "year": 2022,
+    "arena": "Spooky Town",
+    "arenaTier": 12,
+    "targets": "air",
+    "families": [
+      "undead"
+    ],
+    "cost": 4,
+    "tags": [
+      "spawns",
+      "flying"
+    ]
+  },
+  {
+    "card": "Royal Ghost",
+    "slug": "royal-ghost",
+    "rarity": "Legendary",
+    "type": "Troop",
+    "year": 2018,
+    "arena": "Spooky Town",
+    "arenaTier": 12,
+    "targets": "ground",
+    "families": [
+      "undead",
+      "royal"
+    ],
+    "cost": 3,
+    "tags": []
+  },
+  {
+    "card": "Ice Wizard",
+    "slug": "ice-wizard",
+    "rarity": "Legendary",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Spooky Town",
+    "arenaTier": 12,
+    "targets": "air",
+    "families": [
+      "human"
+    ],
+    "cost": 3,
+    "tags": []
+  },
+  {
+    "card": "Magic Archer",
+    "slug": "magic-archer",
+    "rarity": "Legendary",
+    "type": "Troop",
+    "year": 2018,
+    "arena": "Rascal's Hideout",
+    "arenaTier": 13,
+    "targets": "air",
+    "families": [
+      "human"
+    ],
+    "cost": 4,
+    "tags": [
+      "splash"
+    ]
+  },
+  {
+    "card": "Bandit",
+    "slug": "bandit",
+    "rarity": "Legendary",
+    "type": "Troop",
+    "year": 2017,
+    "arena": "Rascal's Hideout",
+    "arenaTier": 13,
+    "targets": "ground",
+    "families": [
+      "human"
+    ],
+    "cost": 3,
+    "tags": []
+  },
+  {
+    "card": "Lava Hound",
+    "slug": "lava-hound",
+    "rarity": "Legendary",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Rascal's Hideout",
+    "arenaTier": 13,
+    "targets": "buildings",
+    "families": [],
+    "cost": 6,
+    "tags": [
+      "spawns",
+      "wincon",
+      "flying"
+    ]
+  },
+  {
+    "card": "Night Witch",
+    "slug": "night-witch",
+    "rarity": "Legendary",
+    "type": "Troop",
+    "year": 2017,
+    "arena": "Serenity Peak",
+    "arenaTier": 14,
+    "targets": "ground",
+    "families": [
+      "undead",
+      "human"
+    ],
+    "cost": 4,
+    "tags": [
+      "spawns"
+    ]
+  },
+  {
+    "card": "Lumberjack",
+    "slug": "lumberjack",
+    "rarity": "Legendary",
+    "type": "Troop",
+    "year": 2016,
+    "arena": "Serenity Peak",
+    "arenaTier": 14,
+    "targets": "ground",
+    "families": [
+      "human"
+    ],
+    "cost": 4,
+    "tags": []
+  },
+  {
+    "card": "Spirit Empress (Ground)",
+    "slug": "spirit-empress",
+    "rarity": "Legendary",
+    "type": "Troop",
+    "year": 2025,
+    "arena": "Miner's Mine",
+    "arenaTier": 15,
+    "targets": "air",
+    "families": [],
+    "cost": 3,
+    "tags": []
+  },
+  {
+    "card": "Spirit Empress (Flying)",
+    "slug": "spirit-empress",
+    "rarity": "Legendary",
+    "type": "Troop",
+    "year": 2025,
+    "arena": "Miner's Mine",
+    "arenaTier": 15,
+    "targets": "air",
+    "families": [],
+    "cost": 6,
+    "tags": [
+      "flying"
+    ]
+  },
+  {
+    "card": "Goblin Machine",
+    "slug": "goblin-machine",
+    "rarity": "Legendary",
+    "type": "Troop",
+    "year": 2024,
+    "arena": "Miner's Mine",
+    "arenaTier": 15,
+    "targets": "air",
+    "families": [
+      "goblin"
+    ],
+    "cost": 5,
+    "tags": [
+      "splash"
+    ]
+  },
+  {
+    "card": "Mother Witch",
+    "slug": "mother-witch",
+    "rarity": "Legendary",
+    "type": "Troop",
+    "year": 2020,
+    "arena": "Miner's Mine",
+    "arenaTier": 15,
+    "targets": "air",
+    "families": [
+      "undead",
+      "human"
+    ],
+    "cost": 4,
+    "tags": [
+      "spawns"
+    ]
+  },
+  {
+    "card": "Fisherman",
+    "slug": "fisherman",
+    "rarity": "Legendary",
+    "type": "Troop",
+    "year": 2019,
+    "arena": "Miner's Mine",
+    "arenaTier": 15,
+    "targets": "ground",
+    "families": [
+      "human"
+    ],
+    "cost": 3,
+    "tags": []
+  },
+  {
+    "card": "The Log",
+    "slug": "the-log",
+    "rarity": "Legendary",
+    "type": "Spell",
+    "year": 2016,
+    "arena": "Electro Valley",
+    "arenaTier": 11,
+    "targets": "ground",
+    "families": [],
+    "cost": 2,
+    "tags": [
+      "splash"
+    ]
+  },
+  {
+    "card": "Graveyard",
+    "slug": "graveyard",
+    "rarity": "Legendary",
+    "type": "Spell",
+    "year": 2016,
+    "arena": "Spooky Town",
+    "arenaTier": 12,
+    "targets": "ground",
+    "families": [
+      "undead"
+    ],
+    "cost": 5,
+    "tags": [
+      "spawns",
+      "wincon"
+    ]
+  },
+  {
+    "card": "Golden Knight",
+    "slug": "golden-knight",
+    "rarity": "Champion",
+    "type": "Troop",
+    "year": 2021,
+    "arena": "Executioner's Kitchen",
+    "arenaTier": 16,
+    "targets": "ground",
+    "families": [
+      "human",
+      "royal"
+    ],
+    "cost": 4,
+    "tags": []
+  },
+  {
+    "card": "Skeleton King",
+    "slug": "skeleton-king",
+    "rarity": "Champion",
+    "type": "Troop",
+    "year": 2021,
+    "arena": "Executioner's Kitchen",
+    "arenaTier": 16,
+    "targets": "ground",
+    "families": [
+      "undead",
+      "royal"
+    ],
+    "cost": 4,
+    "tags": [
+      "spawns"
+    ]
+  },
+  {
+    "card": "Boss Bandit",
+    "slug": "boss-bandit",
+    "rarity": "Champion",
+    "type": "Troop",
+    "year": 2025,
+    "arena": "Royal Crypt",
+    "arenaTier": 17,
+    "targets": "ground",
+    "families": [
+      "human"
+    ],
+    "cost": 6,
+    "tags": []
+  },
+  {
+    "card": "Archer Queen",
+    "slug": "archer-queen",
+    "rarity": "Champion",
+    "type": "Troop",
+    "year": 2021,
+    "arena": "Royal Crypt",
+    "arenaTier": 17,
+    "targets": "air",
+    "families": [
+      "human",
+      "royal"
+    ],
+    "cost": 5,
+    "tags": []
+  },
+  {
+    "card": "Mighty Miner",
+    "slug": "mighty-miner",
+    "rarity": "Champion",
+    "type": "Troop",
+    "year": 2022,
+    "arena": "Royal Crypt",
+    "arenaTier": 17,
+    "targets": "ground",
+    "families": [
+      "human"
+    ],
+    "cost": 4,
+    "tags": []
+  },
+  {
+    "card": "Goblinstein",
+    "slug": "goblinstein",
+    "rarity": "Champion",
+    "type": "Troop",
+    "year": 2024,
+    "arena": "Silent Sanctuary",
+    "arenaTier": 18,
+    "targets": "air",
+    "families": [
+      "goblin"
+    ],
+    "cost": 5,
+    "tags": [
+      "spawns"
+    ]
+  },
+  {
+    "card": "Little Prince",
+    "slug": "little-prince",
+    "rarity": "Champion",
+    "type": "Troop",
+    "year": 2023,
+    "arena": "Silent Sanctuary",
+    "arenaTier": 18,
+    "targets": "air",
+    "families": [
+      "human",
+      "royal"
+    ],
+    "cost": 3,
+    "tags": []
+  },
+  {
+    "card": "Vines",
+    "slug": "vines",
+    "rarity": "Epic",
+    "type": "Spell",
+    "year": 2025,
+    "arena": "Frozen Peak",
+    "arenaTier": 8,
+    "targets": "air",
+    "families": [],
+    "cost": 3,
+    "tags": []
+  },
+  {
+    "card": "Monk",
+    "slug": "monk",
+    "rarity": "Champion",
+    "type": "Troop",
+    "year": 2022,
+    "arena": "Silent Sanctuary",
+    "arenaTier": 18,
+    "targets": "ground",
+    "families": [
+      "human"
+    ],
+    "cost": 5,
+    "tags": []
+  }
+]

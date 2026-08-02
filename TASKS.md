@@ -29,15 +29,13 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
   touching the artwork.** Crossed swords would fill a square better if it is
   ever revisited.
 
-- **T36 · May both Spirit Empress entries be used in the same grid?** It ships
-  as `Spirit Empress (Ground)` (3 elixir) and `Spirit Empress (Flying)` (6),
-  which are separate rows, so nothing stops a player filling a `Cost 3` cell
-  and a `Cost 5+` cell with one each. This is the only behavioural difference
-  between two entries and single-entry-in-both-buckets.
-  *Recommended: allow it.* They are genuinely different deployments, the names
-  are distinct on screen, and blocking it means a special-case rule for one
-  card. But players will notice either way, so it should be a decision rather
-  than an accident.
+- **T36 · Review the hand-authored lists in `buildClashdokuData.mjs`.**
+  The data file generates and the pool is healthy, but four things in it are
+  my judgement rather than fact and none has had an owner pass: the
+  **arena unlock order** (wrong order = silently wrong buckets), the
+  **`SPLASH` list** (33 cards, drafted last, least confident), the
+  **`WINCON` list** (Three Musketeers and Wall Breakers are arguable), and
+  **whether Spirit Empress is `human`, `royal`, both or neither**.
 
 - **T31 · Guess bar scrolls off on Classic — approach undecided.** The board
   grows past a screenful, so reading earlier guesses takes the input away with
@@ -71,17 +69,50 @@ card reuse, daily reset.
 - **`targets` stays**, collapsed to a 3-category taxonomy — see T36.
 - **No category may appear twice in one grid.** Six distinct headers, so
   `Common × Common` can never occur. This is what the enumeration assumes.
-- **Splash and flying are partitions, not booleans** — splash/single-target,
-  flying/grounded. Two categories each for the same data entry.
+- **Both Spirit Empress variants may be used in the same grid.** They are
+  different deployments with distinct names; blocking it would mean a
+  special-case rule for one card.
+- **`Royal family` ships** (12 cards) — Royal Giant/Hogs/Recruits/Ghost/
+  Delivery, Prince, Princess, Little Prince, Dark Prince, Archer Queen,
+  Skeleton King, Golden Knight. Deliberately crosses `Human`: Royal Ghost is
+  undead and Royal Hogs are animals, so it is not a subset of it.
+- **`Flying` is a plain boolean, not a partition.** The split is 13/75 and
+  `Grounded` would be a strict subset of `Troop` — see T36. Splash may still be
+  worth partitioning once its list is reviewed.
 - **Cost buckets are `≤2 / 3 / 4 / 5+`.** `Spirit Empress` deploys as ground
   for 3 or flying for 6, so it ships as **two entries** — see T36.
 
-**Measured launch pool: 51,768 grids at MIN=4**, using only data that exists
-today (23 categories: rarity, cost, type, year, targets, arena, Goblin,
-Undead). No Tier 2 tag is required to ship. Every one of the 23 appears in at
-least 484 grids, so none is dead weight.
+**Measured pool: 274,088 grids at MIN=4** across the 29 categories now in
+`src/data/clashdoku.json`. None is dead weight — the weakest, `Champion`,
+still appears in 3,508 grids. For reference, the subset that needs no
+hand-authored tags at all (23 categories: rarity, cost, type, year, targets,
+arena, Goblin, Undead) already gives 51,768, so **no tag on this board is
+load-bearing for volume.** They are there for texture.
 
-- [ ] **T36 · Build the ClashDoku data file**
+- [~] **T36 · Build the ClashDoku data file** — *v1 generated 2026-08-02*
+  `scripts/buildClashdokuData.mjs` → `src/data/clashdoku.json`, **121 entries,
+  29 categories, 274,088 valid grids at MIN=4.** Build passes; lint unchanged
+  at 0 errors / 7 warnings.
+  It is a **generator, not a hand-edited file**, so the card list cannot drift
+  from `cards.json` and the whole thing can be re-derived when a card ships.
+  It refuses to write if a hand-list names a card that does not exist, if an
+  arena is missing from the order map, or if a card has a non-numeric cost
+  with no split rule.
+  **Not finished — these need a review pass before it ships:**
+  - **The arena unlock order is unverified.** It is written from general
+    knowledge in `ARENA_ORDER`. Wrong order = quietly wrong buckets, and
+    nothing fails loudly.
+  - **`SPLASH` (33 cards) has had no review at all** — drafted last, the least
+    confident list in the file.
+  - **`WINCON` is the most contested** — Three Musketeers and Wall Breakers are
+    arguable either way.
+  - **Spirit Empress has no families.** She is in neither `human` nor `royal`.
+    "Empress" suggests royal at least; nobody has called it.
+  - *Note on counts:* Spirit Empress is two entries, so she double-counts in
+    every category she matches (Legendary reads 22, Troop 89). Correct for the
+    grid, slightly inflated as a headcount.
+
+  *Original scope for this task:*
   `src/data/clashdoku.json`. Borrows `card`/`rarity`/`cost`/`type`/`year`/
   `arena` and `targets` from `cards.json`; drops `moveSpeed` and
   `healthCategory` (both are dirty — `moveSpeed` has `"Medium / Very Fast"` and
@@ -145,6 +176,12 @@ least 484 grids, so none is dead weight.
     which reads as redundant. Add a grid-level filter that rejects any grid
     containing a nested pair, rather than banning the categories or trying to
     spot them all by hand.
+    **Detected automatically against the generated data — seven pairs, several
+    of which nobody would have guessed:**
+    `Legendary ⊂ Arena 11+` · `Champion ⊂ Troop` · `Champion ⊂ 2021+` ·
+    `Champion ⊂ Arena 11+` · `Buildings only ⊂ Troop` · `Human family ⊂ Troop` ·
+    `Flying ⊂ Troop`. Every Legendary really does unlock at Arena 11 or later.
+    This is why it must be a computed filter rather than a hand list.
   - *Content note:* **78 of 120 cards are 2016–17.** The set is heavily
     launch-weighted, which is why the era family only supports three buckets.
   - **`arena` stays, bucketed. Do not drop it.** An earlier pass killed the

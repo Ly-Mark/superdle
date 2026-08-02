@@ -14,6 +14,7 @@ import { slug } from '../utils/slug.js';
 import { CARD_SPOTLIGHTS } from '../content/cardSpotlights.jsx';
 import { getCardContent, formatBalanceDate } from '../utils/clashroyale/cardContent.js';
 import { normalizeCardName } from '../utils/clashroyale/cardSearch.js';
+import { cardHasPage } from '../utils/clashroyale/cardPages.js';
 
 const linkCls = 'text-blue-300 hover:text-blue-200 underline';
 const panel = 'bg-white/5 border border-white/10 rounded-xl p-5 mt-6';
@@ -46,20 +47,36 @@ function splitEntries(items = []) {
     return { cards, notes };
 }
 
+// The art and the name are one link, not a link sitting next to a picture —
+// the image is the obvious thing to click. CardArt renders alt="" because the
+// name is right beside it, so the link still has readable text and a screen
+// reader doesn't hear the name twice.
 function CardChip({ name }) {
     const card = byName.get(name);
-    const hasPage = !!getCardContent(name);
-    return (
-        <li className="flex items-center gap-2 text-sm">
+    const hasPage = cardHasPage(name);
+
+    const inner = (
+        <>
             <CardArt name={name} variant="thumb" sizeClass="w-10 h-10" />
             <span>
-                {hasPage ? (
-                    <Link to={`/cards/${slug(name)}`} className={linkCls}>{name}</Link>
-                ) : (
-                    <span className="text-white">{name}</span>
-                )}
+                <span className={hasPage ? linkCls : 'text-white'}>{name}</span>
                 {card && <span className="text-blue-200/60"> · {card.cost}</span>}
             </span>
+        </>
+    );
+
+    return (
+        <li className="text-sm">
+            {hasPage ? (
+                <Link
+                    to={`/cards/${slug(name)}`}
+                    className="flex items-center gap-2 rounded-lg -m-1 p-1 hover:bg-white/5 transition-colors"
+                >
+                    {inner}
+                </Link>
+            ) : (
+                <span className="flex items-center gap-2 p-1">{inner}</span>
+            )}
         </li>
     );
 }
@@ -221,21 +238,9 @@ export default function CardDetail() {
                             Cards that become available at the same point, which makes them
                             rough contemporaries.
                         </p>
-                        <ul className="flex flex-wrap gap-3">
+                        <ul className="flex flex-wrap gap-x-5 gap-y-3">
                             {sameArena.map((c) => (
-                                <li key={c.card} className="flex items-center gap-2 text-sm">
-                                    <CardArt name={c.card} variant="thumb" sizeClass="w-10 h-10" />
-                                    <span>
-                                        {getCardContent(c.card) ? (
-                                            <Link to={`/cards/${slug(c.card)}`} className={linkCls}>
-                                                {c.card}
-                                            </Link>
-                                        ) : (
-                                            <span className="text-white">{c.card}</span>
-                                        )}
-                                        <span className="text-blue-200/60"> · {c.cost}</span>
-                                    </span>
-                                </li>
+                                <CardChip key={c.card} name={c.card} />
                             ))}
                         </ul>
                     </section>

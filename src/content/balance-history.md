@@ -1411,3 +1411,235 @@ nothing breaks.
 - Strong in matchups where its range and survivability let it stay on board for multiple trades.
 - Can generate a lot of value if protected behind a tank or after a successful defense.
 - Less reliable when the opponent has heavy single-target DPS or easy air pressure.
+
+## Guards
+
+### Balance history
+- 2016-05-03 — Card added.
+- 2016-05-18 — Hitpoints and damage increased by 8%.
+- 2016-06-21 — Pushback when shields break removed.
+- 2017-12-12 — Hitpoints and damage increased by 5%, and hit speed increased to 1.1 sec from 1.2 sec.
+- 2020-06-02 — Deploy stagger added.
+- 2020-12-09 — Hit speed reduced to 1 sec from 1.1 sec, and hitpoints reduced by 26%.
+- 2024-01-03 — Shield hitpoints increased by 7%.
+- 2025-05-20 — Damage adjusted in the May update.
+
+### Counters
+- The Log
+- Poison
+- Bomb Tower
+- Valkyrie
+- Executioner
+- Wizard
+- Bowler
+- Magic Archer
+- Fire Spirit
+- Ice Spirit
+- Electro Spirit
+- Royal Ghost
+
+### Synergies
+- Prince
+- P.E.K.K.A.
+- Miner
+- Log bait decks
+- Splashyard shells
+- Elixir Collector
+- Defensive control decks
+
+### Strategy notes
+- Good at absorbing single-target attacks and forcing awkward spell timing.
+- Best when used to protect a win condition or punish a small number of high-value units.
+- Shields make them stronger into many chip trades than their raw stats suggest.
+- Weak to any reliable splash or shield-breaking spell.
+
+## Baby Dragon
+
+### Balance history
+- 2016-02-02 — Card added.
+- 2016-08-24 — Hit speed lowered from 1.8 sec to 1.6 sec.
+- 2017-02-13 — Range increased from 3 tiles to 3.5 tiles.
+- 2018-05-28 — Hitpoints reduced by 6.5%.
+- 2025-01-09 — No new balance change listed in the source summary beyond long-term meta shifts.
+
+### Counters
+- Inferno Dragon
+- Inferno Tower
+- Musketeer
+- Electro Wizard
+- Mega Minion
+- Hunter
+- Minion Horde
+- Air-targeting ranged support
+
+### Synergies
+- Tornado
+- Graveyard
+- Golem
+- Lava Hound
+- Balloon
+- Witch
+- Splashyard decks
+- Beatdown shells
+
+### Strategy notes
+- Splash air troop that controls swarms and supports tanks very well.
+- Very strong when paired with Tornado for grouped defenses.
+- Also useful in counterpushes because it survives many light responses.
+- Its damage is steady rather than explosive, so it likes longer exchanges.
+
+## Skeleton Army
+
+### Balance history
+- 2016-04-01 — Card released in soft launch.
+- 2016-02-19 — Skeleton hitpoints and damage increased by 11%.
+- 2016-05-18 — Skeleton hitpoints and damage increased by 5%.
+- 2016-07-04 — Skeleton count increased to 21 from 20.
+- 2016-10-20 — Elixir cost reduced to 3 from 4; number reduced to 16 from 21.
+- 2017-01-23 — Skeleton count reduced to 15 from 16.
+- 2017-04-19 — Skeleton count reduced to 14 from 15.
+- 2018-10-01 — Skeleton count increased to 15 from 14.
+
+### Counters
+- The Log
+- Arrows
+- Zap
+- Fire Spirits
+- Barbarian Barrel
+- Valkyrie
+- Bomber
+- Wizard
+- Bowler
+- Poison
+- Fireball
+
+### Synergies
+- Prince
+- Witch
+- Mega Knight
+- Log bait decks
+- Rage
+- Graveyard support
+- High-damage single-target tanks
+
+### Strategy notes
+- One of the strongest punish cards when the opponent lacks a splash answer.
+- Best used to melt tanks or create huge counterpush pressure.
+- Very fragile, so it gains value mostly through surprise and spell bait.
+- Loses hard to any cheap splash or small spell.
+
+## Dark Prince
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Inferno Tower
+- Mini P.E.K.K.A.
+- Valkyrie
+- P.E.K.K.A.
+- Swarm units with support
+- Buildings that pull and stall
+
+### Synergies
+- Prince
+- Battle Ram
+- Ram Rider
+- Miner
+- Zap
+- Log
+- Bridge spam shells
+
+### Strategy notes
+- Splash-support melee troop that excels at clearing swarms and charging lanes.
+- Strong in bridge spam because it threatens immediate counterpressure.
+- Shield helps it survive chip and smaller responses.
+- Needs support to deal with hard counters and heavy tanks.
+
+## Prince
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Skeleton Army
+- Guards
+- Tombstone
+- Mini P.E.K.K.A.
+- Inferno Tower
+- Inferno Dragon
+- Buildings plus swarm support
+
+### Synergies
+- Dark Prince
+- Bridge spam
+- Zap
+- The Log
+- Battle Ram
+- Rage
+- Heavy pressure decks
+
+### Strategy notes
+- High-damage charge troop that punishes weak ground defense.
+- Best when the opponent is low on cycle or elixir.
+- Can force huge defensive commitments for a relatively small investment.
+- Vulnerable to kiting, swarms, and buildings.
+
+## Balloon
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Inferno Tower
+- Inferno Dragon
+- Hunter
+- Musketeer
+- Mega Minion
+- Tornado
+- Ice Wizard with support
+- Air-targeting buildings or strong anti-air control
+
+### Synergies
+- Freeze
+- Lumberjack
+- Lava Hound
+- Miner
+- Giant
+- Rage
+- Bowler
+- Beatdown and control shells
+
+### Strategy notes
+- Win condition centered on death damage and tower hits.
+- Strongest when it reaches the tower with support or spell protection.
+- Can end games quickly if ignored.
+- Often needs tanking or distraction so anti-air cannot delete it cheaply.
+
+## Giant Skeleton
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Inferno Tower
+- Inferno Dragon
+- Mini P.E.K.K.A.
+- P.E.K.K.A.
+- Buildings plus ranged support
+- Fast kite and split pressure
+
+### Synergies
+- Balloon
+- Graveyard
+- Clone
+- Rage
+- Freeze
+- Bridge spam shells
+- Defensive control decks
+
+### Strategy notes
+- Tank with a massive death bomb that threatens board control.
+- Best when it forces the opponent to either commit heavily or give up space.
+- Death damage can swing entire pushes if units are grouped.
+- Slow movement makes it vulnerable to kiting and lane splitting.

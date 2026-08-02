@@ -8,6 +8,13 @@
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="manifest" href="/site.webmanifest">
 
+    <!-- Preload the display face so the swap window is short. It is only used
+         on h1/h2, so without this the heading would render in the system
+         fallback and visibly reflow once Lilita One arrives. 10.6 KB, and
+         crossorigin is required on font preloads even same-origin — without
+         it the browser fetches the file twice. -->
+    <link rel="preload" href="/fonts/lilita-one-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Fallback title for `npm run dev`, which does not run the prerender

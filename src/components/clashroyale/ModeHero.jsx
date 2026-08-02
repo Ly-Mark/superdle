@@ -67,7 +67,10 @@ export default function ModeHero({
                 {children}
             </div>
 
-            <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+            {/* font-display is Lilita One. It is a heavy display face, so the
+                tracking is opened slightly and the weight left at 400 — its
+                only weight. Bolding it would trigger a synthetic bold. */}
+            <h1 className="font-display text-3xl sm:text-4xl text-white tracking-wide">
                 {title}
             </h1>
 

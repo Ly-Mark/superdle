@@ -24,7 +24,32 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
 
 ## Open decisions
 
-- **Clash Royale assets as mode icons — blocks nothing, needs a source.**
+- **Mode icons — RESOLVED, waiting on files from owner.** Source is the
+  **official Supercell fankit**, which the card art already comes from, so the
+  provenance concern below is answered: fankit assets are licensed for exactly
+  this. Owner will produce them in Photoshop.
+  *Agreed concepts:* Classic = target · Description = scroll · Memory = book ·
+  Rush = crossed swords or the Prince's helm.
+  *Spec so they drop straight in:*
+  - `public/games/clashroyale/icons/mode-{classic,description,memory,rush}.png`
+    (matches the existing `icons/elixir.png`).
+  - **96×96**, square, transparent background. They render at 20–24 px, so
+    96 keeps them sharp at 3× DPR and still tiny on disk.
+  - Keep the artwork tight to the canvas — under ~10% padding. `CardArt`
+    exists because the card PNGs have wildly inconsistent internal padding
+    (see T23, Furnace); do not repeat that here.
+  - Silhouettes should read at 20 px. Detail that only works large will turn
+    to mud in the nav pill.
+  - Then: swap the `icon` field in `GAME_MODES` (`GameModeNav.jsx`) from emoji
+    to `<img>`. Keep them `aria-hidden`, since the text label sits beside them.
+  *Note on Nougat Extra Black* (also in the fankit): fine for artwork rendered
+  to an image in Photoshop. **Not** used as a webfont — self-hosting a `.woff2`
+  redistributes the font software to every visitor, which is a different act
+  from using it in a graphic and is not clearly covered. Lilita One (SIL OFL,
+  and Brawl Stars uses it) is the webfont instead.
+
+- ~~**Clash Royale assets as mode icons — blocks nothing, needs a source.**~~
+  *(superseded by the entry above; kept for the policy findings)*
   Owner asked whether `GameModeNav`'s emoji could be Supercell art instead.
   **The policy permits it.** Read 2026-08-02 at
   supercell.com/en/fan-content-policy — asset use "must be limited to
@@ -291,25 +316,29 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
       via `ModeIntro`, and dropping `ModeHero` in would give them two. If the
       chip row is wanted there, `ModeIntro` needs to hand over its heading
       first.
-  - [ ] **T24e · Typography.** *(brief task 5)*
-    **Approach decided:** system stack for body (0 KB, 0 requests), one
-    single-weight Latin-subset woff2 display face for `h1`/`h2` only
-    (~15–20 KB). Supersedes the earlier "self-hosted Inter" plan — Inter is
-    close enough to Segoe UI and SF Pro that it was paying 25–35 KB for a
-    difference most visitors would not see.
-    **Still open: which display face.** Lilita One is the standing
-    recommendation (SIL OFL, chunky, closest free stand-in for Supercell
-    Magic). Alternatives worth putting side by side: Bowlby One SC, Titan One,
-    Fredoka (semi-bold).
-    *Blocked on owner:* the font binaries should not be committed without the
-    owner seeing the licence that ships with them. Either drop the woff2 +
-    OFL.txt into `public/fonts/`, or confirm the download should happen here.
-    Requirements when it lands: self-hosted (no Google CDN during AdSense
-    review), `font-display: swap`, `size-adjust` if the fallback metrics
-    differ enough to shift layout, and a before/after CLS check.
-    `tailwind.config.js` already declares `fontFamily.display`, and nothing
-    references it yet — so this is an `@font-face` rule plus a class on two
-    headings.
+  - [x] **T24e · Typography.** *(brief task 5)* — **done**
+    Body: system stack (`system-ui, -apple-system, "Segoe UI", …`) in
+    `src/index.css`. 0 bytes, 0 requests.
+    Headings: **Lilita One**, self-hosted, `h1`/`h2` only via `font-display`.
+    **10.6 KB** — the Latin subset alone; latin-ext is deliberately not
+    shipped, since no copy on the site needs it and it would roughly double
+    the cost. Licence ships beside it at `/fonts/OFL.txt`, as the OFL requires.
+    - `font-display: swap`, not `optional`: the face is far heavier and
+      narrower than any system fallback, so `optional` would show the fallback
+      on a first visit and the real face only on the next — which reads as a
+      bug. The file is preloaded in `index.html` to keep the swap short.
+    - The preload carries `crossorigin` even though it is same-origin. Without
+      it the browser fetches the file twice.
+    - `/fonts/*` added to `public/_headers` with a one-year immutable cache.
+      Fonts live in `public/`, so they are not content-hashed by the build;
+      immutable is still right because the filename carries family, subset and
+      weight, so swapping the face means a new filename.
+    - Headings sit at weight 400 — Lilita One's only weight. Bolding would
+      trigger a synthetic bold.
+    - `fontFamily.body` removed from `tailwind.config.js`: it named Inter,
+      which is no longer shipped, so it would have resolved on almost nobody's
+      machine. `sans` still untouched.
+
   - [ ] **T24f · Guess tiles + motion.** Last: collides with T9, which
     rewrites `ClassicGame` wholesale. **Do not touch the higher/lower arrow
     direction logic** — `RushGame.jsx:91` documents why it looks inverted.

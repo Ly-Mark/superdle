@@ -6,7 +6,7 @@
 // T24d so it leads the document. This block opens with an <h2>.
 import { Link } from 'react-router-dom';
 
-const h2 = 'text-lg font-bold text-white mt-6 mb-2';
+const h2 = 'font-display text-xl text-white tracking-wide mt-6 mb-2';
 const linkCls = 'text-blue-300 hover:text-blue-200 underline';
 
 // Rendered with native <details>/<summary>. That matters: the answers stay in
@@ -40,7 +40,7 @@ export default function HomeContent() {
                 belongs; this block used to carry it from near the bottom of
                 the document, below the board, the rules and the legend. The
                 wording is unchanged — it is the phrase the page ranks on. */}
-            <h2 className="text-2xl sm:text-3xl font-bold text-white">
+            <h2 className="font-display text-2xl sm:text-3xl text-white tracking-wide">
                 Clashdle — Daily Clash Royale Card Guessing Game
             </h2>
 

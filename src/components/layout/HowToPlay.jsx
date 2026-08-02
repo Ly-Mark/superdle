@@ -21,7 +21,7 @@ export default function HowToPlay({ tagline, steps, defaultOpen = true }) {
     // crawlability guarantee in the header comment is unchanged.
     return (
         <section className="max-w-2xl mx-auto mt-8 text-left">
-            <h2 className="text-lg font-bold text-white">How to play</h2>
+            <h2 className="font-display text-xl text-white tracking-wide">How to play</h2>
             {tagline && (
                 <p className="text-sm text-blue-200/70 italic mt-1 mb-3">{tagline}</p>
             )}

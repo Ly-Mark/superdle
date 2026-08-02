@@ -77,7 +77,7 @@ export default function Panel({
             {hasHeader && (
                 <div className="flex items-baseline justify-between gap-3 mb-4">
                     {title && (
-                        <TitleTag className="text-blue-100 font-bold tracking-wide text-lg sm:text-xl">
+                        <TitleTag className="font-display text-blue-100 tracking-wide text-lg sm:text-xl">
                             {title}
                         </TitleTag>
                     )}

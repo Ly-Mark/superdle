@@ -93,20 +93,22 @@ export default {
         panel: '1rem',
       },
 
-      // Declared now so T24e only has to add the @font-face rules and swap a
-      // couple of classes. Nothing references these yet and no font file is
-      // loaded, so both stacks fall through to the system fallback — this is
-      // inert until T24e.
+      // Body text is NOT set here — it is the system stack, applied to <body>
+      // in `src/index.css`. `sans` is deliberately left alone so Tailwind's
+      // default keeps working for anything that opts in explicitly.
       //
-      // `sans` is NOT overridden here on purpose: doing so would repaint every
-      // page the moment this file is saved, which would break T24a's no-op
-      // guarantee. T24e makes that switch deliberately.
+      // Only `display` is a real webfont: Lilita One, self-hosted, headings
+      // only. Its fallbacks are the system stack rather than Inter, since no
+      // Inter file is shipped and naming it would just be a stack entry that
+      // resolves on almost nobody's machine.
       fontFamily: {
-        // Body. Inter with a Segoe UI fallback, per the owner's stack.
-        body: ['Inter', '"Segoe UI"', 'system-ui', 'Arial', 'sans-serif'],
-        // Headings. UNDECIDED — see T24e on the board. Lilita One is the
-        // placeholder, not a settled choice.
-        display: ['"Lilita One"', 'Inter', '"Segoe UI"', 'sans-serif'],
+        display: [
+          '"Lilita One"',
+          'system-ui',
+          '-apple-system',
+          '"Segoe UI"',
+          'sans-serif',
+        ],
       },
     },
   },

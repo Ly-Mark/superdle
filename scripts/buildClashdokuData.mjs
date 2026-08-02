@@ -41,17 +41,23 @@ const EXCLUDE = ['Mirror'];
 // ---------------------------------------------------------------------------
 
 // cards.json stores arena NAMES with no ordering, so the tiers have to come
-// from somewhere. This list is from general knowledge of the game and is NOT
-// verified against the live client - if it is wrong, the arena buckets are
-// quietly wrong and nothing will fail loudly. Verify before shipping.
+// from somewhere. Index == the in-game arena number, with Training Camp at 0.
+//
+// Confirmed by owner 2026-08-02. An earlier draft had PEKKA's Playhouse at 4
+// and Spell Valley/Builder's Workshop at 5/6; they are the other way round.
+// That is exactly the failure this list invites - a wrong order produces
+// plausible-looking buckets and nothing fails.
+//
+// Arenas 19-22 hold no cards today. They are listed so a future card that
+// unlocks there does not trip the "arena not in ARENA_ORDER" guard.
 const ARENA_ORDER = [
     'Training Camp',        // 0
     'Goblin Stadium',       // 1
     'Bone Pit',             // 2
     'Barbarian Bowl',       // 3
-    "PEKKA's Playhouse",    // 4
-    'Spell Valley',         // 5
-    "Builder's Workshop",   // 6
+    'Spell Valley',         // 4
+    "Builder's Workshop",   // 5
+    "PEKKA's Playhouse",    // 6
     'Royal Arena',          // 7
     'Frozen Peak',          // 8
     'Jungle Arena',         // 9
@@ -63,7 +69,11 @@ const ARENA_ORDER = [
     "Miner's Mine",         // 15
     "Executioner's Kitchen",// 16
     'Royal Crypt',          // 17
-    'Silent Sanctuary',     // 18
+    'Silent Sanctuary',     // 18 - the last arena that unlocks any card
+    'Dragon Spa',           // 19
+    'Boot Camp',            // 20
+    'Clash Fest',           // 21
+    'PANCAKES!',            // 22
 ];
 
 // ---------------------------------------------------------------------------
@@ -114,12 +124,17 @@ const HUMAN = [
     'Electro Giant', 'Rune Giant',
 ];
 
-// The royal court. Deliberately crosses Human - Royal Ghost is undead and
-// Royal Hogs are animals, so Royal is not a subset of Human.
+// Cards associated with nobility. Supplied by owner 2026-08-02 as a closed
+// list of 15 - it is not derivable from names, since Knight and Mega Knight
+// are in while several "Royal"-prefixed reads would be wrong to guess at.
+//
+// Deliberately crosses Human rather than nesting inside it: Royal Ghost is
+// undead and Royal Hogs are animals.
 const ROYAL = [
-    'Royal Giant', 'Royal Hogs', 'Royal Recruits', 'Royal Ghost',
-    'Royal Delivery', 'Prince', 'Princess', 'Little Prince', 'Dark Prince',
-    'Archer Queen', 'Skeleton King', 'Golden Knight',
+    'Knight', 'Mega Knight', 'Golden Knight', 'Royal Recruits', 'Royal Giant',
+    'Royal Delivery', 'Royal Hogs', 'Royal Ghost', 'Prince', 'Dark Prince',
+    'Princess', 'Little Prince', 'Archer Queen', 'Skeleton King',
+    'Spirit Empress',
 ];
 
 // ---------------------------------------------------------------------------

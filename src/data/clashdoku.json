@@ -39,7 +39,8 @@
     "arenaTier": 0,
     "targets": "ground",
     "families": [
-      "human"
+      "human",
+      "royal"
     ],
     "cost": 3,
     "tags": []
@@ -126,7 +127,7 @@
     "type": "Troop",
     "year": 2020,
     "arena": "Spell Valley",
-    "arenaTier": 5,
+    "arenaTier": 4,
     "targets": "air",
     "families": [],
     "cost": 1,
@@ -139,7 +140,7 @@
     "type": "Troop",
     "year": 2020,
     "arena": "Spell Valley",
-    "arenaTier": 5,
+    "arenaTier": 4,
     "targets": "air",
     "families": [
       "undead"
@@ -156,7 +157,7 @@
     "type": "Troop",
     "year": 2016,
     "arena": "Spell Valley",
-    "arenaTier": 5,
+    "arenaTier": 4,
     "targets": "air",
     "families": [],
     "cost": 1,
@@ -169,7 +170,7 @@
     "type": "Troop",
     "year": 2017,
     "arena": "Builder's Workshop",
-    "arenaTier": 6,
+    "arenaTier": 5,
     "targets": "air",
     "families": [
       "undead"
@@ -359,7 +360,7 @@
     "type": "Spell",
     "year": 2016,
     "arena": "Builder's Workshop",
-    "arenaTier": 6,
+    "arenaTier": 5,
     "targets": "air",
     "families": [],
     "cost": 2,
@@ -420,7 +421,7 @@
     "type": "Building",
     "year": 2016,
     "arena": "Builder's Workshop",
-    "arenaTier": 6,
+    "arenaTier": 5,
     "targets": "ground",
     "families": [],
     "cost": 4,
@@ -543,7 +544,7 @@
     "type": "Troop",
     "year": 2016,
     "arena": "Spell Valley",
-    "arenaTier": 5,
+    "arenaTier": 4,
     "targets": "air",
     "families": [
       "human"
@@ -560,7 +561,7 @@
     "type": "Troop",
     "year": 2017,
     "arena": "Builder's Workshop",
-    "arenaTier": 6,
+    "arenaTier": 5,
     "targets": "air",
     "families": [],
     "cost": 4,
@@ -575,7 +576,7 @@
     "type": "Troop",
     "year": 2016,
     "arena": "Builder's Workshop",
-    "arenaTier": 6,
+    "arenaTier": 5,
     "targets": "buildings",
     "families": [
       "human"
@@ -770,7 +771,7 @@
     "type": "Spell",
     "year": 2016,
     "arena": "Builder's Workshop",
-    "arenaTier": 6,
+    "arenaTier": 5,
     "targets": "air",
     "families": [],
     "cost": 6,
@@ -851,7 +852,7 @@
     "type": "Building",
     "year": 2016,
     "arena": "Spell Valley",
-    "arenaTier": 5,
+    "arenaTier": 4,
     "targets": "ground",
     "families": [],
     "cost": 4,
@@ -866,7 +867,7 @@
     "type": "Building",
     "year": 2016,
     "arena": "Spell Valley",
-    "arenaTier": 5,
+    "arenaTier": 4,
     "targets": "air",
     "families": [],
     "cost": 5,
@@ -907,7 +908,7 @@
     "type": "Troop",
     "year": 2016,
     "arena": "PEKKA's Playhouse",
-    "arenaTier": 4,
+    "arenaTier": 6,
     "targets": "ground",
     "families": [
       "undead"
@@ -922,7 +923,7 @@
     "type": "Troop",
     "year": 2016,
     "arena": "PEKKA's Playhouse",
-    "arenaTier": 4,
+    "arenaTier": 6,
     "targets": "air",
     "families": [],
     "cost": 4,
@@ -938,7 +939,7 @@
     "type": "Troop",
     "year": 2016,
     "arena": "PEKKA's Playhouse",
-    "arenaTier": 4,
+    "arenaTier": 6,
     "targets": "ground",
     "families": [
       "undead"
@@ -953,7 +954,7 @@
     "type": "Troop",
     "year": 2016,
     "arena": "PEKKA's Playhouse",
-    "arenaTier": 4,
+    "arenaTier": 6,
     "targets": "air",
     "families": [
       "undead",
@@ -972,7 +973,7 @@
     "type": "Troop",
     "year": 2016,
     "arena": "PEKKA's Playhouse",
-    "arenaTier": 4,
+    "arenaTier": 6,
     "targets": "ground",
     "families": [],
     "cost": 7,
@@ -1213,7 +1214,7 @@
     "type": "Spell",
     "year": 2016,
     "arena": "PEKKA's Playhouse",
-    "arenaTier": 4,
+    "arenaTier": 6,
     "targets": "none",
     "families": [
       "goblin"
@@ -1398,7 +1399,8 @@
     "arenaTier": 11,
     "targets": "ground",
     "families": [
-      "human"
+      "human",
+      "royal"
     ],
     "cost": 7,
     "tags": [
@@ -1642,7 +1644,9 @@
     "arena": "Miner's Mine",
     "arenaTier": 15,
     "targets": "air",
-    "families": [],
+    "families": [
+      "royal"
+    ],
     "cost": 3,
     "tags": []
   },
@@ -1655,7 +1659,9 @@
     "arena": "Miner's Mine",
     "arenaTier": 15,
     "targets": "air",
-    "families": [],
+    "families": [
+      "royal"
+    ],
     "cost": 6,
     "tags": [
       "flying"

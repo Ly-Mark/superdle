@@ -29,13 +29,12 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
   touching the artwork.** Crossed swords would fill a square better if it is
   ever revisited.
 
-- **T36 · Review the hand-authored lists in `buildClashdokuData.mjs`.**
-  The data file generates and the pool is healthy, but four things in it are
-  my judgement rather than fact and none has had an owner pass: the
-  **arena unlock order** (wrong order = silently wrong buckets), the
-  **`SPLASH` list** (33 cards, drafted last, least confident), the
-  **`WINCON` list** (Three Musketeers and Wall Breakers are arguable), and
-  **whether Spirit Empress is `human`, `royal`, both or neither**.
+- **T36 · Review the two remaining hand lists in `buildClashdokuData.mjs`.**
+  Arena order and the nobility list are now confirmed. Still unreviewed:
+  **`SPLASH`** (33 cards, drafted last, least confident in the file) and
+  **`WINCON`** (Three Musketeers and Wall Breakers arguable either way).
+  Minor: **is Spirit Empress `human`?** She is `royal`; a spirit arguably is
+  not a person. Currently out.
 
 - **T31 · Guess bar scrolls off on Classic — approach undecided.** The board
   grows past a screenful, so reading earlier guesses takes the input away with
@@ -72,10 +71,13 @@ card reuse, daily reset.
 - **Both Spirit Empress variants may be used in the same grid.** They are
   different deployments with distinct names; blocking it would mean a
   special-case rule for one card.
-- **`Royal family` ships** (12 cards) — Royal Giant/Hogs/Recruits/Ghost/
-  Delivery, Prince, Princess, Little Prince, Dark Prince, Archer Queen,
-  Skeleton King, Golden Knight. Deliberately crosses `Human`: Royal Ghost is
-  undead and Royal Hogs are animals, so it is not a subset of it.
+- **`Royal family` ships — 15 cards, supplied by owner as a closed list.**
+  Knight, Mega Knight, Golden Knight, Royal Recruits, Royal Giant, Royal
+  Delivery, Royal Hogs, Royal Ghost, Prince, Dark Prince, Princess, Little
+  Prince, Archer Queen, Skeleton King, Spirit Empress.
+  **Not derivable from names** — Knight and Mega Knight are in and carry no
+  "Royal" prefix, so this list has to be maintained by hand.
+  Deliberately crosses `Human`: Royal Ghost is undead, Royal Hogs are animals.
 - **`Flying` is a plain boolean, not a partition.** The split is 13/75 and
   `Grounded` would be a strict subset of `Troop` — see T36. Splash may still be
   worth partitioning once its list is reviewed.
@@ -91,26 +93,32 @@ load-bearing for volume.** They are there for texture.
 
 - [~] **T36 · Build the ClashDoku data file** — *v1 generated 2026-08-02*
   `scripts/buildClashdokuData.mjs` → `src/data/clashdoku.json`, **121 entries,
-  29 categories, 274,088 valid grids at MIN=4.** Build passes; lint unchanged
+  29 categories, 275,162 valid grids at MIN=4.** Build passes; lint unchanged
   at 0 errors / 7 warnings.
   It is a **generator, not a hand-edited file**, so the card list cannot drift
   from `cards.json` and the whole thing can be re-derived when a card ships.
   It refuses to write if a hand-list names a card that does not exist, if an
   arena is missing from the order map, or if a card has a non-numeric cost
   with no split rule.
-  **Not finished — these need a review pass before it ships:**
-  - **The arena unlock order is unverified.** It is written from general
-    knowledge in `ARENA_ORDER`. Wrong order = quietly wrong buckets, and
-    nothing fails loudly.
+  **Arena order confirmed by owner 2026-08-02, and it was wrong.** The draft
+  had `PEKKA's Playhouse` at 4 with Spell Valley and Builder's Workshop at 5/6;
+  the true order is Spell Valley 4, Builder's Workshop 5, PEKKA's Playhouse 6.
+  `arenaTier` now equals the in-game arena number, Training Camp at 0.
+  Independently confirmed at the top end: arena 18 in the generated data is
+  exactly Goblinstein, Little Prince and Monk, which is what owner said it
+  should be. Arenas 19–22 (Dragon Spa, Boot Camp, Clash Fest, PANCAKES!) hold
+  no cards but are listed so a future card cannot trip the guard.
+
+  **Not finished — still my judgement, not fact:**
   - **`SPLASH` (33 cards) has had no review at all** — drafted last, the least
     confident list in the file.
   - **`WINCON` is the most contested** — Three Musketeers and Wall Breakers are
     arguable either way.
-  - **Spirit Empress has no families.** She is in neither `human` nor `royal`.
-    "Empress" suggests royal at least; nobody has called it.
+  - **Spirit Empress is `royal` but not `human`.** The nobility list settled
+    royal; nobody has said whether a spirit counts as human. Currently out.
   - *Note on counts:* Spirit Empress is two entries, so she double-counts in
-    every category she matches (Legendary reads 22, Troop 89). Correct for the
-    grid, slightly inflated as a headcount.
+    every category she matches (Legendary reads 22, Troop 89, Royal 16 rows
+    for 15 cards). Correct for the grid, slightly inflated as a headcount.
 
   *Original scope for this task:*
   `src/data/clashdoku.json`. Borrows `card`/`rarity`/`cost`/`type`/`year`/

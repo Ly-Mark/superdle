@@ -2574,559 +2574,822 @@ Only fill in cards that are getting a page. There's no value in doing all 121.
 - Spells that remove buildings or backline DPS make him much more threatening.
 - He is less impressive when the defender can kite, separate, and burn him down from range.
 
-
-
-<!-- ===================================================================
-     Skeletons for the 54 cards that do not have a page yet.
-     Fill in any section and that card gets a page on the next build.
-     A card needs only ONE bullet anywhere to qualify — you do not have to
-     complete all four. Delete the ones you are not going to write.
-     =================================================================== -->
-
-<!-- ---------- Common ---------- -->
-
-## Archers
+## The Log
 
 ### Balance history
+- Need source verification.
 
 ### Counters
+- Goblin Barrel.
+- Princess.
+- Dart Goblin.
+- Skeleton Army.
+- Goblin Gang.
+- Firecracker.
+- Ground swarms.
+- Bridge bait pressure.
 
 ### Synergies
+- Miner.
+- Hog Rider.
+- X-Bow.
+- Princess.
+- Rocket control shells.
+- Cycle decks.
+- Any deck that wants cheap knockback and ground clear.
 
 ### Strategy notes
-
-## Bats
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Berserker
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Electro Spirit
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Elite Barbarians
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Firecracker
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Goblin Gang
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Ice Spirit
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Rascals
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Royal Delivery
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Royal Recruits
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Skeleton Barrel
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Skeleton Dragons
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Snowball
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-<!-- ---------- Rare ---------- -->
-
-## Barbarian Hut
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Earthquake
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Elixir Collector
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Elixir Golem
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Ice Golem
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Mega Minion
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Rocket
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Suspicious Bush
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Tombstone
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Valkyrie
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Wizard
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Zappies
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-<!-- ---------- Legendary ---------- -->
-
-## Bandit
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Electro Wizard
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Fisherman
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Goblin Machine
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Graveyard
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Ice Wizard
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Lava Hound
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Lumberjack
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Magic Archer
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Mega Knight
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
+- The Log is one of the safest low-cost spells in the game.
+- It gives reliable chip, knockback, and cleanup for only 2 elixir.
+- It is strongest in fast decks that need constant tempo.
+- It does not hit air, so decks using it still need solid anti-air answers.
 
 ## Miner
 
 ### Balance history
+- Need source verification.
 
 ### Counters
+- Skeleton Army.
+- Goblin Gang.
+- Guards.
+- Tombstone support.
+- Valkyrie.
+- Mini P.E.K.K.A. on defense after prediction.
+- Tornado.
+- King Tower activation setups.
 
 ### Synergies
+- Poison.
+- Wall Breakers.
+- Goblin Drill.
+- Bats.
+- Spear Goblins.
+- Balloon.
+- Control and chip decks.
+- Lava Hound.
 
 ### Strategy notes
-
-## Mother Witch
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Night Witch
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Phoenix
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
+- Miner is a flexible win condition and support tank.
+- He is strongest when used unpredictably and paired with chip pressure.
+- Good Miner play is mostly about placement variety and matchup reading.
+- He gets less value if the defender always knows where he is going.
 
 ## Princess
 
 ### Balance history
+- Need source verification.
 
 ### Counters
+- The Log.
+- Barbarian Barrel.
+- Arrows.
+- Fireball.
+- Miner.
+- Royal Delivery.
+- Fast bridge units placed on top.
 
 ### Synergies
+- Goblin Barrel.
+- Rocket.
+- Inferno Tower.
+- Tornado.
+- Log bait shells.
+- Defensive chip decks.
 
 ### Strategy notes
+- Princess creates constant long-range chip and forces awkward answers.
+- She is strongest when your opponent’s small spell is already pressured.
+- Bridge Princess can steal value fast, but careless placements are easy to punish.
+- She works best in decks that keep forcing spell decisions.
 
-## Ram Rider
+## Ice Wizard
 
 ### Balance history
+- 2016-02-29 — Card added.
+- Need source verification for the detailed full balance list.
 
 ### Counters
+- Barbarian Barrel.
+- Miner.
+- Mini tanks.
+- Lightning.
+- Poison over time with support.
+- Fast melee pressure dropped on top.
 
 ### Synergies
+- Tornado.
+- Tombstone.
+- Graveyard.
+- Skeletons.
+- Defensive control decks.
+- Splash support shells.
 
 ### Strategy notes
+- Ice Wizard is a defensive control card, not a burst damage troop.
+- His slow effect creates value over time and makes other defenses much better.
+- He is strongest when paired with Tornado or stall buildings.
+- He struggles when isolated against direct pressure or heavy spell removal.
+
+## Electro Wizard
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Lightning.
+- Fireball with tower help.
+- Poison over time.
+- Mini tanks on top.
+- Long-range support that outranges or trades well.
+- Fast bridge pressure when unsupported.
+
+### Synergies
+- P.E.K.K.A.
+- Balloon defense shells.
+- Bridge spam.
+- Tornado.
+- Miner control decks.
+- Any deck that needs reset utility.
+
+### Strategy notes
+- Electro Wizard is one of the most versatile support legendaries.
+- His spawn stun and reset effect make him excellent into Inferno cards and Sparky.
+- He fits into many archetypes because he covers both defense and counterpush.
+- He is weaker when forced into bad placements or spell value.
 
 ## Royal Ghost
 
 ### Balance history
+- Need source verification.
 
 ### Counters
+- Valkyrie.
+- Dark Prince.
+- Mini P.E.K.K.A.
+- Skeleton Army.
+- Tombstone.
+- Splash troops once revealed.
+- Buildings that stall lane pressure.
 
 ### Synergies
+- Bridge spam shells.
+- P.E.K.K.A.
+- Bandit.
+- Battle Ram.
+- Ram Rider.
+- Poison.
+- Pressure decks that force awkward timing.
 
 ### Strategy notes
+- Royal Ghost is a cheap pressure card that hides value in the threat of invisibility.
+- He is strongest in bridge spam and lane-control decks.
+- Splash damage makes him useful against swarms and support troops.
+- He loses value if the opponent can reveal and stop him efficiently every cycle.
+
+## Bandit
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Skeleton Army.
+- Guards.
+- Valkyrie.
+- Mini P.E.K.K.A.
+- Bowler.
+- Tornado.
+- Buildings that interrupt the dash.
+
+### Synergies
+- Royal Ghost.
+- Battle Ram.
+- P.E.K.K.A.
+- Ram Rider.
+- Bridge spam shells.
+- Poison.
+- Electro Wizard.
+
+### Strategy notes
+- Bandit is all about dash pressure and forcing quick reactions.
+- She is strongest when paired with other threats at the bridge.
+- Her dash can punish hesitation very hard.
+- She becomes much less efficient when the defender has clean swarm timing or sturdy melee answers.
+
+## Fisherman
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Swarms.
+- Air troops.
+- Skeleton Army.
+- Goblin Gang.
+- Bats.
+- Fast pressure that punishes missed pulls.
+
+### Synergies
+- Hunter.
+- Royal Giant.
+- Electro Giant.
+- Mother Witch.
+- Control shells that rely on pull mechanics.
+- King Tower activation plans.
+
+### Strategy notes
+- Fisherman is a positioning card more than a raw damage card.
+- He is strongest when his hook creates tower activations or isolates support troops.
+- His value depends heavily on timing and placement.
+- He is less effective when the opponent spreads pressure or attacks through the air.
+
+## Magic Archer
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Fireball.
+- Poison.
+- Arrows with support.
+- Miner.
+- Royal Delivery.
+- Fast units dropped directly on top.
+
+### Synergies
+- Tornado.
+- Bridge spam shells.
+- Miner control.
+- Wall Breakers.
+- Geometry-based chip decks.
+- Pressure decks that force linear defenses.
+
+### Strategy notes
+- Magic Archer gets his biggest value from piercing lineups and tower geometry.
+- He can create chip in matchups where other support troops would not.
+- Tornado makes his most explosive plays possible.
+- He is fragile, so bad placements lose value quickly.
+
+## Mother Witch
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Lightning.
+- Fireball with support.
+- Mini tanks on top.
+- Long-range support.
+- Fast bridge pressure before she can convert value.
+
+### Synergies
+- Fisherman.
+- Royal Hogs.
+- Graveyard punish decks.
+- Splash control shells.
+- Anti-swarm matchups.
+
+### Strategy notes
+- Mother Witch is highly matchup-dependent.
+- She can completely flip swarm-heavy games by converting enemy troops into pigs.
+- She is strongest when the opponent relies on Skeletons, Bats, or other spam bodies.
+- She is much weaker in matchups with few convertible targets.
+
+## Lumberjack
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Skeleton Army.
+- Guards.
+- Tombstone.
+- Valkyrie.
+- Mini P.E.K.K.A.
+- Bowler.
+- Kiting plus tower support.
+
+### Synergies
+- Balloon.
+- Freeze.
+- Rage-based pressure.
+- Bridge spam shells.
+- Fast beatdown pushes.
+- LumberLoon archetypes.
+
+### Strategy notes
+- Lumberjack is a high-tempo melee threat with excellent burst damage.
+- He is strongest when his Rage drop amplifies an already-dangerous push.
+- He can also defend efficiently and turn straight into counterpressure.
+- He loses value if kited or neutralized before the Rage matters.
+
+## Inferno Dragon
+
+### Balance history
+- 2016-09-29 — Card added.
+- 2016-12-15 — Hitpoints increased by 5% and re-targeting time decreased by 0.4 seconds.
+- 2017-06-12 — Hitpoints increased by 7% and re-targeting speed decreased by 0.2 seconds.
+- 2018-08-06 — Range reduced to 3.5 from 4 and knockback interaction enabled.
+- 2018-12-12 — Re-targeting time increased.
+- Need source verification for the full detailed list.
+
+### Counters
+- Zap.
+- Electro Wizard.
+- Lightning.
+- Minion Horde.
+- Minions.
+- Bats.
+- Ice Spirit.
+- Swarms that force retargeting.
+- Inferno Tower.
+
+### Synergies
+- Giant.
+- Bowler.
+- Miner.
+- Lava Hound.
+- Balloon.
+- Mega Minion.
+- Tornado.
+- Tanky support pushes.
+
+### Strategy notes
+- Inferno Dragon is strongest when it keeps a lock long enough to ramp damage.
+- It is one of the best anti-tank legendaries in the game.
+- Reset effects and swarms are still the cleanest answers.
+- It fits best in slower pushes where support can protect it.
+
+## Graveyard
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Poison.
+- Valkyrie.
+- Baby Dragon.
+- Skeleton Army.
+- Bomb Tower.
+- Splash units with tower support.
+- Fast cleanup troops dropped directly in the graveyard zone.
+
+### Synergies
+- Ice Wizard.
+- Poison.
+- Knight.
+- Baby Dragon.
+- Bowler.
+- Tombstone.
+- Freeze.
+- Splashyard control shells.
+
+### Strategy notes
+- Graveyard is a spell win condition that punishes weak defensive timing.
+- It is strongest when paired with a tank or poison-style area denial.
+- The defender usually needs either splash, swarm, or both.
+- Bad cycle management against Graveyard often costs a tower.
+
+## Lava Hound
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Inferno Dragon.
+- Phoenix.
+- Mega Minion.
+- Minions.
+- Musketeer.
+- Hunter.
+- Air-targeting support backed by buildings.
+- Strong anti-air plus opposite-lane punish.
+
+### Synergies
+- Balloon.
+- Inferno Dragon.
+- Mega Minion.
+- Miner.
+- Tombstone.
+- Arrows.
+- Fireball.
+- Air beatdown shells.
+
+### Strategy notes
+- Lava Hound is the classic air tank win condition.
+- Most of its damage comes from support troops and Lava Pups, not the Hound itself.
+- It is strongest when the defender’s anti-air is pressured or out of cycle.
+- Good Lava Hound play is about building one protected air push and managing opposite-lane damage.
+
+## Night Witch
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Poison.
+- Valkyrie.
+- Wizard.
+- Executioner.
+- Baby Dragon.
+- Firecracker.
+- Splash units that also clear spawned Bats.
+
+### Synergies
+- Golem.
+- Elixir Golem.
+- Clone.
+- Rage.
+- Beatdown pushes.
+- Tank-centered counterpush decks.
+
+### Strategy notes
+- Night Witch is a support card that snowballs if left alive.
+- Her Bat generation creates pressure that scales over time.
+- She is strongest behind tanks where the defender cannot cleanly splash everything.
+- She struggles most against reliable splash and poison control.
+
+## Ram Rider
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Skeleton Army.
+- Guards.
+- Tombstone.
+- Inferno Tower.
+- Mini P.E.K.K.A.
+- Fisherman.
+- Swarms supported by tower fire.
+- Building-centered defenses.
+
+### Synergies
+- Snowball.
+- Royal Ghost.
+- Bandit.
+- P.E.K.K.A.
+- Bridge spam shells.
+- Lightning.
+- Electro Wizard.
+
+### Strategy notes
+- Ram Rider combines bridge pressure with snare control.
+- She is strongest when the defender has to answer multiple lane threats at once.
+- Her snare gives her defensive value too, especially into charging or fast units.
+- She loses efficiency when the defender has buildings ready every cycle.
 
 ## Sparky
 
 ### Balance history
+- Need source verification.
 
 ### Counters
+- Electro Wizard.
+- Zap.
+- Lightning.
+- Rocket.
+- Skeleton Army.
+- Guards.
+- Minions.
+- Inferno Dragon.
+- Evasive pressure that forces bad shots.
 
 ### Synergies
+- Goblin Giant.
+- Giant.
+- Rage.
+- Tornado.
+- Minions.
+- Beatdown shells.
+- Counterpush-heavy decks.
 
 ### Strategy notes
+- Sparky is one of the most explosive punish cards in the game.
+- She can erase tanks and support troops in one shot if protected.
+- Reset cards are always the first thing to track in the matchup.
+- She is at her best when the opponent cannot afford to hold stun every cycle.
+
+## Mega Knight
+
+### Balance history
+- Need source verification.
+
+### Counters
+- P.E.K.K.A.
+- Inferno Tower.
+- Inferno Dragon.
+- Mini P.E.K.K.A.
+- Valkyrie with support.
+- Knight plus kiting.
+- Buildings and high single-target DPS.
+
+### Synergies
+- Miner.
+- Wall Breakers.
+- Bandit.
+- Bats.
+- Zap.
+- Bridge spam shells.
+- Counterpush pressure decks.
+
+### Strategy notes
+- Mega Knight is a defensive punish tank with huge spawn impact.
+- He is strongest against clumped ground pushes and medium-health bridge pressure.
+- Most of his best value starts on defense and turns into a counterpush.
+- He is much less scary when isolated into buildings or tank killers.
+
+## Phoenix
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Electro Wizard.
+- Musketeer.
+- Hunter.
+- Minions with support.
+- Arrows or spells timed for the egg follow-up.
+- Strong ranged anti-air that can also deny the respawn.
+
+### Synergies
+- Lava Hound.
+- Balloon.
+- Miner.
+- Beatdown shells.
+- Air control decks.
+- Tornado support lines.
+
+### Strategy notes
+- Phoenix is a sticky air support card because of the egg mechanic.
+- It creates value when the opponent cannot cleanly remove both body and egg.
+- It fits well into both beatdown and control decks.
+- Its real strength comes from forcing awkward second responses.
 
 ## Spirit Empress
 
 ### Balance history
+- Need source verification.
 
 ### Counters
+- High DPS single-target troops.
+- Mini tanks on top.
+- Buildings that force bad pathing.
+- Fast pressure before full value develops.
 
 ### Synergies
+- Support-heavy decks.
+- Mid-cost control shells.
+- Tempo pushes that want flexible offense and defense.
 
 ### Strategy notes
+- Spirit Empress is a high-impact legendary with flexible board presence.
+- She gets the most value when protected long enough to influence multiple trades.
+- Her effectiveness depends heavily on matchup and deployment timing.
+- She is more threatening in structured pushes than in scramble defenses.
 
-## The Log
+## Goblin Machine
 
 ### Balance history
+- 2024-06-16 — Card added.
+- Need source verification for the detailed full balance list.
 
 ### Counters
+- P.E.K.K.A.
+- Mighty Miner.
+- Elite Barbarians.
+- Prince.
+- Mini P.E.K.K.A.
+- Monk.
+- Void with support.
+- Fisherman King Tower activation setup.
+- High damage melee units placed to avoid rocket overvalue.
 
 ### Synergies
+- Goblin Drill.
+- Goblin Curse.
+- Miner.
+- Pressure decks that force defenders into the rocket lane.
+- Goblin-focused control shells.
 
 ### Strategy notes
-
-<!-- ---------- Champion ---------- -->
-
-## Archer Queen
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Boss Bandit
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Goblinstein
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
+- Goblin Machine is a hybrid threat because its body and rocket create different defensive problems.
+- It is strongest when the defender must answer both the melee unit and rocket pressure at once.
+- The rocket makes many medium-range defenders awkward or outright unsafe.
+- It loses value when high DPS melee counters can get on top of it cleanly.
 
 ## Golden Knight
 
 ### Balance history
+- 2021-10-26 — Card added.
+- Need source verification for the detailed full balance list.
 
 ### Counters
+- Mini P.E.K.K.A.
+- Valkyrie.
+- Bowler.
+- Monk.
+- Mighty Miner.
+- Minions.
+- Bats.
+- Ground distractions that break dash value.
 
 ### Synergies
+- Hog Rider.
+- Battle Ram.
+- Elite Barbarians.
+- Bandit.
+- Lumberjack.
+- Tornado.
+- Bridge spam shells.
 
 ### Strategy notes
-
-## Little Prince
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Mighty Miner
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
-
-## Monk
-
-### Balance history
-
-### Counters
-
-### Synergies
-
-### Strategy notes
+- Golden Knight is a dash-based pressure champion.
+- He is strongest when enemies are clustered and Tornado can help group them.
+- His ability can swing fights by chaining through multiple units.
+- He is weaker against isolated mini tanks and air units.
 
 ## Skeleton King
 
 ### Balance history
+- 2021-10-26 — Card added.
+- Need source verification for the detailed full balance list.
 
 ### Counters
+- Poison.
+- Valkyrie.
+- Baby Dragon.
+- Executioner.
+- Splash troops.
+- Graveyard denial cards.
+- Effects that prevent large soul generation.
 
 ### Synergies
+- Graveyard.
+- Skeleton Army.
+- Tombstone.
+- Goblin Gang.
+- Control and bait decks.
+- Swarm-heavy counterpush shells.
 
 ### Strategy notes
+- Skeleton King is a soul-collecting control champion.
+- He is strongest in swarm-heavy decks where his ability can create a huge board swing.
+- He thrives when the opponent keeps giving him unit deaths near him.
+- He is much weaker if the opponent keeps the board clean.
+
+## Archer Queen
+
+### Balance history
+- 2021-10-26 — Card added.
+- Need source verification for the detailed full balance list.
+
+### Counters
+- Lightning.
+- Fireball plus support.
+- Miner pressure.
+- Fast bridge units.
+- Mini tanks that force her away from value positions.
+- Spell cycling when her ability is unavailable.
+
+### Synergies
+- X-Bow.
+- Hog Rider.
+- Miner.
+- Royal Hogs.
+- Tesla control.
+- Cycle and siege decks.
+
+### Strategy notes
+- Archer Queen is one of the strongest ranged DPS champions.
+- Her invisibility ability makes her incredibly hard to punish cleanly.
+- She is excellent in control and siege decks.
+- She loses value when the opponent can force her ability awkwardly or spell her while it is down.
+
+## Mighty Miner
+
+### Balance history
+- 2022-08-01 — Card added.
+- Need source verification for the detailed full balance list.
+
+### Counters
+- Air troops.
+- Swarms.
+- Kiting.
+- Bowler.
+- Executioner.
+- Monk timing.
+- Heavy distraction plus ranged support.
+
+### Synergies
+- Miner.
+- Wall Breakers.
+- Cycle decks.
+- Control decks.
+- Bridge spam pressure.
+- Lane-switching pressure shells.
+
+### Strategy notes
+- Mighty Miner is a flexible tank killer with lane-switch potential.
+- His bomb-switch ability makes him hard to pin down.
+- He works especially well in decks that want a strong defensive champion that can also punish.
+- He is strongest when the opponent cannot predict which lane he will pressure.
+
+## Monk
+
+### Balance history
+- 2022-10-17 — Card added.
+- Need source verification for the detailed full balance list.
+
+### Counters
+- Swarms when ability is not ready.
+- Tank pressure supported by ground distractions.
+- Poorly timed spell-bait.
+- Units that can outlast his protection window.
+
+### Synergies
+- Royal Hogs.
+- Graveyard.
+- Control shells.
+- Spell-heavy defense decks.
+- Support troops that benefit from projectile reflection.
+
+### Strategy notes
+- Monk is a defense-oriented champion with a unique projectile reflection ability.
+- He is strongest against spell and projectile-heavy decks.
+- His ability can completely flip otherwise bad interactions.
+- He is less impressive when opponents play around his protection window.
+
+## Little Prince
+
+### Balance history
+- 2023-08-07 — Card added.
+- Need source verification for the detailed full balance list.
+
+### Counters
+- Lightning.
+- Poison.
+- Fast bridge pressure.
+- Tanks that absorb his shots while reaching him.
+- Overcommitting into his guardian support.
+
+### Synergies
+- Miner.
+- Wall Breakers.
+- Cycle decks.
+- Control shells.
+- Fast counterpush decks.
+
+### Strategy notes
+- Little Prince is a low-cost ranged champion with strong support value.
+- He works best when the guardian ability creates extra time and space.
+- He is harder to fit into slower decks than the other champions.
+- He becomes much better when opponents cannot quickly remove both him and his support.
+
+## Boss Bandit
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Swarms that force awkward dashes.
+- Mini tanks.
+- Buildings.
+- Well-timed kiting.
+- Splash units that stop follow-up pressure.
+
+### Synergies
+- Bridge spam.
+- Fast pressure decks.
+- Dash-based offensive shells.
+- Support cards that force split responses.
+
+### Strategy notes
+- Boss Bandit is a burst pressure champion with strong dash mechanics.
+- She is strongest when used to force repeated awkward reactions at the bridge.
+- Her ability gives her excellent repositioning and comeback pressure.
+- She is much weaker if the opponent keeps her from connecting cleanly.
+
+## Goblinstein
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Strong single-target DPS.
+- Buildings.
+- Spell support that clears the machine or support target.
+- Pressure that forces awkward deployment.
+- Units that break the value of the paired attack pattern.
+
+### Synergies
+- Goblin-focused control decks.
+- Pressure decks.
+- Split-lane setups.
+- Support cards that protect the machine and body simultaneously.
+
+### Strategy notes
+- Goblinstein is a hybrid champion with layered pressure.
+- He creates trouble because the opponent often has to answer more than one threat at once.
+- He is strongest when the enemy defense is forced to split attention.
+- He is much weaker when his components are handled separately and efficiently.

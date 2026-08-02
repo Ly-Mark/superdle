@@ -104,16 +104,30 @@ least 484 grids, so none is dead weight.
     axes at once: `targets: "Other"` and `cost: "Other"`.
   - **`Spirit Empress` (`cost: "3 / 6"`) belongs to both `Cost 3` and `Cost 5+`**
     — settled by owner. Cost is therefore *not* a strict partition; the
-    predicate splits on `/` and tests every value. It is the only such card
-    once Mirror is excluded, but write the predicate generally so a future
-    dual-cost card needs no change.
+    predicate splits on `/` and tests every value. **It is the only dual-cost
+    card** once Mirror is excluded — 63 cards contain a `/` somewhere, but all
+    the others are multi-targeting (`Air / Ground`) or two-unit cards with
+    split speed/HP (Rascals, Guards, Dark Prince, Battle Ram, Goblinstein,
+    Little Prince). Write the predicate generally anyway.
+    **Rejected: giving it two entries** (one ground at 3, one flying at 5+).
+    Two rows sharing a `card` name break the search modal (two identical
+    options, indistinguishable), break card-art keying, and make the no-reuse
+    rule ambiguous. Membership in both buckets already produces identical grid
+    behaviour, and correctly still allows only one use per grid.
+    *Unknown:* what the `3 / 6` represents mechanically. Nobody has confirmed
+    it. It does not change the grid logic either way, but it may change what
+    the chip should be labelled.
   - **Year buckets must be disjoint.** The brief proposes `2016 / 2018+ /
     2021+`, but `2021+` is a strict subset of `2018+` — a grid drawing both as
     rows would make one row's cells a subset of the other's. Use
     **`2016–17` (78) / `2018–20` (23) / `2021+` (19)** instead.
-    *Related trap for the generator:* any future nested pair of categories has
-    the same problem. Assert disjointness within a family rather than relying
-    on having spotted them all.
+    *Related trap for the generator:* nested pairs exist across families too —
+    `Human family` and (had we shipped it) `Grounded` are both strict subsets
+    of `Troop`. **Nesting is a quality problem, not a correctness one:** the
+    grid is still solvable, but one row's cells become a subset of the other's,
+    which reads as redundant. Add a grid-level filter that rejects any grid
+    containing a nested pair, rather than banning the categories or trying to
+    spot them all by hand.
   - *Content note:* **78 of 120 cards are 2016–17.** The set is heavily
     launch-weighted, which is why the era family only supports three buckets.
   - **`arena` stays, bucketed. Do not drop it.** An earlier pass killed the
@@ -188,9 +202,42 @@ least 484 grids, so none is dead weight.
   **ranged/melee** (a near-partition of troops, so it duplicates the `targets`
   axis rather than adding one), **multi-unit**, **death effect**.
 
-  **These are now texture, not volume.** The measured pool without any Tier 2
-  tag is already 51,768 grids. Author them because `Win condition × Cost ≤2` is
-  a better puzzle than `Epic × Arena 6-10`, not to reach a target.
+  **Drafted and measured 2026-08-02.** Lists were authored from general
+  knowledge of the game, **not** from repo data — every membership call needs
+  owner review before it ships. Measured one at a time against the settled 23:
+
+  | Tag | Cards | Pool after | Gain |
+  |---|---|---|---|
+  | **Human family** | 44 | 91,618 | **+77%** |
+  | **Spawns units** | 20 | 88,002 | **+70%** |
+  | Win condition | 20 | 65,318 | +26% |
+  | Flying | 13 | 57,320 | +11% |
+  | ~~Grounded~~ | 75 | 100,412 | +94% |
+  | *all five (28 categories)* | — | **305,454** | — |
+
+  - **`Human family` (Tier 3) is the biggest single lever in the whole brief**,
+    bigger than any Tier 2 tag. Raised by owner 2026-08-02; the earlier
+    "families are a weak lever" conclusion was drawn from the small species
+    families and does not hold for this one. 44 cards, and it is the broad
+    "not goblin, not skeleton, not machine" axis the others lack.
+    *Excluded and arguable:* PEKKA, Mini PEKKA, Sparky, Cannon Cart, Zappies,
+    Skeleton King, Royal Ghost, Goblinstein. *Included and arguable:* Giant,
+    Royal Giant, Electro Giant, Guards.
+  - **Win condition and Spawns units are both 20 cards but not equally
+    valuable** — +26% against +70%. Win conditions cluster (nearly all cost 4+,
+    nearly all ground troops, many `Buildings only`) so they intersect thinly
+    with everything; spawners spread across buildings, troops and spells.
+    Keep win condition for flavour, not volume.
+  - **Ship `Flying` as a plain boolean. Drop `Grounded`.** The split is 13/75,
+    too lopsided to work as a partition, and `Grounded` is defined as
+    troop-and-not-flying so it is a strict subset of `Troop` — a near-duplicate
+    chip, and a dull one. **This reverses the partition advice above for
+    flying specifically**; splash/single-target may still be worth partitioning,
+    but that cannot be checked until the splash data exists.
+
+  **These are texture, not volume.** The measured pool without any Tier 2 tag
+  is already 51,768. Author them because `Win condition × Cost ≤2` is a better
+  puzzle than `Epic × Arena 6-10`, not to reach a target.
 
   **Tier 3 families — measured 2026-08-02. Ship Goblin and Undead, stop there.**
   Measured cumulatively, against the pre-arena baseline of 6,322:
@@ -202,10 +249,13 @@ least 484 grids, so none is dead weight.
   | + Undead (16) | 11,686 | 5,364 | 10 |
   | + Royal (11), Electric (10), Big tank (13), Fire/Ice (11) | 15,850 | 9,528 | 17 more |
 
-  Families are a smaller lever than they look: 10–16 cards each against a Tier
-  2 tag's 14–40, and a small category struggles to reach 4 answers in
-  intersection. The four beyond Goblin and Undead add ~4k grids between them
-  for 17 hand-added members and a pile of boundary arguments.
+  *Species* families are a smaller lever than they look: 10–16 cards each, and
+  a small category struggles to reach 4 answers in intersection. The four
+  beyond Goblin and Undead add ~4k grids between them for 17 hand-added
+  members and a pile of boundary arguments.
+  **This does not generalise to `Human family`** — at 44 cards it behaves like
+  a broad attribute rather than a species tag, and it is the largest single
+  addition available. See the Tier 2 block above.
 
   - **`Undead` is confirmed by owner 2026-08-02** and ships alongside Goblin.
     Build it as name-stem `skeleton` plus an explicit member list — skeletons,

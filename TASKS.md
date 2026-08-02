@@ -4,7 +4,8 @@ Working board for Clashdle. Maintained by Claude Code — see the "Task board
 protocol" section of `CLAUDE.md` for the update rules.
 
 **Last updated:** 2026-08-02
-**Current branch:** `main` — `p7-ui-polish` merged via PR #12
+**Current branch:** `p8-clashdoku` — cut from `main` after PR #12 merged.
+Holds the ClashDoku scoping (T36–T39). `main` is clean.
 **Next branch:** `p6-code-migration` — cut and waiting, starts with T9.
 
 > **`p6-code-migration` must be rebased onto `main` before any work on it.**
@@ -27,25 +28,6 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
   Per-icon `size` overrides in `GameModeNav` compensate. **Tune those before
   touching the artwork.** Crossed swords would fill a square better if it is
   ever revisited.
-
-- **T36 · Does ClashDoku keep the `targets` field?** Owner's first call was to
-  strip `moveSpeed`, `healthCategory` and `targets` and lean on broader
-  categories. Measured against the real 121 cards, that strip is expensive:
-
-  | Categories | Valid grids at MIN=4 |
-  |---|---|
-  | All Tier 1 (23) | 37,032 |
-  | Strip moveSpeed + hp only (20) | *not yet measured* |
-  | Strip moveSpeed + hp + targets (16) | **542** |
-
-  542 is roughly 18 months, and the brief's spacing rule (reject grids sharing
-  ≥4 categories with the last 30 days) is close to unsatisfiable at that size —
-  the same six chips would recur constantly.
-  *Recommended:* keep `targets`, drop only `moveSpeed` and `healthCategory`.
-  `targets` is clean and "hits air" is a category players already think in.
-  *If it goes anyway:* Tier 2/3 tags become load-bearing for launch rather than
-  a polish item, and T36 cannot ship without them. Say which, because it
-  decides how big T36 is.
 
 - **T31 · Guess bar scrolls off on Classic — approach undecided.** The board
   grows past a screenful, so reading earlier guesses takes the input away with
@@ -79,11 +61,45 @@ card reuse, daily reset.
 
 - [ ] **T36 · Build the ClashDoku data file**
   `src/data/clashdoku.json`. Borrows `card`/`rarity`/`cost`/`type`/`year`/
-  `arena` from `cards.json`; drops `moveSpeed` and `healthCategory` (both are
-  dirty — `moveSpeed` has `"Medium / Very Fast"` and `"None"`; `healthCategory`
-  has *both* `"High / Medium"` and `"Medium / High"` as distinct values). Adds
-  `tags` and `families` per the brief's Tier 2/3.
-  **`targets` is still an open decision — see below.**
+  `arena` and `targets` from `cards.json`; drops `moveSpeed` and
+  `healthCategory` (both are dirty — `moveSpeed` has `"Medium / Very Fast"` and
+  `"None"`; `healthCategory` has *both* `"High / Medium"` and `"Medium / High"`
+  as distinct values). Adds `tags` and `families` per the brief's Tier 2/3.
+
+  **Targeting taxonomy — settled 2026-08-02.** The raw field has 7 values and
+  is not usable as-is. It collapses to a clean 4-way partition; verified that
+  all 121 cards land in exactly one bucket, no overlap, no card left out:
+
+  | Bucket | Raw `targets` values | Cards | Use as a category? |
+  |---|---|---|---|
+  | **Hits air** | anything containing `Air` | 57 | yes |
+  | **Ground only** | `Ground`, `Buildings / Ground` | 42 | yes |
+  | **Targets buildings only** | `Buildings` | 14 | yes — this is the win-condition axis |
+  | **Attacks nothing** | `None`, `Other` | 8 | **no — too thin at MIN=4** |
+
+  - **Spells are fine and do not need special handling.** The worry does not
+    survive contact with the data: 15 spells hit air (Arrows, Zap, Fireball,
+    Rocket…) and 4 are ground-only (The Log, Earthquake, Barbarian Barrel,
+    Graveyard). Those match how players already talk about them — "The Log
+    doesn't hit air" is common knowledge, not a technicality.
+  - **"Attacks nothing" is a bucket, not a category.** Its 8 members are the
+    spawner buildings (Furnace, Goblin Hut, Tombstone, Barbarian Hut, Goblin
+    Cage), Elixir Collector, Goblin Barrel and Mirror. At 8 cards it can almost
+    never reach 4 answers against a second category. Those cards simply fail
+    all three targeting predicates — which the partition already gives us free.
+  - **Exclude `Mirror` from ClashDoku entirely.** It is uncategorisable on two
+    axes at once: `targets: "Other"` and `cost: "Other"`.
+  - **`Spirit Empress` has `cost: "3 / 6"`.** Pick one and document it.
+  - **Drop `Training Camp` as a category** — 8 cards, same thinness problem.
+    That removes the `arena` family from the generator altogether.
+  - **`Champion` is thin at 8** but survives, because it still pairs with the
+    large categories. Expect it to appear only against Troop / Hits air / cost
+    buckets.
+
+  **Measured pool with the settled set** (18 categories, Mirror excluded,
+  MIN=4, no attribute family more than twice): **6,322 grids** — about 17
+  years before Tier 2/3 tags multiply it.
+
   *Two traps:*
   - **Never add these fields to `cards.json`.** `compareAttributes` in
     `utils/clashroyale/gamelogic.js` iterates `Object.keys(target)` and skips

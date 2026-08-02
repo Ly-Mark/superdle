@@ -22,6 +22,25 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
 
 ---
 
+## Open decisions
+
+- **Heading font — blocks T24e.** Body is settled (Inter). Headings are not.
+  The owner's shortlist was Poppins / Montserrat / Oswald; all three are
+  neutral UI sans faces, and `redesign-brief.md`'s complaint #4 was *"generic
+  bold sans headings; nothing matches the energy of the hand-drawn wordmark."*
+  Picking one of those three is a legitimate choice, but it answers a
+  different question than the brief asked — it makes the site cleanly generic
+  rather than characterful. Two coherent routes:
+  - **Restrained:** Inter throughout, headings by weight and size only.
+    Cheapest, one font file, zero risk, reads "modern SaaS."
+  - **Characterful:** Inter body + a chunky display face (Lilita One) for the
+    h1/h2 only. Matches the wordmark and the Clash Royale identity; costs a
+    second file and needs a CLS check.
+  *Not blocking anything before T24e.* T24e will ship a compare page so this
+  gets decided by looking at it.
+
+---
+
 ## Blocked on account access — not code
 
 - [ ] **T20 · Submit the sitemap in Google Search Console**
@@ -133,9 +152,13 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
   - [ ] **T24d · Hero, mode identity, accordion.** Pill-badge row, per-mode
     icons, styled accordion. Absorbs **T14**. Countdown cut — see T24x.
     *(brief tasks 6, 7, 9)*
-  - [ ] **T24e · Typography.** Self-hosted **Lilita One** (SIL OFL). Deferred
-    behind b/c because it adds the site's first webfont — needs
-    `font-display: swap` and a CLS check. *(brief task 5)*
+  - [ ] **T24e · Typography.** Body font **settled: Inter**, self-hosted,
+    fallback `"Segoe UI", system-ui, Arial`. Heading font **still open** — see
+    Open decisions. Deferred behind b/c because it adds the site's first
+    webfont: needs `font-display: swap`, self-hosting (no Google CDN during
+    AdSense review), and a CLS check. Ships with a side-by-side compare page
+    so the choice is made by looking, not by reading a list.
+    *(brief task 5)*
   - [ ] **T24f · Guess tiles + motion.** Last: collides with T9, which
     rewrites `ClassicGame` wholesale. **Do not touch the higher/lower arrow
     direction logic** — `RushGame.jsx:91` documents why it looks inverted.

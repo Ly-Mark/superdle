@@ -29,6 +29,21 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
   touching the artwork.** Crossed swords would fill a square better if it is
   ever revisited.
 
+- **T36 · Which 4 Tier 2 tags ship first?** Tier 1 alone produces zero grids
+  that pass the quality filter, so this decides whether the mode is playable,
+  not how deep it is. Candidates, minus the redundant "Champion ability":
+  splash damage · spawns units · win condition · flying unit · has Evolution ·
+  ranged · melee · multi-unit · death effect.
+  *Recommended four:* **win condition, splash damage, flying unit, spawns
+  units.** They are the ones players already have a mental list for, which
+  keeps the data entry arguable rather than arbitrary, and they spread across
+  types instead of clustering in troops.
+  *Avoid at launch:* **has Evolution** (needs upkeep every time Supercell ships
+  one) and **ranged/melee** (a near-partition of troops, so it behaves like a
+  second `targets` axis rather than a new one).
+
+- **T36 · `Spirit Empress` has `cost: "3 / 6"`.** Pick 3 or 6 and document it.
+
 - **T31 · Guess bar scrolls off on Classic — approach undecided.** The board
   grows past a screenful, so reading earlier guesses takes the input away with
   it. Real problem, still unsolved.
@@ -58,6 +73,7 @@ card reuse, daily reset.
 - **Axis feedback on a wrong guess** — show which of the row/column matched and
   which did not. Our twist on PokeDoku's silent miss.
 - **Its own data file.** Nothing about this mode goes in `cards.json`.
+- **`targets` stays**, collapsed to a 3-category taxonomy — see T36.
 
 - [ ] **T36 · Build the ClashDoku data file**
   `src/data/clashdoku.json`. Borrows `card`/`rarity`/`cost`/`type`/`year`/
@@ -96,9 +112,46 @@ card reuse, daily reset.
     large categories. Expect it to appear only against Troop / Hits air / cost
     buckets.
 
-  **Measured pool with the settled set** (18 categories, Mirror excluded,
-  MIN=4, no attribute family more than twice): **6,322 grids** — about 17
-  years before Tier 2/3 tags multiply it.
+  **Measured pool, Tier 1 only** (18 categories, Mirror excluded, MIN=4, no
+  attribute family more than twice): **6,322 grids — and none of them are
+  usable.** The brief's own quality filter demands at least one Tier 2/3
+  category per grid, which no Tier-1-only grid can satisfy. Every one of the
+  6,322 is `Common × Troop`-shaped: a database query, not a puzzle.
+  **Tier 2 is therefore not polish. It is the launch requirement.**
+
+  **Tier 2 sensitivity — MODELLED, NOT MEASURED.** The booleans do not exist in
+  `cards.json` yet, so this cannot be measured until this task is done. Numbers
+  below use synthetic membership at plausible sizes with type restrictions
+  where the brief implies them:
+
+  | Tier 2 tags | Categories | Total grids | Passing quality filter |
+  |---|---|---|---|
+  | 0 | 18 | 6,322 | **0** |
+  | 2 | 20 | 16,162 | 9,840 |
+  | 4 | 22 | 24,722 | 18,400 |
+  | 6 | 24 | 51,482 | 45,160 |
+  | 9 | 27 | 167,538 | 161,216 |
+
+  **These are upper bounds.** Synthetic tags are uncorrelated with cost and
+  rarity; real ones correlate hard (splash clusters in spells, win conditions
+  in cost 5+), which shrinks intersections. The shape is trustworthy, the
+  magnitude is not. Re-run for real once the tags are authored.
+
+  *Why it grows faster than the category count:* after dropping arena, Tier 1
+  has only **5 families** (rarity, cost, type, year, targets), and the
+  max-two-per-family rule over 6 headers forces at least 3 distinct families
+  per grid. That is the binding constraint. Each Tier 2 tag is its own
+  independent family, so adding them relaxes it rather than just adding
+  options.
+
+  **Ship 4 Tier 2 tags, not 9.** Four gets ~18k filter-passing grids, which is
+  decades. Nine is solving a problem we do not have, and every tag is manual
+  data entry that has to stay correct as Supercell ships cards.
+
+  **Drop "Champion ability" from the Tier 2 list.** It is not data entry — it
+  is exactly `rarity === "Champion"`, the same 8 cards as the existing Champion
+  category. It would be a duplicate, and one of the thinnest. That leaves 9
+  candidate Tier 2 tags, not 10.
 
   *Two traps:*
   - **Never add these fields to `cards.json`.** `compareAttributes` in

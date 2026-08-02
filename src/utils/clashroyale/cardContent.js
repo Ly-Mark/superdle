@@ -19,7 +19,7 @@
 // dropped, because they never match a real card name.
 import raw from '../../content/balance-history.md?raw';
 import cardsData from '../../data/cards.json';
-import { normalizeCardName } from './cardSearch.js';
+import { normalizeCardName, ALIAS_TO_CARD } from './cardSearch.js';
 
 const SUBSECTIONS = {
     'balance history': 'balance',
@@ -65,7 +65,8 @@ function parse(md) {
                 // so headings arrive as "P.E.K.K.A." or "Fire Spirits" where
                 // cards.json says "PEKKA" and "Fire Spirit". Requiring an exact
                 // match silently discarded a card's worth of research each time.
-                card = CANONICAL.get(normalizeCardName(text)) ?? text;
+                const n = normalizeCardName(text);
+                card = CANONICAL.get(n) ?? ALIAS_TO_CARD.get(n) ?? text;
                 sub = null;
                 byCard[card] = byCard[card] ?? {
                     balance: [],

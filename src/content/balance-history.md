@@ -3393,3 +3393,666 @@ Only fill in cards that are getting a page. There's no value in doing all 121.
 - He creates trouble because the opponent often has to answer more than one threat at once.
 - He is strongest when the enemy defense is forced to split attention.
 - He is much weaker when his components are handled separately and efficiently.
+
+## Archers
+
+### Balance history
+- Need source verification.
+
+### Counters
+- The Log.
+- Arrows.
+- Fireball.
+- Poison.
+- Tornado.
+- Splash troops.
+- Fast bridge pressure.
+
+### Synergies
+- X-Bow.
+- Miner.
+- Hog Rider.
+- Royal Hogs.
+- Tesla control.
+- Cycle decks.
+
+### Strategy notes
+- Archers are one of the most efficient cheap ranged defenses.
+- They are strongest in cycle and control decks.
+- Splitting them can cover multiple lanes.
+- They are weak to spells and fast pressure when caught clumped.
+
+## Electro Spirit
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Spells.
+- Splash troops.
+- Simple body blocks.
+- Reset-aware defenders that avoid overcommitting.
+
+### Synergies
+- Cycle decks.
+- Bridge spam.
+- Royal Hogs.
+- Miner.
+- Hog Rider.
+- Fast pressure decks.
+
+### Strategy notes
+- Electro Spirit is a tiny tempo card with stun utility.
+- It is strongest when used to reset or chain into multiple units.
+- Its low cost makes it excellent for cycle and pressure.
+- It is rarely the main source of damage, but it often creates the right opening.
+
+## Skeleton Dragons
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Arrows.
+- Fireball.
+- Poison.
+- Lightning.
+- Minions.
+- Fast bridge pressure.
+
+### Synergies
+- Lava Hound.
+- Skeleton King.
+- Tombstone.
+- Freeze.
+- Air control decks.
+- Splash support shells.
+
+### Strategy notes
+- Skeleton Dragons are cheap flying splash support.
+- They are strongest when the opponent cannot get spell value easily.
+- They help cover both air and ground swarms.
+- They are fragile, so spacing and timing matter.
+
+## Bats
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Zap.
+- Arrows.
+- The Log plus tower.
+- Fire Spirit.
+- Ice Spirit.
+- Any small spell with timing.
+
+### Synergies
+- Miner.
+- Wall Breakers.
+- P.E.K.K.A.
+- Bridge spam.
+- Cycle decks.
+- Beatdown support.
+
+### Strategy notes
+- Bats are one of the best cheap DPS cards in the game.
+- They are high value when they survive a spell or catch a slow response.
+- They are especially strong in pressure-heavy decks.
+- They are weak to almost any cheap spell if the timing is clean.
+
+## Royal Recruits
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Lightning.
+- Fireball.
+- Poison.
+- Splash troops.
+- Lane pressure that avoids full split value.
+
+### Synergies
+- Royal Hogs.
+- Flying Machine.
+- Zappies.
+- Fireball bait shells.
+- Split-lane control decks.
+
+### Strategy notes
+- Royal Recruits are a split-lane defensive wall.
+- They are strongest when they force the opponent to commit to only one side.
+- Their shielded body makes them annoying to break through cleanly.
+- They lose value when the opponent can spell both sides or force awkward lane commitment.
+
+## Ice Spirit
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Small spells.
+- Tornado.
+- Careful spacing.
+- Cheap body blocks.
+
+### Synergies
+- Hog Rider.
+- X-Bow.
+- Miner.
+- Cycle decks.
+- Freeze setups.
+- Fast bridge pressure.
+
+### Strategy notes
+- Ice Spirit is a tiny freeze-and-cycle tool.
+- Its value comes from a one-elixir stun and the tempo it creates.
+- It is excellent for speeding up cycle decks.
+- It is weak alone, but very efficient in the right shell.
+
+## Berserker
+
+### Balance history
+- 2025-02-02 — Card added.
+- Need source verification for later changes.
+
+### Counters
+- Swarms.
+- Kite and stall.
+- Mini tanks.
+- Splash troops.
+- Cheap spells when supported.
+
+### Synergies
+- Fast pressure decks.
+- Cycle shells.
+- Bridge spam.
+- Decks that want a cheap melee threat.
+
+### Strategy notes
+- Berserker is a fast common melee attacker.
+- It is strongest when it keeps connecting without being stalled.
+- It provides efficient ground DPS for cheap.
+- It is less impressive when the opponent can distract and reset tempo.
+
+## Skeleton Barrel
+
+### Balance history
+- Need source verification.
+
+### Counters
+- The Log.
+- Arrows.
+- Fireball.
+- Tornado.
+- Splash troops.
+- Fast air defense.
+
+### Synergies
+- Log bait.
+- Princess.
+- Dart Goblin.
+- Miner.
+- Pressure decks.
+- Split-lane bait shells.
+
+### Strategy notes
+- Skeleton Barrel is a bait-style air threat that turns into swarm pressure on death.
+- It is strongest when the opponent has already used a small spell.
+- It can force awkward responses from decks weak to swarms.
+- It loses value if the enemy can remove the barrel cleanly before it drops.
+
+## Goblin Gang
+
+### Balance history
+- Need source verification.
+
+### Counters
+- The Log.
+- Zap.
+- Arrows.
+- Barbarian Barrel.
+- Splash troops.
+- Fast lane pressure.
+
+### Synergies
+- Princess.
+- Goblin Barrel.
+- Miner.
+- Bait decks.
+- Cycle decks.
+- Cheap control shells.
+
+### Strategy notes
+- Goblin Gang is a high-value swarm card.
+- It is one of the main cards that force small spells out of the opponent.
+- It can defend efficiently or create pressure if ignored.
+- Its value drops sharply against decks with reliable splash.
+
+## Elite Barbarians
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Skeleton Army.
+- Tombstone.
+- Valkyrie.
+- Mini P.E.K.K.A.
+- Buildings.
+- Kiting and split defense.
+
+### Synergies
+- Rage.
+- Freeze.
+- Bridge spam.
+- Pressure decks.
+- Fast punish strategies.
+
+### Strategy notes
+- Elite Barbarians are a classic high-tempo punish card.
+- They are strongest when they catch the opponent low on elixir.
+- They can force huge defensive responses if ignored.
+- They are much weaker when the opponent has a prepared building or cheap swarm answer.
+
+## Firecracker
+
+### Balance history
+- Need source verification.
+
+### Counters
+- The Log.
+- Arrows.
+- Fireball.
+- Poison.
+- Fast bridge pressure.
+- Miner.
+
+### Synergies
+- Hog Rider.
+- Royal Hogs.
+- Cycle decks.
+- Bait shells.
+- Defensive control decks.
+
+### Strategy notes
+- Firecracker is a long-range splash attacker that creates constant chip and pressure.
+- She is strong when she can attack from safety.
+- She often forces awkward spell usage from the opponent.
+- Poor placement makes her much easier to punish.
+
+## Rascals
+
+### Balance history
+- Need source verification.
+
+### Counters
+- The Log.
+- Arrows.
+- Fireball.
+- Poison.
+- Valkyrie.
+- Mini P.E.K.K.A.
+
+### Synergies
+- Princess.
+- Log bait.
+- Control decks.
+- Bridge defense shells.
+
+### Strategy notes
+- Rascals split into a ranged girl and two melee boys, which makes them awkward to answer cleanly.
+- They are strong on defense and can also counterpush.
+- They punish overcommitment very well.
+- Their value drops when the enemy has easy splash or spell alignment.
+
+## Giant Snowball
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Swarms.
+- Fast pressure.
+- Small support troops.
+- Units that depend on speed and positioning.
+
+### Synergies
+- Balloon.
+- Hog Rider.
+- Miner.
+- Fast cycle decks.
+- Freeze-style tempo.
+- Bridge spam.
+
+### Strategy notes
+- Giant Snowball is a cheap control spell with knockback.
+- It is best for slowing pushes and creating one extra tower shot.
+- Its value is often subtle but very important.
+- It works especially well in fast decks that need cheap control.
+
+## Royal Delivery
+
+### Balance history
+- 2020-03-02 — Card added.
+- Need source verification for the detailed full balance list.
+
+### Counters
+- Swarms.
+- Bridge spam troops.
+- Air and ground groups in its drop zone.
+- Pressure units that depend on immediate bridge value.
+
+### Synergies
+- Control decks.
+- Royal Recruits.
+- Bait decks.
+- Defensive cycle shells.
+
+### Strategy notes
+- Royal Delivery is a defensive spell that gives both splash damage and a body.
+- It is strongest when the opponent walks into the drop zone.
+- The Recruit it leaves behind helps stabilize defense.
+- It is weaker when the opponent avoids giving you clean spell value.
+
+## Valkyrie
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Swarms.
+- Air troops.
+- Kiting.
+- Mini P.E.K.K.A. when supported.
+- Single-target ranged pressure.
+
+### Synergies
+- Hog Rider.
+- Miner.
+- Tombstone.
+- Control decks.
+- Splash defense shells.
+
+### Strategy notes
+- Valkyrie is one of the cleanest anti-swarm melee defenders.
+- She is strongest when enemies stack ground troops around her.
+- She also works well as a simple, reliable counterpush troop.
+- She is weaker against air and ranged kiting.
+
+## Mega Minion
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Arrows when supported.
+- Musketeer.
+- Hunter.
+- Electro Wizard.
+- Mini tanks that force bad trades.
+
+### Synergies
+- Lava Hound.
+- Balloon.
+- Miner.
+- Mega Knight.
+- Air control decks.
+- Pressure decks.
+
+### Strategy notes
+- Mega Minion is a very efficient flying single-target defender.
+- It offers strong value for only 3 elixir.
+- It is strong in both defense and counterpush.
+- It is less effective when the opponent can target it with cheap spells and good positioning.
+
+## Wizard
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Lightning.
+- Fireball.
+- Poison.
+- Mini tanks.
+- Fast bridge pressure.
+- Heavy spell value.
+
+### Synergies
+- Golem.
+- Giant.
+- Splash control decks.
+- Defensive counterpush shells.
+- Anti-swarm support.
+
+### Strategy notes
+- Wizard is a high-splash, high-spell-value support card.
+- He is strongest when the opponent stacks troops into his range.
+- He is also useful for covering both air and ground swarms.
+- He is fragile for his cost and gets punished by efficient spells.
+
+## Ice Golem
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Swarms if the player overcommits.
+- Kiting and defense timing.
+- Splash troops when the kiting path is obvious.
+
+### Synergies
+- Hog Rider.
+- Wall Breakers.
+- Cycle decks.
+- Miner.
+- Control decks.
+- Cheap bridge pressure.
+
+### Strategy notes
+- Ice Golem is a cheap tank and kiting tool.
+- It is strongest when used to absorb damage and stall defenders.
+- It enables many cycle and pressure interactions.
+- It deals very little damage itself, so its value is mostly utility.
+
+## Zappies
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Fireball.
+- Lightning.
+- Poison.
+- Fast pressure.
+- Splash troops.
+- Direct spell value.
+
+### Synergies
+- Royal Hogs.
+- Electro Giant.
+- Zappies-style defensive control.
+- Bridge spam defense.
+- Reset-dependent decks.
+
+### Strategy notes
+- Zappies are a stun-and-cycle support card.
+- They are strongest when their repeated stun disrupts slow attackers.
+- They can lock down specific units surprisingly well.
+- They are weak to spells that clean them up before they get repeated value.
+
+## Suspicious Bush
+
+### Balance history
+- 2024-07-30 — Card introduced.
+- Need source verification for any later balance changes.
+
+### Counters
+- Spells that reveal and remove it.
+- Splash troops.
+- Building pressure only if the defender can ignore it.
+- Good lane awareness and early cleanup.
+
+### Synergies
+- Goblin Drill-style pressure.
+- Goblin-oriented decks.
+- Bait and nuisance shells.
+- Decks that want extra building pressure.
+
+### Strategy notes
+- Suspicious Bush is a cheap stealth pressure card.
+- It creates awkward decisions because it looks harmless until it reaches a building.
+- It is strongest when it forces spell use or distracts defensive cycles.
+- It is weaker when the opponent is ready for it and clears it efficiently.
+
+## Elixir Golem
+
+### Balance history
+- Need source verification.
+
+### Counters
+- High DPS decks.
+- Defensive swarm clear plus punish.
+- Strong kiting and counterpressure.
+- Opponents that convert the elixir it gives them into a bigger counterpush.
+
+### Synergies
+- Healer-style support.
+- Battle Healer.
+- Night Witch.
+- Dragon support.
+- Rage.
+- Clone.
+- Beatdown pressure.
+
+### Strategy notes
+- Elixir Golem is a low-cost tank that gives back elixir when destroyed.
+- He is strongest when paired with overwhelming support and healing.
+- He creates big pushes very quickly for little upfront cost.
+- He is risky because a good defense can turn his elixir feed against you.
+
+## Rocket
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Clumped support units.
+- Buildings.
+- High-value defensive cores.
+- Elixir Collector.
+- Slow setups that invite spell punishment.
+
+### Synergies
+- X-Bow.
+- Miner control.
+- Cycle decks.
+- Spell cycle decks.
+- Defensive siege shells.
+
+### Strategy notes
+- Rocket is one of the highest-value direct damage spells.
+- It is strongest when it hits expensive support or ends a game.
+- It is expensive, so the trade has to matter.
+- In some decks, Rocket is a win condition by itself through cycle damage.
+
+## Earthquake
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Buildings.
+- Hut-style spawners.
+- Tesla-like defensive anchors.
+- Ground structures in general.
+
+### Synergies
+- Hog Rider.
+- Royal Hogs.
+- Miner.
+- EQ cycle decks.
+- Building-punish pressure decks.
+
+### Strategy notes
+- Earthquake is a building punish spell that also chips the tower.
+- It is strongest when the opponent relies on buildings for defense.
+- It is one of the cleanest answers to structure-based control.
+- It loses value when the opponent can defend without buildings.
+
+## Tombstone
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Earthquake.
+- Lightning.
+- Poison.
+- Mini tanks with good timing.
+- Spell-heavy control.
+
+### Synergies
+- Graveyard.
+- Ice Wizard.
+- Poison.
+- Control decks.
+- Defensive stall shells.
+
+### Strategy notes
+- Tombstone is a defensive building that uses spawned Skeletons to stall pushes.
+- It is strongest against single-lane ground pressure.
+- It buys time and creates awkward pathing.
+- It is weaker against spell-heavy decks or units that ignore its stall value.
+
+## Barbarian Hut
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Earthquake.
+- Fireball.
+- Poison.
+- Rocket.
+- Fast pressure that bypasses the hut.
+- Opponents who can punish the 7-elixir investment.
+
+### Synergies
+- Spawn control decks.
+- Defensive grind shells.
+- Royal Recruits.
+- Lane pressure decks that can use the constant Barbarian stream.
+
+### Strategy notes
+- Barbarian Hut is a high-cost spawner that creates repeated lane pressure.
+- It is strongest in long games where the opponent has trouble clearing it efficiently.
+- It also provides passive defense by forcing responses.
+- It is vulnerable to spell-heavy decks and tempo punish.
+
+## Elixir Collector
+
+### Balance history
+- Need source verification.
+
+### Counters
+- Lightning.
+- Earthquake.
+- Rocket.
+- Fast pressure before it pays off.
+- Punish decks that convert the elixir lead immediately.
+
+### Synergies
+- Golem.
+- Beatdown decks.
+- Lava Hound.
+- Heavy support pushes.
+- Slow control into big win condition plans.
+
+### Strategy notes
+- Elixir Collector is a long-game resource card.
+- It is strongest when the opponent cannot punish it immediately.
+- It helps expensive decks reach overwhelming push strength.
+- It is very risky if the enemy can spell it and counterpush faster than you profit.

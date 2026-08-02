@@ -20,6 +20,12 @@ const normalizeName = (s) =>
         .replace(/[^a-z0-9 ]/g, '');
 
 const canonical = new Map(names.map((n) => [normalizeName(n), n]));
+
+// Mirrors ALIASES in src/utils/clashroyale/cardSearch.js.
+const ALIASES = { Snowball: ['Giant Snowball'] };
+for (const [card, alts] of Object.entries(ALIASES)) {
+    for (const alt of alts) canonical.set(normalizeName(alt), card);
+}
 const SUBS = new Set(['balance history', 'counters', 'synergies', 'strategy notes']);
 
 // Same parse as src/utils/clashroyale/cardContent.js, counting bullets only.

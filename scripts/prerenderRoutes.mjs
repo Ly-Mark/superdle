@@ -47,6 +47,14 @@ const normalizeName = (s) =>
         .replace(/^(the|a|an)\s+/, '')
         .replace(/[^a-z0-9 ]/g, '');
 
+// Mirrors ALIASES in cardSearch.js. Same duplication trade as above.
+const ALIASES = { Snowball: ['Giant Snowball'] };
+const ALIAS_TO_CARD = new Map(
+    Object.entries(ALIASES).flatMap(([card, alts]) =>
+        alts.map((alt) => [normalizeName(alt), card])
+    )
+);
+
 // Mirrors the parser in src/utils/clashroyale/cardContent.js. Kept deliberately
 // simple — it only needs to answer "does this card have any bullets", not build
 // the full structure.
@@ -84,7 +92,10 @@ export function getPrerenderRoutes() {
     // heading written "P.E.K.K.A." still produces a route for "PEKKA". Without
     // this the card would have content but no page.
     const canonical = new Map(cards.map((n) => [normalizeName(n), n]));
-    const resolve = (n) => (known.has(n) ? n : canonical.get(normalizeName(n)));
+    const resolve = (n) =>
+        known.has(n)
+            ? n
+            : canonical.get(normalizeName(n)) ?? ALIAS_TO_CARD.get(normalizeName(n));
 
     const wanted = new Set(
         [...spotlightCards(), ...researchedCards()].map(resolve).filter(Boolean)

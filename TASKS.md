@@ -29,32 +29,6 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
   touching the artwork.** Crossed swords would fill a square better if it is
   ever revisited.
 
-- **T36 · Which 4 Tier 2 tags ship first?** Tier 1 alone produces zero grids
-  that pass the quality filter, so this decides whether the mode is playable,
-  not how deep it is. Candidates, minus the redundant "Champion ability":
-  splash damage · spawns units · win condition · flying unit · has Evolution ·
-  ranged · melee · multi-unit · death effect.
-  *Recommended four:* **win condition, splash damage, flying unit, spawns
-  units.** They are the ones players already have a mental list for, which
-  keeps the data entry arguable rather than arbitrary, and they spread across
-  types instead of clustering in troops.
-  *Avoid at launch:* **has Evolution** (needs upkeep every time Supercell ships
-  one) and **ranged/melee** (a near-partition of troops, so it behaves like a
-  second `targets` axis rather than a new one).
-  *Owner leaned toward:* win condition · splash · flying unit · spawns units.
-  **Frame splash and flying as partitions, not booleans** — splash/single-target
-  and flying/grounded give **two categories each for the same data entry**, and
-  they form a family so the max-two rule already handles them. Strictly more
-  value for identical effort.
-  *Plus `Goblin family` and `Undead` from Tier 3*, and the arena buckets, which
-  are cheaper than any of these — see T36.
-
-  **Launch set as it stands: 21 Tier 1 categories (incl. arena buckets) + 2
-  families + 4 Tier 2 tags.** Tier 1 + arena + Goblin alone is already 39,802
-  grids at MIN=4, so the Tier 2 tags are now about texture rather than volume.
-
-- **T36 · `Spirit Empress` has `cost: "3 / 6"`.** Pick 3 or 6 and document it.
-
 - **T31 · Guess bar scrolls off on Classic — approach undecided.** The board
   grows past a screenful, so reading earlier guesses takes the input away with
   it. Real problem, still unsolved.
@@ -85,6 +59,18 @@ card reuse, daily reset.
   which did not. Our twist on PokeDoku's silent miss.
 - **Its own data file.** Nothing about this mode goes in `cards.json`.
 - **`targets` stays**, collapsed to a 3-category taxonomy — see T36.
+- **No category may appear twice in one grid.** Six distinct headers, so
+  `Common × Common` can never occur. This is what the enumeration assumes.
+- **Splash and flying are partitions, not booleans** — splash/single-target,
+  flying/grounded. Two categories each for the same data entry.
+- **Cost buckets are `≤2 / 3 / 4 / 5+`,** and a card may sit in more than one:
+  `Spirit Empress` is `"3 / 6"`, so it counts in both `Cost 3` and `Cost 5+`.
+  The generator must split on `/` rather than parse a single number.
+
+**Measured launch pool: 51,768 grids at MIN=4**, using only data that exists
+today (23 categories: rarity, cost, type, year, targets, arena, Goblin,
+Undead). No Tier 2 tag is required to ship. Every one of the 23 appears in at
+least 484 grids, so none is dead weight.
 
 - [ ] **T36 · Build the ClashDoku data file**
   `src/data/clashdoku.json`. Borrows `card`/`rarity`/`cost`/`type`/`year`/
@@ -116,7 +102,20 @@ card reuse, daily reset.
     all three targeting predicates — which the partition already gives us free.
   - **Exclude `Mirror` from ClashDoku entirely.** It is uncategorisable on two
     axes at once: `targets: "Other"` and `cost: "Other"`.
-  - **`Spirit Empress` has `cost: "3 / 6"`.** Pick one and document it.
+  - **`Spirit Empress` (`cost: "3 / 6"`) belongs to both `Cost 3` and `Cost 5+`**
+    — settled by owner. Cost is therefore *not* a strict partition; the
+    predicate splits on `/` and tests every value. It is the only such card
+    once Mirror is excluded, but write the predicate generally so a future
+    dual-cost card needs no change.
+  - **Year buckets must be disjoint.** The brief proposes `2016 / 2018+ /
+    2021+`, but `2021+` is a strict subset of `2018+` — a grid drawing both as
+    rows would make one row's cells a subset of the other's. Use
+    **`2016–17` (78) / `2018–20` (23) / `2021+` (19)** instead.
+    *Related trap for the generator:* any future nested pair of categories has
+    the same problem. Assert disjointness within a family rather than relying
+    on having spotted them all.
+  - *Content note:* **78 of 120 cards are 2016–17.** The set is heavily
+    launch-weighted, which is why the era family only supports three buckets.
   - **`arena` stays, bucketed. Do not drop it.** An earlier pass killed the
     whole arena family after testing only `Training Camp` (8 cards) — testing
     one category and concluding about a family. The brief's other arena
@@ -146,30 +145,19 @@ card reuse, daily reset.
     large categories. Expect it to appear only against Troop / Hits air / cost
     buckets.
 
-  **Measured pool, Tier 1 only** (18 categories, Mirror excluded, MIN=4, no
-  attribute family more than twice): **6,322 grids — and none of them are
-  usable.** The brief's own quality filter demands at least one Tier 2/3
-  category per grid, which no Tier-1-only grid can satisfy. Every one of the
-  6,322 is `Common × Troop`-shaped: a database query, not a puzzle.
-  **Tier 2 is therefore not polish. It is the launch requirement.**
+  **How the pool grew during scoping**, all measured at MIN=4 on real data:
 
-  **Tier 2 sensitivity — MODELLED, NOT MEASURED.** The booleans do not exist in
-  `cards.json` yet, so this cannot be measured until this task is done. Numbers
-  below use synthetic membership at plausible sizes with type restrictions
-  where the brief implies them:
+  | Category set | Grids |
+  |---|---|
+  | Tier 1 without arena (18) | 6,322 |
+  | + arena buckets (21) | 33,474 |
+  | + Goblin family (22) | 39,802 |
+  | **+ Undead, disjoint year buckets (23)** | **51,768** |
 
-  | Tier 2 tags | Categories | Total grids | Passing quality filter |
-  |---|---|---|---|
-  | 0 | 18 | 6,322 | **0** |
-  | 2 | 20 | 16,162 | 9,840 |
-  | 4 | 22 | 24,722 | 18,400 |
-  | 6 | 24 | 51,482 | 45,160 |
-  | 9 | 27 | 167,538 | 161,216 |
-
-  **These are upper bounds.** Synthetic tags are uncorrelated with cost and
-  rarity; real ones correlate hard (splash clusters in spells, win conditions
-  in cost 5+), which shrinks intersections. The shape is trustworthy, the
-  magnitude is not. Re-run for real once the tags are authored.
+  An intermediate conclusion on this board — *"Tier 2 is the launch
+  requirement"* — was **wrong and has been removed.** It rested on the 6,322
+  figure, which was itself the product of wrongly dropping arena. With arena
+  restored there is no volume problem to solve.
 
   *Why it grows faster than the category count:* variety comes from **which
   six categories are drawn together**, not from how many cards a category
@@ -184,24 +172,40 @@ card reuse, daily reset.
   gets paired with. One that pairs well with 15 others beats a bigger one that
   pairs with 5.
 
-  **Ship 4 Tier 2 tags, not 9.** Four gets ~18k filter-passing grids, which is
-  decades. Nine is solving a problem we do not have, and every tag is manual
-  data entry that has to stay correct as Supercell ships cards.
+  **Tier 2 tags — settled by owner 2026-08-02. Four, framed as six
+  categories:**
 
-  **Tier 3 families — measured 2026-08-02. Take Goblin, and probably stop.**
-  The intuition that families are a lighter lift than Tier 2 does not hold.
-  Measured cumulatively at MIN=4:
+  | Tag | Categories it yields | Family |
+  |---|---|---|
+  | Splash | `Splash` / `Single-target` | `damage` |
+  | Flying | `Flying` / `Grounded` | `mobility` |
+  | Win condition | `Win condition` | own |
+  | Spawns units | `Spawns units` | own |
+
+  Splash and flying are **partitions, not booleans** — two categories each for
+  identical data entry, and the max-two-per-family rule handles them for free.
+  *Not shipping:* **has Evolution** (upkeep every time Supercell ships one),
+  **ranged/melee** (a near-partition of troops, so it duplicates the `targets`
+  axis rather than adding one), **multi-unit**, **death effect**.
+
+  **These are now texture, not volume.** The measured pool without any Tier 2
+  tag is already 51,768 grids. Author them because `Win condition × Cost ≤2` is
+  a better puzzle than `Epic × Arena 6-10`, not to reach a target.
+
+  **Tier 3 families — measured 2026-08-02. Ship Goblin and Undead, stop there.**
+  Measured cumulatively, against the pre-arena baseline of 6,322:
 
   | Added | Total grids | Grids containing a family | Hand-added members |
   |---|---|---|---|
-  | Tier 1 only | 6,322 | 0 | — |
+  | none | 6,322 | 0 | — |
   | **+ Goblin family (13)** | **8,016** | **1,694** | **0** |
   | + Undead (16) | 11,686 | 5,364 | 10 |
   | + Royal (11), Electric (10), Big tank (13), Fire/Ice (11) | 15,850 | 9,528 | 17 more |
 
-  Six families yield +9,528 usable grids; six Tier 2 tags yield +45,160 for
-  comparable effort. Families cover 10–16 cards against Tier 2's 14–40, and a
-  small category struggles to reach 4 answers in intersection.
+  Families are a smaller lever than they look: 10–16 cards each against a Tier
+  2 tag's 14–40, and a small category struggles to reach 4 answers in
+  intersection. The four beyond Goblin and Undead add ~4k grids between them
+  for 17 hand-added members and a pile of boundary arguments.
 
   - **`Undead` is confirmed by owner 2026-08-02** and ships alongside Goblin.
     Build it as name-stem `skeleton` plus an explicit member list — skeletons,

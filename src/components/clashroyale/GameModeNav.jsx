@@ -10,25 +10,36 @@ import { NavLink } from "react-router-dom";
 // this is the in-game mode switcher: larger, iconned, gold active state.
 //
 // Icons are official Supercell fankit assets, 96x96 transparent PNGs in
-// `public/games/clashroyale/icons/`. Rush still falls back to an emoji until
-// its artwork exists — `img` and `emoji` are separate fields so the two can
-// coexist without a placeholder image standing in.
+// `public/games/clashroyale/icons/`. They are decorative and hidden from
+// assistive tech, since the text label sits right beside them.
 //
-// Either way the glyph is decorative and hidden from assistive tech, since the
-// text label sits right beside it.
+// `emoji` is kept as a fallback field for any mode added before its artwork
+// exists — Rush ran on one until its icon landed.
+// `size` is optical compensation, not a fix for badly-sized files — every icon
+// is a correct 96x96 with under 10% padding. What differs is how much of that
+// canvas each one actually inks:
+//
+//   scroll 74%   book 72%   target 71%   rush 39%
+//
+// Rush is a helm at an angle with a plume, so most of its canvas is empty
+// diagonal space. Rendered in the same box as the others it carries about half
+// their visual weight and reads as a smudge at nav size. Nudging the box makes
+// the four look like one set. Adjust these before touching the artwork.
 const GAME_MODES = [
-    { label: "Classic", path: "/", img: "target.png" },
+    { label: "Classic", path: "/", img: "target.png", size: "w-[1.3rem] h-[1.3rem]" },
     { label: "Description", path: "/clashroyale/description", img: "scroll.png" },
-    { label: "Rush", path: "/clashroyale/rush", emoji: "⚡" },
-    { label: "Memory", path: "/clashroyale/memory", img: "book.png" },
+    { label: "Rush", path: "/clashroyale/rush", img: "rush.png", size: "w-6 h-6" },
+    { label: "Memory", path: "/clashroyale/memory", img: "book.png", size: "w-[1.15rem] h-[1.15rem]" },
 ];
+
+const DEFAULT_ICON_SIZE = "w-5 h-5";
 
 const ICON_BASE = "/games/clashroyale/icons";
 
 export default function GameModeNav() {
     return (
         <nav aria-label="Game modes" className="flex flex-wrap justify-center gap-2 mt-4 mb-4">
-            {GAME_MODES.map(({ label, path, img, emoji }) => (
+            {GAME_MODES.map(({ label, path, img, emoji, size }) => (
                 <NavLink
                     key={path}
                     to={path}
@@ -52,10 +63,10 @@ export default function GameModeNav() {
                             src={`${ICON_BASE}/${img}`}
                             alt=""
                             aria-hidden="true"
-                            width={20}
-                            height={20}
+                            width={24}
+                            height={24}
                             decoding="async"
-                            className="w-5 h-5 shrink-0 object-contain"
+                            className={`${size ?? DEFAULT_ICON_SIZE} shrink-0 object-contain`}
                         />
                     ) : (
                         <span aria-hidden="true">{emoji}</span>

@@ -469,13 +469,23 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
   scrolls at all. Do not simply re-apply `sticky` with a background.
 
 - [x] **T32 · Mode icons wired up** *(fankit art supplied by owner)*
-  `target.png` → Classic, `scroll.png` → Description, `book.png` → Memory, all
-  96×96 as specced. **Rush still uses the ⚡ emoji** pending its swords/helm
-  art — `GAME_MODES` carries `img` and `emoji` as separate fields so the two
-  coexist without a placeholder image standing in.
-  Not lazy-loaded: they sit at the top of every game page, so lazy would only
-  delay something already in the viewport. React 19 additionally emits
-  `<link rel="preload" as="image">` for them during the static pass, for free.
+  All four in: `target` → Classic, `scroll` → Description, `rush` (knight's
+  helm) → Rush, `book` → Memory. Every file checked: 96×96, transparent
+  (palette + `tRNS`), padding under 10%. `emoji` is kept as a fallback field
+  for any future mode added before its art exists.
+  Not lazy-loaded — they sit at the top of every game page, so lazy would only
+  delay something already in the viewport. React 19 also emits
+  `<link rel="preload" as="image">` for them during the static pass, free.
+  **Optical sizing — read before changing `size` in `GAME_MODES`.** The files
+  are all correctly made; what differs is how much of the canvas each one inks:
+  scroll 74%, book 72%, target 71%, **rush 39%**. Rush is a helm at an angle
+  with a plume, so most of its canvas is empty diagonal space and in an equal
+  box it carries about half the visual weight of the others. Per-icon `size`
+  overrides compensate (rush up, book down, target slightly up) so the four
+  read as one set. **Tune those before touching the artwork.**
+  *Owner's call outstanding:* even compensated, the helm is the least legible
+  of the four at 20 px — the diagonal and the plume cost it. A straight-on helm
+  or crossed swords would have a simpler silhouette. Not a blocker.
 
 - [x] **T33 · `ElixirCost` component** *(requested by owner)*
   The icon was wanted in a third place, so the markup was extracted rather than

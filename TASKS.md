@@ -158,8 +158,24 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
     action colour only (submit button, active nav pill), not a heading colour,
     which also sidesteps the amber collision entirely. Do not reintroduce gold
     headings during the rollout.
-  - [ ] **T24c · Guide polish.** Thumbnail placeholder (see T24x), Rush stat
-    tiles. Isolated pages, no game logic. *(brief tasks 10, 8)*
+    *Review 2 (owner):* the base panel's glow is hard to read; the raised one
+    is clear. Expected — the base sits on the page gradient **and** the three
+    animated blobs, so its shadow has nothing quiet to cast onto, whereas the
+    raised panel sits on the base's flat fill. Deliberately **not** tuned yet:
+    the fix is either a stronger `shadow-panel` or a calmer background (the
+    brief's dot overlay), and the second would fix it for every panel at once.
+    Decide after more surfaces are converted.
+    *Converted so far:* `HintsPanel`, `InlineLegend` (both `ClassicGame`), and
+    the Rush header + its three stat tiles. Still to go: the accordions, the
+    guide cards, `WinPanelCompact`, and the Rush end-of-run summary.
+  - [ ] **T24c · Guide polish.** Thumbnail placeholder (see T24x). Isolated
+    pages, no game logic. *(brief task 10)*
+    Rush stat tiles (brief task 8) were **done early in T24b** — they were
+    already being converted to panels, and the unevenness turned out to be the
+    same root cause: three flex children under `items-center`, each sizing to
+    its own content, where Time and Score carry a line of sub-text and Round
+    carries none. Now an equal-width grid, 2 columns below `sm` (Round is
+    hidden there) and 3 above.
   - [ ] **T24d · Hero, mode identity, accordion.** Pill-badge row, per-mode
     icons, styled accordion. Absorbs **T14**. Countdown cut — see T24x.
     *(brief tasks 6, 7, 9)*

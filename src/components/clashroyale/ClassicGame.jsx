@@ -252,11 +252,22 @@ const SuggestionItem = ({ name, onClick, isFirst, game = 'clashroyale' }) => {
    Legend
 ------------------------------------------------------- */
 const InlineLegend = ({ onClose }) => (
-    <div className="w-full max-w-sm sm:max-w-md mx-auto bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6 mt-8">
-        <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-bold text-white underline underline-offset-4">Color Indicators</h3>
-            <button onClick={onClose} className="bg-red-500 hover:bg-red-600 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs transition-colors">✕</button>
-        </div>
+    <Panel
+        className="w-full max-w-sm sm:max-w-md mx-auto p-6 mt-8"
+        title="Color Indicators"
+        // h3: this sits below the game panel's h2, so promoting it would skip
+        // a level. See T25 on the board for the wider heading-order problem.
+        titleAs="h3"
+        meta={
+            <button
+                onClick={onClose}
+                aria-label="Hide the colour legend"
+                className="bg-white/10 hover:bg-white/20 border border-white/20 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs transition-colors"
+            >
+                ✕
+            </button>
+        }
+    >
         <div className="flex flex-wrap justify-center gap-3 mb-3">
             <div className="text-center">
                 <div className="w-10 h-10 bg-emerald-500 rounded-lg mb-1 border-2 border-emerald-600"></div>
@@ -283,7 +294,7 @@ const InlineLegend = ({ onClose }) => (
                 <span className="text-white text-xs font-medium">Lower</span>
             </div>
         </div>
-    </div>
+    </Panel>
 );
 
 /* -------------------------------------------------------

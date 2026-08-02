@@ -153,6 +153,11 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
     Nothing else is converted yet. If the treatment lands, roll it out to the
     inline legend (`ClassicGame:254`), Rush stat tiles, the accordions and the
     guide cards. If it doesn't, one file gets reverted instead of forty.
+    *Review 1 (owner):* raised/nested panel **approved**. Gold on the panel
+    title **rejected** — reverted to `text-blue-100`. Gold is therefore an
+    action colour only (submit button, active nav pill), not a heading colour,
+    which also sidesteps the amber collision entirely. Do not reintroduce gold
+    headings during the rollout.
   - [ ] **T24c · Guide polish.** Thumbnail placeholder (see T24x), Rush stat
     tiles. Isolated pages, no game logic. *(brief tasks 10, 8)*
   - [ ] **T24d · Hero, mode identity, accordion.** Pill-badge row, per-mode
@@ -193,6 +198,24 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
     midnight. That's a behaviour decision, not a visual one.
   - **`#00d8ff`** was in use and unmentioned by the brief; captured as
     `brand.cyan`.
+
+- [x] **T26 · Classic lost all in-progress state on a mode switch** *(reported
+  by owner during T24b review; fixed same turn)*
+  Leaving Classic mid-game for another mode and coming back showed an empty
+  board. **Cause:** the save effect in `ClassicGame.jsx` opened with
+  `if (!isWon) return;`, so an unfinished game was never written to
+  localStorage at all — only completed ones were. Switching modes unmounts the
+  component, and the restore effect then found nothing to restore.
+  Description was unaffected: `useDailyModeGame.js:72` guards on
+  `!isWon && guesses.length === 0`, i.e. it persists in-progress games.
+  **This is the exact failure `CLAUDE.md` warns about** — daily-state logic
+  exists twice and a fix to one never reached the other. It is the strongest
+  argument yet for **T9** on `p6-code-migration`.
+  *Fixed:* guard now matches the hook. `revealedHints` is persisted too (it
+  was also being lost) and restored defensively, since saves written before
+  this change have no such key. Stats can't double-count on the
+  newly-reachable "restore an unfinished game" path — `markAttempt` and
+  `updateStatsOnWin` are both idempotent per `dayKey` (`stats.js:37`, `:57`).
 
 - [ ] **T25 · `<h1>` sits fourth in the DOM on `/`** *(found during T24b)*
   Heading order on the homepage is `h2 h2 h3 h1 h2 h2 …`. The `<h1>`

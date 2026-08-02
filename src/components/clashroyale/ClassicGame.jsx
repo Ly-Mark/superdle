@@ -475,30 +475,53 @@ const ClassicGame = () => {
 
             setGuesses(hydrated);
             setIsWon(!!data.isWon);
+
+            // Saved games from before revealed hints were persisted have no
+            // `revealedHints` key, so fall back rather than spreading
+            // undefined and blanking the flags.
+            if (data.revealedHints) {
+                setRevealedHints({
+                    hint1: !!data.revealedHints.hint1,
+                    hint2: !!data.revealedHints.hint2,
+                    hint3: !!data.revealedHints.hint3,
+                });
+            }
         } catch { /* ignore */ }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [ENABLE_DAILY_LOCK, targetCard.card]);
 
 
-    // ---- Save today's result when the player wins ----
+    // ---- Save today's progress ----
+    // Runs on every guess, not only on the win. It used to bail on `!isWon`,
+    // which meant an unfinished game was never written at all: leaving Classic
+    // for another mode unmounts this component, and coming back restored
+    // nothing because nothing had been stored. Matches the guard in
+    // `useDailyModeGame.js:72`, which is why Description never had this bug.
+    //
+    // The `guesses.length === 0` half of the guard matters: on mount this
+    // effect fires before the restore effect has repopulated state, and
+    // without it an empty array would overwrite a real saved game.
     useEffect(() => {
         if (!ENABLE_DAILY_LOCK) return;
-        if (!isWon) return;
+        if (!isWon && guesses.length === 0) return;
 
         try {
             // Ensure the final saved state has a fully solved row if it's missing for any reason
             const hasSolved = guesses.some(g => g.card === targetCard.card);
-            const toSave = hasSolved ? guesses : [makeSolvedRow(targetCard), ...guesses];
+            const toSave = (isWon && !hasSolved)
+                ? [makeSolvedRow(targetCard), ...guesses]
+                : guesses;
 
             localStorage.setItem(storageKeyForToday(), JSON.stringify({
                 card: targetCard.card,
-                isWon: true,
+                isWon,
                 guesses: toSave,
+                revealedHints,
                 ts: Date.now(),
             }));
         } catch {}
         // The dependency array here is correct and won't cause a loop.
-    }, [ENABLE_DAILY_LOCK, isWon, guesses, targetCard.card]);
+    }, [ENABLE_DAILY_LOCK, isWon, guesses, revealedHints, targetCard.card]);
 
 
     // exclude already guessed/queued from suggestions

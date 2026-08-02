@@ -179,8 +179,26 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
     several levels down for no gain. Use `<Panel>` for new code.
     *Background overlay (brief task 1, second half):* `CRBackground` gains a
     CSS dot grid and a vignette. Radial-gradients, not images, so no extra
-    request. Blobs dropped `opacity-20` → `opacity-[0.14]` — separate knob,
-    revert that line alone if the page loses too much life.
+    request.
+    *Review 4 (owner):* dots approved. Wanted a darker gradient, flagged that
+    the background image changes size between modes, and asked for more blobs,
+    smaller and better scattered but **fixed** in place. All three done:
+    - **Gradient darkened** `#0b1f3a/#0b3a82/#0c59b6` → `#04101f/#082247/#0a3a76`.
+      The gradient is CSS, not an image — only the diamond overlay is an asset,
+      so this was a three-value edit. `brand.*` tokens updated to match; the
+      old trio is kept as `brand.*Legacy`.
+    - **Size shift fixed.** The diamond layer used `background-size: cover` on
+      a container whose height is content-driven, so it scaled up on tall
+      routes (Memory, card guide) and visibly jumped between modes. Now
+      `background-attachment: fixed`, which sizes against the viewport. Below
+      `768px` it falls back to `scroll` + `100vw auto`, because fixed
+      attachment is a repaint cost on mobile and is unreliable on iOS Safari.
+    - **Blob field reworked** — 3 → 9, sizes `w-80` down to `w-28`, irregular
+      positions. Hand-placed in a `BLOBS` const, **not** generated: the layout
+      must be identical on every route, and anything random would also differ
+      between the build-time prerender pass and the browser hydrate, which
+      React reports as a mismatch. Verified identical across four routes.
+      Pulse keyframes sit inside `prefers-reduced-motion: no-preference`.
   - [ ] **T24c · Guide polish.** Thumbnail placeholder (see T24x). Isolated
     pages, no game logic. *(brief task 10)*
     Rush stat tiles (brief task 8) were **done early in T24b** — they were

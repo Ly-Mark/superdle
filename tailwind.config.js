@@ -9,7 +9,10 @@
 // visual no-op. If it isn't, the token below is wrong, not the component.
 //
 // Values were taken from what the tree already uses, not invented:
-//   #0b1f3a / #0b3a82 / #0c59b6  CRBackground.jsx:11 gradient stops
+//   #04101f / #082247 / #0a3a76  CRBackground gradient stops (darkened in
+//                                T24b so the dot texture and panel shadows
+//                                have something to read against; the original
+//                                lighter trio is kept as *Legacy below)
 //   #00d8ff                      lone cyan accent already in use
 //   emerald/amber/red 500+600    the guess-tile states
 export default {
@@ -23,10 +26,15 @@ export default {
         // The blue identity. `deep` → `bright` is the page gradient,
         // darkest to lightest.
         brand: {
-          deep: '#0b1f3a',
-          mid: '#0b3a82',
-          bright: '#0c59b6',
+          deep: '#04101f',
+          mid: '#082247',
+          bright: '#0a3a76',
           cyan: '#00d8ff',
+          // The original, lighter gradient. Kept because it is still the
+          // reference for anything that needs to sit against the old look.
+          deepLegacy: '#0b1f3a',
+          midLegacy: '#0b3a82',
+          brightLegacy: '#0c59b6',
         },
 
         // The accent. This has to stay visibly apart from `state.close`

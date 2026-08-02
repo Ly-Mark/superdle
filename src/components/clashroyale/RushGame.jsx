@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import cardsData from "../../data/cards.json";
 import { compareAttributes, getAttributeColor } from "../../utils/clashroyale/gamelogic.js";
 import GameModeNav from "./GameModeNav";
-import Panel from "./Panel.jsx";
+import Panel, { PANEL_BASE } from "./Panel.jsx";
 import ModeIntro from "../layout/ModeIntro.jsx";
 import CRBackground from "../../components/clashroyale/CRBackground.jsx";
 import CardThumb from "../../components/clashroyale/CardThumb.jsx";
@@ -724,7 +724,7 @@ const RushGame = () => {
                     {/* End of run summary (wide, uncluttered) */}
                     {isTimeUp && finalTarget && (
                         <div className="max-w-6xl mx-auto mb-6">
-                            <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-5">
+                            <div className={`${PANEL_BASE} p-5`}>
                                 <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-5">
 
                                     {/* Left: charts + scrollable breakdown */}
@@ -933,7 +933,7 @@ const RushGame = () => {
                     {/* Correct strip */}
                     {correctHistory.length > 0 && (
                         <div className="max-w-3xl mx-auto mb-6">
-                            <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-3">
+                            <div className={`${PANEL_BASE} p-3`}>
                                 <div className="text-blue-100 font-semibold mb-2">Correct Cards</div>
 
                                 <div className="flex items-center gap-2 overflow-x-auto whitespace-nowrap pb-1 justify-start">

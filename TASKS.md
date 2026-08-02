@@ -165,9 +165,22 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
     the fix is either a stronger `shadow-panel` or a calmer background (the
     brief's dot overlay), and the second would fix it for every panel at once.
     Decide after more surfaces are converted.
-    *Converted so far:* `HintsPanel`, `InlineLegend` (both `ClassicGame`), and
-    the Rush header + its three stat tiles. Still to go: the accordions, the
-    guide cards, `WinPanelCompact`, and the Rush end-of-run summary.
+    *Review 3 (owner):* drop shadow now reads clearly on Rush; rollout
+    approved, background overlay approved to try.
+    *Rollout complete.* Every `bg-white/10 backdrop-blur-lg border rounded-2xl`
+    panel in `src/components/clashroyale/` now uses the shared treatment:
+    `HintsPanel`, `InlineLegend`, the Rush header + 3 stat tiles, the Rush
+    end-of-run summary and breakdown, `DescriptionGame`, `MemoryGame` (x2) and
+    `WinPanelCompact`. The `brawlstars/` copies were left alone — no route
+    imports them (see T12).
+    Deeply-nested call sites use the exported `PANEL_BASE` / `PANEL_RAISED`
+    class strings rather than the `<Panel>` component: swapping a `className`
+    is one line, whereas converting the tag means locating its closing tag
+    several levels down for no gain. Use `<Panel>` for new code.
+    *Background overlay (brief task 1, second half):* `CRBackground` gains a
+    CSS dot grid and a vignette. Radial-gradients, not images, so no extra
+    request. Blobs dropped `opacity-20` → `opacity-[0.14]` — separate knob,
+    revert that line alone if the page loses too much life.
   - [ ] **T24c · Guide polish.** Thumbnail placeholder (see T24x). Isolated
     pages, no game logic. *(brief task 10)*
     Rush stat tiles (brief task 8) were **done early in T24b** — they were
@@ -214,6 +227,17 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
     midnight. That's a behaviour decision, not a visual one.
   - **`#00d8ff`** was in use and unmentioned by the brief; captured as
     `brand.cyan`.
+
+- [x] **T27 · `ClassicGame` had its own copy of `CRBackground`** *(found during
+  T24b; fixed)*
+  Classic was the **only** route not using `CRBackground` — it carried an
+  inline duplicate of the same gradient, diamond overlay and blob stack.
+  Every other route (Description, Memory, Rush, `InfoPage`, `CardDetail`,
+  `CardsIndex`) used the shared component. Caught because the new dot texture
+  appeared on all four modes *except the homepage*.
+  *Fixed:* Classic now wraps in `<CRBackground>`; only the Classic-specific
+  flip-animation CSS stays inline. Removes ~35 lines of duplicated markup and
+  is a small down-payment on **T9**.
 
 - [x] **T26 · Classic lost all in-progress state on a mode switch** *(reported
   by owner during T24b review; fixed same turn)*

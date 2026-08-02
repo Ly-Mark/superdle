@@ -17,6 +17,8 @@
 // prerender pass.
 import React from 'react';
 
+const SHELL = 'relative rounded-panel border backdrop-blur-lg';
+
 const VARIANTS = {
     // Sits on the page gradient.
     base: 'bg-panel border-panel-border shadow-panel',
@@ -24,6 +26,14 @@ const VARIANTS = {
     // nesting is legible.
     raised: 'bg-panel-raised border-white/30 shadow-tile',
 };
+
+// The same treatment as class strings, for call sites that are already deeply
+// nested JSX. Swapping a className is a one-line change; converting the tag
+// means finding its matching closing tag several levels down, which is risk
+// with no payoff. Use the <Panel> component for new code and anywhere the
+// title/meta header is wanted — these are for mechanical conversions.
+export const PANEL_BASE = `${SHELL} ${VARIANTS.base}`;
+export const PANEL_RAISED = `${SHELL} ${VARIANTS.raised}`;
 
 export default function Panel({
     children,
@@ -48,7 +58,7 @@ export default function Panel({
     // literal keeps its newlines and indentation, and React emits those
     // verbatim into the class attribute of every panel on the page.
     const classes = [
-        'relative rounded-panel border backdrop-blur-lg',
+        SHELL,
         VARIANTS[variant] ?? VARIANTS.base,
         className,
     ].filter(Boolean).join(' ');

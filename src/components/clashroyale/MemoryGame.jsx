@@ -7,6 +7,7 @@ import HowToPlay from "../layout/HowToPlay.jsx";
 import { MEMORY_HOW_TO_PLAY } from "./modeHowToPlay.jsx";
 import CRBackground from "../../components/clashroyale/CRBackground.jsx";
 import CardThumb from "../../components/clashroyale/CardThumb.jsx";
+import { PANEL_BASE } from "./Panel.jsx";
 
 /* -------------------------------------------------------
    Helpers
@@ -274,7 +275,7 @@ export default function MemoryGame() {
                 </div>
 
                 {/* ONE centered top panel (instructions + input + stats) */}
-                <div className="max-w-5xl mx-auto bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-5 mb-6">
+                <div className={`${PANEL_BASE} max-w-5xl mx-auto p-5 mb-6`}>
                     <div className="grid grid-cols-1 xl:grid-cols-[1fr_1.4fr_1fr] gap-4 items-start">
 
                         {/* Instructions square */}
@@ -373,7 +374,7 @@ export default function MemoryGame() {
                         return (
                             <div
                                 key={rarity}
-                                className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-3"
+                                className={`${PANEL_BASE} p-3`}
                             >
                                 <div className="flex items-baseline justify-between mb-3">
                                     <div className="text-lg font-bold text-white">{rarity}</div>

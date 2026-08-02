@@ -9,6 +9,7 @@ import HowToPlay from "../layout/HowToPlay.jsx";
 import { DESCRIPTION_HOW_TO_PLAY } from "./modeHowToPlay.jsx";
 
 import { useDailyModeGame } from "./useDailyModeGame.js";
+import { PANEL_BASE } from "./Panel.jsx";
 
 const SuggestionItem = ({ name, onClick, isFirst, game = "clashroyale" }) => {
     return (
@@ -156,7 +157,7 @@ export default function DescriptionGame() {
                         </p>
                     </ModeIntro>
                     {/* Prompt panel styled similarly to Classic hints panel */}
-                    <div className="max-w-xl mx-auto bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6">
+                    <div className={`${PANEL_BASE} max-w-xl mx-auto p-6`}>
                         <p className="text-blue-200 text-2xl md:text-3xl font-semibold mb-4">
                             Which card is...
                         </p>

@@ -215,9 +215,7 @@
     "arena": "Builder's Workshop",
     "arenaTier": 5,
     "targets": "air",
-    "families": [
-      "undead"
-    ],
+    "families": [],
     "cost": 2,
     "tags": [
       "groundTankKiller",

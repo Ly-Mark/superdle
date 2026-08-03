@@ -111,10 +111,20 @@ const isGoblin = (name) => name.toLowerCase().includes('goblin');
 // the kind of miss T40 exists to catch: nothing fails, the data stays
 // self-consistent, and the only symptom is a cell that quietly rejects a card
 // a player is right about.
+//
+// The three witches are in Undead AND in Human. That is deliberate, not an
+// oversight: all three float with no legs in their card art, which reads as
+// wraith rather than living woman, while still having faces, arms and cloaks.
+// Being in two clans is normal here - Royal Ghost and Skeleton King are both
+// undead and royal, and a dozen cards are human and royal. The test is whether
+// a player would accept the answer, not what the taxonomy says.
+//
+// Bats are OUT - animals, not undead (owner, 2026-08-03). Spooky is not a
+// category.
 const UNDEAD = [
     'Skeletons', 'Skeleton Army', 'Skeleton Barrel', 'Skeleton Dragons',
     'Giant Skeleton', 'Skeleton King', 'Guards', 'Tombstone', 'Graveyard',
-    'Balloon', 'Royal Ghost', 'Bats', 'Phoenix', 'Witch', 'Night Witch',
+    'Balloon', 'Royal Ghost', 'Phoenix', 'Witch', 'Night Witch',
     'Mother Witch', 'Bomber', 'Wall Breakers',
 ];
 

@@ -149,13 +149,28 @@ const FLYING = [
     'Lava Hound', 'Flying Machine', 'Phoenix', 'Skeleton Barrel',
 ];
 
-// Produces additional units - on a timer, on death, or on placement.
+// Produces additional units - on a timer, on death, on placement, or via an
+// ability. Taken verbatim from the wiki's spawner table (owner, 2026-08-02),
+// so this list is DATA rather than judgement. Spawned units that are not
+// themselves cards (Golemite, Lava Pup, Phoenix Egg, Bush Goblins, Guardienne,
+// Cursed Hog, Elixir Blob, Goblin Brawler) are dropped.
+//
+// The table corrected five omissions and one invention in the drafted list:
+// Battle Ram, Goblin Barrel, Goblin Curse, Little Prince and Suspicious Bush
+// were missing; Goblinstein was in and should not have been.
+//
+// OPEN: the wiki troop table lists a "Monster" with no rarity, which is a
+// spawned unit, but no card in the spawner table produces it. Goblinstein is
+// the obvious candidate - it is a Champion with an ability and was in the
+// drafted list for a reason. If Goblinstein does spawn the Monster, the wiki
+// spawner table is incomplete and Goblinstein goes back in.
 const SPAWNS = [
-    'Goblin Hut', 'Barbarian Hut', 'Furnace', 'Tombstone', 'Witch',
-    'Night Witch', 'Golem', 'Lava Hound', 'Goblin Giant', 'Skeleton Barrel',
-    'Elixir Golem', 'Graveyard', 'Mother Witch', 'Goblin Drill', 'Goblin Cage',
-    'Phoenix', 'Royal Delivery', 'Barbarian Barrel', 'Skeleton King',
-    'Goblinstein',
+    'Barbarian Barrel', 'Barbarian Hut', 'Battle Ram', 'Elixir Golem',
+    'Furnace', 'Goblin Barrel', 'Goblin Cage', 'Goblin Curse', 'Goblin Drill',
+    'Goblin Giant', 'Goblin Hut', 'Golem', 'Graveyard', 'Lava Hound',
+    'Little Prince', 'Mother Witch', 'Night Witch', 'Phoenix',
+    'Royal Delivery', 'Skeleton Barrel', 'Skeleton King', 'Suspicious Bush',
+    'Tombstone', 'Witch',
 ];
 
 // Community-standard win conditions. The most contested list here - Three

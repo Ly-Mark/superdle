@@ -534,6 +534,7 @@
     ],
     "cost": 4,
     "tags": [
+      "spawns",
       "wincon"
     ]
   },
@@ -732,7 +733,9 @@
     "targets": "buildings",
     "families": [],
     "cost": 2,
-    "tags": []
+    "tags": [
+      "spawns"
+    ]
   },
   {
     "card": "Elixir Golem",
@@ -1216,6 +1219,7 @@
     ],
     "cost": 3,
     "tags": [
+      "spawns",
       "wincon"
     ]
   },
@@ -1286,7 +1290,9 @@
       "goblin"
     ],
     "cost": 2,
-    "tags": []
+    "tags": [
+      "spawns"
+    ]
   },
   {
     "card": "Rage",
@@ -1829,9 +1835,7 @@
       "goblin"
     ],
     "cost": 5,
-    "tags": [
-      "spawns"
-    ]
+    "tags": []
   },
   {
     "card": "Little Prince",
@@ -1847,7 +1851,9 @@
       "royal"
     ],
     "cost": 3,
-    "tags": []
+    "tags": [
+      "spawns"
+    ]
   },
   {
     "card": "Vines",

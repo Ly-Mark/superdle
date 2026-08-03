@@ -11,6 +11,8 @@
     "families": [],
     "cost": 3,
     "tags": [
+      "groundTankKiller",
+      "airTankKiller",
       "multiUnit",
       "ranged",
       "flying"
@@ -30,6 +32,8 @@
     ],
     "cost": 3,
     "tags": [
+      "groundTankKiller",
+      "airTankKiller",
       "multiUnit",
       "ranged"
     ]
@@ -49,6 +53,7 @@
     ],
     "cost": 3,
     "tags": [
+      "miniTank",
       "melee"
     ]
   },
@@ -84,6 +89,7 @@
     ],
     "cost": 2,
     "tags": [
+      "groundTankKiller",
       "multiUnit",
       "melee"
     ]
@@ -136,6 +142,7 @@
     ],
     "cost": 5,
     "tags": [
+      "groundTankKiller",
       "multiUnit",
       "melee"
     ]
@@ -173,6 +180,8 @@
     "tags": [
       "groundSplash",
       "airSplash",
+      "groundTankKiller",
+      "airTankKiller",
       "multiUnit",
       "ranged",
       "flying"
@@ -209,6 +218,8 @@
     ],
     "cost": 2,
     "tags": [
+      "groundTankKiller",
+      "airTankKiller",
       "multiUnit",
       "melee",
       "flying"
@@ -229,6 +240,7 @@
     ],
     "cost": 7,
     "tags": [
+      "groundTankKiller",
       "multiUnit",
       "melee"
     ]
@@ -249,6 +261,7 @@
     "cost": 6,
     "tags": [
       "wincon",
+      "bigTank",
       "ranged"
     ]
   },
@@ -321,6 +334,7 @@
     ],
     "cost": 3,
     "tags": [
+      "groundTankKiller",
       "multiUnit",
       "melee",
       "ranged"
@@ -340,6 +354,8 @@
     ],
     "cost": 6,
     "tags": [
+      "miniTank",
+      "groundTankKiller",
       "multiUnit",
       "melee"
     ]
@@ -356,6 +372,8 @@
     "families": [],
     "cost": 5,
     "tags": [
+      "groundTankKiller",
+      "airTankKiller",
       "multiUnit",
       "ranged",
       "flying"
@@ -394,6 +412,7 @@
     ],
     "cost": 5,
     "tags": [
+      "miniTank",
       "multiUnit",
       "melee",
       "ranged"
@@ -478,6 +497,7 @@
     "families": [],
     "cost": 3,
     "tags": [
+      "groundTankKiller",
       "ranged"
     ]
   },
@@ -510,6 +530,8 @@
     "families": [],
     "cost": 4,
     "tags": [
+      "groundTankKiller",
+      "airTankKiller",
       "ranged"
     ]
   },
@@ -525,6 +547,8 @@
     "families": [],
     "cost": 4,
     "tags": [
+      "miniTank",
+      "groundTankKiller",
       "melee"
     ]
   },
@@ -542,6 +566,8 @@
     ],
     "cost": 4,
     "tags": [
+      "groundTankKiller",
+      "airTankKiller",
       "ranged"
     ]
   },
@@ -560,6 +586,7 @@
     "cost": 5,
     "tags": [
       "wincon",
+      "bigTank",
       "melee"
     ]
   },
@@ -578,6 +605,7 @@
     "cost": 4,
     "tags": [
       "groundSplash",
+      "miniTank",
       "melee"
     ]
   },
@@ -593,6 +621,8 @@
     "families": [],
     "cost": 3,
     "tags": [
+      "groundTankKiller",
+      "airTankKiller",
       "melee",
       "flying"
     ]
@@ -613,6 +643,7 @@
     "tags": [
       "spawns",
       "wincon",
+      "miniTank",
       "melee"
     ]
   },
@@ -632,6 +663,8 @@
     "tags": [
       "groundSplash",
       "airSplash",
+      "groundTankKiller",
+      "airTankKiller",
       "ranged"
     ]
   },
@@ -666,6 +699,7 @@
     "cost": 4,
     "tags": [
       "wincon",
+      "miniTank",
       "melee"
     ]
   },
@@ -703,6 +737,8 @@
     "cost": 9,
     "tags": [
       "wincon",
+      "groundTankKiller",
+      "airTankKiller",
       "multiUnit",
       "ranged"
     ]
@@ -721,6 +757,7 @@
     ],
     "cost": 4,
     "tags": [
+      "miniTank",
       "melee"
     ]
   },
@@ -738,6 +775,7 @@
     "tags": [
       "groundSplash",
       "airSplash",
+      "miniTank",
       "deathDamage",
       "melee"
     ]
@@ -756,6 +794,7 @@
     ],
     "cost": 3,
     "tags": [
+      "airTankKiller",
       "ranged"
     ]
   },
@@ -807,6 +846,7 @@
     "cost": 4,
     "tags": [
       "groundSplash",
+      "miniTank",
       "deathDamage",
       "ranged"
     ]
@@ -855,6 +895,7 @@
     "tags": [
       "spawns",
       "wincon",
+      "bigTank",
       "melee"
     ]
   },
@@ -919,7 +960,9 @@
     ],
     "cost": 4,
     "tags": [
-      "spawns"
+      "spawns",
+      "miniTank",
+      "groundTankKiller"
     ]
   },
   {
@@ -985,6 +1028,8 @@
     "families": [],
     "cost": 5,
     "tags": [
+      "groundTankKiller",
+      "airTankKiller",
       "ranged"
     ]
   },
@@ -1030,6 +1075,7 @@
     ],
     "cost": 3,
     "tags": [
+      "groundTankKiller",
       "multiUnit",
       "melee"
     ]
@@ -1048,6 +1094,7 @@
     "tags": [
       "groundSplash",
       "airSplash",
+      "miniTank",
       "ranged",
       "flying"
     ]
@@ -1066,6 +1113,7 @@
     ],
     "cost": 3,
     "tags": [
+      "groundTankKiller",
       "multiUnit",
       "melee"
     ]
@@ -1087,6 +1135,7 @@
     "tags": [
       "spawns",
       "airSplash",
+      "groundTankKiller",
       "ranged"
     ]
   },
@@ -1102,6 +1151,8 @@
     "families": [],
     "cost": 7,
     "tags": [
+      "bigTank",
+      "groundTankKiller",
       "melee"
     ]
   },
@@ -1121,6 +1172,7 @@
     "cost": 4,
     "tags": [
       "groundSplash",
+      "miniTank",
       "melee"
     ]
   },
@@ -1139,6 +1191,8 @@
     ],
     "cost": 5,
     "tags": [
+      "miniTank",
+      "groundTankKiller",
       "melee"
     ]
   },
@@ -1176,6 +1230,7 @@
     ],
     "cost": 6,
     "tags": [
+      "bigTank",
       "deathDamage",
       "melee"
     ]
@@ -1194,6 +1249,7 @@
     ],
     "cost": 4,
     "tags": [
+      "bigTank",
       "melee"
     ]
   },
@@ -1213,6 +1269,7 @@
     "tags": [
       "spawns",
       "wincon",
+      "bigTank",
       "melee",
       "ranged"
     ]
@@ -1233,6 +1290,8 @@
     "tags": [
       "groundSplash",
       "airSplash",
+      "groundTankKiller",
+      "airTankKiller",
       "ranged"
     ]
   },
@@ -1250,6 +1309,7 @@
     "tags": [
       "spawns",
       "wincon",
+      "bigTank",
       "deathDamage",
       "melee"
     ]
@@ -1306,6 +1366,7 @@
       "wincon",
       "groundSplash",
       "airSplash",
+      "bigTank",
       "melee"
     ]
   },
@@ -1324,6 +1385,7 @@
     "cost": 5,
     "tags": [
       "groundSplash",
+      "miniTank",
       "ranged"
     ]
   },
@@ -1343,6 +1405,7 @@
     "tags": [
       "groundSplash",
       "airSplash",
+      "miniTank",
       "ranged"
     ]
   },
@@ -1358,6 +1421,8 @@
     "families": [],
     "cost": 5,
     "tags": [
+      "miniTank",
+      "groundTankKiller",
       "ranged"
     ]
   },
@@ -1524,6 +1589,7 @@
     "cost": 6,
     "tags": [
       "wincon",
+      "groundTankKiller",
       "ranged"
     ]
   },
@@ -1542,7 +1608,8 @@
     "cost": 7,
     "tags": [
       "spawns",
-      "wincon"
+      "wincon",
+      "groundTankKiller"
     ]
   },
   {
@@ -1561,6 +1628,7 @@
     "cost": 7,
     "tags": [
       "groundSplash",
+      "bigTank",
       "melee"
     ]
   },
@@ -1579,6 +1647,7 @@
     "cost": 5,
     "tags": [
       "wincon",
+      "miniTank",
       "melee",
       "ranged"
     ]
@@ -1612,6 +1681,8 @@
     "families": [],
     "cost": 4,
     "tags": [
+      "groundTankKiller",
+      "airTankKiller",
       "ranged",
       "flying"
     ]
@@ -1629,6 +1700,7 @@
     "cost": 6,
     "tags": [
       "groundSplash",
+      "groundTankKiller",
       "ranged"
     ]
   },
@@ -1647,6 +1719,7 @@
     "cost": 3,
     "tags": [
       "wincon",
+      "miniTank",
       "melee"
     ]
   },
@@ -1685,6 +1758,8 @@
     "cost": 4,
     "tags": [
       "spawns",
+      "groundTankKiller",
+      "airTankKiller",
       "deathDamage",
       "melee",
       "flying"
@@ -1706,6 +1781,7 @@
     "cost": 3,
     "tags": [
       "groundSplash",
+      "miniTank",
       "melee"
     ]
   },
@@ -1759,6 +1835,8 @@
     ],
     "cost": 3,
     "tags": [
+      "miniTank",
+      "groundTankKiller",
       "melee"
     ]
   },
@@ -1776,6 +1854,7 @@
     "tags": [
       "spawns",
       "wincon",
+      "bigTank",
       "ranged",
       "flying"
     ]
@@ -1796,6 +1875,7 @@
     "cost": 4,
     "tags": [
       "spawns",
+      "groundTankKiller",
       "melee"
     ]
   },
@@ -1813,6 +1893,8 @@
     ],
     "cost": 4,
     "tags": [
+      "miniTank",
+      "groundTankKiller",
       "deathDamage",
       "melee"
     ]
@@ -1832,6 +1914,9 @@
     ],
     "cost": 3,
     "tags": [
+      "miniTank",
+      "groundTankKiller",
+      "airTankKiller",
       "melee"
     ]
   },
@@ -1850,6 +1935,9 @@
     ],
     "cost": 6,
     "tags": [
+      "miniTank",
+      "groundTankKiller",
+      "airTankKiller",
       "flying",
       "ranged"
     ]
@@ -1870,6 +1958,7 @@
     "tags": [
       "groundSplash",
       "airSplash",
+      "miniTank",
       "melee",
       "ranged"
     ]
@@ -1907,6 +1996,7 @@
     ],
     "cost": 3,
     "tags": [
+      "miniTank",
       "melee"
     ]
   },
@@ -1958,6 +2048,7 @@
     ],
     "cost": 4,
     "tags": [
+      "miniTank",
       "melee"
     ]
   },
@@ -1978,6 +2069,7 @@
     "tags": [
       "spawns",
       "groundSplash",
+      "miniTank",
       "melee"
     ]
   },
@@ -1995,6 +2087,7 @@
     ],
     "cost": 6,
     "tags": [
+      "miniTank",
       "melee"
     ]
   },
@@ -2013,6 +2106,8 @@
     ],
     "cost": 5,
     "tags": [
+      "groundTankKiller",
+      "airTankKiller",
       "ranged"
     ]
   },
@@ -2030,6 +2125,8 @@
     ],
     "cost": 4,
     "tags": [
+      "miniTank",
+      "groundTankKiller",
       "melee"
     ]
   },
@@ -2047,6 +2144,7 @@
     ],
     "cost": 5,
     "tags": [
+      "bigTank",
       "multiUnit",
       "ranged"
     ]
@@ -2067,6 +2165,7 @@
     "cost": 3,
     "tags": [
       "spawns",
+      "airTankKiller",
       "ranged"
     ]
   },
@@ -2097,6 +2196,7 @@
     ],
     "cost": 5,
     "tags": [
+      "miniTank",
       "melee"
     ]
   }

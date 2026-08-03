@@ -299,6 +299,58 @@ const AIR_SPLASH = [
     'Electro Giant', 'Princess', 'Magic Archer', 'Goblin Machine',
 ];
 
+// ROLE TAGS - deckshop.pro (owner, 2026-08-02).
+//
+// These describe how a card is USED rather than what it is, which makes them
+// the softest tags in the file. Kept because they are externally sourced and
+// consistent, but see the note on tank killers below before adding more of
+// this kind.
+
+// Bulk. A property of the card itself, so these read cleanly as puzzle
+// categories: a player can look at Golem and know it is a big tank.
+const BIG_TANK = [
+    'Royal Giant', 'Elixir Golem', 'Giant', 'Rune Giant', 'Giant Skeleton',
+    'Goblin Giant', 'PEKKA', 'Electro Giant', 'Golem', 'Mega Knight',
+    'Lava Hound', 'Goblinstein',
+];
+
+const MINI_TANK = [
+    'Knight', 'Rascals', 'Elite Barbarians', 'Ice Golem', 'Mini PEKKA',
+    'Goblin Cage', 'Valkyrie', 'Battle Ram', 'Hog Rider', 'Battle Healer',
+    'Goblin Demolisher', 'Baby Dragon', 'Dark Prince', 'Prince', 'Bowler',
+    'Executioner', 'Cannon Cart', 'Miner', 'Royal Ghost', 'Bandit',
+    'Fisherman', 'Lumberjack', 'Ram Rider', 'Goblin Machine', 'Spirit Empress',
+    'Golden Knight', 'Skeleton King', 'Mighty Miner', 'Monk', 'Boss Bandit',
+];
+
+// Tank killers describe a MATCHUP, not a property, and that is the difference
+// that matters for a puzzle. Owner flagged Wizard, Goblin Drill and Bandit as
+// reading oddly, and the reasons are deck theory rather than card knowledge -
+// Wizard clears the support around a tank, Goblin Drill pulls it as a
+// building, Bandit's dash cannot actually threaten one. All defensible advice;
+// none of it guessable from the card.
+//
+// Taken verbatim rather than trimmed, so the list stays deckshop's opinion
+// rather than becoming a mix of theirs and ours. If these play badly, drop
+// both tags whole rather than editing the membership.
+const GROUND_TANK_KILLER = [
+    'Goblins', 'Bats', 'Archers', 'Minions', 'Cannon', 'Goblin Gang',
+    'Skeleton Dragons', 'Tesla', 'Barbarians', 'Minion Horde',
+    'Elite Barbarians', 'Royal Recruits', 'Mega Minion', 'Mini PEKKA',
+    'Musketeer', 'Goblin Cage', 'Inferno Tower', 'Wizard', 'Three Musketeers',
+    'Guards', 'Skeleton Army', 'Hunter', 'Goblin Drill', 'Witch', 'Prince',
+    'Cannon Cart', 'X-Bow', 'PEKKA', 'Bandit', 'Inferno Dragon', 'Phoenix',
+    'Lumberjack', 'Night Witch', 'Sparky', 'Spirit Empress', 'Mighty Miner',
+    'Archer Queen',
+];
+
+const AIR_TANK_KILLER = [
+    'Bats', 'Archers', 'Minions', 'Skeleton Dragons', 'Tesla', 'Minion Horde',
+    'Mega Minion', 'Dart Goblin', 'Musketeer', 'Inferno Tower', 'Wizard',
+    'Three Musketeers', 'Hunter', 'Inferno Dragon', 'Phoenix',
+    'Spirit Empress', 'Little Prince', 'Archer Queen',
+];
+
 // ---------------------------------------------------------------------------
 // Derivation
 // ---------------------------------------------------------------------------
@@ -330,6 +382,8 @@ const check = (list, label) => {
 check(UNDEAD, 'UNDEAD'); check(HUMAN, 'HUMAN'); check(ROYAL, 'ROYAL');
 check(FLYING, 'FLYING'); check(SPAWNS, 'SPAWNS'); check(WINCON, 'WINCON');
 check(GROUND_SPLASH, 'GROUND_SPLASH'); check(AIR_SPLASH, 'AIR_SPLASH');
+check(BIG_TANK, 'BIG_TANK'); check(MINI_TANK, 'MINI_TANK');
+check(GROUND_TANK_KILLER, 'GROUND_TANK_KILLER'); check(AIR_TANK_KILLER, 'AIR_TANK_KILLER');
 check(DEATH_DAMAGE, 'DEATH_DAMAGE'); check(MULTI_UNIT, 'MULTI_UNIT');
 Object.entries(ATTACK_RANGE).forEach(([k, v]) => check(v, `ATTACK_RANGE.${k}`));
 
@@ -372,6 +426,10 @@ for (const c of cards) {
         WINCON.includes(c.card) && 'wincon',
         GROUND_SPLASH.includes(c.card) && 'groundSplash',
         AIR_SPLASH.includes(c.card) && 'airSplash',
+        BIG_TANK.includes(c.card) && 'bigTank',
+        MINI_TANK.includes(c.card) && 'miniTank',
+        GROUND_TANK_KILLER.includes(c.card) && 'groundTankKiller',
+        AIR_TANK_KILLER.includes(c.card) && 'airTankKiller',
         DEATH_DAMAGE.includes(c.card) && 'deathDamage',
         MULTI_UNIT.includes(c.card) && 'multiUnit',
         (range === 'melee' || range === 'both') && 'melee',

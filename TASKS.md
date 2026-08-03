@@ -29,13 +29,6 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
   touching the artwork.** Crossed swords would fill a square better if it is
   ever revisited.
 
-- **T36 · Review the two remaining hand lists in `buildClashdokuData.mjs`.**
-  Arena order and the nobility list are now confirmed. Still unreviewed:
-  **`SPLASH`** (33 cards, drafted last, least confident in the file) and
-  **`WINCON`** (Three Musketeers and Wall Breakers arguable either way).
-  Minor: **is Spirit Empress `human`?** She is `royal`; a spirit arguably is
-  not a person. Currently out.
-
 - **T31 · Guess bar scrolls off on Classic — approach undecided.** The board
   grows past a screenful, so reading earlier guesses takes the input away with
   it. Real problem, still unsolved.
@@ -78,283 +71,52 @@ card reuse, daily reset.
   **Not derivable from names** — Knight and Mega Knight are in and carry no
   "Royal" prefix, so this list has to be maintained by hand.
   Deliberately crosses `Human`: Royal Ghost is undead, Royal Hogs are animals.
-- **`Flying` is a plain boolean, not a partition.** The split is 13/75 and
-  `Grounded` would be a strict subset of `Troop` — see T36. Splash may still be
-  worth partitioning once its list is reviewed.
+- **`Flying` is a plain boolean, not a partition.** The split is 14/75 and
+  `Grounded` would be a strict subset of `Troop`.
+- **Splash is two tags, not one** — `groundSplash` (38) and `airSplash` (26),
+  split by what a card splashes *against*. Not nested: Witch and Magic Archer
+  splash air but not ground.
 - **Cost buckets are `≤2 / 3 / 4 / 5+`.** `Spirit Empress` deploys as ground
   for 3 or flying for 6, so it ships as **two entries** — see T36.
 
-**Measured pool: 274,088 grids at MIN=4** across the 29 categories now in
-`src/data/clashdoku.json`. None is dead weight — the weakest, `Champion`,
-still appears in 3,508 grids. For reference, the subset that needs no
-hand-authored tags at all (23 categories: rarity, cost, type, year, targets,
-arena, Goblin, Undead) already gives 51,768, so **no tag on this board is
-load-bearing for volume.** They are there for texture.
+**Measured pool: 2,062,210 grids at MIN=4** across the 38 categories in
+`src/data/clashdoku.json`. Nothing is dead weight — the weakest, `deathDamage`,
+still appears in 10,442 grids. For scale, the subset needing no hand-authored
+tags at all (rarity, cost, type, year, targets, arena) gives 51,768 on its own,
+so **no tag is load-bearing for volume.** Every one is there for texture.
 
-- [~] **T36 · Build the ClashDoku data file** — *v1 generated 2026-08-02*
-  `scripts/buildClashdokuData.mjs` → `src/data/clashdoku.json`, **121 entries,
-  29 categories, 275,162 valid grids at MIN=4.** Build passes; lint unchanged
-  at 0 errors / 7 warnings.
-  It is a **generator, not a hand-edited file**, so the card list cannot drift
-  from `cards.json` and the whole thing can be re-derived when a card ships.
-  It refuses to write if a hand-list names a card that does not exist, if an
-  arena is missing from the order map, or if a card has a non-numeric cost
-  with no split rule.
-  **Arena order confirmed by owner 2026-08-02, and it was wrong.** The draft
-  had `PEKKA's Playhouse` at 4 with Spell Valley and Builder's Workshop at 5/6;
-  the true order is Spell Valley 4, Builder's Workshop 5, PEKKA's Playhouse 6.
-  `arenaTier` now equals the in-game arena number, Training Camp at 0.
-  Independently confirmed at the top end: arena 18 in the generated data is
-  exactly Goblinstein, Little Prince and Monk, which is what owner said it
-  should be. Arenas 19–22 (Dragon Spa, Boot Camp, Clash Fest, PANCAKES!) hold
-  no cards but are listed so a future card cannot trip the guard.
+- [x] **T36 · Build the ClashDoku data file** — *done 2026-08-02*
+  `scripts/buildClashdokuData.mjs` → `src/data/clashdoku.json`.
+  **121 entries, 38 categories, 2,062,210 valid grids at MIN=4.**
+  A generator, not a hand-edited file, so the card list cannot drift from
+  `cards.json`. **Do not edit `clashdoku.json` — it is overwritten.** All
+  membership lists and the reasoning behind every contested call live in the
+  script's comments; that is the documentation, this is just state.
+  It refuses to write on: a hand-list naming a card that does not exist, an
+  arena missing from the order map, a card with non-numeric cost and no split
+  rule, a card in two `ATTACK_RANGE` buckets, or a card in none.
+  Sources: arena order and the spawner/stat tables verified against the wiki;
+  win conditions, both splash lists, both tank lists and both tank-killer
+  lists come from deckshop.pro. Only the families remain judgement.
+  `node scripts/buildClashdokuData.mjs --arenas` prints the arena table.
 
-  **Not finished — still my judgement, not fact:**
-  - **`SPLASH` (33 cards) has had no review at all** — drafted last, the least
-    confident list in the file.
-  - **`WINCON` is the most contested** — Three Musketeers and Wall Breakers are
-    arguable either way.
-  - **Spirit Empress is `royal` but not `human`.** The nobility list settled
-    royal; nobody has said whether a spirit counts as human. Currently out.
-  - *Note on counts:* Spirit Empress is two entries, so she double-counts in
-    every category she matches (Legendary reads 22, Troop 89, Royal 16 rows
-    for 15 cards). Correct for the grid, slightly inflated as a headcount.
+  **Tank killers are on probation.** They describe a *matchup*, not a property
+  of the card, which is the one soft spot in the set — Wizard is a tank killer
+  because splash clears the tank's support, Goblin Drill because it pulls as a
+  building, Bandit arguably not at all. Defensible deck advice, none of it
+  readable off the card. If they play unfairly, **drop both tags whole rather
+  than editing the membership** — trimming turns deckshop's list into an
+  unauditable blend of their opinion and ours.
 
-  *Original scope for this task:*
-  `src/data/clashdoku.json`. Borrows `card`/`rarity`/`cost`/`type`/`year`/
-  `arena` and `targets` from `cards.json`; drops `moveSpeed` and
-  `healthCategory` (both are dirty — `moveSpeed` has `"Medium / Very Fast"` and
-  `"None"`; `healthCategory` has *both* `"High / Medium"` and `"Medium / High"`
-  as distinct values). Adds `tags` and `families` per the brief's Tier 2/3.
+  **Stop adding categories.** 38 is past the point where more helps: each day
+  draws 6, so every new tag makes the existing ones rarer in rotation, and the
+  soft ones dilute the crisp ones. Rejected as duplicates of what we already
+  have: anti-air troop (= `Hits air` ∩ `Troop`), air troop (= `flying`), low
+  elixir cycle (= `Cost ≤2`), building chaser (a superset of `Buildings only`
+  — a replacement at best, not an addition). Rejected on audience: the eight
+  bait categories, which are deck-archetype vocabulary a casual daily player
+  will not have.
 
-  **Targeting taxonomy — settled 2026-08-02.** The raw field has 7 values and
-  is not usable as-is. It collapses to a clean 4-way partition; verified that
-  all 121 cards land in exactly one bucket, no overlap, no card left out:
-
-  | Bucket | Raw `targets` values | Cards | Use as a category? |
-  |---|---|---|---|
-  | **Hits air** | anything containing `Air` | 57 | yes |
-  | **Ground only** | `Ground`, `Buildings / Ground` | 42 | yes |
-  | **Targets buildings only** | `Buildings` | 14 | yes — this is the win-condition axis |
-  | **Attacks nothing** | `None`, `Other` | 8 | **no — too thin at MIN=4** |
-
-  - **Spells are fine and do not need special handling.** The worry does not
-    survive contact with the data: 15 spells hit air (Arrows, Zap, Fireball,
-    Rocket…) and 4 are ground-only (The Log, Earthquake, Barbarian Barrel,
-    Graveyard). Those match how players already talk about them — "The Log
-    doesn't hit air" is common knowledge, not a technicality.
-  - **"Attacks nothing" is a bucket, not a category.** Its 8 members are the
-    spawner buildings (Furnace, Goblin Hut, Tombstone, Barbarian Hut, Goblin
-    Cage), Elixir Collector, Goblin Barrel and Mirror. At 8 cards it can almost
-    never reach 4 answers against a second category. Those cards simply fail
-    all three targeting predicates — which the partition already gives us free.
-  - **Exclude `Mirror` from ClashDoku entirely.** It is uncategorisable on two
-    axes at once: `targets: "Other"` and `cost: "Other"`.
-  - **`Spirit Empress` (`cost: "3 / 6"`) belongs to both `Cost 3` and `Cost 5+`**
-    — settled by owner. Cost is therefore *not* a strict partition; the
-    predicate splits on `/` and tests every value. **It is the only dual-cost
-    card** once Mirror is excluded — 63 cards contain a `/` somewhere, but all
-    the others are multi-targeting (`Air / Ground`) or two-unit cards with
-    split speed/HP (Rascals, Guards, Dark Prince, Battle Ram, Goblinstein,
-    Little Prince). Write the predicate generally anyway.
-    **Superseded — ship it as two entries instead.** Owner confirmed the
-    mechanic 2026-08-02: the card is deployed as **ground for 3 elixir or
-    flying for 6**, depending on what you have. So the file carries
-    `Spirit Empress (Ground)` and `Spirit Empress (Flying)`.
-    An earlier objection here — that two entries would break the search modal —
-    was wrong: it assumed two rows sharing a name, and distinct display names
-    dissolve it.
-    **Two entries also express something membership cannot:** the flying
-    variant belongs in the `Flying` tag and the ground one does not. A single
-    entry would have to pick one and be wrong about half the card. It differs
-    on cost *and* mobility, which is accurate.
-    *Needs:* an explicit `slug: "spirit-empress"` on both entries, because
-    `slugifyCardName("Spirit Empress (Flying)")` resolves to no image. One
-    field in `clashdoku.json`; no change to `cardImages.js`.
-    *Keep the `/`-splitting cost predicate anyway* — it costs nothing and a
-    future dual-cost card should not need a second special case.
-  - **Year buckets must be disjoint.** The brief proposes `2016 / 2018+ /
-    2021+`, but `2021+` is a strict subset of `2018+` — a grid drawing both as
-    rows would make one row's cells a subset of the other's. Use
-    **`2016–17` (78) / `2018–20` (23) / `2021+` (19)** instead.
-    *Related trap for the generator:* nested pairs exist across families too —
-    `Human family` and (had we shipped it) `Grounded` are both strict subsets
-    of `Troop`. **Nesting is a quality problem, not a correctness one:** the
-    grid is still solvable, but one row's cells become a subset of the other's,
-    which reads as redundant. Add a grid-level filter that rejects any grid
-    containing a nested pair, rather than banning the categories or trying to
-    spot them all by hand.
-    **Detected automatically against the generated data — seven pairs, several
-    of which nobody would have guessed:**
-    `Legendary ⊂ Arena 11+` · `Champion ⊂ Troop` · `Champion ⊂ 2021+` ·
-    `Champion ⊂ Arena 11+` · `Buildings only ⊂ Troop` · `Human family ⊂ Troop` ·
-    `Flying ⊂ Troop`. Every Legendary really does unlock at Arena 11 or later.
-    This is why it must be a computed filter rather than a hand list.
-  - *Content note:* **78 of 120 cards are 2016–17.** The set is heavily
-    launch-weighted, which is why the era family only supports three buckets.
-  - **`arena` stays, bucketed. Do not drop it.** An earlier pass killed the
-    whole arena family after testing only `Training Camp` (8 cards) — testing
-    one category and concluding about a family. The brief's other arena
-    category, "unlocks Arena 10+", is 58 cards and was never tested. Bucketed
-    by unlock order it is the strongest cheap category family available:
-
-    | Bucket | Cards |
-    |---|---|
-    | Arena 1–5 (early) | 24 |
-    | Arena 6–10 (mid) | 38 |
-    | Arena 11+ (late) | 50 |
-
-    | Category set | Grids at MIN=4 |
-    |---|---|
-    | Tier 1, no arena (18) | 6,322 |
-    | + arena buckets (21) | **33,474** |
-    | + Goblin family (22) | **39,802** |
-
-    A 5× multiplier for less work than one Tier 2 tag. `Training Camp` on its
-    own stays dropped at 8 cards; it folds into "Arena 1–5".
-    **Cost: a 19-entry arena-name → unlock-order lookup.** `cards.json` stores
-    arena *names* only, with no ordering. Factual, one-time, no judgment.
-    **The ordering used for these numbers came from general knowledge of the
-    game, not from anything in the repo — verify it against the live game
-    before shipping.** A wrong order makes the buckets quietly wrong.
-  - **`Champion` is thin at 8** but survives, because it still pairs with the
-    large categories. Expect it to appear only against Troop / Hits air / cost
-    buckets.
-
-  **How the pool grew during scoping**, all measured at MIN=4 on real data:
-
-  | Category set | Grids |
-  |---|---|
-  | Tier 1 without arena (18) | 6,322 |
-  | + arena buckets (21) | 33,474 |
-  | + Goblin family (22) | 39,802 |
-  | **+ Undead, disjoint year buckets (23)** | **51,768** |
-
-  An intermediate conclusion on this board — *"Tier 2 is the launch
-  requirement"* — was **wrong and has been removed.** It rested on the 6,322
-  figure, which was itself the product of wrongly dropping arena. With arena
-  restored there is no volume problem to solve.
-
-  *Why it grows faster than the category count:* variety comes from **which
-  six categories are drawn together**, not from how many cards a category
-  holds, so the pool scales with C(n,3)² — combinations, not categories. The
-  max-two-per-family rule over 6 headers forces at least 3 distinct families
-  per grid, and that is the binding constraint. Each new family relaxes it
-  rather than just adding options, which is why arena (one family, 3
-  categories) outperforms four independent Tier 2 booleans.
-
-  *Corollary worth remembering:* **a category does not have to be large to
-  earn its place.** It only has to reach 4 answers against the categories it
-  gets paired with. One that pairs well with 15 others beats a bigger one that
-  pairs with 5.
-
-  **Tier 2 tags — settled by owner 2026-08-02. Four, framed as six
-  categories:**
-
-  | Tag | Categories it yields | Family |
-  |---|---|---|
-  | Splash | `Splash` / `Single-target` | `damage` |
-  | Flying | `Flying` / `Grounded` | `mobility` |
-  | Win condition | `Win condition` | own |
-  | Spawns units | `Spawns units` | own |
-
-  Splash and flying are **partitions, not booleans** — two categories each for
-  identical data entry, and the max-two-per-family rule handles them for free.
-  *Not shipping:* **has Evolution** (upkeep every time Supercell ships one),
-  **ranged/melee** (a near-partition of troops, so it duplicates the `targets`
-  axis rather than adding one), **multi-unit**, **death effect**.
-
-  **Drafted and measured 2026-08-02.** Lists were authored from general
-  knowledge of the game, **not** from repo data — every membership call needs
-  owner review before it ships. Measured one at a time against the settled 23:
-
-  | Tag | Cards | Pool after | Gain |
-  |---|---|---|---|
-  | **Human family** | 43 | 85,234 | **+65%** |
-  | **Spawns units** | 20 | 88,002 | **+70%** |
-  | Win condition | 20 | 65,318 | +26% |
-  | Flying | 13 | 57,320 | +11% |
-  | ~~Grounded~~ | 75 | 100,412 | +94% |
-  | *all five (28 categories)* | — | **291,634** | — |
-
-  - **`Human family` (Tier 3) is the biggest single lever in the whole brief**,
-    bigger than any Tier 2 tag. Raised by owner 2026-08-02; the earlier
-    "families are a weak lever" conclusion was drawn from the small species
-    families and does not hold for this one. 43 cards, and it is the broad
-    "not goblin, not skeleton, not machine" axis the others lack.
-    *Boundary, reviewed by owner 2026-08-02:* the giants (Giant, Royal Giant,
-    Electro Giant, Rune Giant) are **in**. `Guards` is **out — it is Undead**,
-    not Human. Excluded as machines/undead: PEKKA, Mini PEKKA, Sparky, Cannon
-    Cart, Zappies, Skeleton King, Royal Ghost, Goblinstein.
-  - **Win condition and Spawns units are both 20 cards but not equally
-    valuable** — +26% against +70%. Win conditions cluster (nearly all cost 4+,
-    nearly all ground troops, many `Buildings only`) so they intersect thinly
-    with everything; spawners spread across buildings, troops and spells.
-    Keep win condition for flavour, not volume.
-  - **Ship `Flying` as a plain boolean. Drop `Grounded`.** The split is 13/75,
-    too lopsided to work as a partition, and `Grounded` is defined as
-    troop-and-not-flying so it is a strict subset of `Troop` — a near-duplicate
-    chip, and a dull one. **This reverses the partition advice above for
-    flying specifically**; splash/single-target may still be worth partitioning,
-    but that cannot be checked until the splash data exists.
-
-  **These are texture, not volume.** The measured pool without any Tier 2 tag
-  is already 51,768. Author them because `Win condition × Cost ≤2` is a better
-  puzzle than `Epic × Arena 6-10`, not to reach a target.
-
-  **Tier 3 families — measured 2026-08-02. Ship Goblin and Undead, stop there.**
-  Measured cumulatively, against the pre-arena baseline of 6,322:
-
-  | Added | Total grids | Grids containing a family | Hand-added members |
-  |---|---|---|---|
-  | none | 6,322 | 0 | — |
-  | **+ Goblin family (13)** | **8,016** | **1,694** | **0** |
-  | + Undead (16) | 11,686 | 5,364 | 10 |
-  | + Royal (11), Electric (10), Big tank (13), Fire/Ice (11) | 15,850 | 9,528 | 17 more |
-
-  *Species* families are a smaller lever than they look: 10–16 cards each, and
-  a small category struggles to reach 4 answers in intersection. The four
-  beyond Goblin and Undead add ~4k grids between them for 17 hand-added
-  members and a pile of boundary arguments.
-  **This does not generalise to `Human family`** — at 44 cards it behaves like
-  a broad attribute rather than a species tag, and it is the largest single
-  addition available. See the Tier 2 block above.
-
-  - **`Undead` is confirmed by owner 2026-08-02** and ships alongside Goblin.
-    Build it as name-stem `skeleton` plus an explicit member list — skeletons,
-    the witches, Balloon, Royal Ghost, Guards, Tombstone, Graveyard, Bats,
-    Phoenix. 16 cards. Write the boundary down so it stays arguable rather
-    than arbitrary.
-  - **`Goblin family` is free and should ship.** 13 cards from a pure
-    substring match on `card`, no exceptions, no judgment calls, and it
-    self-maintains — any future card named `Goblin X` joins automatically. Best
-    effort-to-value item in the whole brief.
-  - **Every other family needs hand-added members**, because names alone are
-    too thin: Skeleton and Giant hit 6, Royal and Spirit 5, Dragon and
-    Barbarian 4. **56 of 121 cards match no family stem at all** (Knight,
-    PEKKA, Valkyrie, Sparky, Miner, Bandit, every spell).
-  - Families also carry judgment cost Tier 2 does not. "Does it deal splash
-    damage" has an answer; "is Phoenix a dragon, is Balloon skeleton family"
-    are arguments. The brief concedes this by asking for a `families.md`.
-  - **The case for families is texture, not volume.** `Goblin family × Cost ≤2`
-    is a better cell than `Splash × Cost ≤2`. Worth one or two, not six.
-  - Treat all families as a single attribute family for the max-two rule — a
-    grid with three species rows would read as a gimmick.
-
-  **Drop "Champion ability" from the Tier 2 list.** It is not data entry — it
-  is exactly `rarity === "Champion"`, the same 8 cards as the existing Champion
-  category. It would be a duplicate, and one of the thinnest. That leaves 9
-  candidate Tier 2 tags, not 10.
-
-  *Two traps:*
-  - **Never add these fields to `cards.json`.** `compareAttributes` in
-    `utils/clashroyale/gamelogic.js` iterates `Object.keys(target)` and skips
-    only `card`, `healthValue` and `hint*`. A `tags` key there silently becomes
-    a colour-coded guess attribute in Classic.
-  - **Never add or remove a card.** `getDailyCard` mods by `cards.length` (121).
-    Changing the count rewrites every past and future Classic and Description
-    answer. A separate file sidesteps this only if its card list stays a strict
-    subset — worth a build-time assert that it does.
 
 - [ ] **T37 · Generator: pair matrix, enumeration, filters, daily selection**
   Blocked by T36. Precompute category-pair intersections, keep pairs with ≥4
@@ -363,9 +125,14 @@ load-bearing for volume.** They are there for texture.
   **Generate client-side from the daily seed, not into a committed
   `puzzles.json`** — consistent with the other four modes, and a committed file
   is one more thing to regenerate every time a category changes.
-  Feasibility is proven against the real 121 cards, not the brief's ~116:
-  **37,032 grids at MIN=4 with all Tier 1 categories** (see the pool note in
-  the open decision below).
+  **The nested-pair filter must be computed, not hand-listed.** The subset
+  check over the real data found eleven nested pairs and several were not
+  predictable: `Legendary ⊂ Arena 11+`, `Champion ⊂ 2021+`,
+  `Champion ⊂ Arena 11+`, `Air tank killer ⊂ Hits air`, plus `Champion`,
+  `Buildings only`, `Human family`, `Flying`, `Big tank`, `Melee` and
+  `Multi-unit` all inside `Troop`. Nesting is a quality problem rather than a
+  correctness one — the grid still solves, but one row's cells become a subset
+  of the other's, which reads as redundant.
 
 - [ ] **T38 · ClashDoku UI**
   Blocked by T37. 3×3 of panel cells, category chips top and left, cell → card

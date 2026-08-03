@@ -115,21 +115,17 @@ volume.** Every one is there for texture.
   generator needs the same list client-side; lift it into a shared module
   rather than keeping two copies** — two drifting category lists would be the
   worst possible bug here, because the puzzle would still look valid.
-  Enumeration is O(C(n,3)²) and takes seconds, so the daily puzzle must be
-  picked by seeded index, not enumerated in the browser. Precompute category-pair intersections, keep pairs with ≥4
-  answers, enumerate valid 3×3s, filter (no attribute family more than twice
-  across the six headers), select by seeded PRNG.
   **Generate client-side from the daily seed, not into a committed
   `puzzles.json`** — consistent with the other four modes, and a committed file
   is one more thing to regenerate every time a category changes.
-  **The nested-pair filter must be computed, not hand-listed.** The subset
-  check over the real data found eleven nested pairs and several were not
-  predictable: `Legendary ⊂ Arena 11+`, `Champion ⊂ 2021+`,
-  `Champion ⊂ Arena 11+`, `Air tank killer ⊂ Hits air`, plus `Champion`,
-  `Buildings only`, `Human family`, `Flying`, `Big tank`, `Melee` and
-  `Multi-unit` all inside `Troop`. Nesting is a quality problem rather than a
-  correctness one — the grid still solves, but one row's cells become a subset
-  of the other's, which reads as redundant.
+  **But enumeration is O(C(n,3)²) and takes seconds**, so the browser cannot
+  enumerate to find the day's grid. It needs a seeded *index* into the pool,
+  which means either a compact committed index or a cheaper selection that
+  rejection-samples rather than enumerating. **This is the open design question
+  for T37 and is not yet solved.**
+  Still to add on top of the validator: the ≥4-answer pair filter as a
+  selection step, spacing (reject grids sharing ≥4 categories with the last 30
+  days), and an optional difficulty score from the sum of cell answer counts.
 
 - [ ] **T38 · ClashDoku UI**
   Blocked by T37. 3×3 of panel cells, category chips top and left, cell → card

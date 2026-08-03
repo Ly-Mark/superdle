@@ -54,6 +54,29 @@ Claude Code maintains `TASKS.md`. The rules:
 - If the board contradicts the code, the code wins: fix the board and say
   so.
 
+## Pull requests
+
+**Every time work is pushed for a PR, write the PR description to
+`pr-description-dump.md` at the repo root.** It is gitignored — a scratch pad
+for pasting into GitHub, not project documentation, which is why it does not
+live alongside `CLAUDE.md` and `TASKS.md`.
+
+- Overwrite it each time. It holds the *current* PR, not a history; git has the
+  history and the board has the state.
+- Write it for someone reviewing cold. Lead with blast radius — what the change
+  can and cannot affect — then what is in it, then the reasoning behind
+  anything contested.
+- Call out anything a reviewer should second-guess, including mistakes made
+  along the way that shaped the result. A wrong turn that was caught is more
+  useful to a reviewer than a clean narrative that hides it.
+- Say where data came from when a change introduces any: derived, externally
+  sourced, or judgement. Reviewers cannot check a list they think is a fact.
+- End with the commands to verify it.
+
+`.gitignore` does not retroactively untrack a file. If a scratch file is staged
+by a `git add -A` before the ignore rule lands, it stays staged until it is
+explicitly unstaged — check `git status` after adding a new ignore entry.
+
 ## Commands
 
 ```bash
@@ -72,7 +95,13 @@ npm run lint     # eslint . (flat config)
 
 Cloudflare Pages, served at root (`base: '/'`), domain `clash.ac`.
 
-- `public/_redirects` — SPA fallback (`/* → /index.html 200`).
+- `public/_redirects` — **no longer holds an SPA fallback.** The
+  `/* → /index.html 200` rule was removed on purpose: it made every unmatched
+  URL return the homepage with HTTP 200, which Google treats as a soft 404.
+  Cloudflare Pages serves `/404.html` with a real 404 for unmatched paths.
+  **Consequence: a route in `App.jsx` that is missing from
+  `scripts/prerenderRoutes.mjs` 404s on direct navigation.** It is not just a
+  missing title any more.
 - `public/_headers` — immutable caching for `/assets/*`, security headers.
 - `VITE_PUBLIC_BASE_URL` env var supplies the absolute origin for share links (`src/utils/shareBase.js`); falls back to `window.location.origin` in dev.
 - Google AdSense loader and `og:`/`twitter:` tags are hardcoded in `index.html`; `public/ads.txt` holds the publisher ID.
@@ -85,7 +114,7 @@ React 19 + Vite 8 + react-router-dom 7 + Tailwind 3. No TypeScript. The app is a
 
 This is a **prerendered SPA**, not a plain SPA. Understanding this is required before touching entry points.
 
-- `scripts/prerenderRoutes.mjs` — the route list. `STATIC_ROUTES` must be kept in sync by hand with the `<Route>` list in `src/App.jsx`. It also has a `getCardRoutes()` path behind an `INCLUDE_CARD_ROUTES` flag (currently `false`) that would generate `/cards/:slug` from `cards.json`; the pages it targets don't exist yet.
+- `scripts/prerenderRoutes.mjs` — the route list. `STATIC_ROUTES` must be kept in sync by hand with the `<Route>` list in `src/App.jsx`. The `INCLUDE_CARD_ROUTES` flag is **gone** — it was removed so nobody flips it and generates 121 near-identical thin-content pages. Card routes are now real: `/cards` (`CardsIndex.jsx`) and `/cards/:slug` (`CardDetail.jsx`), and a card earns a page only by having written material in `src/content/cardSpotlights.jsx` or `balance-history.md`, which the script reads directly.
 - `src/prerender.jsx` — runs at **build time in Node**, never shipped to the browser. Renders `<App>` under `StaticRouter` via `react-dom/static`, so `lazy()` routes resolve before HTML is emitted. Injects `<title>`/`<meta description>` per route.
 - `src/routeMeta.js` — per-route title/description map, keyed by path, consumed only by the prerender step. Adding a route means adding an entry here *and* in `prerenderRoutes.mjs`.
 - `src/main.jsx` — branches on `rootEl.hasChildNodes()`: `hydrateRoot` for prerendered HTML, `createRoot` in dev. Everything in `main.jsx` is guarded by `typeof window !== 'undefined'`.

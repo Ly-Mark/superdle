@@ -97,14 +97,26 @@ card reuse, daily reset.
   the membership** — trimming turns deckshop's list into an unauditable blend
   of their opinion and ours.
 
-**Measured pool: 2,062,210 grids at MIN=4** across the 38 categories in
-`src/data/clashdoku.json`. Nothing is dead weight — the weakest, `deathDamage`,
-still appears in 10,442 grids. For scale, the subset needing no hand-authored
-tags at all (rarity, cost, type, year, targets, arena) gives 51,768 on its own,
-so **no tag is load-bearing for volume.** Every one is there for texture.
+**Measured pool: 1,519,184 grids at MIN=4** across the 38 categories, with
+every filter applied — family cap *and* nested pairs. Earlier figures on this
+board (up to 2,062,210) predate the nested-pair filter and were roughly 26%
+optimistic; `scripts/validateClashdoku.mjs` is now the only number to quote.
+Nothing is dead weight — the weakest, `Champion`, still appears in 3,972 grids.
+For scale, the subset needing no hand-authored tags at all (rarity, cost, type,
+era, targets, arena) gives ~51,768 on its own, so **no tag is load-bearing for
+volume.** Every one is there for texture.
 
 - [ ] **T37 · Generator: pair matrix, enumeration, filters, daily selection**
-  Blocked by T36. Precompute category-pair intersections, keep pairs with ≥4
+  **`scripts/validateClashdoku.mjs` already does most of this** and is the
+  reference implementation — pair matrix, computed nested pairs, the family
+  cap, full enumeration and a per-category dead-weight report. It exits
+  non-zero on unusable data, so it is ready to wire into CI.
+  `CATEGORIES` in that file is the definition of what a chip can be. **The
+  generator needs the same list client-side; lift it into a shared module
+  rather than keeping two copies** — two drifting category lists would be the
+  worst possible bug here, because the puzzle would still look valid.
+  Enumeration is O(C(n,3)²) and takes seconds, so the daily puzzle must be
+  picked by seeded index, not enumerated in the browser. Precompute category-pair intersections, keep pairs with ≥4
   answers, enumerate valid 3×3s, filter (no attribute family more than twice
   across the six headers), select by seeded PRNG.
   **Generate client-side from the daily seed, not into a committed
@@ -141,7 +153,7 @@ Delete these once they are stale — git has the history.
 
 - [x] **T36 · ClashDoku data file** *(2026-08-02)* —
   `scripts/buildClashdokuData.mjs` → `src/data/clashdoku.json`. 121 entries,
-  38 categories, 2,062,210 valid grids at MIN=4.
+  38 categories, 1,519,184 valid grids at MIN=4.
   **`clashdoku.json` is generated output; edits to it are overwritten.** Change
   the lists in the script, which also carries the reasoning for every contested
   call. It refuses to write rather than emit bad data on five distinct

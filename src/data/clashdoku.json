@@ -100,7 +100,7 @@
     "families": [],
     "cost": 2,
     "tags": [
-      "splashAttacker",
+      "groundSplash",
       "ranged"
     ]
   },
@@ -152,7 +152,8 @@
     "families": [],
     "cost": 1,
     "tags": [
-      "splashAttacker",
+      "groundSplash",
+      "airSplash",
       "ranged"
     ]
   },
@@ -170,7 +171,8 @@
     ],
     "cost": 4,
     "tags": [
-      "splashAttacker",
+      "groundSplash",
+      "airSplash",
       "multiUnit",
       "ranged",
       "flying"
@@ -188,7 +190,8 @@
     "families": [],
     "cost": 1,
     "tags": [
-      "splashAttacker",
+      "groundSplash",
+      "airSplash",
       "ranged"
     ]
   },
@@ -261,7 +264,8 @@
     "families": [],
     "cost": 1,
     "tags": [
-      "splashAttacker",
+      "groundSplash",
+      "airSplash",
       "ranged"
     ]
   },
@@ -371,7 +375,8 @@
     ],
     "cost": 3,
     "tags": [
-      "splashAttacker",
+      "groundSplash",
+      "airSplash",
       "ranged"
     ]
   },
@@ -405,7 +410,10 @@
     "targets": "air",
     "families": [],
     "cost": 3,
-    "tags": []
+    "tags": [
+      "groundSplash",
+      "airSplash"
+    ]
   },
   {
     "card": "Zap",
@@ -418,7 +426,10 @@
     "targets": "air",
     "families": [],
     "cost": 2,
-    "tags": []
+    "tags": [
+      "groundSplash",
+      "airSplash"
+    ]
   },
   {
     "card": "Snowball",
@@ -431,7 +442,10 @@
     "targets": "air",
     "families": [],
     "cost": 2,
-    "tags": []
+    "tags": [
+      "groundSplash",
+      "airSplash"
+    ]
   },
   {
     "card": "Royal Delivery",
@@ -447,7 +461,9 @@
     ],
     "cost": 3,
     "tags": [
-      "spawns"
+      "spawns",
+      "groundSplash",
+      "airSplash"
     ]
   },
   {
@@ -478,7 +494,7 @@
     "cost": 4,
     "tags": [
       "wincon",
-      "splashAttacker",
+      "groundSplash",
       "ranged"
     ]
   },
@@ -561,7 +577,7 @@
     ],
     "cost": 4,
     "tags": [
-      "splashAttacker",
+      "groundSplash",
       "melee"
     ]
   },
@@ -614,7 +630,8 @@
     ],
     "cost": 5,
     "tags": [
-      "splashAttacker",
+      "groundSplash",
+      "airSplash",
       "ranged"
     ]
   },
@@ -704,7 +721,6 @@
     ],
     "cost": 4,
     "tags": [
-      "splashAttacker",
       "melee"
     ]
   },
@@ -720,6 +736,8 @@
     "families": [],
     "cost": 2,
     "tags": [
+      "groundSplash",
+      "airSplash",
       "deathDamage",
       "melee"
     ]
@@ -753,7 +771,9 @@
     "families": [],
     "cost": 4,
     "tags": [
-      "spawns"
+      "spawns",
+      "groundSplash",
+      "airSplash"
     ]
   },
   {
@@ -786,6 +806,7 @@
     ],
     "cost": 4,
     "tags": [
+      "groundSplash",
       "deathDamage",
       "ranged"
     ]
@@ -833,6 +854,7 @@
     "cost": 3,
     "tags": [
       "spawns",
+      "wincon",
       "melee"
     ]
   },
@@ -847,7 +869,10 @@
     "targets": "air",
     "families": [],
     "cost": 4,
-    "tags": []
+    "tags": [
+      "groundSplash",
+      "airSplash"
+    ]
   },
   {
     "card": "Rocket",
@@ -860,7 +885,10 @@
     "targets": "air",
     "families": [],
     "cost": 6,
-    "tags": []
+    "tags": [
+      "groundSplash",
+      "airSplash"
+    ]
   },
   {
     "card": "Earthquake",
@@ -873,7 +901,9 @@
     "targets": "ground",
     "families": [],
     "cost": 3,
-    "tags": []
+    "tags": [
+      "groundSplash"
+    ]
   },
   {
     "card": "Goblin Cage",
@@ -938,7 +968,7 @@
     "families": [],
     "cost": 4,
     "tags": [
-      "splashAttacker",
+      "groundSplash",
       "deathDamage",
       "ranged"
     ]
@@ -1016,7 +1046,8 @@
     "families": [],
     "cost": 4,
     "tags": [
-      "splashAttacker",
+      "groundSplash",
+      "airSplash",
       "ranged",
       "flying"
     ]
@@ -1055,7 +1086,7 @@
     "cost": 5,
     "tags": [
       "spawns",
-      "splashAttacker",
+      "airSplash",
       "ranged"
     ]
   },
@@ -1089,7 +1120,7 @@
     ],
     "cost": 4,
     "tags": [
-      "splashAttacker",
+      "groundSplash",
       "melee"
     ]
   },
@@ -1200,7 +1231,8 @@
     ],
     "cost": 4,
     "tags": [
-      "splashAttacker",
+      "groundSplash",
+      "airSplash",
       "ranged"
     ]
   },
@@ -1234,7 +1266,8 @@
     "families": [],
     "cost": 5,
     "tags": [
-      "splashAttacker",
+      "groundSplash",
+      "airSplash",
       "ranged",
       "flying"
     ]
@@ -1271,7 +1304,8 @@
     "cost": 7,
     "tags": [
       "wincon",
-      "splashAttacker",
+      "groundSplash",
+      "airSplash",
       "melee"
     ]
   },
@@ -1289,7 +1323,7 @@
     ],
     "cost": 5,
     "tags": [
-      "splashAttacker",
+      "groundSplash",
       "ranged"
     ]
   },
@@ -1307,7 +1341,8 @@
     ],
     "cost": 5,
     "tags": [
-      "splashAttacker",
+      "groundSplash",
+      "airSplash",
       "ranged"
     ]
   },
@@ -1368,7 +1403,10 @@
     "targets": "air",
     "families": [],
     "cost": 4,
-    "tags": []
+    "tags": [
+      "groundSplash",
+      "airSplash"
+    ]
   },
   {
     "card": "Barbarian Barrel",
@@ -1396,7 +1434,10 @@
     "targets": "air",
     "families": [],
     "cost": 4,
-    "tags": []
+    "tags": [
+      "groundSplash",
+      "airSplash"
+    ]
   },
   {
     "card": "Goblin Curse",
@@ -1452,7 +1493,10 @@
     "targets": "air",
     "families": [],
     "cost": 3,
-    "tags": []
+    "tags": [
+      "groundSplash",
+      "airSplash"
+    ]
   },
   {
     "card": "Void",
@@ -1516,7 +1560,7 @@
     ],
     "cost": 7,
     "tags": [
-      "splashAttacker",
+      "groundSplash",
       "melee"
     ]
   },
@@ -1553,7 +1597,6 @@
     ],
     "cost": 4,
     "tags": [
-      "splashAttacker",
       "ranged"
     ]
   },
@@ -1585,7 +1628,7 @@
     "families": [],
     "cost": 6,
     "tags": [
-      "splashAttacker",
+      "groundSplash",
       "ranged"
     ]
   },
@@ -1622,7 +1665,8 @@
     ],
     "cost": 3,
     "tags": [
-      "splashAttacker",
+      "groundSplash",
+      "airSplash",
       "ranged"
     ]
   },
@@ -1661,6 +1705,7 @@
     ],
     "cost": 3,
     "tags": [
+      "groundSplash",
       "melee"
     ]
   },
@@ -1678,7 +1723,7 @@
     ],
     "cost": 3,
     "tags": [
-      "splashAttacker",
+      "groundSplash",
       "ranged"
     ]
   },
@@ -1696,6 +1741,7 @@
     ],
     "cost": 4,
     "tags": [
+      "airSplash",
       "ranged"
     ]
   },
@@ -1822,6 +1868,8 @@
     ],
     "cost": 5,
     "tags": [
+      "groundSplash",
+      "airSplash",
       "melee",
       "ranged"
     ]
@@ -1873,7 +1921,9 @@
     "targets": "ground",
     "families": [],
     "cost": 2,
-    "tags": []
+    "tags": [
+      "groundSplash"
+    ]
   },
   {
     "card": "Graveyard",
@@ -1908,7 +1958,6 @@
     ],
     "cost": 4,
     "tags": [
-      "splashAttacker",
       "melee"
     ]
   },
@@ -1928,6 +1977,7 @@
     "cost": 4,
     "tags": [
       "spawns",
+      "groundSplash",
       "melee"
     ]
   },

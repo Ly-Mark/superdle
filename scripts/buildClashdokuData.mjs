@@ -175,13 +175,16 @@ const SPAWNS = [
     'Tombstone', 'Witch',
 ];
 
-// Community-standard win conditions. The most contested list here - Three
-// Musketeers and Wall Breakers are arguable either way.
+// Win conditions, taken from deckshop.pro (owner, 2026-08-02). External and
+// community-standard rather than my judgement, which settles the Three
+// Musketeers and Wall Breakers arguments - both are in.
+//
+// The drafted list was 20 of these 21; only Elixir Golem was missing.
 const WINCON = [
-    'Hog Rider', 'Royal Giant', 'Giant', 'Golem', 'Lava Hound', 'Balloon',
-    'Graveyard', 'X-Bow', 'Mortar', 'Miner', 'Goblin Barrel', 'Goblin Drill',
-    'Ram Rider', 'Battle Ram', 'Wall Breakers', 'Electro Giant', 'Royal Hogs',
-    'Goblin Giant', 'Skeleton Barrel', 'Three Musketeers',
+    'Mortar', 'Skeleton Barrel', 'Royal Giant', 'Battle Ram', 'Hog Rider',
+    'Giant', 'Royal Hogs', 'Elixir Golem', 'Three Musketeers', 'Wall Breakers',
+    'Goblin Barrel', 'Goblin Drill', 'Balloon', 'Goblin Giant', 'X-Bow',
+    'Electro Giant', 'Golem', 'Miner', 'Ram Rider', 'Graveyard', 'Lava Hound',
 ];
 
 // ---------------------------------------------------------------------------
@@ -262,60 +265,39 @@ const ATTACK_RANGE = {
     ],
 };
 
-// SPLASH ATTACKER - a unit whose ATTACK damages an area.
+// SPLASH - taken from deckshop.pro (owner, 2026-08-02), split into what a
+// card splashes AGAINST rather than a single flag.
 //
-// Renamed from the old `splash` tag on 2026-08-02. "Splash" alone could not be
-// pinned down: almost every damage spell hits an area, which made the tag
-// near-tautological for spells and left it correlated with `Spell`; and once
-// death damage counted, Golem, Balloon, Ice Golem and Wall Breakers all had to
-// join, at which point the tag meant little more than "deals area damage
-// somehow".
+// This replaces the earlier `splashAttacker` tag and reverses two calls made
+// while drafting it:
 //
-// The rule now: does the area damage happen because the unit ATTACKED?
-//   - yes -> in.   Spirits count: the burst IS the attack, and dying is a
-//                  consequence of it. Chaining counts (owner's call).
-//   - no  -> out.  Death damage is a separate mechanic and wants its own tag.
-//   - spells are out entirely. An attacker is a unit.
+//   - Spells are back IN. Deckshop counts them, and with the question split
+//     into "splashes ground" / "splashes air" that is right: a player asking
+//     what clears an air swarm genuinely means Arrows and Fireball as much as
+//     Wizard. The cost is that these tags now overlap `Spell` heavily.
+//   - Indirect and death-triggered area damage is back IN - Ice Golem's death
+//     nova, Furnace via its fire spirits, Skeleton King's ability. Deckshop
+//     cares about the effect, not the mechanism.
 //
-// Consequence worth knowing: no spell carries this tag, so `splashAttacker`
-// and `Spell` are disjoint rather than overlapping, and the splash /
-// single-target partition covers attacking units cleanly.
-const SPLASH_ATTACKER = [
-    // area attack
-    'Wizard', 'Baby Dragon', 'Valkyrie', 'Bomber', 'Witch', 'Executioner',
-    'Bowler', 'Dark Prince', 'Princess', 'Firecracker', 'Mega Knight',
-    'Sparky', 'Skeleton Dragons', 'Ice Wizard', 'Hunter', 'Battle Healer',
-    'Golden Knight', 'Bomb Tower', 'Mortar',
-    // chains - owner's call, 2026-08-02
-    'Electro Dragon', 'Electro Wizard', 'Electro Spirit',
-    // burst on attack; the unit dies doing it, which is not death damage
-    'Fire Spirit', 'Ice Spirit',
-    // reactive rather than an attack - owner added it deliberately
-    'Electro Giant',
+// The two lists are NOT nested: Witch and Magic Archer splash air but not
+// ground, so neither is a subset of the other.
+const GROUND_SPLASH = [
+    'Ice Spirit', 'Fire Spirit', 'Electro Spirit', 'Bomber', 'Zap', 'Snowball',
+    'Arrows', 'Firecracker', 'Royal Delivery', 'Skeleton Dragons', 'Mortar',
+    'Ice Golem', 'Earthquake', 'Fireball', 'Valkyrie', 'Bomb Tower', 'Furnace',
+    'Goblin Demolisher', 'Wizard', 'Rocket', 'Tornado', 'Baby Dragon',
+    'Dark Prince', 'Freeze', 'Poison', 'Hunter', 'Electro Dragon', 'Bowler',
+    'Executioner', 'Electro Giant', 'The Log', 'Princess', 'Ice Wizard',
+    'Royal Ghost', 'Goblin Machine', 'Sparky', 'Mega Knight', 'Skeleton King',
 ];
 
-// NOT tagged, and why. Kept here so the calls are visible and arguable rather
-// than silently absent.
-//
-// Death damage, not attack damage - these want a `deathDamage` tag instead:
-//   Giant Skeleton, Golem, Ice Golem, Elixir Golem, Balloon, Wall Breakers,
-//   Skeleton Barrel, Heal Spirit
-//   (Balloon and Wall Breakers are the arguable ones - Balloon's bombs splash
-//   on buildings as well as on death, and exploding IS a Wall Breaker's job.)
-//
-// Spells - excluded by definition now, but all deal area damage:
-//   Arrows, Fireball, Rocket, Zap, Poison, Lightning, Earthquake, The Log,
-//   Barbarian Barrel, Royal Delivery, Snowball, Tornado, Goblin Curse, Void
-//   (Freeze and Rage were tagged during review but deal no damage at all.)
-//
-// Not area damage on inspection:
-//   Magic Archer - pierces along a line rather than splashing a point.
-//
-// UNKNOWN - no reliable knowledge of the attack pattern, so deliberately
-// untagged rather than guessed. These need someone who knows the cards:
-//   Goblin Machine, Goblin Demolisher, Goblinstein, Rune Giant, Monk,
-//   Boss Bandit, Mighty Miner, Berserker, Vines, Little Prince, Phoenix,
-//   Zappies, Spirit Empress
+const AIR_SPLASH = [
+    'Ice Spirit', 'Fire Spirit', 'Electro Spirit', 'Zap', 'Snowball', 'Arrows',
+    'Firecracker', 'Royal Delivery', 'Skeleton Dragons', 'Ice Golem',
+    'Fireball', 'Furnace', 'Wizard', 'Rocket', 'Tornado', 'Baby Dragon',
+    'Freeze', 'Poison', 'Hunter', 'Witch', 'Electro Dragon', 'Executioner',
+    'Electro Giant', 'Princess', 'Magic Archer', 'Goblin Machine',
+];
 
 // ---------------------------------------------------------------------------
 // Derivation
@@ -347,7 +329,7 @@ const check = (list, label) => {
 };
 check(UNDEAD, 'UNDEAD'); check(HUMAN, 'HUMAN'); check(ROYAL, 'ROYAL');
 check(FLYING, 'FLYING'); check(SPAWNS, 'SPAWNS'); check(WINCON, 'WINCON');
-check(SPLASH_ATTACKER, 'SPLASH_ATTACKER');
+check(GROUND_SPLASH, 'GROUND_SPLASH'); check(AIR_SPLASH, 'AIR_SPLASH');
 check(DEATH_DAMAGE, 'DEATH_DAMAGE'); check(MULTI_UNIT, 'MULTI_UNIT');
 Object.entries(ATTACK_RANGE).forEach(([k, v]) => check(v, `ATTACK_RANGE.${k}`));
 
@@ -388,7 +370,8 @@ for (const c of cards) {
     const baseTags = [
         SPAWNS.includes(c.card) && 'spawns',
         WINCON.includes(c.card) && 'wincon',
-        SPLASH_ATTACKER.includes(c.card) && 'splashAttacker',
+        GROUND_SPLASH.includes(c.card) && 'groundSplash',
+        AIR_SPLASH.includes(c.card) && 'airSplash',
         DEATH_DAMAGE.includes(c.card) && 'deathDamage',
         MULTI_UNIT.includes(c.card) && 'multiUnit',
         (range === 'melee' || range === 'both') && 'melee',

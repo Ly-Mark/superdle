@@ -21,7 +21,7 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { buildIndex, isValidGrid, difficultyScore, MIN_ANSWERS } from '../src/utils/clashdoku/grid.js';
-import { CATEGORIES } from '../src/utils/clashdoku/categories.js';
+import { CATEGORIES, CATEGORIES_MISSING_DEFINITION } from '../src/utils/clashdoku/categories.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const cards = JSON.parse(
@@ -134,6 +134,9 @@ valid grids: ${total.toLocaleString()}`);
 }
 
 const problems = [];
+if (CATEGORIES_MISSING_DEFINITION.length) {
+    problems.push(`categories with no player-facing definition: ${CATEGORIES_MISSING_DEFINITION.join(', ')}`);
+}
 if (empty.length) problems.push(`categories matching no cards: ${empty.join(', ')}`);
 if (dead.length) problems.push(`categories in zero valid grids: ${dead.map(([l]) => l).join(', ')}`);
 if (degenerate) problems.push(`${degenerate} degenerate cells - one axis adds nothing`);

@@ -114,7 +114,8 @@ function resolveCard(input) {
 
 // --- play -----------------------------------------------------------------
 render();
-console.log(`\nEvery cell has at least ${MIN_ANSWERS} valid answers. Type e.g. "a1 hog rider", or "quit".`);
+console.log(`\nEvery cell has at least ${MIN_ANSWERS} valid answers.`);
+console.log('Type e.g. "a1 hog rider".  "?" explains the six categories.  "quit" to stop.');
 
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout, prompt: '> ' });
 rl.prompt();
@@ -123,6 +124,16 @@ rl.on('line', (line) => {
     const raw = line.trim();
     if (!raw) return rl.prompt();
     if (raw === 'quit' || raw === 'q') return rl.close();
+    if (raw === '?' || raw === 'help') {
+        // Fuzzy chips are the fastest way to make a wrong guess feel arbitrary,
+        // so the rule for each one has to be reachable while playing.
+        for (const id of [...grid.rows, ...grid.cols]) {
+            const cat = CATEGORIES.find((x) => x.id === id);
+            console.log(`  ${cat.label}
+      ${cat.definition}`);
+        }
+        return rl.prompt();
+    }
 
     const m = raw.match(/^([abc])\s*([123])\s+(.+)$/i);
     if (!m) {

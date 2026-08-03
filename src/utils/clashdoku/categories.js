@@ -54,8 +54,20 @@ export const CATEGORIES = [
     { id: 'royal',       label: 'Nobility',            family: 'clan',     test: fam('royal') },
 
     { id: 'flying',      label: 'Flying unit',         family: 'mobility', test: has('flying') },
-    { id: 'melee',       label: 'Melee',               family: 'range',    test: has('melee') },
-    { id: 'ranged',      label: 'Ranged',              family: 'range',    test: has('ranged') },
+
+    // "Has a" is doing real work in these two labels, not padding.
+    //
+    // Five cards deploy both kinds - Goblin Gang, Rascals, Goblin Giant, Ram
+    // Rider, Goblin Machine - so melee and ranged are NOT mutually exclusive,
+    // and the pair legitimately lands on opposite axes in ~51k grids. Playing
+    // the prototype, a cell headed "Melee × Ranged" reads as a contradiction
+    // and a player is likely to skip it as impossible. Labelled this way the
+    // same cell reads as "cards that bring both", which is a good puzzle.
+    //
+    // A rules fix was the wrong instinct here: the grids were fine, the words
+    // were wrong.
+    { id: 'melee',       label: 'Has a melee unit',    family: 'range',    test: has('melee') },
+    { id: 'ranged',      label: 'Has a ranged unit',   family: 'range',    test: has('ranged') },
 
     { id: 'groundSplash', label: 'Splashes ground',    family: 'splash',   test: has('groundSplash') },
     { id: 'airSplash',    label: 'Splashes air',       family: 'splash',   test: has('airSplash') },

@@ -117,13 +117,17 @@ for (const [label, n] of counts.slice(-3)) {
     console.log(`    ${String(Math.round(everyNDays(n))).padStart(4)}d  ${label}  (${n} in ${DAYS})`);
 }
 
-// Sampling is uniform over valid GRIDS, which is not the same as uniform over
-// categories: a category that can only legally pair with a handful of others
-// appears in few grids and so is drawn rarely. That is arithmetically correct
-// and can still be a bad game.
-const starved = counts.filter(([, n]) => everyNDays(n) > 365).map(([l, n]) => `${l} (every ${Math.round(everyNDays(n))}d)`);
-check('every category appears at least once a year',
-    starved.length === 0, starved.join(', ') || undefined);
+// Sampling is uniform over valid GRIDS, not over categories: one that can
+// legally pair with only a handful of others appears in few grids and so is
+// drawn rarely. Owner's call 2026-08-03 - rarity is acceptable, absence is
+// not - so this fails only on a category that never appears at all. The
+// intervals above are reported so a category quietly dying stays visible.
+check('no category is completely absent', counts.every(([, n]) => n > 0),
+    counts.filter(([, n]) => n === 0).map(([l]) => l).join(', ') || undefined);
+
+const veryRare = counts.filter(([, n]) => everyNDays(n) > 365)
+    .map(([l, n]) => `${l} every ~${Math.round(everyNDays(n))}d`);
+if (veryRare.length) console.log(`  note: seen less than yearly — ${veryRare.join(', ')}`);
 
 const diffs = grids.map((g) => g.difficulty).sort((x, y) => x - y);
 console.log(`  difficulty (sum of 9 cell answer counts): min ${diffs[0]}, median ${diffs[Math.floor(diffs.length / 2)]}, max ${diffs[diffs.length - 1]}`);

@@ -24,7 +24,14 @@
 import { seededRandom } from '../prng.js';
 import { CATEGORIES } from './categories.js';
 
-export const MIN_ANSWERS = 4;      // settled: every cell needs >= 4 valid cards
+// Every cell needs at least this many valid cards. Raised from 4 to 5 on
+// 2026-08-03: 44 category pairs sat exactly on the old floor, so a single
+// mis-tagged card could take a player's real options down to 3 - and several
+// of the most exposed categories (Undead, Nobility, Goblin family) are still
+// hand-authored judgement rather than sourced data. The cost is 40% of the
+// pool, which is irrelevant at this scale: 1M grids is roughly 2,700 years.
+// 6 would be the next step but it kills Champion entirely.
+export const MIN_ANSWERS = 5;
 export const MAX_PER_FAMILY = 2;   // stops three rarity rows
 const MAX_DRAWS = 5000;            // safety valve; expected need is ~36
 
@@ -121,6 +128,27 @@ export function difficultyScore(index, rows, cols) {
     return total;
 }
 
+// Difficulty bands, as score thresholds rather than percentiles, because the
+// runtime cannot enumerate the pool to work out where a grid falls.
+//
+// Taken from the real distribution over all 1,005,794 valid grids (p25 = 99,
+// p75 = 145), so the split is roughly 25% hard / 50% medium / 25% easy. The
+// full spread runs 49 to 309.
+//
+// RE-MEASURE THESE if MIN_ANSWERS or the category list changes - the numbers
+// move with the pool, and stale thresholds would silently mislabel puzzles
+// rather than fail. scripts/validateClashdoku.mjs prints the percentiles.
+export const DIFFICULTY_BANDS = [
+    { id: 'hard',   label: 'Hard',   max: 99 },
+    { id: 'medium', label: 'Medium', max: 145 },
+    { id: 'easy',   label: 'Easy',   max: Infinity },
+];
+
+/** Which band a grid falls in. Fewer total answers = harder. */
+export function difficultyBand(score) {
+    return DIFFICULTY_BANDS.find((b) => score <= b.max);
+}
+
 /**
  * Draw a legal grid from a seed string. Returns null only if MAX_DRAWS is
  * exhausted, which would mean the category set had become unusable - the
@@ -151,6 +179,7 @@ export function gridFromSeed(index, seedStr, { minAnswers = MIN_ANSWERS, reject 
             rowIdx: rows,
             colIdx: cols,
             difficulty: difficultyScore(index, rows, cols),
+            band: difficultyBand(difficultyScore(index, rows, cols)).id,
             draws: draw + 1,
         };
         if (reject && reject(grid)) continue;

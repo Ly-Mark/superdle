@@ -4,9 +4,9 @@ Working board for Clashdle. Maintained by Claude Code — see the "Task board
 protocol" section of `CLAUDE.md` for the update rules.
 
 **Last updated:** 2026-08-03
-**Current branch:** `p8-clashdoku` — pushed to origin, **PR not opened yet**.
-Holds ClashDoku (T36, T37 done; T38–T40 open). `main` is clean.
-Its PR description is drafted in `pr-description-dump.md` (gitignored).
+**Current branch:** `main` — `p8-clashdoku` merged via **PR #13** on
+2026-08-03. T36 and T37 are on `main`; T38–T40 are open and need a new branch
+cut from `main`.
 **Next branch:** `p6-code-migration` — cut and waiting, starts with T9.
 
 > **`p6-code-migration` must be rebased onto `main` before any work on it.**
@@ -293,7 +293,8 @@ Delete these once they are stale — git has the history.
   across three files `p7` just rewrote, to re-apply something already there.
   *Recommended:* close the PR unmerged, delete the branch.
   **Fully merged, safe to delete now:** `feature/rushmode`, `p5-adsense`,
-  `p7-ui-polish` (local).
+  `p7-ui-polish`, `p8-clashdoku` (all confirmed via
+  `git branch -r --merged origin/main`).
   **Have unmerged commits — check before deleting:**
   `feature-mobile-responsiveness` (7 — possibly relevant to **T34**),
   `pr4-gameplay-polish` (3), `p3-og-meta` (1),

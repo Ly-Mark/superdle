@@ -108,7 +108,7 @@ card reuse, daily reset.
   earned. **The UI must surface these on tap or hover** — that is a T38
   requirement, not a nice-to-have.
 
-**Measured pool: 1,005,794 grids at MIN=5**, every filter applied — family cap
+**Measured pool: 985,910 grids at MIN=5**, every filter applied — family cap
 and cross-axis nesting. `scripts/validateClashdoku.mjs` is the only number
 worth quoting; earlier board figures predate one filter or the other. Roughly
 2,700 years. `Champion` is the rarest chip at about once every 1000 days, which
@@ -153,7 +153,7 @@ Delete these once they are stale — git has the history.
 - [x] **T37 · Grid generator** *(2026-08-03)* — `src/utils/clashdoku/grid.js`,
   categories in `categories.js`, PRNG in `src/utils/prng.js`.
   **Selection is rejection sampling, not enumeration.** ~55M possible draws,
-  1,005,794 legal; drawing six categories from a seeded stream and retrying
+  985,910 legal; drawing six categories from a seeded stream and retrying
   costs ~36 draws and 0.015ms, against seconds to enumerate. Uniform over
   legal grids, so it is not a biased shortcut. This was the open design
   question and it is closed.

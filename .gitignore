@@ -18,6 +18,10 @@ dist-ssr
 # Note: "*.local" above does NOT cover this, the filename ends in .json.
 .claude/settings.local.json
 
+# Scratch file for drafting PR descriptions before pasting them into GitHub.
+# Working notes, not project documentation — unlike CLAUDE.md and TASKS.md.
+pr-description-dump.md
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

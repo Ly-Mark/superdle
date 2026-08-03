@@ -87,7 +87,7 @@
     "families": [],
     "cost": 2,
     "tags": [
-      "splash"
+      "splashAttacker"
     ]
   },
   {
@@ -131,7 +131,9 @@
     "targets": "air",
     "families": [],
     "cost": 1,
-    "tags": []
+    "tags": [
+      "splashAttacker"
+    ]
   },
   {
     "card": "Skeleton Dragons",
@@ -147,6 +149,7 @@
     ],
     "cost": 4,
     "tags": [
+      "splashAttacker",
       "flying"
     ]
   },
@@ -161,7 +164,9 @@
     "targets": "air",
     "families": [],
     "cost": 1,
-    "tags": []
+    "tags": [
+      "splashAttacker"
+    ]
   },
   {
     "card": "Bats",
@@ -225,7 +230,9 @@
     "targets": "air",
     "families": [],
     "cost": 1,
-    "tags": []
+    "tags": [
+      "splashAttacker"
+    ]
   },
   {
     "card": "Berserker",
@@ -320,7 +327,7 @@
     ],
     "cost": 3,
     "tags": [
-      "splash"
+      "splashAttacker"
     ]
   },
   {
@@ -349,9 +356,7 @@
     "targets": "air",
     "families": [],
     "cost": 3,
-    "tags": [
-      "splash"
-    ]
+    "tags": []
   },
   {
     "card": "Zap",
@@ -364,9 +369,7 @@
     "targets": "air",
     "families": [],
     "cost": 2,
-    "tags": [
-      "splash"
-    ]
+    "tags": []
   },
   {
     "card": "Snowball",
@@ -379,9 +382,7 @@
     "targets": "air",
     "families": [],
     "cost": 2,
-    "tags": [
-      "splash"
-    ]
+    "tags": []
   },
   {
     "card": "Royal Delivery",
@@ -397,8 +398,7 @@
     ],
     "cost": 3,
     "tags": [
-      "spawns",
-      "splash"
+      "spawns"
     ]
   },
   {
@@ -427,7 +427,7 @@
     "cost": 4,
     "tags": [
       "wincon",
-      "splash"
+      "splashAttacker"
     ]
   },
   {
@@ -502,7 +502,7 @@
     ],
     "cost": 4,
     "tags": [
-      "splash"
+      "splashAttacker"
     ]
   },
   {
@@ -551,7 +551,7 @@
     ],
     "cost": 5,
     "tags": [
-      "splash"
+      "splashAttacker"
     ]
   },
   {
@@ -633,7 +633,9 @@
       "human"
     ],
     "cost": 4,
-    "tags": []
+    "tags": [
+      "splashAttacker"
+    ]
   },
   {
     "card": "Ice Golem",
@@ -704,9 +706,7 @@
       "goblin"
     ],
     "cost": 4,
-    "tags": [
-      "splash"
-    ]
+    "tags": []
   },
   {
     "card": "Heal Spirit",
@@ -760,9 +760,7 @@
     "targets": "air",
     "families": [],
     "cost": 4,
-    "tags": [
-      "splash"
-    ]
+    "tags": []
   },
   {
     "card": "Rocket",
@@ -775,9 +773,7 @@
     "targets": "air",
     "families": [],
     "cost": 6,
-    "tags": [
-      "splash"
-    ]
+    "tags": []
   },
   {
     "card": "Earthquake",
@@ -790,9 +786,7 @@
     "targets": "ground",
     "families": [],
     "cost": 3,
-    "tags": [
-      "splash"
-    ]
+    "tags": []
   },
   {
     "card": "Goblin Cage",
@@ -857,7 +851,7 @@
     "families": [],
     "cost": 4,
     "tags": [
-      "splash"
+      "splashAttacker"
     ]
   },
   {
@@ -928,7 +922,7 @@
     "families": [],
     "cost": 4,
     "tags": [
-      "splash",
+      "splashAttacker",
       "flying"
     ]
   },
@@ -963,7 +957,7 @@
     "cost": 5,
     "tags": [
       "spawns",
-      "splash"
+      "splashAttacker"
     ]
   },
   {
@@ -994,7 +988,7 @@
     ],
     "cost": 4,
     "tags": [
-      "splash"
+      "splashAttacker"
     ]
   },
   {
@@ -1044,9 +1038,7 @@
       "undead"
     ],
     "cost": 6,
-    "tags": [
-      "splash"
-    ]
+    "tags": []
   },
   {
     "card": "Rune Giant",
@@ -1094,7 +1086,9 @@
       "human"
     ],
     "cost": 4,
-    "tags": []
+    "tags": [
+      "splashAttacker"
+    ]
   },
   {
     "card": "Golem",
@@ -1124,7 +1118,7 @@
     "families": [],
     "cost": 5,
     "tags": [
-      "splash",
+      "splashAttacker",
       "flying"
     ]
   },
@@ -1157,7 +1151,8 @@
     ],
     "cost": 7,
     "tags": [
-      "wincon"
+      "wincon",
+      "splashAttacker"
     ]
   },
   {
@@ -1174,7 +1169,7 @@
     ],
     "cost": 5,
     "tags": [
-      "splash"
+      "splashAttacker"
     ]
   },
   {
@@ -1191,7 +1186,7 @@
     ],
     "cost": 5,
     "tags": [
-      "splash"
+      "splashAttacker"
     ]
   },
   {
@@ -1235,9 +1230,7 @@
     "targets": "air",
     "families": [],
     "cost": 6,
-    "tags": [
-      "splash"
-    ]
+    "tags": []
   },
   {
     "card": "Freeze",
@@ -1264,8 +1257,7 @@
     "families": [],
     "cost": 2,
     "tags": [
-      "spawns",
-      "splash"
+      "spawns"
     ]
   },
   {
@@ -1279,9 +1271,7 @@
     "targets": "air",
     "families": [],
     "cost": 4,
-    "tags": [
-      "splash"
-    ]
+    "tags": []
   },
   {
     "card": "Goblin Curse",
@@ -1296,9 +1286,7 @@
       "goblin"
     ],
     "cost": 2,
-    "tags": [
-      "splash"
-    ]
+    "tags": []
   },
   {
     "card": "Rage",
@@ -1337,9 +1325,7 @@
     "targets": "air",
     "families": [],
     "cost": 3,
-    "tags": [
-      "splash"
-    ]
+    "tags": []
   },
   {
     "card": "Void",
@@ -1352,9 +1338,7 @@
     "targets": "air",
     "families": [],
     "cost": 3,
-    "tags": [
-      "splash"
-    ]
+    "tags": []
   },
   {
     "card": "X-Bow",
@@ -1404,7 +1388,7 @@
     ],
     "cost": 7,
     "tags": [
-      "splash"
+      "splashAttacker"
     ]
   },
   {
@@ -1437,7 +1421,9 @@
       "human"
     ],
     "cost": 4,
-    "tags": []
+    "tags": [
+      "splashAttacker"
+    ]
   },
   {
     "card": "Inferno Dragon",
@@ -1466,7 +1452,7 @@
     "families": [],
     "cost": 6,
     "tags": [
-      "splash"
+      "splashAttacker"
     ]
   },
   {
@@ -1501,7 +1487,7 @@
     ],
     "cost": 3,
     "tags": [
-      "splash"
+      "splashAttacker"
     ]
   },
   {
@@ -1551,7 +1537,9 @@
       "human"
     ],
     "cost": 3,
-    "tags": []
+    "tags": [
+      "splashAttacker"
+    ]
   },
   {
     "card": "Magic Archer",
@@ -1566,9 +1554,7 @@
       "human"
     ],
     "cost": 4,
-    "tags": [
-      "splash"
-    ]
+    "tags": []
   },
   {
     "card": "Bandit",
@@ -1645,6 +1631,7 @@
     "arenaTier": 15,
     "targets": "air",
     "families": [
+      "human",
       "royal"
     ],
     "cost": 3,
@@ -1660,6 +1647,7 @@
     "arenaTier": 15,
     "targets": "air",
     "families": [
+      "human",
       "royal"
     ],
     "cost": 6,
@@ -1680,9 +1668,7 @@
       "goblin"
     ],
     "cost": 5,
-    "tags": [
-      "splash"
-    ]
+    "tags": []
   },
   {
     "card": "Mother Witch",
@@ -1728,9 +1714,7 @@
     "targets": "ground",
     "families": [],
     "cost": 2,
-    "tags": [
-      "splash"
-    ]
+    "tags": []
   },
   {
     "card": "Graveyard",
@@ -1764,7 +1748,9 @@
       "royal"
     ],
     "cost": 4,
-    "tags": []
+    "tags": [
+      "splashAttacker"
+    ]
   },
   {
     "card": "Skeleton King",

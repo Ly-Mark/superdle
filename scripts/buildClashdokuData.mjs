@@ -121,7 +121,7 @@ const HUMAN = [
     'Berserker', 'Rascals', 'Miner', 'Mighty Miner', 'Monk', 'Golden Knight',
     'Mega Knight', 'Royal Recruits', 'Battle Healer', 'Firecracker',
     'Hog Rider', 'Ram Rider', 'Battle Ram', 'Giant', 'Royal Giant',
-    'Electro Giant', 'Rune Giant',
+    'Electro Giant', 'Rune Giant', 'Spirit Empress',
 ];
 
 // Cards associated with nobility. Supplied by owner 2026-08-02 as a closed
@@ -167,17 +167,60 @@ const WINCON = [
     'Goblin Giant', 'Skeleton Barrel', 'Three Musketeers',
 ];
 
-// Damages multiple targets in an area. THE LEAST REVIEWED LIST IN THIS FILE -
-// it was drafted last and has had no owner pass. Treat every entry as
-// provisional.
-const SPLASH = [
+// SPLASH ATTACKER - a unit whose ATTACK damages an area.
+//
+// Renamed from the old `splash` tag on 2026-08-02. "Splash" alone could not be
+// pinned down: almost every damage spell hits an area, which made the tag
+// near-tautological for spells and left it correlated with `Spell`; and once
+// death damage counted, Golem, Balloon, Ice Golem and Wall Breakers all had to
+// join, at which point the tag meant little more than "deals area damage
+// somehow".
+//
+// The rule now: does the area damage happen because the unit ATTACKED?
+//   - yes -> in.   Spirits count: the burst IS the attack, and dying is a
+//                  consequence of it. Chaining counts (owner's call).
+//   - no  -> out.  Death damage is a separate mechanic and wants its own tag.
+//   - spells are out entirely. An attacker is a unit.
+//
+// Consequence worth knowing: no spell carries this tag, so `splashAttacker`
+// and `Spell` are disjoint rather than overlapping, and the splash /
+// single-target partition covers attacking units cleanly.
+const SPLASH_ATTACKER = [
+    // area attack
     'Wizard', 'Baby Dragon', 'Valkyrie', 'Bomber', 'Witch', 'Executioner',
-    'Bowler', 'Giant Skeleton', 'Dark Prince', 'Magic Archer', 'Princess',
-    'Firecracker', 'Electro Dragon', 'Mega Knight', 'Sparky', 'Goblin Machine',
-    'Arrows', 'Fireball', 'Rocket', 'Zap', 'Poison', 'Lightning', 'Earthquake',
-    'The Log', 'Barbarian Barrel', 'Royal Delivery', 'Snowball', 'Tornado',
-    'Goblin Curse', 'Void', 'Bomb Tower', 'Mortar', 'Goblin Demolisher',
+    'Bowler', 'Dark Prince', 'Princess', 'Firecracker', 'Mega Knight',
+    'Sparky', 'Skeleton Dragons', 'Ice Wizard', 'Hunter', 'Battle Healer',
+    'Golden Knight', 'Bomb Tower', 'Mortar',
+    // chains - owner's call, 2026-08-02
+    'Electro Dragon', 'Electro Wizard', 'Electro Spirit',
+    // burst on attack; the unit dies doing it, which is not death damage
+    'Fire Spirit', 'Ice Spirit',
+    // reactive rather than an attack - owner added it deliberately
+    'Electro Giant',
 ];
+
+// NOT tagged, and why. Kept here so the calls are visible and arguable rather
+// than silently absent.
+//
+// Death damage, not attack damage - these want a `deathDamage` tag instead:
+//   Giant Skeleton, Golem, Ice Golem, Elixir Golem, Balloon, Wall Breakers,
+//   Skeleton Barrel, Heal Spirit
+//   (Balloon and Wall Breakers are the arguable ones - Balloon's bombs splash
+//   on buildings as well as on death, and exploding IS a Wall Breaker's job.)
+//
+// Spells - excluded by definition now, but all deal area damage:
+//   Arrows, Fireball, Rocket, Zap, Poison, Lightning, Earthquake, The Log,
+//   Barbarian Barrel, Royal Delivery, Snowball, Tornado, Goblin Curse, Void
+//   (Freeze and Rage were tagged during review but deal no damage at all.)
+//
+// Not area damage on inspection:
+//   Magic Archer - pierces along a line rather than splashing a point.
+//
+// UNKNOWN - no reliable knowledge of the attack pattern, so deliberately
+// untagged rather than guessed. These need someone who knows the cards:
+//   Goblin Machine, Goblin Demolisher, Goblinstein, Rune Giant, Monk,
+//   Boss Bandit, Mighty Miner, Berserker, Vines, Little Prince, Phoenix,
+//   Zappies, Spirit Empress
 
 // ---------------------------------------------------------------------------
 // Derivation
@@ -209,7 +252,7 @@ const check = (list, label) => {
 };
 check(UNDEAD, 'UNDEAD'); check(HUMAN, 'HUMAN'); check(ROYAL, 'ROYAL');
 check(FLYING, 'FLYING'); check(SPAWNS, 'SPAWNS'); check(WINCON, 'WINCON');
-check(SPLASH, 'SPLASH');
+check(SPLASH_ATTACKER, 'SPLASH_ATTACKER');
 
 const out = [];
 for (const c of cards) {
@@ -228,7 +271,7 @@ for (const c of cards) {
     const baseTags = [
         SPAWNS.includes(c.card) && 'spawns',
         WINCON.includes(c.card) && 'wincon',
-        SPLASH.includes(c.card) && 'splash',
+        SPLASH_ATTACKER.includes(c.card) && 'splashAttacker',
     ].filter(Boolean);
 
     const base = {
@@ -276,3 +319,16 @@ if (problems.length) {
 const dest = path.resolve(__dirname, '../src/data/clashdoku.json');
 writeFileSync(dest, JSON.stringify(out, null, 2) + '\n', 'utf8');
 console.log(`wrote ${out.length} entries to src/data/clashdoku.json`);
+
+// `node scripts/buildClashdokuData.mjs --arenas` prints every arena with the
+// cards it unlocks, in order, for diffing against a published unlock table.
+// ARENA_ORDER is hand-written and a wrong entry fails silently, so this is the
+// only cheap way to check it.
+if (process.argv.includes('--arenas')) {
+    console.log('\nArena unlocks as this file understands them:\n');
+    ARENA_ORDER.forEach((name, tier) => {
+        const here = out.filter((e) => e.arenaTier === tier).map((e) => e.card);
+        const label = `${String(tier).padStart(2)}  ${name}`.padEnd(28);
+        console.log(`${label}${here.length ? here.join(', ') : '—'}`);
+    });
+}

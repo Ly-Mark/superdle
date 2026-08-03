@@ -54,6 +54,29 @@ Claude Code maintains `TASKS.md`. The rules:
 - If the board contradicts the code, the code wins: fix the board and say
   so.
 
+## Pull requests
+
+**Every time work is pushed for a PR, write the PR description to
+`pr-description-dump.md` at the repo root.** It is gitignored — a scratch pad
+for pasting into GitHub, not project documentation, which is why it does not
+live alongside `CLAUDE.md` and `TASKS.md`.
+
+- Overwrite it each time. It holds the *current* PR, not a history; git has the
+  history and the board has the state.
+- Write it for someone reviewing cold. Lead with blast radius — what the change
+  can and cannot affect — then what is in it, then the reasoning behind
+  anything contested.
+- Call out anything a reviewer should second-guess, including mistakes made
+  along the way that shaped the result. A wrong turn that was caught is more
+  useful to a reviewer than a clean narrative that hides it.
+- Say where data came from when a change introduces any: derived, externally
+  sourced, or judgement. Reviewers cannot check a list they think is a fact.
+- End with the commands to verify it.
+
+`.gitignore` does not retroactively untrack a file. If a scratch file is staged
+by a `git add -A` before the ignore rule lands, it stays staged until it is
+explicitly unstaged — check `git status` after adding a new ignore entry.
+
 ## Commands
 
 ```bash

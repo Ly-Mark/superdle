@@ -4,8 +4,9 @@ Working board for Clashdle. Maintained by Claude Code — see the "Task board
 protocol" section of `CLAUDE.md` for the update rules.
 
 **Last updated:** 2026-08-02
-**Current branch:** `p8-clashdoku` — cut from `main` after PR #12 merged.
-Holds the ClashDoku scoping (T36–T39). `main` is clean.
+**Current branch:** `p8-clashdoku` — pushed to origin, **PR not opened yet**.
+Holds the ClashDoku data layer (T36 done; T37–T39 open). `main` is clean.
+Its PR description is drafted in `pr-description-dump.md` (gitignored).
 **Next branch:** `p6-code-migration` — cut and waiting, starts with T9.
 
 > **`p6-code-migration` must be rebased onto `main` before any work on it.**
@@ -58,7 +59,9 @@ card reuse, daily reset.
 - **Axis feedback on a wrong guess** — show which of the row/column matched and
   which did not. Our twist on PokeDoku's silent miss.
 - **Its own data file.** Nothing about this mode goes in `cards.json`.
-- **`targets` stays**, collapsed to a 3-category taxonomy — see T36.
+- **`targets` stays**, collapsed to `Hits air` / `Ground only` /
+  `Buildings only`. Verified as an exact partition; there are no air-only
+  attackers, so nothing is missing.
 - **No category may appear twice in one grid.** Six distinct headers, so
   `Common × Common` can never occur. This is what the enumeration assumes.
 - **Both Spirit Empress variants may be used in the same grid.** They are
@@ -77,46 +80,28 @@ card reuse, daily reset.
   split by what a card splashes *against*. Not nested: Witch and Magic Archer
   splash air but not ground.
 - **Cost buckets are `≤2 / 3 / 4 / 5+`.** `Spirit Empress` deploys as ground
-  for 3 or flying for 6, so it ships as **two entries** — see T36.
+  for 3 or flying for 6, so it ships as **two entries** sharing one art slug.
+- **Stop adding categories at 38.** Each day draws 6, so every new tag makes
+  the existing ones rarer in rotation and the soft ones dilute the crisp ones.
+  *Rejected as duplicates:* anti-air troop (= `Hits air` ∩ `Troop`), air troop
+  (= `flying`), low elixir cycle (= `Cost ≤2`), building chaser (a superset of
+  `Buildings only` — a replacement at best, not an addition).
+  *Rejected on audience:* the eight bait categories, which are deck-archetype
+  vocabulary a casual daily player will not have.
+- **Tank killers are on probation — first thing to cut if the game feels
+  unfair.** Every other tag describes a property of the card; these describe a
+  *matchup*. Wizard is a tank killer because splash clears the tank's support,
+  Goblin Drill because it pulls as a building, Bandit arguably not at all.
+  Sound deck advice, none of it readable off the card, and a puzzle category
+  has to be guessable. **If they go, drop both tags whole rather than editing
+  the membership** — trimming turns deckshop's list into an unauditable blend
+  of their opinion and ours.
 
 **Measured pool: 2,062,210 grids at MIN=4** across the 38 categories in
 `src/data/clashdoku.json`. Nothing is dead weight — the weakest, `deathDamage`,
 still appears in 10,442 grids. For scale, the subset needing no hand-authored
 tags at all (rarity, cost, type, year, targets, arena) gives 51,768 on its own,
 so **no tag is load-bearing for volume.** Every one is there for texture.
-
-- [x] **T36 · Build the ClashDoku data file** — *done 2026-08-02*
-  `scripts/buildClashdokuData.mjs` → `src/data/clashdoku.json`.
-  **121 entries, 38 categories, 2,062,210 valid grids at MIN=4.**
-  A generator, not a hand-edited file, so the card list cannot drift from
-  `cards.json`. **Do not edit `clashdoku.json` — it is overwritten.** All
-  membership lists and the reasoning behind every contested call live in the
-  script's comments; that is the documentation, this is just state.
-  It refuses to write on: a hand-list naming a card that does not exist, an
-  arena missing from the order map, a card with non-numeric cost and no split
-  rule, a card in two `ATTACK_RANGE` buckets, or a card in none.
-  Sources: arena order and the spawner/stat tables verified against the wiki;
-  win conditions, both splash lists, both tank lists and both tank-killer
-  lists come from deckshop.pro. Only the families remain judgement.
-  `node scripts/buildClashdokuData.mjs --arenas` prints the arena table.
-
-  **Tank killers are on probation.** They describe a *matchup*, not a property
-  of the card, which is the one soft spot in the set — Wizard is a tank killer
-  because splash clears the tank's support, Goblin Drill because it pulls as a
-  building, Bandit arguably not at all. Defensible deck advice, none of it
-  readable off the card. If they play unfairly, **drop both tags whole rather
-  than editing the membership** — trimming turns deckshop's list into an
-  unauditable blend of their opinion and ours.
-
-  **Stop adding categories.** 38 is past the point where more helps: each day
-  draws 6, so every new tag makes the existing ones rarer in rotation, and the
-  soft ones dilute the crisp ones. Rejected as duplicates of what we already
-  have: anti-air troop (= `Hits air` ∩ `Troop`), air troop (= `flying`), low
-  elixir cycle (= `Cost ≤2`), building chaser (a superset of `Buildings only`
-  — a replacement at best, not an addition). Rejected on audience: the eight
-  bait categories, which are deck-archetype vocabulary a casual daily player
-  will not have.
-
 
 - [ ] **T37 · Generator: pair matrix, enumeration, filters, daily selection**
   Blocked by T36. Precompute category-pair intersections, keep pairs with ≥4
@@ -149,6 +134,23 @@ so **no tag is load-bearing for volume.** Every one is there for texture.
   Google treats as a soft 404). Verify by byte size and markup, not exit code.
   *Also decide:* the brief calls the mode ClashDoku but proposes the pill
   "Grid" and the route `/clashroyale/grid`. Pick one and make all three agree.
+
+## Done
+
+Delete these once they are stale — git has the history.
+
+- [x] **T36 · ClashDoku data file** *(2026-08-02)* —
+  `scripts/buildClashdokuData.mjs` → `src/data/clashdoku.json`. 121 entries,
+  38 categories, 2,062,210 valid grids at MIN=4.
+  **`clashdoku.json` is generated output; edits to it are overwritten.** Change
+  the lists in the script, which also carries the reasoning for every contested
+  call. It refuses to write rather than emit bad data on five distinct
+  problems. Sources are external almost throughout — wiki for arena order,
+  spawners and stats; deckshop.pro for win conditions, splash, tanks and tank
+  killers. Only the four families remain judgement.
+  `node scripts/buildClashdokuData.mjs --arenas` reprints the arena table.
+
+---
 
 ## Blocked on account access — not code
 

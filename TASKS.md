@@ -3,9 +3,9 @@
 Working board for Clashdle. Maintained by Claude Code — see the "Task board
 protocol" section of `CLAUDE.md` for the update rules.
 
-**Last updated:** 2026-08-02
+**Last updated:** 2026-08-03
 **Current branch:** `p8-clashdoku` — pushed to origin, **PR not opened yet**.
-Holds the ClashDoku data layer (T36 done; T37–T39 open). `main` is clean.
+Holds ClashDoku (T36, T37 done; T38–T40 open). `main` is clean.
 Its PR description is drafted in `pr-description-dump.md` (gitignored).
 **Next branch:** `p6-code-migration` — cut and waiting, starts with T9.
 
@@ -52,16 +52,21 @@ card reuse, daily reset.
 - **No diagonals.** Row × column only. A diagonal applies to 3 cells and the
   centre sits on both, so cells would carry 2, 3 or 4 constraints depending on
   position — unrenderable next to a row chip and a column chip.
-- **Min 4 answers per cell.**
+- **Min 5 answers per cell.** Raised from 4 on 2026-08-03: 44 category pairs
+  sat exactly on the old floor, so one mis-tagged card could take a player's
+  real options to 3, and the most exposed categories are hand-authored. 6 is
+  the next step but it kills `Champion`.
 - **No uniqueness scoring.** A flat points system instead. Uniqueness needs
   crowd data, and inventing "obscurity weights" and showing them as a percentage
   is the same fake-number objection that killed T17.
 - **Axis feedback on a wrong guess** — show which of the row/column matched and
   which did not. Our twist on PokeDoku's silent miss.
 - **Its own data file.** Nothing about this mode goes in `cards.json`.
-- **`targets` stays**, collapsed to `Hits air` / `Ground only` /
-  `Buildings only`. Verified as an exact partition; there are no air-only
-  attackers, so nothing is missing.
+- **`targets` stays**, collapsed to `Can attack air` / `Attacks ground only` /
+  `Attacks buildings only`. An exact partition; no card attacks air alone.
+  **The labels say "attacks" deliberately** — "Ground only" read as though it
+  meant where a card walks, which is the `flying` axis. Goblin Gang is not in
+  it, because its spear goblins shoot air.
 - **No category may appear twice in one grid.** Six distinct headers, so
   `Common × Common` can never occur. This is what the enumeration assumes.
 - **Both Spirit Empress variants may be used in the same grid.** They are
@@ -97,35 +102,33 @@ card reuse, daily reset.
   the membership** — trimming turns deckshop's list into an unauditable blend
   of their opinion and ours.
 
-**Measured pool: 1,519,184 grids at MIN=4** across the 38 categories, with
-every filter applied — family cap *and* nested pairs. Earlier figures on this
-board (up to 2,062,210) predate the nested-pair filter and were roughly 26%
-optimistic; `scripts/validateClashdoku.mjs` is now the only number to quote.
-Nothing is dead weight — the weakest, `Champion`, still appears in 3,972 grids.
-For scale, the subset needing no hand-authored tags at all (rarity, cost, type,
-era, targets, arena) gives ~51,768 on its own, so **no tag is load-bearing for
-volume.** Every one is there for texture.
+- **Every category carries a player-facing `definition`**, and the validator
+  fails without one. A guessing game cannot have fuzzy chips: if a player has
+  to wonder what a category means, a wrong guess feels arbitrary rather than
+  earned. **The UI must surface these on tap or hover** — that is a T38
+  requirement, not a nice-to-have.
 
-- [ ] **T37 · Generator: pair matrix, enumeration, filters, daily selection**
-  **`scripts/validateClashdoku.mjs` already does most of this** and is the
-  reference implementation — pair matrix, computed nested pairs, the family
-  cap, full enumeration and a per-category dead-weight report. It exits
-  non-zero on unusable data, so it is ready to wire into CI.
-  `CATEGORIES` in that file is the definition of what a chip can be. **The
-  generator needs the same list client-side; lift it into a shared module
-  rather than keeping two copies** — two drifting category lists would be the
-  worst possible bug here, because the puzzle would still look valid.
-  **Generate client-side from the daily seed, not into a committed
-  `puzzles.json`** — consistent with the other four modes, and a committed file
-  is one more thing to regenerate every time a category changes.
-  **But enumeration is O(C(n,3)²) and takes seconds**, so the browser cannot
-  enumerate to find the day's grid. It needs a seeded *index* into the pool,
-  which means either a compact committed index or a cheaper selection that
-  rejection-samples rather than enumerating. **This is the open design question
-  for T37 and is not yet solved.**
-  Still to add on top of the validator: the ≥4-answer pair filter as a
-  selection step, spacing (reject grids sharing ≥4 categories with the last 30
-  days), and an optional difficulty score from the sum of cell answer counts.
+**Measured pool: 1,005,794 grids at MIN=5**, every filter applied — family cap
+and cross-axis nesting. `scripts/validateClashdoku.mjs` is the only number
+worth quoting; earlier board figures predate one filter or the other. Roughly
+2,700 years. `Champion` is the rarest chip at about once every 1000 days, which
+is accepted: rarity is fine, absence is not.
+
+- [ ] **T40 · Spot-check category membership**
+  The rules are proven; the *memberships* are not, and a wrong tag shows up as
+  a guess that feels arbitrary rather than as a failure. Nothing automated can
+  catch it — the data is self-consistent either way.
+  **Audit the judgement-based lists only.** Everything else came from the wiki
+  or deckshop.pro: the four families (`goblin`, `undead`, `human`, `royal`) and
+  the two tank-killer tags are the ones that are still opinion.
+  ```
+  node scripts/playClashdoku.mjs --card "goblin gang"   # one card, every category it hits
+  node scripts/playClashdoku.mjs --odd                  # every card carrying a judged tag
+  node scripts/playClashdoku.mjs --day 42 --reveal      # a whole grid with its answers
+  ```
+  *Known fuzzy edges already documented in the definitions, not bugs:* spirits
+  count as ranged (the wiki gives them 2.5 tiles); the giants are Human but
+  Guards are not; Goblin Gang can attack air because of its spear goblins.
 
 - [ ] **T38 · ClashDoku UI**
   Blocked by T37. 3×3 of panel cells, category chips top and left, cell → card
@@ -146,6 +149,22 @@ volume.** Every one is there for texture.
 ## Done
 
 Delete these once they are stale — git has the history.
+
+- [x] **T37 · Grid generator** *(2026-08-03)* — `src/utils/clashdoku/grid.js`,
+  categories in `categories.js`, PRNG in `src/utils/prng.js`.
+  **Selection is rejection sampling, not enumeration.** ~55M possible draws,
+  1,005,794 legal; drawing six categories from a seeded stream and retrying
+  costs ~36 draws and 0.015ms, against seconds to enumerate. Uniform over
+  legal grids, so it is not a biased shortcut. This was the open design
+  question and it is closed.
+  `MIN_ANSWERS` is 5. Difficulty bands are score thresholds (Hard ≤ 99,
+  Medium ≤ 145) taken from real percentiles — **re-measure if the floor or the
+  category list moves**, since stale thresholds mislabel silently.
+  Verified: 0 degenerate cells, 0 unsolvable grids, spacing holds, every
+  category appears. `scripts/validateClashdoku.mjs` and
+  `scripts/testClashdokuGrid.mjs` both exit non-zero on failure.
+  **Playable now:** `node scripts/playClashdoku.mjs` (`--day`, `--reveal`,
+  `--scan`, `--card`, `--odd`).
 
 - [x] **T36 · ClashDoku data file** *(2026-08-02)* —
   `scripts/buildClashdokuData.mjs` → `src/data/clashdoku.json`. 121 entries,

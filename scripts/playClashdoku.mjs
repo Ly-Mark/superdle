@@ -44,6 +44,41 @@ const grid = dailyGridsUpTo(index, day).at(-1);
 const label = (id) => CATEGORIES.find((c) => c.id === id).label;
 const ROW_KEYS = ['a', 'b', 'c'];
 
+// --- card mode: what does one card qualify for, and why? -------------------
+// Spot-checking membership is the slowest way to find a wrong tag, so make it
+// one command. The judgement-based lists (the four families, the two
+// tank-killer lists) are the ones worth auditing; everything else is sourced.
+if (argv.includes('--card')) {
+    const q = String(flag('--card', '')).toLowerCase().replace(/[^a-z0-9]/g, '');
+    const hits = cards.filter((c) => c.card.toLowerCase().replace(/[^a-z0-9]/g, '').includes(q));
+    if (!hits.length) { console.log('no such card'); process.exit(1); }
+    for (const card of hits) {
+        console.log(`\n${card.card}`);
+        console.log(`  ${card.rarity} · ${card.cost} elixir · ${card.type} · ${card.year} · ${card.arena} (arena ${card.arenaTier})`);
+        console.log(`  targets: ${card.targets}   families: ${card.families.join(', ') || '—'}   tags: ${card.tags.join(', ') || '—'}`);
+        const inCats = CATEGORIES.filter((cat) => cat.test(card));
+        console.log(`  qualifies for ${inCats.length} of ${CATEGORIES.length} categories:`);
+        for (const cat of inCats) console.log(`     ${cat.label}`);
+    }
+    process.exit(0);
+}
+
+// --- odd mode: cards most likely to be tagged wrong ------------------------
+// Surfaces the cards carrying a judgement-based tag, so a review pass has
+// somewhere to start rather than reading all 121 entries.
+if (argv.includes('--odd')) {
+    const JUDGED = ['goblin', 'undead', 'human', 'royal'];
+    const JUDGED_TAGS = ['groundTankKiller', 'airTankKiller'];
+    console.log('cards carrying a judgement-based family or tag (everything else is sourced):\n');
+    for (const card of cards) {
+        const f = card.families.filter((x) => JUDGED.includes(x));
+        const t = card.tags.filter((x) => JUDGED_TAGS.includes(x));
+        if (!f.length && !t.length) continue;
+        console.log(`  ${card.card.padEnd(24)} ${[...f, ...t].join(', ')}`);
+    }
+    process.exit(0);
+}
+
 // --- scan mode: are consecutive days varied and sensibly graded? -----------
 if (argv.includes('--scan')) {
     const count = Number(flag('--scan', 10));

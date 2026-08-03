@@ -94,8 +94,13 @@ export const CATEGORIES = [
     { id: 'undead', label: 'Undead', family: 'clan',
       definition: 'Skeletons, the witches that raise them, Balloon, Royal Ghost, Bats and Phoenix.',
       test: fam('undead') },
-    { id: 'human', label: 'Human', family: 'clan',
-      definition: 'People, including the giants. Machines, skeletons and beasts are excluded — so Guards and P.E.K.K.A are out.',
+    // "Human" alone was wrong: a Giant is human-shaped but not a person, and a
+    // player told Giant is "Human" has been given a bad rule. "Humanoid" on its
+    // own is too wide the other way - skeletons and goblins are humanoid too -
+    // so the definition has to name the exclusions, because they are not
+    // deducible from the word.
+    { id: 'human', label: 'Human or humanoid', family: 'clan',
+      definition: 'People and human-shaped figures, including the giants. Skeletons and goblins are humanoid too but have their own families, so they are excluded here. Beasts and wheeled machines are out.',
       test: fam('human') },
     { id: 'royal', label: 'Nobility', family: 'clan',
       definition: 'The royal court — the Knights, the Princes, Princess, Archer Queen, Skeleton King, Spirit Empress and the Royal cards.',

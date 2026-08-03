@@ -105,11 +105,17 @@ const SPLITS = {
 // no exceptions needed, and it picks up future Goblin cards automatically.
 const isGoblin = (name) => name.toLowerCase().includes('goblin');
 
+// Bomber and Wall Breakers are skeletons and belong here - clashdoku.md names
+// both in its skeleton family and the drafted list dropped them anyway. Found
+// 2026-08-03 while auditing what "humanoid" would sweep in, which is exactly
+// the kind of miss T40 exists to catch: nothing fails, the data stays
+// self-consistent, and the only symptom is a cell that quietly rejects a card
+// a player is right about.
 const UNDEAD = [
     'Skeletons', 'Skeleton Army', 'Skeleton Barrel', 'Skeleton Dragons',
     'Giant Skeleton', 'Skeleton King', 'Guards', 'Tombstone', 'Graveyard',
     'Balloon', 'Royal Ghost', 'Bats', 'Phoenix', 'Witch', 'Night Witch',
-    'Mother Witch',
+    'Mother Witch', 'Bomber', 'Wall Breakers',
 ];
 
 // Broad "people" axis. Machines and undead are out even when humanoid.

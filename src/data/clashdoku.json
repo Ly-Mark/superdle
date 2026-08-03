@@ -103,7 +103,9 @@
     "arena": "Bone Pit",
     "arenaTier": 2,
     "targets": "ground",
-    "families": [],
+    "families": [
+      "undead"
+    ],
     "cost": 2,
     "tags": [
       "groundSplash",
@@ -1341,7 +1343,9 @@
     "arena": "Spooky Town",
     "arenaTier": 12,
     "targets": "buildings",
-    "families": [],
+    "families": [
+      "undead"
+    ],
     "cost": 2,
     "tags": [
       "wincon",

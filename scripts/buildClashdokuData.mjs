@@ -87,10 +87,13 @@ const ARENA_ORDER = [
 //
 // Both share a slug so they resolve to the same art. If alternate portraits
 // turn up, give them separate slugs here.
+// The wiki stat line reads "6/3 ... 5.00/1.20 (Melee: Medium)", so the 6-cost
+// form is ranged and the 3-cost form is melee. That is a second axis the two
+// entries capture and a single entry could not, on top of flying.
 const SPLITS = {
     'Spirit Empress': [
-        { suffix: '(Ground)', cost: 3, flying: false },
-        { suffix: '(Flying)', cost: 6, flying: true },
+        { suffix: '(Ground)', cost: 3, flying: false, range: 'melee' },
+        { suffix: '(Flying)', cost: 6, flying: true, range: 'ranged' },
     ],
 };
 
@@ -159,11 +162,10 @@ const FLYING = [
 // Battle Ram, Goblin Barrel, Goblin Curse, Little Prince and Suspicious Bush
 // were missing; Goblinstein was in and should not have been.
 //
-// OPEN: the wiki troop table lists a "Monster" with no rarity, which is a
-// spawned unit, but no card in the spawner table produces it. Goblinstein is
-// the obvious candidate - it is a Champion with an ability and was in the
-// drafted list for a reason. If Goblinstein does spawn the Monster, the wiki
-// spawner table is incomplete and Goblinstein goes back in.
+// Goblinstein stays OUT, and the wiki table is right to omit it: the Monster
+// arrives WITH Goblinstein rather than being spawned by it, and the ability
+// links the two with an electric line (owner, 2026-08-02). That makes it a
+// multi-unit card, not a spawner - see MULTI_UNIT.
 const SPAWNS = [
     'Barbarian Barrel', 'Barbarian Hut', 'Battle Ram', 'Elixir Golem',
     'Furnace', 'Goblin Barrel', 'Goblin Cage', 'Goblin Curse', 'Goblin Drill',
@@ -181,6 +183,84 @@ const WINCON = [
     'Ram Rider', 'Battle Ram', 'Wall Breakers', 'Electro Giant', 'Royal Hogs',
     'Goblin Giant', 'Skeleton Barrel', 'Three Musketeers',
 ];
+
+// ---------------------------------------------------------------------------
+// Tags derived from the wiki stat tables (owner, 2026-08-02)
+// ---------------------------------------------------------------------------
+//
+// These three are transcribed from published columns rather than judged, which
+// makes them the most trustworthy tags in this file. The risk is transcription
+// error, not opinion - so ATTACK_RANGE below asserts full coverage and the
+// build fails if a card is missed.
+
+// The "(Death)" label in the Special Damage column.
+const DEATH_DAMAGE = [
+    'Balloon', 'Giant Skeleton', 'Golem', 'Ice Golem', 'Lumberjack', 'Phoenix',
+    'Skeleton Barrel', 'Goblin Demolisher', 'Bomb Tower',
+];
+
+// Count column > 1 - the card deploys several units at once.
+// Rascals is 1 boy + 2 girls; Goblinstein is itself plus the Monster, which
+// the Count column records as 1 and therefore undercounts.
+const MULTI_UNIT = [
+    'Archers', 'Barbarians', 'Bats', 'Elite Barbarians', 'Goblin Gang',
+    'Goblins', 'Guards', 'Minion Horde', 'Minions', 'Royal Hogs',
+    'Royal Recruits', 'Skeleton Army', 'Skeletons', 'Skeleton Dragons',
+    'Spear Goblins', 'Three Musketeers', 'Wall Breakers', 'Zappies',
+    'Rascals', 'Goblinstein',
+];
+
+// The Range column: "(Melee: Short/Medium/Long)" vs a plain number.
+//
+// This is attack range, NOT what a card can hit - a melee unit can still hit
+// air (Bats, Mega Minion) and a ranged one can be ground-only (Bomber). An
+// earlier pass dismissed melee/ranged as duplicating the targeting axis; that
+// was wrong, they are independent.
+//
+// `both` is for cards deploying units of each kind, e.g. Goblin Giant carries
+// spear goblins. Spirit Empress is here because its ground form is melee and
+// its flying form is ranged - see the per-variant override in SPLITS handling.
+const ATTACK_RANGE = {
+    melee: [
+        'Balloon', 'Bandit', 'Barbarians', 'Bats', 'Battle Healer',
+        'Battle Ram', 'Berserker', 'Boss Bandit', 'Dark Prince',
+        'Electro Giant', 'Elite Barbarians', 'Elixir Golem', 'Fisherman',
+        'Giant', 'Giant Skeleton', 'Goblins', 'Golden Knight', 'Golem',
+        'Guards', 'Hog Rider', 'Ice Golem', 'Knight', 'Lumberjack',
+        'Mega Knight', 'Mega Minion', 'Mighty Miner', 'Miner', 'Mini PEKKA',
+        'Monk', 'Night Witch', 'PEKKA', 'Phoenix', 'Prince', 'Royal Ghost',
+        'Royal Hogs', 'Royal Recruits', 'Rune Giant', 'Skeleton Army',
+        'Skeleton Barrel', 'Skeleton King', 'Skeletons', 'Valkyrie',
+        'Wall Breakers',
+    ],
+    ranged: [
+        'Archers', 'Archer Queen', 'Baby Dragon', 'Bomber', 'Bowler',
+        'Cannon Cart', 'Dart Goblin', 'Electro Dragon', 'Electro Spirit',
+        'Electro Wizard', 'Executioner', 'Firecracker', 'Fire Spirit',
+        'Flying Machine', 'Goblin Demolisher', 'Goblinstein', 'Heal Spirit',
+        'Hunter', 'Ice Spirit', 'Ice Wizard', 'Inferno Dragon', 'Lava Hound',
+        'Little Prince', 'Magic Archer', 'Minion Horde', 'Minions',
+        'Mother Witch', 'Musketeer', 'Princess', 'Royal Giant',
+        'Skeleton Dragons', 'Sparky', 'Spear Goblins', 'Three Musketeers',
+        'Witch', 'Wizard', 'Zappies', 'Bomb Tower', 'Cannon', 'Inferno Tower',
+        'Mortar', 'Tesla', 'X-Bow',
+    ],
+    both: [
+        'Goblin Gang', 'Goblin Giant', 'Goblin Machine', 'Ram Rider',
+        'Rascals',
+    ],
+    // Deploys or exists but never attacks: every spell, the pure spawner
+    // buildings, Elixir Collector, and Suspicious Bush (its bush goblins
+    // fight, the bush does not).
+    none: [
+        'Arrows', 'Barbarian Barrel', 'Clone', 'Earthquake', 'Fireball',
+        'Freeze', 'Goblin Barrel', 'Goblin Curse', 'Graveyard', 'Lightning',
+        'Poison', 'Rage', 'Rocket', 'Royal Delivery', 'Snowball', 'The Log',
+        'Tornado', 'Vines', 'Void', 'Zap',
+        'Barbarian Hut', 'Elixir Collector', 'Furnace', 'Goblin Cage',
+        'Goblin Drill', 'Goblin Hut', 'Tombstone', 'Suspicious Bush',
+    ],
+};
 
 // SPLASH ATTACKER - a unit whose ATTACK damages an area.
 //
@@ -268,6 +348,25 @@ const check = (list, label) => {
 check(UNDEAD, 'UNDEAD'); check(HUMAN, 'HUMAN'); check(ROYAL, 'ROYAL');
 check(FLYING, 'FLYING'); check(SPAWNS, 'SPAWNS'); check(WINCON, 'WINCON');
 check(SPLASH_ATTACKER, 'SPLASH_ATTACKER');
+check(DEATH_DAMAGE, 'DEATH_DAMAGE'); check(MULTI_UNIT, 'MULTI_UNIT');
+Object.entries(ATTACK_RANGE).forEach(([k, v]) => check(v, `ATTACK_RANGE.${k}`));
+
+// ATTACK_RANGE is transcribed by hand from a wiki column, so the failure mode
+// is a card silently falling through rather than a wrong opinion. Require
+// every card to appear in exactly one bucket.
+{
+    const seen = new Map();
+    for (const [bucket, list] of Object.entries(ATTACK_RANGE)) {
+        for (const name of list) {
+            if (seen.has(name)) problems.push(`ATTACK_RANGE: "${name}" in both ${seen.get(name)} and ${bucket}`);
+            seen.set(name, bucket);
+        }
+    }
+    const uncovered = cards
+        .filter((c) => !EXCLUDE.includes(c.card) && !SPLITS[c.card] && !seen.has(c.card))
+        .map((c) => c.card);
+    if (uncovered.length) problems.push(`ATTACK_RANGE: no bucket for ${uncovered.join(', ')}`);
+}
 
 const out = [];
 for (const c of cards) {
@@ -283,10 +382,17 @@ for (const c of cards) {
         ROYAL.includes(c.card) && 'royal',
     ].filter(Boolean);
 
+    const range = Object.entries(ATTACK_RANGE)
+        .find(([, list]) => list.includes(c.card))?.[0];
+
     const baseTags = [
         SPAWNS.includes(c.card) && 'spawns',
         WINCON.includes(c.card) && 'wincon',
         SPLASH_ATTACKER.includes(c.card) && 'splashAttacker',
+        DEATH_DAMAGE.includes(c.card) && 'deathDamage',
+        MULTI_UNIT.includes(c.card) && 'multiUnit',
+        (range === 'melee' || range === 'both') && 'melee',
+        (range === 'ranged' || range === 'both') && 'ranged',
     ].filter(Boolean);
 
     const base = {
@@ -309,7 +415,7 @@ for (const c of cards) {
                 card: `${c.card} ${v.suffix}`,
                 slug: base.slug,                      // both variants share art
                 cost: v.cost,
-                tags: [...baseTags, v.flying && 'flying'].filter(Boolean),
+                tags: [...baseTags, v.flying && 'flying', v.range].filter(Boolean),
             });
         }
         continue;

@@ -11,6 +11,8 @@
     "families": [],
     "cost": 3,
     "tags": [
+      "multiUnit",
+      "ranged",
       "flying"
     ]
   },
@@ -27,7 +29,10 @@
       "human"
     ],
     "cost": 3,
-    "tags": []
+    "tags": [
+      "multiUnit",
+      "ranged"
+    ]
   },
   {
     "card": "Knight",
@@ -43,7 +48,9 @@
       "royal"
     ],
     "cost": 3,
-    "tags": []
+    "tags": [
+      "melee"
+    ]
   },
   {
     "card": "Spear Goblins",
@@ -58,7 +65,10 @@
       "goblin"
     ],
     "cost": 2,
-    "tags": []
+    "tags": [
+      "multiUnit",
+      "ranged"
+    ]
   },
   {
     "card": "Goblins",
@@ -73,7 +83,10 @@
       "goblin"
     ],
     "cost": 2,
-    "tags": []
+    "tags": [
+      "multiUnit",
+      "melee"
+    ]
   },
   {
     "card": "Bomber",
@@ -87,7 +100,8 @@
     "families": [],
     "cost": 2,
     "tags": [
-      "splashAttacker"
+      "splashAttacker",
+      "ranged"
     ]
   },
   {
@@ -103,7 +117,10 @@
       "undead"
     ],
     "cost": 1,
-    "tags": []
+    "tags": [
+      "multiUnit",
+      "melee"
+    ]
   },
   {
     "card": "Barbarians",
@@ -118,7 +135,10 @@
       "human"
     ],
     "cost": 5,
-    "tags": []
+    "tags": [
+      "multiUnit",
+      "melee"
+    ]
   },
   {
     "card": "Electro Spirit",
@@ -132,7 +152,8 @@
     "families": [],
     "cost": 1,
     "tags": [
-      "splashAttacker"
+      "splashAttacker",
+      "ranged"
     ]
   },
   {
@@ -150,6 +171,8 @@
     "cost": 4,
     "tags": [
       "splashAttacker",
+      "multiUnit",
+      "ranged",
       "flying"
     ]
   },
@@ -165,7 +188,8 @@
     "families": [],
     "cost": 1,
     "tags": [
-      "splashAttacker"
+      "splashAttacker",
+      "ranged"
     ]
   },
   {
@@ -182,6 +206,8 @@
     ],
     "cost": 2,
     "tags": [
+      "multiUnit",
+      "melee",
       "flying"
     ]
   },
@@ -199,7 +225,10 @@
       "royal"
     ],
     "cost": 7,
-    "tags": []
+    "tags": [
+      "multiUnit",
+      "melee"
+    ]
   },
   {
     "card": "Royal Giant",
@@ -216,7 +245,8 @@
     ],
     "cost": 6,
     "tags": [
-      "wincon"
+      "wincon",
+      "ranged"
     ]
   },
   {
@@ -231,7 +261,8 @@
     "families": [],
     "cost": 1,
     "tags": [
-      "splashAttacker"
+      "splashAttacker",
+      "ranged"
     ]
   },
   {
@@ -247,7 +278,9 @@
       "human"
     ],
     "cost": 2,
-    "tags": []
+    "tags": [
+      "melee"
+    ]
   },
   {
     "card": "Skeleton Barrel",
@@ -265,6 +298,8 @@
     "tags": [
       "spawns",
       "wincon",
+      "deathDamage",
+      "melee",
       "flying"
     ]
   },
@@ -281,7 +316,11 @@
       "goblin"
     ],
     "cost": 3,
-    "tags": []
+    "tags": [
+      "multiUnit",
+      "melee",
+      "ranged"
+    ]
   },
   {
     "card": "Elite Barbarians",
@@ -296,7 +335,10 @@
       "human"
     ],
     "cost": 6,
-    "tags": []
+    "tags": [
+      "multiUnit",
+      "melee"
+    ]
   },
   {
     "card": "Minion Horde",
@@ -310,6 +352,8 @@
     "families": [],
     "cost": 5,
     "tags": [
+      "multiUnit",
+      "ranged",
       "flying"
     ]
   },
@@ -327,7 +371,8 @@
     ],
     "cost": 3,
     "tags": [
-      "splashAttacker"
+      "splashAttacker",
+      "ranged"
     ]
   },
   {
@@ -343,7 +388,11 @@
       "human"
     ],
     "cost": 5,
-    "tags": []
+    "tags": [
+      "multiUnit",
+      "melee",
+      "ranged"
+    ]
   },
   {
     "card": "Arrows",
@@ -412,7 +461,9 @@
     "targets": "ground",
     "families": [],
     "cost": 3,
-    "tags": []
+    "tags": [
+      "ranged"
+    ]
   },
   {
     "card": "Mortar",
@@ -427,7 +478,8 @@
     "cost": 4,
     "tags": [
       "wincon",
-      "splashAttacker"
+      "splashAttacker",
+      "ranged"
     ]
   },
   {
@@ -441,7 +493,9 @@
     "targets": "air",
     "families": [],
     "cost": 4,
-    "tags": []
+    "tags": [
+      "ranged"
+    ]
   },
   {
     "card": "Mini PEKKA",
@@ -454,7 +508,9 @@
     "targets": "ground",
     "families": [],
     "cost": 4,
-    "tags": []
+    "tags": [
+      "melee"
+    ]
   },
   {
     "card": "Musketeer",
@@ -469,7 +525,9 @@
       "human"
     ],
     "cost": 4,
-    "tags": []
+    "tags": [
+      "ranged"
+    ]
   },
   {
     "card": "Giant",
@@ -485,7 +543,8 @@
     ],
     "cost": 5,
     "tags": [
-      "wincon"
+      "wincon",
+      "melee"
     ]
   },
   {
@@ -502,7 +561,8 @@
     ],
     "cost": 4,
     "tags": [
-      "splashAttacker"
+      "splashAttacker",
+      "melee"
     ]
   },
   {
@@ -517,6 +577,7 @@
     "families": [],
     "cost": 3,
     "tags": [
+      "melee",
       "flying"
     ]
   },
@@ -535,7 +596,8 @@
     "cost": 4,
     "tags": [
       "spawns",
-      "wincon"
+      "wincon",
+      "melee"
     ]
   },
   {
@@ -552,7 +614,8 @@
     ],
     "cost": 5,
     "tags": [
-      "splashAttacker"
+      "splashAttacker",
+      "ranged"
     ]
   },
   {
@@ -567,6 +630,7 @@
     "families": [],
     "cost": 4,
     "tags": [
+      "ranged",
       "flying"
     ]
   },
@@ -584,7 +648,8 @@
     ],
     "cost": 4,
     "tags": [
-      "wincon"
+      "wincon",
+      "melee"
     ]
   },
   {
@@ -601,7 +666,9 @@
     ],
     "cost": 5,
     "tags": [
-      "wincon"
+      "wincon",
+      "multiUnit",
+      "melee"
     ]
   },
   {
@@ -618,7 +685,9 @@
     ],
     "cost": 9,
     "tags": [
-      "wincon"
+      "wincon",
+      "multiUnit",
+      "ranged"
     ]
   },
   {
@@ -635,7 +704,8 @@
     ],
     "cost": 4,
     "tags": [
-      "splashAttacker"
+      "splashAttacker",
+      "melee"
     ]
   },
   {
@@ -649,7 +719,10 @@
     "targets": "buildings",
     "families": [],
     "cost": 2,
-    "tags": []
+    "tags": [
+      "deathDamage",
+      "melee"
+    ]
   },
   {
     "card": "Dart Goblin",
@@ -664,7 +737,9 @@
       "goblin"
     ],
     "cost": 3,
-    "tags": []
+    "tags": [
+      "ranged"
+    ]
   },
   {
     "card": "Furnace",
@@ -692,7 +767,10 @@
     "targets": "air",
     "families": [],
     "cost": 4,
-    "tags": []
+    "tags": [
+      "multiUnit",
+      "ranged"
+    ]
   },
   {
     "card": "Goblin Demolisher",
@@ -707,7 +785,10 @@
       "goblin"
     ],
     "cost": 4,
-    "tags": []
+    "tags": [
+      "deathDamage",
+      "ranged"
+    ]
   },
   {
     "card": "Heal Spirit",
@@ -720,7 +801,9 @@
     "targets": "air",
     "families": [],
     "cost": 1,
-    "tags": []
+    "tags": [
+      "ranged"
+    ]
   },
   {
     "card": "Suspicious Bush",
@@ -749,7 +832,8 @@
     "families": [],
     "cost": 3,
     "tags": [
-      "spawns"
+      "spawns",
+      "melee"
     ]
   },
   {
@@ -854,7 +938,9 @@
     "families": [],
     "cost": 4,
     "tags": [
-      "splashAttacker"
+      "splashAttacker",
+      "deathDamage",
+      "ranged"
     ]
   },
   {
@@ -868,7 +954,9 @@
     "targets": "air",
     "families": [],
     "cost": 5,
-    "tags": []
+    "tags": [
+      "ranged"
+    ]
   },
   {
     "card": "Barbarian Hut",
@@ -911,7 +999,10 @@
       "undead"
     ],
     "cost": 3,
-    "tags": []
+    "tags": [
+      "multiUnit",
+      "melee"
+    ]
   },
   {
     "card": "Baby Dragon",
@@ -926,6 +1017,7 @@
     "cost": 4,
     "tags": [
       "splashAttacker",
+      "ranged",
       "flying"
     ]
   },
@@ -942,7 +1034,10 @@
       "undead"
     ],
     "cost": 3,
-    "tags": []
+    "tags": [
+      "multiUnit",
+      "melee"
+    ]
   },
   {
     "card": "Witch",
@@ -960,7 +1055,8 @@
     "cost": 5,
     "tags": [
       "spawns",
-      "splashAttacker"
+      "splashAttacker",
+      "ranged"
     ]
   },
   {
@@ -974,7 +1070,9 @@
     "targets": "ground",
     "families": [],
     "cost": 7,
-    "tags": []
+    "tags": [
+      "melee"
+    ]
   },
   {
     "card": "Dark Prince",
@@ -991,7 +1089,8 @@
     ],
     "cost": 4,
     "tags": [
-      "splashAttacker"
+      "splashAttacker",
+      "melee"
     ]
   },
   {
@@ -1008,7 +1107,9 @@
       "royal"
     ],
     "cost": 5,
-    "tags": []
+    "tags": [
+      "melee"
+    ]
   },
   {
     "card": "Balloon",
@@ -1025,6 +1126,8 @@
     "cost": 5,
     "tags": [
       "wincon",
+      "deathDamage",
+      "melee",
       "flying"
     ]
   },
@@ -1041,7 +1144,10 @@
       "undead"
     ],
     "cost": 6,
-    "tags": []
+    "tags": [
+      "deathDamage",
+      "melee"
+    ]
   },
   {
     "card": "Rune Giant",
@@ -1056,7 +1162,9 @@
       "human"
     ],
     "cost": 4,
-    "tags": []
+    "tags": [
+      "melee"
+    ]
   },
   {
     "card": "Goblin Giant",
@@ -1073,7 +1181,9 @@
     "cost": 6,
     "tags": [
       "spawns",
-      "wincon"
+      "wincon",
+      "melee",
+      "ranged"
     ]
   },
   {
@@ -1090,7 +1200,8 @@
     ],
     "cost": 4,
     "tags": [
-      "splashAttacker"
+      "splashAttacker",
+      "ranged"
     ]
   },
   {
@@ -1106,7 +1217,9 @@
     "cost": 8,
     "tags": [
       "spawns",
-      "wincon"
+      "wincon",
+      "deathDamage",
+      "melee"
     ]
   },
   {
@@ -1122,6 +1235,7 @@
     "cost": 5,
     "tags": [
       "splashAttacker",
+      "ranged",
       "flying"
     ]
   },
@@ -1137,7 +1251,9 @@
     "families": [],
     "cost": 2,
     "tags": [
-      "wincon"
+      "wincon",
+      "multiUnit",
+      "melee"
     ]
   },
   {
@@ -1155,7 +1271,8 @@
     "cost": 7,
     "tags": [
       "wincon",
-      "splashAttacker"
+      "splashAttacker",
+      "melee"
     ]
   },
   {
@@ -1172,7 +1289,8 @@
     ],
     "cost": 5,
     "tags": [
-      "splashAttacker"
+      "splashAttacker",
+      "ranged"
     ]
   },
   {
@@ -1189,7 +1307,8 @@
     ],
     "cost": 5,
     "tags": [
-      "splashAttacker"
+      "splashAttacker",
+      "ranged"
     ]
   },
   {
@@ -1203,7 +1322,9 @@
     "targets": "ground",
     "families": [],
     "cost": 5,
-    "tags": []
+    "tags": [
+      "ranged"
+    ]
   },
   {
     "card": "Goblin Barrel",
@@ -1358,7 +1479,8 @@
     "families": [],
     "cost": 6,
     "tags": [
-      "wincon"
+      "wincon",
+      "ranged"
     ]
   },
   {
@@ -1394,7 +1516,8 @@
     ],
     "cost": 7,
     "tags": [
-      "splashAttacker"
+      "splashAttacker",
+      "melee"
     ]
   },
   {
@@ -1411,7 +1534,9 @@
     ],
     "cost": 5,
     "tags": [
-      "wincon"
+      "wincon",
+      "melee",
+      "ranged"
     ]
   },
   {
@@ -1428,7 +1553,8 @@
     ],
     "cost": 4,
     "tags": [
-      "splashAttacker"
+      "splashAttacker",
+      "ranged"
     ]
   },
   {
@@ -1443,6 +1569,7 @@
     "families": [],
     "cost": 4,
     "tags": [
+      "ranged",
       "flying"
     ]
   },
@@ -1458,7 +1585,8 @@
     "families": [],
     "cost": 6,
     "tags": [
-      "splashAttacker"
+      "splashAttacker",
+      "ranged"
     ]
   },
   {
@@ -1475,7 +1603,8 @@
     ],
     "cost": 3,
     "tags": [
-      "wincon"
+      "wincon",
+      "melee"
     ]
   },
   {
@@ -1493,7 +1622,8 @@
     ],
     "cost": 3,
     "tags": [
-      "splashAttacker"
+      "splashAttacker",
+      "ranged"
     ]
   },
   {
@@ -1511,6 +1641,8 @@
     "cost": 4,
     "tags": [
       "spawns",
+      "deathDamage",
+      "melee",
       "flying"
     ]
   },
@@ -1528,7 +1660,9 @@
       "royal"
     ],
     "cost": 3,
-    "tags": []
+    "tags": [
+      "melee"
+    ]
   },
   {
     "card": "Ice Wizard",
@@ -1544,7 +1678,8 @@
     ],
     "cost": 3,
     "tags": [
-      "splashAttacker"
+      "splashAttacker",
+      "ranged"
     ]
   },
   {
@@ -1560,7 +1695,9 @@
       "human"
     ],
     "cost": 4,
-    "tags": []
+    "tags": [
+      "ranged"
+    ]
   },
   {
     "card": "Bandit",
@@ -1575,7 +1712,9 @@
       "human"
     ],
     "cost": 3,
-    "tags": []
+    "tags": [
+      "melee"
+    ]
   },
   {
     "card": "Lava Hound",
@@ -1591,6 +1730,7 @@
     "tags": [
       "spawns",
       "wincon",
+      "ranged",
       "flying"
     ]
   },
@@ -1609,7 +1749,8 @@
     ],
     "cost": 4,
     "tags": [
-      "spawns"
+      "spawns",
+      "melee"
     ]
   },
   {
@@ -1625,7 +1766,10 @@
       "human"
     ],
     "cost": 4,
-    "tags": []
+    "tags": [
+      "deathDamage",
+      "melee"
+    ]
   },
   {
     "card": "Spirit Empress (Ground)",
@@ -1641,7 +1785,9 @@
       "royal"
     ],
     "cost": 3,
-    "tags": []
+    "tags": [
+      "melee"
+    ]
   },
   {
     "card": "Spirit Empress (Flying)",
@@ -1658,7 +1804,8 @@
     ],
     "cost": 6,
     "tags": [
-      "flying"
+      "flying",
+      "ranged"
     ]
   },
   {
@@ -1674,7 +1821,10 @@
       "goblin"
     ],
     "cost": 5,
-    "tags": []
+    "tags": [
+      "melee",
+      "ranged"
+    ]
   },
   {
     "card": "Mother Witch",
@@ -1691,7 +1841,8 @@
     ],
     "cost": 4,
     "tags": [
-      "spawns"
+      "spawns",
+      "ranged"
     ]
   },
   {
@@ -1707,7 +1858,9 @@
       "human"
     ],
     "cost": 3,
-    "tags": []
+    "tags": [
+      "melee"
+    ]
   },
   {
     "card": "The Log",
@@ -1755,7 +1908,8 @@
     ],
     "cost": 4,
     "tags": [
-      "splashAttacker"
+      "splashAttacker",
+      "melee"
     ]
   },
   {
@@ -1773,7 +1927,8 @@
     ],
     "cost": 4,
     "tags": [
-      "spawns"
+      "spawns",
+      "melee"
     ]
   },
   {
@@ -1789,7 +1944,9 @@
       "human"
     ],
     "cost": 6,
-    "tags": []
+    "tags": [
+      "melee"
+    ]
   },
   {
     "card": "Archer Queen",
@@ -1805,7 +1962,9 @@
       "royal"
     ],
     "cost": 5,
-    "tags": []
+    "tags": [
+      "ranged"
+    ]
   },
   {
     "card": "Mighty Miner",
@@ -1820,7 +1979,9 @@
       "human"
     ],
     "cost": 4,
-    "tags": []
+    "tags": [
+      "melee"
+    ]
   },
   {
     "card": "Goblinstein",
@@ -1835,7 +1996,10 @@
       "goblin"
     ],
     "cost": 5,
-    "tags": []
+    "tags": [
+      "multiUnit",
+      "ranged"
+    ]
   },
   {
     "card": "Little Prince",
@@ -1852,7 +2016,8 @@
     ],
     "cost": 3,
     "tags": [
-      "spawns"
+      "spawns",
+      "ranged"
     ]
   },
   {
@@ -1881,6 +2046,8 @@
       "human"
     ],
     "cost": 5,
-    "tags": []
+    "tags": [
+      "melee"
+    ]
   }
 ]
